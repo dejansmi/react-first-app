@@ -40,7 +40,8 @@ NavLink.propTypes = {
 
 NavLink.defaultProps = {
   tag: 'a',
-  to: ''
+  to: '',
+  listArray: []
 };
 
 export default NavLink;

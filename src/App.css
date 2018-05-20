@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.form-control {
+  border: 0;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.form-control:focus{
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -18,9 +32,89 @@
   font-size: 1.5em;
 }
 
+.Img-bank {
+  height: 100%;
+  width: 20%;
+}
+
 .App-intro {
   font-size: large;
 }
+
+.Small-text {
+  font-size: 0.7em
+}
+
+.Left-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.Color {
+  background-color: yellow;
+}
+
+.ColorGray {
+  background-color: gray;
+}
+
+.ColorWhite {
+  background-color: white;
+}
+
+.H80 {
+  height: 70%;
+  overflow: hidden;
+}
+.H40 {
+  height: 60%;
+  overflow: hidden;
+}
+
+#BankRecomanded {
+  position: absolute;
+  font-weight: bold;
+  font-size: 2em;
+  left: -10px;
+  width: 20%;
+  margin-bottom: -10px;
+  margin-right: 4px;
+}
+
+#A {
+  height: 100%;
+  margin-left: 3px;
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  0% {margin-left: 0%;}
+  100% {margin-left: -100%;}
+}
+
+
+.Header-Size {
+  overflow: hidden;
+  height: 50px;
+}
+
+.Opacity {
+  opacity: 0.4;
+  width: 175px;
+}
+
+/* Overflow */
+.O-X {
+  overflow-x: hidden; 
+}
+
+.O-Y {
+  overflow-y: hidden; 
+  height: 500px;;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

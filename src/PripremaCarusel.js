@@ -33,7 +33,7 @@ class PripremaCarusel extends React.Component {
             );
 
         }
-        if (this.state.broj > 10) {
+        if (this.state.broj >= this.props.listArray.length) {
             this.setState({ broj: 0 });
         } else {
             this.setState({
@@ -46,14 +46,15 @@ class PripremaCarusel extends React.Component {
         return (
             <div>
                 <h1>Hello, world!</h1>
-                <h2>It is {this.state.broj}...{this.props.period}</h2>
+                <h2>It is {this.props.listArray[this.state.broj]}...{this.props.period}</h2>
             </div>
         );
     }
 }
 
 PripremaCarusel.defaultProps = {
-    period: 500
+    period: 500,
+    listArray: []
 };
 
 
