@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import ping from './logo.png';
-import schoolPicture from './Pictures/school.png';
-import garbagePicture from './Pictures/garbage.png';
-import bookPicture from './Pictures/book.png';
-import animalsSignPicture from './Pictures/animals-sign.jpg';
-import carYellowPicture from './Pictures/car-yellow.jpg';
 import NavLink from './NavLink.js';
 import CheckBox from './CheckBox.js';
 import Video from './Video.js';
 import PripremaCarusel from './PripremaCarusel.js';
 import ListImg from './ListImg';
+import Img from './Img';
 import './App.css';
+import listOfImg from './Data.js';
+import ProductsData from './Data';
 
 
 
-const listOfImg = ["https://upload.wikimedia.org/wikipedia/commons/b/b6/Small_red_rose.jpeg",
-bookPicture, garbagePicture, bookPicture, schoolPicture, animalsSignPicture,
-bookPicture, garbagePicture, bookPicture, schoolPicture, carYellowPicture,
-bookPicture, garbagePicture, bookPicture, schoolPicture, animalsSignPicture,
-"https://upload.wikimedia.org/wikipedia/commons/b/b6/Small_red_rose.jpeg",
-bookPicture, garbagePicture, bookPicture, schoolPicture, animalsSignPicture, carYellowPicture
-]
 
 class App extends Component {
 
@@ -35,7 +26,8 @@ class App extends Component {
       imageName: "",
       imgList: listOfImg
     };
-    this.addToListArray = this.addToListArray.bind(this)
+
+    this.addToListArray = this.addToListArray.bind(this);
 
     // This binding is necessary to make `this` work in the callback
     this.updateInputValue = this.updateInputValue.bind(this);
@@ -111,9 +103,40 @@ class App extends Component {
         </div>
         <div className="Header-Size w-100"></div>
         <div className="Header-Size w-100"></div>
-        <div className="d-flex flex-row">
-          <div className="container-fluid col-9"></div>
-          <div className="container-fluid col-3 O-Y O-X"><Video/></div>
+        <div className="d-flex flex-row Container-Empty border border-primary h-rest ">
+          <div className="col-9 pl-0 border border-primary Container-Empty">
+            <div className="h-50 d-flex flex-row O-Y">
+              <div className="col-4 border border-primary O-Y O-X Container-Empty">
+                <Img className="h-75 O-Y O-X" src={listOfImg[2].image} />
+              </div>
+              <div className="h-100 col-8 d-flex flex-column border border-danger O-Y O-X Container-Empty">
+                <div className="h-50 d-flex flex-row O-Y O-X w-100 border border-danger Container-Empty">
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                </div>
+                <div className="h-50 d-flex flex-row O-Y O-X w-100 border border-danger Container-Empty">
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                  <div className="h-100 d-flex flex-row O-Y O-X col-4 border border-danger Container-Empty">
+                    <Img src={listOfImg[2].image} />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div className="container-fluid col-3 O-Y O-X"><Video /></div>
         </div>
         <div className="container">
           <h1>Header 1</h1>

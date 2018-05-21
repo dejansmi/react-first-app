@@ -45,12 +45,22 @@
   font-size: 0.7em
 }
 
+.Container-Empty {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.h-rest {
+  height: calc(100vh - 100px);
+}
+
 .Left-container {
   display: flex;
   justify-content: flex-start;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
+
 
 .Color {
   background-color: yellow;

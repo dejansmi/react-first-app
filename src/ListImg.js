@@ -1,10 +1,10 @@
 import React from 'react';
 
 function ListImg(props) {
-    const numbers = props.list;
+    const listImg = props.list;
     return (
-      numbers.map((imgN) =>
-      <img id="A" src={imgN} className="img-responsive" alt="Book" />
+      listImg.map(imgN =>
+      <img id="A" src={imgN.image} className="img-fluid" alt="Book" />
     ) );
   }
   

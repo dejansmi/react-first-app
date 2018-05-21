@@ -35,7 +35,7 @@ class CheckBox extends Component {
         );
 
         return (
-            <div {...attributes} className={classes} ><input type="checkbox" autocomplete="off" checked={this.state.checked} onClick={this.changeChecked}/> {label}</div>
+            <div {...attributes} className={classes} ><input type="checkbox" autoComplete="off" checked={this.state.checked} onClick={this.changeChecked}/> {label}</div>
         );
     }
 }

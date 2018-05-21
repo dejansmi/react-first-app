@@ -25,16 +25,9 @@ class Video extends React.Component {
     // You can pass your function references to your child components as props (here passing down to the Buttons component)
     render() {
         return (
-            <div class="embed-responsive embed-responsive-16by9">
-                //<iframe class="embed-responsive-item" src={VideoAdd} allowfullscreen></iframe>
-                <video ref="vidRef" src={VideoAdd} type="video/mp4" autoplay="autoplay" loop="loop" w-100></video>
+            <div className="embed-responsive embed-responsive-16by9">
+                <video ref="vidRef" src={VideoAdd} type="video/mp4" autoPlay="autoplay" loop="loop"></video>
             </div>
-            /*
-             <div>
-                <video ref="vidRef" src={VideoAdd} type="video/mp4" autoplay="autoplay" loop="loop" w-100></video>
-
-            </div>
-            */
       );
     }
 }
