@@ -45,7 +45,7 @@ const ProductsData = [
         productType: "Knjige",
         image: bookPicture,
         imageAlt: "Let sokola",
-        description: 'Knjiga koja će vas ostaviti bez daha i koju ćete pročitati u komadu',
+        description: 'Knjiga koja će vas ostaviti bez daha i koju ćete pročitati u komadu.  ',
         price: 150.00,
         priceCurrency: "RSD"
     }
@@ -247,17 +247,62 @@ const ProductsData = [
         price: 189.23,
         priceCurrency: "RSD"
     }
-    ]
-    
+]
 
+export const userROL = [
+    {
+        username: "dejansm",
+        name: "Dejan Smiljanić",
+        sex: 'M',
+        image: carYellowPicture
+    }
+]
 
-const listOfImg = [ProductsData[0],
+export const users = [
+    {
+        username: "boza",
+        name: "Bozidar Ignjatovic",
+        sex: 'M',
+        image: animalsSignPicture
+    }
+]
+
+const loyalty = [{
+    loyaltyId: "du4KnE5Xkqe8nD2M",
+    imageShow: false,
+    image: animalsSignPicture,
+    imageAlt: "3za2",
+    imageText: "3 za 2",
+    description: "Ukoliko kupite 3 značke plaćate 2. Važi za serije mačaka i pasa. Za 3 značke cena je 170.20 RSD. Ušteda 85.10 RSD",
+    company: "Sign company\n Kompanija za proizvodnju metalni privezaka"
+}
+    ,
+{
+    loyaltyId: "lB4rTI5X3a3KMD2M",
+    imageShow: true,
+    image: animalsSignPicture,
+    imageAlt: "3za2",
+    imageText: "3 za 2",
+    description: "Ukoliko kupite 3 ili više proizvoda dobjate 7.5% popusta na sve proizvode",
+    company: "FMP Fabrika metalnih proizvoda"
+}
+]
+
+export const listOfImg = [ProductsData[0],
 ProductsData[1], ProductsData[2], ProductsData[3], ProductsData[4], ProductsData[5],
 ProductsData[6], ProductsData[7], ProductsData[8], ProductsData[9], ProductsData[10],
 ProductsData[11], ProductsData[12], ProductsData[13], ProductsData[14], ProductsData[15],
 ProductsData[16],
-ProductsData[17], ProductsData[18], ProductsData[19], ProductsData[20], ProductsData[21] 
+ProductsData[17], ProductsData[18], ProductsData[19], ProductsData[20], ProductsData[21]
 ]
 
+export const moreGoodOffers = [ProductsData[12],
+ProductsData[4], ProductsData[2], ProductsData[7], ProductsData[21], ProductsData[0],
+ProductsData[6], ProductsData[1], ProductsData[19], ProductsData[9], ProductsData[10],
+ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsData[15]
+]
 
-export default listOfImg;
+export const loyaltyData = [loyalty[0],loyalty[1]]
+
+
+export default { listOfImg, moreGoodOffers };

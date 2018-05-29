@@ -12,6 +12,7 @@ class NavLink extends Component {
       active,
       tag: Tag,
       to,
+      small,
       ...attributes
     } = this.props;
 
@@ -19,6 +20,7 @@ class NavLink extends Component {
       'nav-link',
       attributes.disabled ? 'disabled' : '',
       active ? 'active' : '',
+      small ? 'Small-text' : '',
       className
     );
 
@@ -41,6 +43,7 @@ NavLink.propTypes = {
 NavLink.defaultProps = {
   tag: 'a',
   to: '',
+  small: false,
   listArray: []
 };
 
