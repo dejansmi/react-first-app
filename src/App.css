@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+html {
+  font-size: 1em;
+}
+@media only screen and (max-width: 576px) {
+  html {
+    font-size: 0.5em;
+  }
+}
+
 .form-control {
   border: 0;
 }

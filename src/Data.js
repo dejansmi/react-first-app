@@ -20,6 +20,7 @@ const ProductsData = [
         imageAlt: "Cvet",
         description: 'Crvene ruže za prelepe bukete',
         price: 231.34,
+        priceOld: 264.23,
         priceCurrency: "RSD"
     }
     ,
@@ -43,7 +44,12 @@ const ProductsData = [
         imageAlt: "Kanta za đubre a papučicom",
         description: 'Lepa zelena kanta za đubre sa papučicom',
         price: 13500.00,
-        priceCurrency: "RSD"
+        priceOld: 14100.00,
+        priceCurrency: "RSD",
+        discount: {
+            moreThen: 3,
+            value: 2
+        }
     }
     ,
     {

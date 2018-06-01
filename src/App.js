@@ -155,19 +155,19 @@ class App extends Component {
               <div style={this.styleFunc("topOffers")} className="d-flex flex-row O-Y O-X border border-primary Container-Empty">
                 <div style={this.styleFunc("topOffersChild")} className=" h-100 border border-primary O-Y O-X Color Container-Empty">
                   <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
-                  <BoxProduct className="h-90" product={this.props.global.listOfImg[4]} />
+                  <BoxProduct className="h-90" product={this.props.global.listOfImg[4]} global={this.props.global}/>
                 </div>
                 <div style={this.styleFunc("middleWindow")} className="h-100 d-flex flex-column  O-Y O-X Container-Empty">
                   <div className="h-50 d-flex flex-column Color O-Y O-X w-100 border border-danger Container-Empty">
                     <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
                     <div className="h-90 d-flex flex-row justify-content-center Color O-Y O-X w-100  Container-Empty">
-                      <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
+                      <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                     </div>
                   </div>
                   <div className="h-50 d-flex flex-column Color O-Y O-X w-100 border border-danger Container-Empty">
                     <div className="h-10 Container-Empty "><h5><b>Lojalnost se isplati</b></h5></div>
                     <div className="h-90 d-flex flex-row justify-content-center Color O-Y O-X w-100  Container-Empty">
-                      <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global}/>
+                      <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global} />
                     </div>
                   </div>
                 </div>
@@ -176,7 +176,7 @@ class App extends Component {
             <div style={this.styleFunc("nakit")} className="w-100 d-flex flex-column  O-Y O-X Container-Empty">
               <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
               <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
+                <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
               </div>
             </div>
             <div style={this.styleFunc("nakit")} className="w-100 d-flex flex-column  O-Y O-X Container-Empty">
@@ -201,6 +201,11 @@ class App extends Component {
               {this.props.global.user.name}
             </div>
             <Video />
+            <div>
+              {(this.props.global.basketList[0] !== undefined) ? (this.props.global.basketList[0].product.productName + " " + this.props.global.basketList[0].ammount) : ("")}
+              {(this.props.global.basketList[1] !== undefined) ? (this.props.global.basketList[1].product.productName + " " + this.props.global.basketList[1].ammount) : ("")}
+              {(this.props.global.basketList[2] !== undefined) ? (this.props.global.basketList[2].product.productName + " " + this.props.global.basketList[2].ammount) : ("")}
+            </div>
           </div>
         </div>
 

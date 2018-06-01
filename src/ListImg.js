@@ -18,12 +18,13 @@ class ListImg extends Component {
 
     const {
       list,
-      from
+      from,
+      onClick
     } = this.props;
 
 
     const listImg = list.map(imgN =>
-      <img id="A" src={imgN.image} className="img-fluid" alt="Book" />
+      <img src={imgN.image} className="img-fluid" alt="Book" onClick={onClick} />
     )
 
 

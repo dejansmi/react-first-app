@@ -20,10 +20,14 @@ class State extends Component {
       setUser: this.setUser,
       users: users,
       usersROL: userROL,
-      product: ""
+      product: "",
+      basket: 0,
+      basketList: [],
+      addInBasketList: this.addInBasketList,
+      basketCurrency: 'RSD'
     };
     this.setUser = this.setUser.bind(this);
-
+    this.addInBasketList = this.addInBasketList.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +48,18 @@ class State extends Component {
     }));
   }
 
+  addInBasketList = (product, numberOfProduct, ammount) => {
+    var one;
+    one = {
+      product: product,
+      numberOfProduct: numberOfProduct,
+      ammount: ammount
+    }
+    this.setState(prevState => ({
+      basketList: [...prevState.basketList, one],
+      basket: this.basket + ammount
+    }));
+  }
 
 
   setUser = (event, username, type) => {

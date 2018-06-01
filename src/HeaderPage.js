@@ -33,7 +33,7 @@ class HeaderPage extends Component {
                     <div className="col-12 d-flex Color align-items-end Header-Size O-X" >
                         <img src={bankLogo} className=" Opacity " alt="Primer" />
                         <div id="BankRecomanded" className="col-2 d-flex align-items-end align-text-top">Preporučuje</div>
-                        <ListImg list={imgList} from="HeaderPage" />
+                        <ListImg list={imgList} from="HeaderPage" global={this.props.global}/>
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">

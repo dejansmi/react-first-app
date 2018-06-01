@@ -5,17 +5,9 @@ import classNames from 'classnames';
 class CheckBox extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            checked: this.props.checked
-        }
 
-        this.changeChecked = this.changeChecked.bind(this);
 
     }
-
-    changeChecked = (event) => {
-        this.setState({ checked: !this.state.checked });
-      }
 
     render() {
 
@@ -25,6 +17,8 @@ class CheckBox extends Component {
             label,
             small,
             checked,
+            onClick,
+            disabled,
             ...attributes
         } = this.props;
 
@@ -34,8 +28,9 @@ class CheckBox extends Component {
             className
         );
 
+
         return (
-            <div {...attributes} className={classes} ><input type="checkbox" autoComplete="off" checked={this.state.checked} onClick={this.changeChecked}/> {label}</div>
+            <div {...attributes} disabled className={classes} ><input type="checkbox" autoComplete="off" checked={checked} onClick={this.props.onClick}/> {label}</div>
         );
     }
 }
