@@ -5,6 +5,7 @@ import Main from './Main';
 
 class State extends Component {
   constructor(props) {
+    console.log ("State constructor")
     super(props);
     this.state = {
       inputValue: 1000,
@@ -18,7 +19,8 @@ class State extends Component {
       user: "",
       setUser: this.setUser,
       users: users,
-      usersROL: userROL
+      usersROL: userROL,
+      product: ""
     };
     this.setUser = this.setUser.bind(this);
 
@@ -42,22 +44,42 @@ class State extends Component {
     }));
   }
 
+
+
   setUser = (event, username, type) => {
-    var user;
+    var userL;
     if (type == "NewUserROL") {
       for (var userOne of this.state.usersROL) {
         if (userOne.username == username) {
-          user = userOne
+          userL = userOne
           break;
         }
       }
-      if (user != undefined) {
-
-        this.setState({
-          user: user,
-          users: users.push(userOne) 
-        });
+      if (userL != undefined) {
+        this.setState(prevState => ({
+          user: userL,
+          users: [...prevState.users, userL]
+        }));
+    
+    
       }
+    } else if (type == "Login") {
+      console.log (this.state.users)
+      for (var userOne of this.state.users) {
+        if (userOne.username == username) {
+          userL = userOne
+          break;
+        }
+      }
+      if (userL != undefined) {
+        this.setState({
+          user: userL,
+        });
+        return true;
+      } else {
+        return false;
+      }
+      
     } else if (type == "LogOut") {
       this.setState({
         user: ""

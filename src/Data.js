@@ -3,6 +3,12 @@ import garbagePicture from './Pictures/garbage.png';
 import bookPicture from './Pictures/book.png';
 import animalsSignPicture from './Pictures/animals-sign.jpg';
 import carYellowPicture from './Pictures/car-yellow.jpg';
+import nakit1 from './Pictures/nakit1.jpg';
+import nakit2 from './Pictures/nakit2.png';
+import nakit3 from './Pictures/nakit3.jpg';
+import nakit4 from './Pictures/nakit4.jpg';
+import nakit6 from './Pictures/nakit6.jpg';
+import nakit7 from './Pictures/nakit7.jpg';
 
 
 const ProductsData = [
@@ -33,6 +39,7 @@ const ProductsData = [
         productName: "Kanta za đubre",
         productType: "Kanta ",
         image: garbagePicture,
+        otherImages: [bookPicture, bookPicture, animalsSignPicture, animalsSignPicture, bookPicture, bookPicture],
         imageAlt: "Kanta za đubre a papučicom",
         description: 'Lepa zelena kanta za đubre sa papučicom',
         price: 13500.00,
@@ -44,6 +51,7 @@ const ProductsData = [
         productName: "Let sokola",
         productType: "Knjige",
         image: bookPicture,
+        otherImages: [bookPicture, animalsSignPicture, animalsSignPicture, bookPicture, bookPicture, bookPicture],
         imageAlt: "Let sokola",
         description: 'Knjiga koja će vas ostaviti bez daha i koju ćete pročitati u komadu.  ',
         price: 150.00,
@@ -55,6 +63,7 @@ const ProductsData = [
         productName: "Olovke raznobojne",
         productType: "Pribor za pisanje",
         image: schoolPicture,
+        otherImages: [bookPicture, animalsSignPicture, nakit2, bookPicture, nakit4],
         imageAlt: "Olovke",
         description: 'Lepe grafitne olovke sa tankm tragom. Ima ih u 6 boja',
         price: 127.23,
@@ -247,6 +256,74 @@ const ProductsData = [
         price: 189.23,
         priceCurrency: "RSD"
     }
+    ,
+    {
+        productId: "hr$GpuRwS1oKLvbu4",
+        productName: "Nakit ogrlica",
+        productType: "Nakit",
+        image: nakit1,
+        imageAlt: "Ogrlica",
+        description: 'Ogrlica i minđuše sa predivnim ručnim radom',
+        price: 89189.23,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "6UdGpuRlP9oKLvnVc",
+        productName: "Dva prstena",
+        productType: "Nakit",
+        image: nakit2,
+        imageAlt: "Dva prstena",
+        description: 'Dva prstena sa dijamantima. Izuzetno precizan rad.',
+        price: 123189.23,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "i8yoK3Nb8iO2Bj9D",
+        productName: "Dupli prsten",
+        productType: "Nakit",
+        image: nakit3,
+        imageAlt: "Dupli prsten",
+        description: 'Zanimljiva ideja za izradu duplog prstena. Koriščeni su dijamanti.',
+        price: 129434.00,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "4wqoK3gvbiO20kiH",
+        productName: "Minđuše",
+        productType: "Nakit",
+        image: nakit4,
+        imageAlt: "Minđuše",
+        description: 'Minđuše sa lepezom oko njih.',
+        price: 83123.12,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "5EwrK3gkuyO20po7",
+        productName: "Velika ogrlica",
+        productType: "Nakit",
+        image: nakit6,
+        imageAlt: "Velika oglica",
+        description: 'Zlatna oglica sa dijamantima i dragim kamenjem. Filigranski rad.',
+        price: 300999.99,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "r4SrhBckugtW0mNu",
+        productName: "Labud prsten",
+        productType: "Nakit",
+        image: nakit7,
+        imageAlt: "Labud prsten",
+        description: 'Zlatni prsten u obliku labuda',
+        price: 89341.99,
+        priceCurrency: "RSD"
+    }
+
+
 ]
 
 export const userROL = [
@@ -296,11 +373,16 @@ ProductsData[16],
 ProductsData[17], ProductsData[18], ProductsData[19], ProductsData[20], ProductsData[21]
 ]
 
-export const moreGoodOffers = [ProductsData[12],
+export const moreGoodOffers = [ProductsData[2],
 ProductsData[4], ProductsData[2], ProductsData[7], ProductsData[21], ProductsData[0],
 ProductsData[6], ProductsData[1], ProductsData[19], ProductsData[9], ProductsData[10],
 ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsData[15]
 ]
+
+export const nakitList = [ProductsData[22],
+ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27]
+]
+
 
 export const loyaltyData = [loyalty[0],loyalty[1]]
 

@@ -11,13 +11,14 @@ class ListProduct extends Component {
 
         const {
             list,
-            style
+            style,
+            global
         } = this.props;
 
 
         const listProduct = list.map((productN, ind) =>
             <div style={style} className="h-100 d-flex flex-row O-Y O-X  Container-Empty">
-                <BoxProduct product={productN} size="small" ind={ind}/>
+                <BoxProduct product={productN} size="small" ind={ind} global={this.props.global}/>
             </div>
 
         )

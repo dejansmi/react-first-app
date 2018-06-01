@@ -3,6 +3,7 @@ import { Router, Redirect, Route } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import NavLink from './NavLink';
+import Link from './Link';
 import ping from './logo.png';
 import HeaderPage from './HeaderPage'
 import sliceOfImg from './State';
@@ -185,7 +186,7 @@ class RegisterPage extends React.Component {
                 </div>
 
 
-                <NavLink className="Container-Empty" small to="/">Home</NavLink>
+                <Link className="Container-Empty" small to="/">Home</Link>
             </div>
         )
     }

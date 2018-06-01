@@ -25,7 +25,7 @@ class NavLink extends Component {
     );
 
     return (
-      <Tag {...attributes} className={classes} href={to} >
+      <Tag {...attributes} className={classes}  href={to} >
         {children}
       </Tag>
     );
