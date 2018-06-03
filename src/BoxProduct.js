@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Img from './Img';
-import {Route, Redirect, Switch } from "react-router-dom";
-import BuyProductPage from './BuyProductPage';
+import {Redirect } from "react-router-dom";
 
 class BoxProduct extends Component {
     constructor(props) {
@@ -35,7 +34,7 @@ class BoxProduct extends Component {
 
                 <Redirect to={{
                     pathname: '/product',
-                    state: { product: product }
+                    state: { product: this.props.product }
                 }} />
         
             )

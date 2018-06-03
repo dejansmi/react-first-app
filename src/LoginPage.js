@@ -1,8 +1,6 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import NavLink from './NavLink';
 import HeaderPage from './HeaderPage';
 import ping from './logo.png';
 import TextField from '@material-ui/core/TextField';
@@ -48,12 +46,6 @@ class LoginPage extends React.Component {
 
     render() {
 
-        const {
-            children,
-            className,
-            global,
-            ...attributes
-        } = this.props;
 
         if (this.state.exit === true) {
             return <Redirect to='/' />

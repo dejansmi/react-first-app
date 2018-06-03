@@ -1,15 +1,12 @@
 import React from 'react';
-import { Router, Redirect, Route } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import NavLink from './NavLink';
 import Link from './Link';
 import ping from './logo.png';
-import HeaderPage from './HeaderPage'
-import sliceOfImg from './State';
+import HeaderPage from './HeaderPage';
 import TextField from '@material-ui/core/TextField';
 import Button from './Button';
-import App from './App'
 import './App.css';
 
 
@@ -46,16 +43,16 @@ class RegisterPage extends React.Component {
     }
 
     handleROLConnect(e) {
-        if (this.state.phase == 0) {
-            if (this.state.username == "dejansm") {
+        if (this.state.phase === 0) {
+            if (this.state.username === "dejansm") {
                 this.setState({
                     showROL: true,
                     usernamePassword: false,
                     approveMadeUser: true,
                     phase: 1,
-                    textApprove: "Korisničko ime je slobodno. Kada potvrdite odluku pritiskom na taster Može, potvrđujete kreiranje naloga u eDigiComm sistemu \
-                    sa istim korisničkim imenom kao i Raiffeisen On-Line sistemu. I ubuduće će logovanje na sistem \
-                    eDigiComm u stvari biti logovanje na ROL pa je lozinka u stvari ista."
+                    textApprove: "Korisničko ime je slobodno. Kada potvrdite odluku pritiskom na taster Može, potvrđujete kreiranje naloga u eDigiComm sistemu"
+                    + "sa istim korisničkim imenom kao i Raiffeisen On-Line sistemu. I ubuduće će logovanje na sistem " 
+                    + "eDigiComm u stvari biti logovanje na ROL pa je lozinka u stvari ista."
                 });
             } else {
                 this.setState({
@@ -67,7 +64,7 @@ class RegisterPage extends React.Component {
                 });
 
             }
-        } else if (this.state.phase == 1) {
+        } else if (this.state.phase === 1) {
             this.props.global.setUser(e, this.state.username,"NewUserROL");
             this.setState({
                 showROL: false,
@@ -77,7 +74,7 @@ class RegisterPage extends React.Component {
                 textApprove: "",
                 exit: true
             });
-        } else if (this.state.phase == 2) {
+        } else if (this.state.phase === 2) {
             this.setState({
                 showROL: true,
                 usernamePassword: true,

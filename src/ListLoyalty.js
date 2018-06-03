@@ -12,8 +12,7 @@ class ListLoyalty extends Component {
         const {
             list,
             style,
-            size,
-            n
+            size
         } = this.props;
 
 

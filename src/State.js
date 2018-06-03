@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { listOfImg, users, userROL } from './Data.js';
+import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman } from './Data.js';
 import Main from './Main';
 
 
@@ -14,13 +14,18 @@ class State extends Component {
       imageName: "",
       imgList: listOfImg,
       listOfImg: listOfImg,
+      sport: sport,
+      sportMan: sportMan,
+      sportWoman: sportWoman,
       numMoreGoodOffers: 0,
       numLoyaltyBox: 0,
       user: "",
       setUser: this.setUser,
       users: users,
       usersROL: userROL,
+      productsList: ProductsData,
       product: "",
+      topOffer: topOffer,
       basket: 0,
       basketList: [],
       addInBasketList: this.addInBasketList,
@@ -57,46 +62,58 @@ class State extends Component {
     }
     this.setState(prevState => ({
       basketList: [...prevState.basketList, one],
-      basket: this.basket + ammount
+      basket: (Number(prevState.basket) + Number(ammount)).toFixed(2)
     }));
   }
 
 
   setUser = (event, username, type) => {
-    var userL;
-    if (type == "NewUserROL") {
+    var userL, tO;
+    if (type === "NewUserROL") {
       for (var userOne of this.state.usersROL) {
-        if (userOne.username == username) {
+        if (userOne.username === username) {
           userL = userOne
           break;
         }
       }
-      if (userL != undefined) {
+      if (userL !== undefined) {
+        if (userL.sex==="W") {
+          tO = ProductsData[28];
+        } else {
+          tO = ProductsData[29];          
+        }
         this.setState(prevState => ({
           user: userL,
-          users: [...prevState.users, userL]
+          users: [...prevState.users, userL],
+          topOffer: tO
         }));
     
     
       }
-    } else if (type == "Login") {
+    } else if (type === "Login") {
       console.log (this.state.users)
-      for (var userOne of this.state.users) {
-        if (userOne.username == username) {
+      for (userOne of this.state.users) {
+        if (userOne.username === username) {
           userL = userOne
           break;
         }
       }
-      if (userL != undefined) {
+      if (userL !== undefined) {
+        if (userL.sex==="W") {
+          tO = ProductsData[28];
+        } else {
+          tO = ProductsData[29];          
+        }
         this.setState({
           user: userL,
+          topOffer: tO
         });
         return true;
       } else {
         return false;
       }
       
-    } else if (type == "LogOut") {
+    } else if (type === "LogOut") {
       this.setState({
         user: ""
       });

@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import NavLink from './NavLink';
 import  Link  from './Link';
-import {  Redirect } from "react-router-dom";
-import Button from './Button';
 
 
 
@@ -24,10 +20,10 @@ class Login extends React.Component {
 
 
     render() {
-        const prijava = (this.props.global.user == "") ? "Prijava" : "Odjava";
-        const noviKorisnik = (this.props.global.user == "") ? <Link className="Container-Empty" small to="/registracija">Novi korisnik</Link> : null;
-        const toWhere = (this.props.global.user == "") ? "/login" : "/";
-        var loginInOut = (this.props.global.user == "") ?
+        const prijava = (this.props.global.user === "") ? "Prijava" : "Odjava";
+        const noviKorisnik = (this.props.global.user === "") ? <Link className="Container-Empty" small to="/registracija">Novi korisnik</Link> : null;
+        const toWhere = (this.props.global.user === "") ? "/login" : "/";
+        var loginInOut = (this.props.global.user === "") ?
         <Link className="Container-Empty" small to={toWhere} >{prijava}</Link>:
         <Link className="Container-Empty" small to={toWhere} onClick={this.handleLoginClick}>{prijava}</Link>        ;
         

@@ -9,9 +9,67 @@ import nakit3 from './Pictures/nakit3.jpg';
 import nakit4 from './Pictures/nakit4.jpg';
 import nakit6 from './Pictures/nakit6.jpg';
 import nakit7 from './Pictures/nakit7.jpg';
+import sat01 from './Pictures/Sat/01.jpg';
+import sat02 from './Pictures/Sat/02.jpg';
+import sat03 from './Pictures/Sat/03.jpg';
+import sat04 from './Pictures/Sat/04.jpg';
+import sat05 from './Pictures/Sat/05.jpg';
+import sat06 from './Pictures/Sat/06.jpg';
+import rukavice01 from './Pictures/Rukavice/01.jpg';
+import rukavice02 from './Pictures/Rukavice/02.jpg';
+import rukavice03 from './Pictures/Rukavice/03.jpg';
+import rukavice04 from './Pictures/Rukavice/04.jpg';
+import rukavice05 from './Pictures/Rukavice/05.jpg';
+import naocare01 from './Pictures/Naocare/01.jpg';
+import naocare02 from './Pictures/Naocare/02.jpg';
+import naocare03 from './Pictures/Naocare/03.jpg';
+import naocare04 from './Pictures/Naocare/04.jpg';
+import naocare05 from './Pictures/Naocare/05.jpg';
+import cargo01 from './Pictures/Cargo/01.jpg';
+import cargo02 from './Pictures/Cargo/02.jpg';
+import cargo03 from './Pictures/Cargo/03.jpg';
+import cargo04 from './Pictures/Cargo/04.jpg';
+import cargo05 from './Pictures/Cargo/05.jpg';
+import cargo06 from './Pictures/Cargo/06.jpg';
+import cargo07 from './Pictures/Cargo/07.jpg';
+import cargo08 from './Pictures/Cargo/08.jpg';
+import cargo09 from './Pictures/Cargo/09.jpg';
+import cargo10 from './Pictures/Cargo/10.jpg';
+import carCharger01 from './Pictures/Car charger/01.jpg';
+import carCharger02 from './Pictures/Car charger/02.jpg';
+import carCharger03 from './Pictures/Car charger/03.jpg';
+import carCharger04 from './Pictures/Car charger/04.jpg';
+import BozidarIgnjatovic from './Pictures/Korisnici/Bozidar-Ignjatovic.jpg';
+import MilicaMitic from './Pictures/Korisnici/Milica-Mitic.jpg';
+import MarkoMilenkovic from './Pictures/Korisnici/Marko-Milenkovic.jpg';
+import DusanCvetkovic from './Pictures/Korisnici/Dusan-Cvetkovic.jpg';
+import MilosMilosevic from './Pictures/Korisnici/Milos-Milosevic.jpg';
+import maxAir1 from './Pictures/Max Air/max-air-01.jpeg';
+import maxAir2 from './Pictures/Max Air/max-air-02.jpeg';
+import maxAir3 from './Pictures/Max Air/max-air-03.jpeg';
+import maxAir4 from './Pictures/Max Air/max-air-04.jpeg';
+import maxAir5 from './Pictures/Max Air/max-air-05.jpeg';
+import maxAir6 from './Pictures/Max Air/max-air-06.jpeg';
+import maxAir7 from './Pictures/Max Air/max-air-07.jpeg';
+import dres1 from './Pictures/Dresovi/dres-01.jpeg';
+import dres2 from './Pictures/Dresovi/dres-02.jpeg';
+import bball1 from './Pictures/BasketBall/bball-01.jpeg';
+import bball2 from './Pictures/BasketBall/bball-02.jpeg';
+import bball3 from './Pictures/BasketBall/bball-03.jpeg';
+import bball4 from './Pictures/BasketBall/bball-04.jpeg';
+import helanke1 from './Pictures/WomenBottoms/helanke-01.jpeg';
+import helanke2 from './Pictures/WomenBottoms/helanke-02.jpeg';
+import helanke3 from './Pictures/WomenBottoms/helanke-03.jpeg';
+import helanke4 from './Pictures/WomenBottoms/helanke-04.jpeg';
+import helanke5 from './Pictures/WomenBottoms/helanke-05.jpeg';
+import patika1 from './Pictures/WomenPaints/patika-01.jpeg';
+import patika2 from './Pictures/WomenPaints/patika-02.jpeg';
+import patika3 from './Pictures/WomenPaints/patika-03.jpeg';
+import patika4 from './Pictures/WomenPaints/patika-04.jpeg';
+import patika5 from './Pictures/WomenPaints/patika-05.jpeg';
 
 
-const ProductsData = [
+export const ProductsData = [
     {
         productId: "XYu4HuReJ2D32UIRY",
         productName: "Ruža crvena",
@@ -33,6 +91,23 @@ const ProductsData = [
         description: 'Knjiga sa izuzetnom pričom',
         price: 150.00,
         priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "UtS4wuRmk#62B2WA",
+        productName: "Sat ručni Yazole",
+        productType: "Sat",
+        image: sat01,
+        otherImages: [sat02, sat03, sat04, sat05, sat06],
+        imageAlt: "Ručni sat Yazole ",
+        description: 'Ručni sat Yazole sa kožnim kaišem. Možete da birate sa crnom ili belom pozadinom',
+        price: 28999.00,
+        priceOld: 31999.00,
+        priceCurrency: "RSD",
+        discount: {
+            moreThen: 1,
+            value: 3.5
+        }
     }
     ,
     {
@@ -319,13 +394,171 @@ const ProductsData = [
     }
     ,
     {
-        productId: "r4SrhBckugtW0mNu",
+        productId: "8UnK3LopyO9Km0p",
         productName: "Labud prsten",
         productType: "Nakit",
         image: nakit7,
         imageAlt: "Labud prsten",
-        description: 'Zlatni prsten u obliku labuda',
-        price: 89341.99,
+        description: 'Zlatni prsten u obliku labuda. Filigranski rad.',
+        price: 87999.99,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "r4SrhBckugtW0mNu",
+        productName: "Rukavice biciklističke",
+        productType: "Rukavice",
+        image: rukavice01,
+        otherImages: [rukavice02, rukavice03, rukavice04, rukavice05],
+        imageAlt: "Rukavice za vožnju bisiklom. Šarene.",
+        description: 'Rukavice za vožnju bisiklom. Šarene.Akcija kupuš 3 platiš 2',
+        price: 8341.99,
+        priceCurrency: "RSD",
+        discount: {
+            get: 3,
+            pay: 2
+        }
+    }
+    ,
+    {
+        productId: "9Onrhlu4ugtW0tel",
+        productName: "Naočare za sunce",
+        productType: "Naočare",
+        image: naocare01,
+        otherImages: [naocare02, naocare03, naocare04, naocare05],
+        imageAlt: "Naočare za sunce",
+        description: 'Naočare za sunce. Raznobojne',
+        price: 7321.99,
+        priceOld: 8999.00,
+        priceCurrency: "RSD",
+        discount: {
+            get: 3,
+            pay: 2
+        }
+    }
+    ,
+    {
+        productId: "IjBrpM34ugt9Ujew",
+        productName: "Pantalone kratke",
+        productType: "Odeća",
+        image: cargo01,
+        otherImages: [cargo02, cargo03, cargo04, cargo05, cargo06, cargo07, cargo08, cargo09, cargo10],
+        imageAlt: "Pantalone kratke",
+        description: 'Letnje pantalone. Raznobojne',
+        price: 2499.99,
+        priceCurrency: "RSD",
+        discount: {
+            get: 4,
+            pay: 3
+        },
+        options: [
+            "Crvena veličina 42",
+            "Crvena veličina 44",
+            "Crvena veličina 46",
+            "Crvena veličina 50",
+            "Crvena veličina 52",
+            "Crna veličina 40",
+            "Crna veličina 42",
+            "Crna veličina 44",
+            "Crna veličina 46",
+            "Crna veličina 48",
+            "Crna veličina 50",
+            "Crna veličina 54",
+            "Crna veličina 56",
+            "Bela veličina 36",
+            "Bela veličina 38",
+            "Bela veličina 40",
+            "Bela veličina 42",
+            "Bela veličina 46",
+            "Bela veličina 48",
+            "Bela veličina 52"
+        ]
+    }
+    ,
+    {
+        productId: "IjBrpM34ugt9Ujew",
+        productName: "Punjač za mobilni u automobilu",
+        productType: "Kola",
+        image: carCharger01,
+        otherImages: [carCharger02, carCharger03, carCharger04],
+        imageAlt: "Punjač za automobile",
+        description: 'Punjač za mobilni u automobilu. U raznim bojama',
+        price: 1299.99,
+        priceCurrency: "RSD",
+        options: [
+            "Plava",
+            "Crna",
+            "Bela"
+        ]
+    }
+    ,
+    {
+        productId: "oNmrp4ErulItUxAs",
+        productName: "Patike Max Air",
+        productType: "Sportska oprema",
+        image: maxAir1,
+        otherImages: [maxAir2, maxAir3, maxAir4, maxAir5, maxAir6, maxAir7],
+        imageAlt: "Patike Max Air",
+        description: 'Patike Max Air sa vazdušnim punjenjem. U raznim bojama',
+        price: 11299.99,
+        priceCurrency: "RSD",
+        options: [
+            "Plava",
+            "Crna",
+            "Bela"
+        ]
+    }
+    ,
+    {
+        productId: "7YxrkAjroUKtULm1",
+        productName: "Dresovi",
+        productType: "Sportska oprema",
+        image: dres1,
+        otherImages: [dres2],
+        imageAlt: "Dresovi",
+        description: 'Dresovi raznih kluboca. U raznim bojama',
+        price: 2229.00,
+        priceCurrency: "RSD",
+        options: [
+            "Crvena",
+            "Plava",
+            "Crno Bela"
+        ]
+    }
+    ,
+    {
+        productId: "uHbn9ImoOkLm9Iu",
+        productName: "Košarkaška lopta",
+        productType: "Sportska oprema",
+        image: bball1,
+        otherImages: [bball2, bball3, bball4],
+        imageAlt: "Košarkaška lopta",
+        description: 'Standardna košarkaška lopta za korišćenje u sali.',
+        price: 5211.20,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "oU7roKlnOkeW3q",
+        productName: "Sportske helanke",
+        productType: "Sportska oprema",
+        image: helanke1,
+        otherImages: [helanke2, helanke3, helanke4, helanke5],
+        imageAlt: "Sportske helanke",
+        description: 'Ženske sporske helanke.',
+        price: 1009.25,
+        priceCurrency: "RSD"
+    }
+    ,
+    {
+        productId: "oU7roKlnOkeW3q",
+        productName: "Ženska patika",
+        productType: "Sportska oprema",
+        image: patika1,
+        otherImages: [patika2, patika3, patika4, patika5],
+        imageAlt: "Ženske patike",
+        description: 'Ženske patike u raznim bojama.',
+        price: 1009.25,
         priceCurrency: "RSD"
     }
 
@@ -337,16 +570,50 @@ export const userROL = [
         username: "dejansm",
         name: "Dejan Smiljanić",
         sex: 'M',
-        image: carYellowPicture
+        image: carYellowPicture,
+        ROLUser: true
     }
 ]
 
 export const users = [
     {
         username: "boza",
-        name: "Bozidar Ignjatovic",
+        name: "Božidar Ignjatović",
         sex: 'M',
-        image: animalsSignPicture
+        image: BozidarIgnjatovic,
+        ROLUser: false
+    }
+    ,
+    {
+        username: "milica",
+        name: "Milica Mitić",
+        sex: 'W',
+        image: MilicaMitic,
+        ROLUser: false
+    }
+    ,
+    {
+        username: "dusan",
+        name: "Dušan Cvetković",
+        sex: 'M',
+        image: DusanCvetkovic,
+        ROLUser: false
+    }
+    ,
+    {
+        username: "milos",
+        name: "Miloš Milošević",
+        sex: 'M',
+        image: MilosMilosevic,
+        ROLUser: false
+    }
+    ,
+    {
+        username: "marko",
+        name: "Marko Milekoivić",
+        sex: 'M',
+        image: MarkoMilenkovic,
+        ROLUser: false
     }
 ]
 
@@ -369,25 +636,45 @@ const loyalty = [{
     description: "Ukoliko kupite 3 ili više proizvoda dobjate 7.5% popusta na sve proizvode",
     company: "FMP Fabrika metalnih proizvoda"
 }
+,
+{
+    loyaltyId: "5WdrTgj83abWMDka",
+    imageShow: true,
+    image: animalsSignPicture,
+    imageAlt: "3za2",
+    imageText: "3 za 2",
+    description: "Ukoliko kupite 3 ili više proizvoda dobjate 7.5% popusta na sve proizvode",
+    company: "FMP Fabrika metalnih proizvoda"
+}
 ]
 
-export const listOfImg = [ProductsData[0],
-ProductsData[1], ProductsData[2], ProductsData[3], ProductsData[4], ProductsData[5],
-ProductsData[6], ProductsData[7], ProductsData[8], ProductsData[9], ProductsData[10],
-ProductsData[11], ProductsData[12], ProductsData[13], ProductsData[14], ProductsData[15],
-ProductsData[16],
-ProductsData[17], ProductsData[18], ProductsData[19], ProductsData[20], ProductsData[21]
+export const topOffer = ProductsData[29];
+
+export const sportMan = [ProductsData[33], ProductsData[34], ProductsData[35]];
+
+export const sportWoman = [ProductsData[36], ProductsData[37]];
+
+export const sport = [ProductsData[33], ProductsData[34], ProductsData[35], ProductsData[36], ProductsData[37]];
+
+
+export const listOfImg = [ProductsData[33],
+ProductsData[34], ProductsData[2], ProductsData[18], ProductsData[35], ProductsData[28],
+ProductsData[6], ProductsData[7], ProductsData[30], ProductsData[9], ProductsData[10],
+ProductsData[32], ProductsData[29], ProductsData[13], ProductsData[14], ProductsData[5],
+ProductsData[34],
+ProductsData[17], ProductsData[18], ProductsData[19], ProductsData[24], ProductsData[21],
+ProductsData[22], ProductsData[4], ProductsData[5]
 ]
 
 export const moreGoodOffers = [ProductsData[2],
-ProductsData[4], ProductsData[2], ProductsData[7], ProductsData[21], ProductsData[0],
+ProductsData[32], ProductsData[29], ProductsData[30], ProductsData[31], ProductsData[4],
 ProductsData[6], ProductsData[1], ProductsData[19], ProductsData[9], ProductsData[10],
 ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsData[15]
 ]
 
-export const nakitList = [ProductsData[22],
-ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27]
-]
+export const nakitList = [
+ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27],
+ProductsData[28]]
 
 
 export const loyaltyData = [loyalty[0],loyalty[1]]

@@ -1,9 +1,13 @@
 import React from 'react';
 
 function Img(props) {
-    const image = props.src;
+  const {
+    src
+  } = props;
+
+
     return (
-      <img id="A" src={image} className="img-fluid" alt="Book" />
+      <img  src={src} className="img-fluid" alt="Book" />
      );
   }
   

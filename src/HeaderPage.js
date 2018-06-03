@@ -2,30 +2,49 @@ import React, { Component } from 'react';
 import ListImg from './ListImg';
 import CheckBox from './CheckBox';
 import Login from './Login';
+import {Redirect} from "react-router-dom";
 
 
 class HeaderPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            global: this.props.global
+            global: this.props.global,
+            redirect: false,
+            product: "",
+            searchValue: ""
         }
+        this.handleOnClick = this.handleOnClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        }
+
+    handleOnClick = (event, product) => {
+        this.props.global.product = product;
+        this.setState({ redirect: true });
     }
 
-
+    handleChange = (e) => {
+        this.setState ({searchValue: e.target.value});
+    } 
 
     render() {
 
         const {
-            children,
-            className,
             bankLogo,
-            value,
-            imgList,
-            ...attributes
+            imgList
         } = this.props;
 
-    
+        if (this.state.redirect === true) {
+            return (
+
+                <Redirect to={{
+                    pathname: '/product',
+                    state: { product: this.props.global.product }
+                }} />
+
+            )
+        }
+
 
         return (
             <div className="col-12 fixed-top container-fluid" >
@@ -33,7 +52,7 @@ class HeaderPage extends Component {
                     <div className="col-12 d-flex Color align-items-end Header-Size O-X" >
                         <img src={bankLogo} className=" Opacity " alt="Primer" />
                         <div id="BankRecomanded" className="col-2 d-flex align-items-end align-text-top">Preporučuje</div>
-                        <ListImg list={imgList} from="HeaderPage" global={this.props.global}/>
+                        <ListImg list={imgList} from="HeaderPage" global={this.props.global} onClick={this.handleOnClick} />
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">
@@ -44,16 +63,13 @@ class HeaderPage extends Component {
                             </div>
 
 
-                            <div className="d-flex flex-row h-100 col-6 border border-primary mr-auto">
+                            <div className="d-flex flex-row h-100 col-6  mr-auto">
                                 <i className="material-icons align-self-center">search</i>
-                                <input className="form-control" type="text" value={value} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
-                                <button className="btn h-100 col-4 border border-primary form-control ColorWhite align-self-center" type="button" >Primer
-                </button>
-                                <div className="h-100">Primer 1</div>
+                                <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
                             </div>
 
                             <div className="d-flex flex-column">
-                                <Login user={this.state.global.user} {...this.props}/>
+                                <Login user={this.state.global.user} {...this.props} />
                             </div>
 
                         </div>

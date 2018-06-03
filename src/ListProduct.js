@@ -11,8 +11,7 @@ class ListProduct extends Component {
 
         const {
             list,
-            style,
-            global
+            style
         } = this.props;
 
 

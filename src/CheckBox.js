@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class CheckBox extends Component {
-    constructor(props) {
-        super(props);
-
-
-    }
 
     render() {
 
