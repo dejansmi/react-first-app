@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ListImg from './ListImg';
 import CheckBox from './CheckBox';
 import Login from './Login';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 class HeaderPage extends Component {
@@ -12,11 +12,44 @@ class HeaderPage extends Component {
             global: this.props.global,
             redirect: false,
             product: "",
-            searchValue: ""
+            searchValue: "",
+            inputValue: 1000,
+            iPostition: 0
         }
+        this.iCorrect= 1;
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+
+
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.moveImgList(),
+            this.state.inputValue
+        );
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    overMouse = (i) => {
+        this.iCorrect = i;
+    }
+
+    moveImgList = () => {
+        if (this.state.iCorrect > 0) { return };
+        this.setState(prevStat => ({
+            iPostition: prevStat.iPostition + this.iCorrect
+        }));
+        if (this.props.imgList.length <= this.state.iPostition) {
+            this.setState({
+                iPostition: 0
+            });
         }
+    }
 
     handleOnClick = (event, product) => {
         this.props.global.product = product;
@@ -24,8 +57,8 @@ class HeaderPage extends Component {
     }
 
     handleChange = (e) => {
-        this.setState ({searchValue: e.target.value});
-    } 
+        this.setState({ searchValue: e.target.value });
+    }
 
     render() {
 
@@ -40,7 +73,7 @@ class HeaderPage extends Component {
                 <Redirect to={{
                     pathname: '/product',
                     state: { product: this.props.global.product }
-                }} />
+                }} push />
 
             )
         }
@@ -49,10 +82,10 @@ class HeaderPage extends Component {
         return (
             <div className="col-12 fixed-top container-fluid" >
                 <div className="col-12 fixed-top container-fluid" >
-                    <div className="col-12 d-flex Color align-items-end Header-Size O-X" >
+                    <div onMouseOver={()=>this.overMouse(0)} onMouseOut={()=>this.overMouse(1)} className="col-12 d-flex Color align-items-end Header-Size O-X" >
                         <img src={bankLogo} className=" Opacity " alt="Primer" />
                         <div id="BankRecomanded" className="col-2 d-flex align-items-end align-text-top">Preporučuje</div>
-                        <ListImg list={imgList} from="HeaderPage" global={this.props.global} onClick={this.handleOnClick} />
+                        <ListImg list={imgList.slice(this.state.iPostition, imgList.length).concat(imgList)} from="HeaderPage" global={this.props.global} onClick={this.handleOnClick} />
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">

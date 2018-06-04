@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Img from './Img';
 import {Redirect } from "react-router-dom";
+import F from './F';
 
 class BoxProduct extends Component {
     constructor(props) {
@@ -68,14 +69,14 @@ class BoxProduct extends Component {
         );
 
 
+        const oldPrice = (product.priceOld!==undefined)?(<F f="$" a={product.priceOld} />):("");
 
         return (
 
 
 
-
             <div {...attributes} className={classes} onClick={this.handleOnClick}>
-                <div className="h-100 ColorWhite d-flex flex-column  mx-2 mt-1 mb-5">
+                <div  id="pMarg" className="h-100 ColorWhite d-flex flex-column  p-marg">
                     <div className="d-flex h-50 w-100 O-X O-Y">
                         <Img className={imgClasses} src={product.image} />
                     </div >
@@ -83,7 +84,7 @@ class BoxProduct extends Component {
                         <b>{product.productName}</b><br />{product.description}
                     </div>
                     <div className="h-10 w-100 float-left pt-1">
-                        <span className="float-left">Cena</span> <span className="float-right"><b>{product.price} {product.priceCurrency}</b></span>
+                        <span className="float-left">{oldPrice} {product.priceCurrency}</span> <span className="float-right"><b><F f="$" a={product.price}/></b></span>
                     </div>
                 </div>
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman } from './Data.js';
+import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman, company } from './Data.js';
 import Main from './Main';
 
 
 class State extends Component {
   constructor(props) {
-    console.log ("State constructor")
     super(props);
     this.state = {
       inputValue: 1000,
@@ -24,6 +23,7 @@ class State extends Component {
       users: users,
       usersROL: userROL,
       productsList: ProductsData,
+      company: company,
       product: "",
       topOffer: topOffer,
       basket: 0,
@@ -35,6 +35,7 @@ class State extends Component {
     this.addInBasketList = this.addInBasketList.bind(this);
   }
 
+  /*
   componentDidMount() {
     this.timerID = setInterval(
       () => this.moveImgList(),
@@ -46,6 +47,8 @@ class State extends Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
+  */
+
 
   moveImgList = (event) => {
     this.setState(prevState => ({
@@ -91,7 +94,6 @@ class State extends Component {
     
       }
     } else if (type === "Login") {
-      console.log (this.state.users)
       for (userOne of this.state.users) {
         if (userOne.username === username) {
           userL = userOne

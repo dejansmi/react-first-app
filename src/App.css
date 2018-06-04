@@ -157,6 +157,9 @@ html {
   min-width: 40%;
 }
 
+.bold {
+  font-weight: bold;
+}
 
 
 #BankRecomanded {
@@ -220,6 +223,16 @@ html {
 
 .H-SS {
   min-height: 2px;
+}
+
+/* p-marg product margin */
+.p-marg {
+  margin: 4px 4px 6px 4px;
+}
+
+#pMarg:hover {
+  margin: 0px 0px 0px 0px;
+  background-color: yellow;
 }
 
 

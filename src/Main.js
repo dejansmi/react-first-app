@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
+import EndOfBuying from './EndOfBuying';
 import App from './App';
 import './App.css';
 import BuyProductPage from './BuyProductPage';
@@ -18,6 +19,7 @@ class Main extends React.Component {
                 <Route path='/login' render={(props) => <LoginPage {...attributes} isAuthed={true}  />} />
                 <Route path='/registracija' render={(props) => <RegisterPage {...attributes} isAuthed={true} />} />
                 <Route path='/product' render={(props) => <BuyProductPage {...attributes} isAuthed={true} />} />
+                <Route path='/endofbuying' render={(props) => <EndOfBuying {...attributes} isAuthed={true} />} />
                 <Route path='/' render={(props) => <App {...attributes} isAuthed={true} />}/>
             </Switch>
         )

@@ -285,6 +285,11 @@ class BuyProductPage extends Component {
             return <Redirect to='/' />
         }
 
+        const companyRef = (global.product.company !== undefined) ?
+            (global.product.company) : (undefined);
+
+        console.log("Company Ref")
+        console.log(companyRef)
         const listOptions = (global.product.options !== undefined) ? (global.product.options.map((option) =>
             <li>{option}</li>
         )) : (null);
@@ -307,6 +312,14 @@ class BuyProductPage extends Component {
         const imgBigest = classNames(
             this.state.show ? 'd-block' : 'd-none'
         )
+
+        const companyName = (companyRef !== undefined) ?
+            (<div className="Container-Empty ">
+                <div>Kompanija:{global.company[companyRef].name}</div>
+                <div>Adresa:{global.company[companyRef].adress}</div>
+                <div>Grad:{global.company[companyRef].city}</div>
+            </div>)
+            : ("");
 
         return (
             <div className="Container-Empty h-100 w-100 ">
@@ -345,8 +358,8 @@ class BuyProductPage extends Component {
                         <div className="Container-Empty w-100 d-flex flex-column">
                             <div className="d-flex flex-row  h-100 align-items-center">Ubaci u korpu
                                     <Input className="col-3  align-self-end" type="number" id="numProduct" placeholder="" value={this.state.numProduct} onChange={this.numProductOnChange} />&ensp;
-                     komada
-                    Ukupan iznos &ensp;
+             komada
+            Ukupan iznos &ensp;
                                 <b>{this.state.totalPrice}</b>&ensp;
                                 {global.product.priceCurrency}
                             </div>
@@ -374,7 +387,7 @@ class BuyProductPage extends Component {
                         {listOptionsAll}
                     </div>
                     <div style={this.styleSize("Company")} className="Container-Empty border border-danger" >
-                        D: {this.xB}
+                        {companyName}
                     </div>
                 </div>
                 <Link className="Container-Empty" small to="/">Home</Link>

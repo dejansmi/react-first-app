@@ -31,10 +31,7 @@ class LoginPage extends React.Component {
         if (this.props.global.setUser(e, this.state.username,"Login")) {
             this.setState({ password: "",
             exit: true});
-            console.log ("Connect")
-
         }
-        console.log ("NOT Connect")
 
     }
 
