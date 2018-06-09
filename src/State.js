@@ -27,12 +27,19 @@ class State extends Component {
       product: "",
       topOffer: topOffer,
       basket: 0,
+      basketOrder: "",
+      basketHowPay: "",
       basketList: [],
+      basketHistory: [],
       addInBasketList: this.addInBasketList,
-      basketCurrency: 'RSD'
+      basketCurrency: 'RSD',
+      orderPayed: this.orderPayed,
+      changeCurrentAccountBalance: this.changeCurrentAccountBalance
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
+    this.orderPayed = this.orderPayed.bind(this);
+    this.changeCurrentAccountBalance = this.changeCurrentAccountBalance.bind(this);
   }
 
   /*
@@ -56,6 +63,39 @@ class State extends Component {
     }));
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  orderPayed = () => {
+    var one;
+    one = {
+      order: this.state.basketOrder,
+      ammount: this.state.basket,
+      howPay: this.state.basketHowPay,
+      basketList: this.state.basketList
+
+    }
+    this.setState(prevState => ({
+      basket: 0,
+      basketHowPay: "",
+      basketList: [],
+      basketOrder: "",
+      basketHistory: [...prevState.basketHistory, one]
+    }));
+  }
+
+  changeCurrentAccountBalance = (ammountChange) => {
+    this.setState(prevState => ({
+      user: {
+        ...prevState.user,
+        currentAccount: {
+          ...prevState.user.currentAccount, 
+          ammount: prevState.user.currentAccount.ammount + ammountChange }
+      }
+    }));
+  }
+
   addInBasketList = (product, numberOfProduct, ammount) => {
     var one;
     one = {
@@ -63,10 +103,21 @@ class State extends Component {
       numberOfProduct: numberOfProduct,
       ammount: ammount
     }
-    this.setState(prevState => ({
-      basketList: [...prevState.basketList, one],
-      basket: (Number(prevState.basket) + Number(ammount)).toFixed(2)
-    }));
+    if (this.state.basketOrder === "") {
+      // get order number
+      var iRun = this.getRandomInt(10000) + "-" + this.getRandomInt(10000);
+      this.setState(prevState => ({
+        basketList: [...prevState.basketList, one],
+        basket: (Number(prevState.basket) + Number(ammount)).toFixed(2),
+        basketOrder: iRun
+      }));
+
+    } else {
+      this.setState(prevState => ({
+        basketList: [...prevState.basketList, one],
+        basket: (Number(prevState.basket) + Number(ammount)).toFixed(2)
+      }));
+    }
   }
 
 
@@ -80,18 +131,18 @@ class State extends Component {
         }
       }
       if (userL !== undefined) {
-        if (userL.sex==="W") {
+        if (userL.sex === "W") {
           tO = ProductsData[28];
         } else {
-          tO = ProductsData[29];          
+          tO = ProductsData[29];
         }
         this.setState(prevState => ({
           user: userL,
           users: [...prevState.users, userL],
           topOffer: tO
         }));
-    
-    
+
+
       }
     } else if (type === "Login") {
       for (userOne of this.state.users) {
@@ -101,10 +152,10 @@ class State extends Component {
         }
       }
       if (userL !== undefined) {
-        if (userL.sex==="W") {
+        if (userL.sex === "W") {
           tO = ProductsData[28];
         } else {
-          tO = ProductsData[29];          
+          tO = ProductsData[29];
         }
         this.setState({
           user: userL,
@@ -114,7 +165,7 @@ class State extends Component {
       } else {
         return false;
       }
-      
+
     } else if (type === "LogOut") {
       this.setState({
         user: ""

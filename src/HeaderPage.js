@@ -3,6 +3,11 @@ import ListImg from './ListImg';
 import CheckBox from './CheckBox';
 import Login from './Login';
 import { Redirect } from "react-router-dom";
+import classNames from 'classnames';
+import Link from './Link';
+import logoRaif from './Pictures/logoRaif.png';
+import Img from './Img';
+
 
 
 class HeaderPage extends Component {
@@ -16,10 +21,12 @@ class HeaderPage extends Component {
             inputValue: 1000,
             iPostition: 0
         }
-        this.iCorrect= 1;
+        this.iCorrect = 1;
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
     }
+
 
 
 
@@ -50,6 +57,9 @@ class HeaderPage extends Component {
             });
         }
     }
+    handleLoginClick(e) {
+        this.props.global.setUser(e, "", "LogOut");
+    }
 
     handleOnClick = (event, product) => {
         this.props.global.product = product;
@@ -67,6 +77,15 @@ class HeaderPage extends Component {
             imgList
         } = this.props;
 
+        const userData = classNames(
+            this.props.global.user !== "" ? 'd-flex' : '',
+            'flex-row',
+            'O-Y',
+            'Container-Empty',
+            this.props.global.user !== "" ? '' : 'd-none'
+        )
+
+
         if (this.state.redirect === true) {
             return (
 
@@ -82,10 +101,34 @@ class HeaderPage extends Component {
         return (
             <div className="col-12 fixed-top container-fluid" >
                 <div className="col-12 fixed-top container-fluid" >
-                    <div onMouseOver={()=>this.overMouse(0)} onMouseOut={()=>this.overMouse(1)} className="col-12 d-flex Color align-items-end Header-Size O-X" >
+                    <div onMouseOver={() => this.overMouse(0)} onMouseOut={() => this.overMouse(1)} className="col-12 d-none Color align-items-end Header-Size O-X" >
                         <img src={bankLogo} className=" Opacity " alt="Primer" />
                         <div id="BankRecomanded" className="col-2 d-flex align-items-end align-text-top">Preporučuje</div>
                         <ListImg list={imgList.slice(this.state.iPostition, imgList.length).concat(imgList)} from="HeaderPage" global={this.props.global} onClick={this.handleOnClick} />
+                    </div>
+
+                    <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
+                        <div className="h-100 O-X O-Y p-1 mr-auto">
+                            <Img src={logoRaif}/>
+                        </div>
+                        <div className="mr-auto whiteColor" >
+                            <h2><b><i>eDigiComm</i></b></h2>
+                        </div>
+                        <div className="d-flex flex-column">
+                            {(this.props.global.user !== "") ?
+                                (<div className={userData}>
+                                    <div style={{ minWidth: "60px", maxWidth: "60px", maxHeight: "50px" }} className="O-X O-Y ">
+                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" />
+                                    </div>
+                                    <div className="W-SS" />
+                                    <div className="Container-Empty h-100 d-flex flex-column whiteColor">
+                                        {this.props.global.user.name}
+                                        <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}>Odjava</Link>
+                                    </div>
+                                </div>) : (
+                                    <Login user={this.state.global.user} {...this.props} />
+                                )}
+                        </div>
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">
@@ -101,9 +144,6 @@ class HeaderPage extends Component {
                                 <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
                             </div>
 
-                            <div className="d-flex flex-column">
-                                <Login user={this.state.global.user} {...this.props} />
-                            </div>
 
                         </div>
                     </div>

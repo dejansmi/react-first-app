@@ -9,6 +9,9 @@ import Button from './Button';
 import Input from './Input';
 import CheckBox from './CheckBox';
 import ImgBigest from './ImgBigest';
+import Img from './Img';
+import Rate from './Rate';
+import F from './F';
 
 
 class BuyProductPage extends Component {
@@ -152,10 +155,17 @@ class BuyProductPage extends Component {
                 this.yB = this.yA;
             }
             return {
-                height: this.yB,
-                minHeight: this.yB,
+                height: 'auto',
                 width: this.xB,
-                minWidth: this.xB
+                minWidth: this.xB,
+
+            }
+        } else if (lId === "Logo") {
+            return {
+                height: 'auto',
+                width: '100px',
+                minWidth: '100px',
+                maxWidth: '100px'
             }
         } else if (lId === "PictureMain") {
             this.xP = this.xA / 2;
@@ -288,8 +298,6 @@ class BuyProductPage extends Component {
         const companyRef = (global.product.company !== undefined) ?
             (global.product.company) : (undefined);
 
-        console.log("Company Ref")
-        console.log(companyRef)
         const listOptions = (global.product.options !== undefined) ? (global.product.options.map((option) =>
             <li>{option}</li>
         )) : (null);
@@ -313,11 +321,15 @@ class BuyProductPage extends Component {
             this.state.show ? 'd-block' : 'd-none'
         )
 
-        const companyName = (companyRef !== undefined) ?
-            (<div className="Container-Empty ">
+        const companyData = (companyRef !== undefined) ?
+            (<div className="Container-Empty d-inline ">
+                <div style={this.styleSize("Logo")} className="Container-Empty O-X O-Y">
+                    <Img  src={global.company[companyRef].logo} />
+                </div>
                 <div>Kompanija:{global.company[companyRef].name}</div>
                 <div>Adresa:{global.company[companyRef].adress}</div>
                 <div>Grad:{global.company[companyRef].city}</div>
+                <Rate rate={global.company[companyRef].rate}/>
             </div>)
             : ("");
 
@@ -327,30 +339,36 @@ class BuyProductPage extends Component {
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
                 <div className="Container-Empty h-100 w-100 d-flex flex-row flex-wrap ">
-                    <div style={this.styleSize("Pictures")} className="Container-Empty  " >
-                        <div style={this.styleSize("PictureMain")} className="Container-Empty  O-X O-Y " >
-                            <img src={this.state.image} className="img-fluid mx-auto d-block" alt="Book" onClick={(e) => this.imgBig(e, this.state.image)} />
+                    <div className="d-flex flex-column">
+                        <div style={this.styleSize("Pictures")} className="Container-Empty  " >
+                            <div style={this.styleSize("PictureMain")} className="Container-Empty  O-X O-Y " >
+                                <img src={this.state.image} className="img-fluid mx-auto d-block" alt="Book" onClick={(e) => this.imgBig(e, this.state.image)} />
+                            </div>
+                            <Button style={this.styleSize("ButtonLeft")} className="Container-Empty" color="yellow"
+                                onClick={this.handleOnClickLeft}>&#10096;</Button>
+                            <Button style={this.styleSize("ButtonRight")} className="Container-Empty" color="yellow"
+                                onClick={this.handleOnClickRight}>&#10097;</Button>
+                            {pictureLittle(this.styleSize("PictureLittle0"), 0)}
+                            {pictureLittle(this.styleSize("PictureLittle1"), 1)}
+                            {pictureLittle(this.styleSize("PictureLittle2"), 2)}
+                            {pictureLittle(this.styleSize("PictureLittle3"), 3)}
+                            {pictureLittle(this.styleSize("PictureLittle4"), 4)}
+                            {pictureLittle(this.styleSize("PictureLittle5"), 5)}
                         </div>
-                        <Button style={this.styleSize("ButtonLeft")} className="Container-Empty" color="yellow"
-                            onClick={this.handleOnClickLeft}>&#10096;</Button>
-                        <Button style={this.styleSize("ButtonRight")} className="Container-Empty" color="yellow"
-                            onClick={this.handleOnClickRight}>&#10097;</Button>
-                        {pictureLittle(this.styleSize("PictureLittle0"), 0)}
-                        {pictureLittle(this.styleSize("PictureLittle1"), 1)}
-                        {pictureLittle(this.styleSize("PictureLittle2"), 2)}
-                        {pictureLittle(this.styleSize("PictureLittle3"), 3)}
-                        {pictureLittle(this.styleSize("PictureLittle4"), 4)}
-                        {pictureLittle(this.styleSize("PictureLittle5"), 5)}
+                        <p>Naziv proizvoda: <b>{global.product.productName}</b></p>
+                        <p>Opis: {global.product.description}</p>
+                        <div>Opcije:</div>
+                        {listOptionsAll}
                     </div>
-                    <div style={this.styleSize("Basket")} className="Container-Empty border border-danger d-inline-block" >
+                    <div style={this.styleSize("Basket")} className="Container-Empty d-inline-block" >
                         <div className="Container-Empty w-100 d-flex flex-row">
                             <h2 className="d-flex flex-row">
                                 Cena:&ensp;
                             <div>
-                                    {(global.product.priceOld === undefined ? ("") : (<del>{global.product.priceOld}</del>))}
+                                    {(global.product.priceOld === undefined ? ("") : (<del><F f="$" a={global.product.priceOld} /></del>))}
                                 </div>&ensp;
                             <div>
-                                    {(global.product.price === undefined ? ("") : (global.product.price))}&ensp;
+                                    {(global.product.price === undefined ? ("") : (<F f="$0" a={global.product.price} />))}&ensp;
                                 {(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}
                                 </div>
                             </h2>
@@ -358,36 +376,29 @@ class BuyProductPage extends Component {
                         <div className="Container-Empty w-100 d-flex flex-column">
                             <div className="d-flex flex-row  h-100 align-items-center">Ubaci u korpu
                                     <Input className="col-3  align-self-end" type="number" id="numProduct" placeholder="" value={this.state.numProduct} onChange={this.numProductOnChange} />&ensp;
-             komada
-            Ukupan iznos &ensp;
-                                <b>{this.state.totalPrice}</b>&ensp;
+komada
+Ukupan iznos &ensp;
+                                <b><F f="$0" a={this.state.totalPrice} /></b>&ensp;
                                 {global.product.priceCurrency}
                             </div>
                             <div>Popusti:</div>
                             <div>
                                 {discountMoreThen}{discountBuyPayLess}
                             </div>
-                            <div className="d-flex flex-row  h-100 align-items-center">U korpi je {global.basket} {global.basketCurrency}&ensp;
-                                    Ako dodate {this.state.numProduct} komada ovog proizvoda u korpu, u korpi ce biti {inBasket} {global.basketCurrency}
+                            <div className="d-inline  h-100 align-items-center">U korpi je <F f="$0" a={global.basket} /> {global.basketCurrency}&ensp;
+                                    Ako dodate {this.state.numProduct} komada ovog proizvoda u korpu, u korpi ce biti <F f="$0" a={inBasket} /> {global.basketCurrency}
                             </div>
+                                {(global.product!== undefined && global.product.rate !== undefined)?
+                                (<Rate rate={global.product.rate} />):(null)}
                             <div className="d-flex flex-row">
                                 <Button className="ColorYellow col-4 col-sm-2" onClick={() => this.handleInBasket()}>Može</Button>
                                 <div className="W-SS"></div>
                                 <Button className="ColorYellow col-4 col-sm-2" onClick={() => this.handleCancel()}>Odustani</Button>
                             </div>
-
+                            {companyData}
                         </div>
 
 
-                    </div>
-                    <div style={this.styleSize("Details")} className="Container-Empty border border-danger O-X" >
-                        <p>Naziv proizvoda: <b>{global.product.productName}</b></p>
-                        <p>Opis: {global.product.description}</p>
-                        <div>Opcije:</div>
-                        {listOptionsAll}
-                    </div>
-                    <div style={this.styleSize("Company")} className="Container-Empty border border-danger" >
-                        {companyName}
                     </div>
                 </div>
                 <Link className="Container-Empty" small to="/">Home</Link>

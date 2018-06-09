@@ -156,7 +156,7 @@ class App extends Component {
         minHeight: 450
       }
     } else if (lId === "middleWindow") {
-      this.w = this.x - this.rw - this.to;
+      this.w = Math.trunc (0.94*this.x) - this.rw - this.to;
       this.m = Math.trunc((this.w / this.mgo));
       if (this.m !== this.state.numMoreGoodOffers) {
         this.setState({
@@ -240,24 +240,24 @@ class App extends Component {
         <div className="Header-Size w-100"></div>
         <div className="Header-Size w-100"></div>
 
-        <div className="d-flex flex-row  Container-Empty  h-rest O-X">
+        <div className="d-flex flex-row  Container-Empty  h-rest O-X p-3">
           <div className="Container-Empty d-flex flex-column O-X justify-content-start">
             <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
               <div style={this.styleFunc("topOffers")} className="d-flex flex-row O-Y O-X  Container-Empty">
-                <div style={this.styleFunc("topOffersChild")} className=" h-100  O-Y O-X Color Container-Empty">
+                <div style={this.styleFunc("topOffersChild")} className=" h-100  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
                   <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
                 </div>
                 <div style={this.styleFunc("middleWindow")} className="h-100 d-flex flex-column  O-Y O-X Container-Empty">
-                  <div className="h-50 d-flex flex-column Color O-Y O-X w-100  Container-Empty">
+                  <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
                     <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
-                    <div className="h-90 d-flex flex-row justify-content-center Color O-Y O-X w-100  Container-Empty">
+                    <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
                       <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                     </div>
                   </div>
-                  <div className="h-50 d-flex flex-column Color O-Y O-X w-100  Container-Empty">
+                  <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
                     <div className="h-10 Container-Empty "><h5><b>Lojalnost se isplati</b></h5></div>
-                    <div className="h-90 d-flex flex-row justify-content-center Color O-Y O-X w-100  Container-Empty">
+                    <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
                       <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global} />
                     </div>
                   </div>

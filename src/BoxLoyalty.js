@@ -64,7 +64,7 @@ class BoxLoyalty extends Component {
         return (
             <div {...attributes} className={classes}>
                 <div className="h-100 ColorWhite d-flex flex-row  mx-2 mt-1 mb-5">
-                    <div className="d-flex flex-column Container-Empty border border-success h-100 w-50 O-X O-Y">
+                    <div className="d-flex flex-column Container-Empty  h-100 w-50 O-X O-Y">
                         <div className="d-flex h-60 w-100 O-X O-Y">
                             {imgDivTxt}
                         </div >
@@ -72,7 +72,7 @@ class BoxLoyalty extends Component {
                             {loyalty.company}
                         </div>
                     </div>
-                    <div className=" Container-Empty border border-success h-100 w-50 O-X O-Y">
+                    <div className=" Container-Empty  h-100 w-50 O-X O-Y">
                         {loyalty.description}
                     </div>
                 </div>

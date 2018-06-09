@@ -1,5 +1,6 @@
 import React from 'react';
-import VideoAdd from './Pictures/addvideo.mp4';
+import RaiffeisenVisaFIFA from './Pictures/RaiffeisenVisaFIFA.mp4';
+
 
 class Video extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class Video extends React.Component {
     render() {
         return (
             <div className="w-100 embed-responsive embed-responsive-16by9 O-X O-Y">
-                <video ref="vidRef" src={VideoAdd} type="video/mp4" autoPlay="autoplay" loop="loop"></video>
+                <video ref="vidRef" src={RaiffeisenVisaFIFA} type="video/mp4" autoPlay="autoplay" loop="loop"></video>
             </div>
       );
     }

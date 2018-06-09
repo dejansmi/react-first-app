@@ -21,11 +21,11 @@ class Login extends React.Component {
 
     render() {
         const prijava = (this.props.global.user === "") ? "Prijava" : "Odjava";
-        const noviKorisnik = (this.props.global.user === "") ? <Link className="Container-Empty" small to="/registracija">Novi korisnik</Link> : null;
+        const noviKorisnik = (this.props.global.user === "") ? <Link className="Container-Empty" small to="/registracija">Novi korisnik</Link> : <Link className="Container-Empty" small to="/userPage">{this.props.user.name}</Link>;
         const toWhere = (this.props.global.user === "") ? "/login" : "/";
         var loginInOut = (this.props.global.user === "") ?
         <Link className="Container-Empty" small to={toWhere} >{prijava}</Link>:
-        <Link className="Container-Empty" small to={toWhere} onClick={this.handleLoginClick}>{prijava}</Link>        ;
+        <Link className="Container-Empty" small to={toWhere} onClick={this.handleLoginClick}>{prijava}</Link>;
         
 
 

@@ -20,8 +20,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-    color: 'link',
     tag: 'button',
+    color: 'whiteLink',
     to: ""
 };
 

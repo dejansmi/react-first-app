@@ -8,6 +8,7 @@
     "numeral": "^2.0.6",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-intersection-visible": "^1.1.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {

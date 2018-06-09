@@ -68,6 +68,12 @@ import patika2 from './Pictures/WomenPaints/patika-02.jpeg';
 import patika3 from './Pictures/WomenPaints/patika-03.jpeg';
 import patika4 from './Pictures/WomenPaints/patika-04.jpeg';
 import patika5 from  './Pictures/WomenPaints/patika-05.jpeg';
+import vidraLogo from './Pictures/Logo/vidra-logo.png';
+import pandoraLogo from './Pictures/Logo/pandora-logo.jpg';
+import solutionServiceLogo from './Pictures/Logo/solution-service-logo.png';
+import algebraLogo from './Pictures/Logo/algebra-logo.png';
+import sportVisionLogo from './Pictures/Logo/sport-vision-logo.png';
+import tntLogo from './Pictures/Logo/tnt-logo.png';
 
 export const ProductsData = [
     {
@@ -80,7 +86,8 @@ export const ProductsData = [
         price: 231.34,
         priceOld: 264.23,
         priceCurrency: "RSD",
-        company: "TNTBroj1"
+        company: "TNTBroj1",
+        rate: 3
     }
     ,
     {
@@ -92,7 +99,8 @@ export const ProductsData = [
         description: 'Knjiga sa izuzetnom pričom',
         price: 150.00,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -110,7 +118,8 @@ export const ProductsData = [
             moreThen: 1,
             value: 3.5
         },
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -128,7 +137,8 @@ export const ProductsData = [
             moreThen: 3,
             value: 2
         },
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -154,7 +164,8 @@ export const ProductsData = [
         description: 'Lepe grafitne olovke sa tankm tragom. Ima ih u 6 boja',
         price: 127.23,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -178,7 +189,8 @@ export const ProductsData = [
         description: 'Knjiga za lektiru za 8 razred. Knjiga izaziva veliki smeh kod svih čitalalca',
         price: 211.59,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -202,7 +214,8 @@ export const ProductsData = [
         description: 'Blok za crtanje broj 5 sa 8 listova',
         price: 199.00,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -238,7 +251,8 @@ export const ProductsData = [
         description: 'Mala kanta za mali kuhinjski otpad. Treba da je ima svaka kuhinja',
         price: 3723.00,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -274,7 +288,8 @@ export const ProductsData = [
         description: 'Simpatične značke u obliku psa',
         price: 85.10,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -298,7 +313,8 @@ export const ProductsData = [
         description: 'Nastavak izuzetne priče sa novim zapletima',
         price: 311.00,
         priceCurrency: "RSD",
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -334,7 +350,8 @@ export const ProductsData = [
         description: 'Klasičan šestar za učenike osnovnih škola',
         price: 112.00,
         priceCurrency: "RSD",
-        company: "Algebra"
+        company: "Algebra",
+        rate: 5
     }
     ,
     {
@@ -358,7 +375,8 @@ export const ProductsData = [
         description: 'Privezak za ključeve za prelepom macom kao osnovnim modelom',
         price: 189.23,
         priceCurrency: "RSD",
-        company: "SolutionService"
+        company: "SolutionService",
+        rate: 5
     }
     ,
     {
@@ -382,7 +400,7 @@ export const ProductsData = [
         description: 'Dva prstena sa dijamantima. Izuzetno precizan rad.',
         price: 123189.23,
         priceCurrency: "RSD",
-        company: "PaVidrandora"
+        company: "Pandora"
     }
     ,
     {
@@ -394,7 +412,8 @@ export const ProductsData = [
         description: 'Zanimljiva ideja za izradu duplog prstena. Koriščeni su dijamanti.',
         price: 129434.00,
         priceCurrency: "RSD",
-        company: "Pandora"
+        company: "Pandora",
+        rate: 5
     }
     ,
     {
@@ -406,7 +425,8 @@ export const ProductsData = [
         description: 'Minđuše sa lepezom oko njih.',
         price: 83123.12,
         priceCurrency: "RSD",
-        company: "Pandora"
+        company: "Pandora",
+        rate: 5
     }
     ,
     {
@@ -418,7 +438,8 @@ export const ProductsData = [
         description: 'Zlatna oglica sa dijamantima i dragim kamenjem. Filigranski rad.',
         price: 300999.99,
         priceCurrency: "RSD",
-        company: "Pandora"
+        company: "Pandora",
+        rate: 5
     }
     ,
     {
@@ -430,7 +451,8 @@ export const ProductsData = [
         description: 'Zlatni prsten u obliku labuda. Filigranski rad.',
         price: 87999.99,
         priceCurrency: "RSD",
-        company: "Pandora"
+        company: "Pandora",
+        rate: 5
     }
     ,
     {
@@ -447,7 +469,8 @@ export const ProductsData = [
             get: 3,
             pay: 2
         },
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -504,7 +527,8 @@ export const ProductsData = [
             "Bela veličina 48",
             "Bela veličina 52"
         ],
-        company: "Vidra"
+        company: "Vidra",
+        rate: 5
     }
     ,
     {
@@ -540,7 +564,8 @@ export const ProductsData = [
             "Crna",
             "Bela"
         ],
-        company: "SportVision"
+        company: "SportVision",
+        rate: 5
     }
     ,
     {
@@ -571,7 +596,8 @@ export const ProductsData = [
         description: 'Standardna košarkaška lopta za korišćenje u sali.',
         price: 5211.20,
         priceCurrency: "RSD",
-        company: "SportVision"
+        company: "SportVision",
+        rate: 5
     }
     ,
     {
@@ -597,7 +623,8 @@ export const ProductsData = [
         description: 'Ženske patike u raznim bojama.',
         price: 1009.25,
         priceCurrency: "RSD",
-        company: "SportVision"
+        company: "SportVision",
+        rate: 5
     }
 
 
@@ -609,37 +636,49 @@ company["SolutionService"] = {
     name: "Solution Serice",
     description: "Prodavnica malih električnih uređaja",
     adress: "M. Milankovica 19",
-    city: "Beograd"
+    city: "Beograd",
+    logo: solutionServiceLogo,
+    rate: 4
 }
 company["Algebra"] = {
     name: "Algebra d.o.o",
     description: "Proizvođač nastavnih sredstava i školske opreme",
     adress: "Svetog Save 19",
-    city: "Beograd"
+    city: "Beograd",
+    logo: algebraLogo,
+    rate: 3
 }
 company["Vidra"] = {
     name: "Robna kuća Vidra",
     description: "Prodavnica za robu široke potrošnje",
     adress: "Bulevar Oslobođenja 25",
-    city: "Novi Sad"
+    city: "Novi Sad",
+    logo: vidraLogo,
+    rate: 4
 }
 company["Pandora"] = {
     name: "Pandora d.o.o",
     description: "Izrada i prodaja nakita",
     adress: "Bulevar Oslobođenja 11",
-    city: "Beograd"
+    city: "Beograd",
+    logo: pandoraLogo,
+    rate: 2
 }
 company["SportVision"] = {
     name: "SportVision",
     description: "Prodavnica sportske opreme",
     adress: "Bulevar Oslobođenja 25",
-    city: "Novi Sad"
+    city: "Novi Sad",
+    logo: sportVisionLogo,
+    rate: 4
 }
 company["TNTBroj1"] = {
     name: "Cvećara TNT Broj 1",
     description: "Cvećara i menadžment",
     adress: "Kod Grunfa",
-    city: "Lipolist"
+    city: "Lipolist",
+    logo: tntLogo,
+    rate: 5
 }
 
 
@@ -652,11 +691,18 @@ export const userROL = [
         sex: 'M',
         image: man,
         ROLUser: true,
+        adress: 'Milutina Milankovića 19',
+        city: 'Beograd',
         overdraft: {
             active: true,
             ammount: 250000,
             endDate: 20191201,
             interest: 7
+        },
+        currentAccount: {
+            ammount: 118217.05,
+            currency: 'RSD',
+            id: '205-1931-12'
         }
     }
 ];
@@ -668,6 +714,8 @@ export const users = [
         name: "Božidar Ignjatović",
         sex: 'M',
         image: BozidarIgnjatovic,
+        adress: 'Narodnih heroja 8',
+        city: 'Niš',
         ROLUser: false
     }
     ,
@@ -676,6 +724,8 @@ export const users = [
         name: "Milica Mitić",
         sex: 'W',
         image: MilicaMitic,
+        adress: 'Nikole Pašića 17',
+        city: 'Niš',
         ROLUser: false
     }
     ,
@@ -684,6 +734,8 @@ export const users = [
         name: "Dušan Cvetković",
         sex: 'M',
         image: DusanCvetkovic,
+        adress: 'Narodnih heroja 81',
+        city: 'Niš',
         ROLUser: false
     }
     ,
@@ -692,6 +744,8 @@ export const users = [
         name: "Miloš Milošević",
         sex: 'M',
         image: MilosMilosevic,
+        adress: 'Proleterskih brigada 1',
+        city: 'Niš',
         ROLUser: false
     }
     ,

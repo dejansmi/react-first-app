@@ -69,7 +69,7 @@ class BoxProduct extends Component {
         );
 
 
-        const oldPrice = (product.priceOld!==undefined)?(<F f="$" a={product.priceOld} />):("");
+        const oldPrice = (product.priceOld!==undefined)?(<del><F f="$" a={product.priceOld} /></del>):("");
 
         return (
 
