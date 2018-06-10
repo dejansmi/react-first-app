@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import ping from './logo.png';
 import Video from './Video.js';
-import classNames from 'classnames';
 import BoxProduct from './BoxProduct';
 import ListProduct from './ListProduct';
 import ListLoyalty from './ListLoyalty';
@@ -12,6 +11,7 @@ import F from './F';
 import './App.css';
 import { moreGoodOffers, loyaltyData, nakitList } from './Data.js';
 import Basket from './Pictures/basket.jpg';
+import SearchPage from './SearchPage';
 
 
 
@@ -156,7 +156,7 @@ class App extends Component {
         minHeight: 450
       }
     } else if (lId === "middleWindow") {
-      this.w = Math.trunc (0.94*this.x) - this.rw - this.to;
+      this.w = Math.trunc(0.94 * this.x) - this.rw - this.to;
       this.m = Math.trunc((this.w / this.mgo));
       if (this.m !== this.state.numMoreGoodOffers) {
         this.setState({
@@ -203,15 +203,7 @@ class App extends Component {
       return <Redirect to={this.state.redirectTo} />
     }
 
-    console.log ("APP RENDER")
-
-    const userData = classNames(
-      this.props.global.user !== "" ? 'd-flex' : '',
-      'flex-row',
-      'O-Y',
-      this.props.global.user !== "" ? '' : 'd-none'
-    )
-    //console.log("fggfgfg")
+    console.log("APP RENDER")
 
     const styleBasket = {
       maxWidth: '50px',
@@ -226,13 +218,14 @@ class App extends Component {
       <div className="d-flex flex-row justify-content-between">
         <div className="width-exact-50 ">{one.product.productName}</div>
         <div className="width-exact-10 text-right">{one.numberOfProduct}</div>
-        <div className="width-exact-40 text-right"> <F f="$" a={one.ammount}/></div>
+        <div className="width-exact-40 text-right"> <F f="$" a={one.ammount} /></div>
       </div>);
 
 
 
     return (
 
+    
       <div className="App container-fluid">
 
 
@@ -240,73 +233,72 @@ class App extends Component {
         <div className="Header-Size w-100"></div>
         <div className="Header-Size w-100"></div>
 
-        <div className="d-flex flex-row  Container-Empty  h-rest O-X p-3">
-          <div className="Container-Empty d-flex flex-column O-X justify-content-start">
-            <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
-              <div style={this.styleFunc("topOffers")} className="d-flex flex-row O-Y O-X  Container-Empty">
-                <div style={this.styleFunc("topOffersChild")} className=" h-100  O-Y O-X Container-Empty">
-                  <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
-                  <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
-                </div>
-                <div style={this.styleFunc("middleWindow")} className="h-100 d-flex flex-column  O-Y O-X Container-Empty">
-                  <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
-                    <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
-                    <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
-                      <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+        <div className="d-flex flex-row  Container-Empty  h-rest O-X m-3">
+          {(this.props.global.search==="") ?
+            (<div className="Container-Empty d-flex flex-column O-X justify-content-start">
+              <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
+                <div style={this.styleFunc("topOffers")} className="d-flex flex-row O-Y O-X  Container-Empty">
+                  <div style={this.styleFunc("topOffersChild")} className=" h-100  O-Y O-X Container-Empty">
+                    <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
+                    <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
+                  </div>
+                  <div style={this.styleFunc("middleWindow")} className="h-100 d-flex flex-column  O-Y O-X Container-Empty">
+                    <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
+                      <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
+                      <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
+                        <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                      </div>
+                    </div>
+                    <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
+                      <div className="h-10 Container-Empty "><h5><b>Lojalnost se isplati</b></h5></div>
+                      <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
+                        <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global} />
+                      </div>
                     </div>
                   </div>
-                  <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
-                    <div className="h-10 Container-Empty "><h5><b>Lojalnost se isplati</b></h5></div>
-                    <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
-                      <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global} />
-                    </div>
-                  </div>
                 </div>
               </div>
-            </div>
-            <div style={this.styleFunc("nakit")} className="w-100 flex-column  O-Y O-X Container-Empty">
-              <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
-              <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+              <div style={this.styleFunc("nakit")} className="w-100 flex-column  O-Y O-X Container-Empty">
+                <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
+                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                  <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                </div>
               </div>
-            </div>
-            <div style={this.styleFunc("sport")} className="w-100  flex-column  O-Y O-X Container-Empty">
-              <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-              <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={this.props.global.sport.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+              <div style={this.styleFunc("sport")} className="w-100  flex-column  O-Y O-X Container-Empty">
+                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                  <ListProduct list={this.props.global.sport.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                </div>
               </div>
-            </div>
-            <div style={this.styleFunc("sportM")} className="w-100  flex-column  O-Y O-X Container-Empty">
-              <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-              <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+              <div style={this.styleFunc("sportM")} className="w-100  flex-column  O-Y O-X Container-Empty">
+                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                  <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                </div>
               </div>
-            </div>
-            <div style={this.styleFunc("sportW")} className="w-100  flex-column  O-Y O-X Container-Empty">
-              <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-              <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+              <div style={this.styleFunc("sportW")} className="w-100  flex-column  O-Y O-X Container-Empty">
+                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                  <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                </div>
               </div>
-            </div>
-            <div style={this.styleFunc("nakitM")} className="w-100 flex-column  O-Y O-X Container-Empty">
-              <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
-              <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+              <div style={this.styleFunc("nakitM")} className="w-100 flex-column  O-Y O-X Container-Empty">
+                <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
+                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                  <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                </div>
               </div>
+            </div>) :
+            (<div>
+              <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
+                <SearchPage global={this.props.global}/>
             </div>
-          </div>
+            </div>)}
           <div style={this.styleFunc("rightWindow")} className="container-fluid  Container-Empty d-flex flex-column O-Y O-X">
-            <div className={userData}>
-              <div style={{ minWidth: "60px", maxWidth: "60px" }} className="O-X O-Y ">
-                <img className="img-fluid" src={this.props.global.user.image} alt="User" />
-              </div>
-              <div className="W-SS" />
-              {this.props.global.user.name}
-            </div>
             <Video />
             <div className="d-flex flex-column">
               <div className="d-flex flex-row justify-content-between"><img style={styleBasket} className="img-fluid" src={Basket} alt="User" />
-                <div style={styleBasketAmmount}><F f="$" a={this.props.global.basket}/></div>
+                <div style={styleBasketAmmount}><F f="$" a={this.props.global.basket} /></div>
               </div>
               <div className="d-flex flex-row justify-content-between ColorYellow">
                 <div>Naziv proizvoda</div><div>Komada</div><div>Iznos</div>

@@ -10,5 +10,6 @@ function Img(props) {
       <img  src={src} className="img-fluid" alt="Book" />
      );
   }
+
   
 export default Img;

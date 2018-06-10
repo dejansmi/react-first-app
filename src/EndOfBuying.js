@@ -10,6 +10,7 @@ import Basket from './Pictures/basket.jpg';
 import OneClickCredit from './OneClickCredit';
 import F from './F';
 import BankingAccountPay from './BankingAccountPay';
+import PayByCard from './PayByCard';
 
 
 class EndOfBuying extends React.Component {
@@ -19,6 +20,7 @@ class EndOfBuying extends React.Component {
             global: this.props.global,
             OneClickCreditClass: 'd-flex Container-Empty',
             OnLineCredit: false,
+            PayByCard: false,
             exit: false,
             payed: 0,
             showBA: false
@@ -66,6 +68,18 @@ class EndOfBuying extends React.Component {
         }
     }
 
+    // PBC PayByCard
+    endOfBuyingPBC(e) {
+        if (this.state.PayByCard) {
+            this.setState({
+                PayByCard: false
+            });
+        } else {
+            this.setState({
+                PayByCard: true
+            });
+        }
+    }
     // Teporary function in development phase
     endOfBuying(e) {
         console.log("EoB");
@@ -233,7 +247,10 @@ class EndOfBuying extends React.Component {
                                 <BankingAccountPay global={this.props.global} payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} />
                             </div>) :
                             (null)}
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Platne kartice</i></b></Button>
+                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
+                        {(this.state.PayByCard) ? 
+                            (<div> <PayByCard /> </div>) :
+                            (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
                     </div>

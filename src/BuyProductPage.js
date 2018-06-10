@@ -334,11 +334,11 @@ class BuyProductPage extends Component {
             : ("");
 
         return (
-            <div className="Container-Empty h-100 w-100 ">
+            <div className="Container-Empty h-100 w-100 O-X O-Y">
                 <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
-                <div className="Container-Empty h-100 w-100 d-flex flex-row flex-wrap ">
+                <div className="Container-Empty h-100 w-100 d-flex flex-row flex-wrap m-2">
                     <div className="d-flex flex-column">
                         <div style={this.styleSize("Pictures")} className="Container-Empty  " >
                             <div style={this.styleSize("PictureMain")} className="Container-Empty  O-X O-Y " >
@@ -360,7 +360,7 @@ class BuyProductPage extends Component {
                         <div>Opcije:</div>
                         {listOptionsAll}
                     </div>
-                    <div style={this.styleSize("Basket")} className="Container-Empty d-inline-block" >
+                    <div style={this.styleSize("Basket")} className="Container-Empty d-inline-block " >
                         <div className="Container-Empty w-100 d-flex flex-row">
                             <h2 className="d-flex flex-row">
                                 Cena:&ensp;
@@ -371,7 +371,7 @@ class BuyProductPage extends Component {
                                     {(global.product.price === undefined ? ("") : (<F f="$0" a={global.product.price} />))}&ensp;
                                 {(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}
                                 </div>
-                            </h2>
+                            </h2> 
                         </div>
                         <div className="Container-Empty w-100 d-flex flex-column">
                             <div className="d-flex flex-row  h-100 align-items-center">Ubaci u korpu

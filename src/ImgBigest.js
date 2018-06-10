@@ -35,7 +35,7 @@ function ImgBigest(props) {
 
     return (
         <div style={style}>
-            <img style={styleImg} src={src} className="img-fluid" alt="Book" />
+            <img style={styleImg} src={src} className="img-fluid ColorWhite" alt="Book" />
             <Button  style={styleButton} onClick={hideOnClick}>Nazad</Button>
         </div>
     );

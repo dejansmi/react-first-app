@@ -26,11 +26,11 @@ class Rate extends React.Component {
         return (
             <div style={styleStar} className="d-flex flex-row">
             <spam>Ocena:</spam>
-            {(this.props.rate >= 1)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(console.log("A?"))}
-            {(this.props.rate >= 2)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(console.log("A?"))}
-            {(this.props.rate >= 3)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(console.log("A?"))}
-            {(this.props.rate >= 4)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(console.log("A?"))}
-            {(this.props.rate >= 5)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(console.log("A?"))}
+            {(this.props.rate >= 1)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(null)}
+            {(this.props.rate >= 2)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(null)}
+            {(this.props.rate >= 3)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(null)}
+            {(this.props.rate >= 4)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(null)}
+            {(this.props.rate >= 5)?(<div style={styleImg}><img  src={starYellow} className="img-fluid" alt="Rate 1" /></div>):(null)}
             </div>
         )
     }

@@ -34,12 +34,19 @@ class State extends Component {
       addInBasketList: this.addInBasketList,
       basketCurrency: 'RSD',
       orderPayed: this.orderPayed,
-      changeCurrentAccountBalance: this.changeCurrentAccountBalance
+      changeCurrentAccountBalance: this.changeCurrentAccountBalance,
+      search: "",
+      searchResult: [ProductsData[2], ProductsData[12], ProductsData[22]],
+      startSearch: this.startSearch,
+      searchButton: 'search',
+      setSearchButton: this.setSearchButton
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
     this.orderPayed = this.orderPayed.bind(this);
     this.changeCurrentAccountBalance = this.changeCurrentAccountBalance.bind(this);
+    this.startSearch = this.startSearch.bind(this);
+    this.setSearchButton = this.setSearchButton.bind(this);
   }
 
   /*
@@ -67,6 +74,42 @@ class State extends Component {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+
+  setSearchButton = (searchText) => {
+    this.setState({
+      searchButton: searchText,
+    });
+
+  }
+
+
+  startSearch = (searchText) => {
+
+
+    var searchExp;
+    let xS = [];
+
+    searchExp = searchText;
+    this.state.productsList.map((productR, ind) => 
+    {
+      if (productR.productName.search(searchExp)>-1 ||
+           productR.productType.search(searchExp)>-1 ||
+           productR.description.search(searchExp)>-1
+          ) {
+        xS = [...xS,productR];
+      }
+      return true;
+    }
+    );
+
+
+    this.setState({
+      search: searchText,
+      searchResult: xS
+    });
+
+  }
+
   orderPayed = () => {
     var one;
     one = {
@@ -90,8 +133,9 @@ class State extends Component {
       user: {
         ...prevState.user,
         currentAccount: {
-          ...prevState.user.currentAccount, 
-          ammount: prevState.user.currentAccount.ammount + ammountChange }
+          ...prevState.user.currentAccount,
+          ammount: prevState.user.currentAccount.ammount + ammountChange
+        }
       }
     }));
   }

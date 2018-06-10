@@ -74,17 +74,28 @@ import solutionServiceLogo from './Pictures/Logo/solution-service-logo.png';
 import algebraLogo from './Pictures/Logo/algebra-logo.png';
 import sportVisionLogo from './Pictures/Logo/sport-vision-logo.png';
 import tntLogo from './Pictures/Logo/tnt-logo.png';
+import flower01 from './Pictures/Flowers/flower-01.png';
+import flower02 from './Pictures/Flowers/flower-02.jpeg';
+import flower03 from './Pictures/Flowers/flower-03.jpeg';
+import flower04 from './Pictures/Flowers/flower-04.jpeg';
+import flower05 from './Pictures/Flowers/flower-05.jpeg';
+import rose01 from './Pictures/Rose/rose-01.jpg';
+import rose02 from './Pictures/Rose/rose-02.jpg';
+import rose03 from './Pictures/Rose/rose-03.jpeg';
+import rose04 from './Pictures/Rose/rose-04.jpeg';
+import rose05 from './Pictures/Rose/rose-05.jpeg';
 
 export const ProductsData = [
     {
         productId: "XYu4HuReJ2D32UIRY",
         productName: "Ruža crvena",
         productType: "Cveće",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Small_red_rose.jpeg",
+        image: rose01,
+        otherImages: [rose02, rose03, rose04, rose05],
         imageAlt: "Cvet",
         description: 'Crvene ruže za prelepe bukete',
         price: 231.34,
-        priceOld: 264.23,
+        priceOld: 264.23, 
         priceCurrency: "RSD",
         company: "TNTBroj1",
         rate: 3
@@ -296,7 +307,8 @@ export const ProductsData = [
         productId: "8UjhmNReJRW34BI98",
         productName: "Cvetni aranžmani",
         productType: "Cveće",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Small_red_rose.jpeg",
+        image: flower01,
+        otherImages: [flower02, flower03, flower04, flower05],
         imageAlt: "Aranžmani",
         description: 'Izuzetni cvetni aranžmani za svaku kuću i priliku ',
         price: 743.99,

@@ -17,14 +17,17 @@ class HeaderPage extends Component {
             global: this.props.global,
             redirect: false,
             product: "",
-            searchValue: "",
+            searchValue: this.props.global.search,
             inputValue: 1000,
-            iPostition: 0
+            iPostition: 0,
+            redirectSearch: false,
+            searchButton: this.props.global.searchButton
         }
         this.iCorrect = 1;
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.startSearch = this.startSearch.bind(this);
     }
 
 
@@ -57,34 +60,39 @@ class HeaderPage extends Component {
             });
         }
     }
+
     handleLoginClick(e) {
         this.props.global.setUser(e, "", "LogOut");
     }
 
+    startSearch(e) {
+        if (this.props.global.searchButton === 'clear') {
+            this.props.global.startSearch("");
+            this.props.global.setSearchButton('search');
+            this.setState({
+                searchValue: ""
+            });
+        } else {
+            this.props.global.startSearch(this.state.searchValue);
+            this.props.global.setSearchButton('clear');
+            this.setState({
+                redirectSearch: true
+            });
+        }
+    }
+
+
+
     handleOnClick = (event, product) => {
-        this.props.global.product = product;
         this.setState({ redirect: true });
     }
 
     handleChange = (e) => {
         this.setState({ searchValue: e.target.value });
+
     }
 
     render() {
-
-        const {
-            bankLogo,
-            imgList
-        } = this.props;
-
-        const userData = classNames(
-            this.props.global.user !== "" ? 'd-flex' : '',
-            'flex-row',
-            'O-Y',
-            'Container-Empty',
-            this.props.global.user !== "" ? '' : 'd-none'
-        )
-
 
         if (this.state.redirect === true) {
             return (
@@ -98,6 +106,34 @@ class HeaderPage extends Component {
         }
 
 
+        if (this.state.redirectSearch === true) {
+            if (this.props.URL !== '/') {
+                return (
+                    <Redirect to={{
+                        pathname: '/'
+                    }} push />
+                )
+            } 
+        }
+
+
+        const {
+            bankLogo,
+            global,
+            imgList
+        } = this.props;
+
+        const userData = classNames(
+            this.props.global.user !== "" ? 'd-flex' : '',
+            'flex-row',
+            'O-Y',
+            'Container-Empty',
+            this.props.global.user !== "" ? '' : 'd-none'
+        )
+
+
+
+
         return (
             <div className="col-12 fixed-top container-fluid" >
                 <div className="col-12 fixed-top container-fluid" >
@@ -109,7 +145,7 @@ class HeaderPage extends Component {
 
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="h-100 O-X O-Y p-1 mr-auto">
-                            <Img src={logoRaif}/>
+                            <Img src={logoRaif} />
                         </div>
                         <div className="mr-auto whiteColor" >
                             <h2><b><i>eDigiComm</i></b></h2>
@@ -140,7 +176,7 @@ class HeaderPage extends Component {
 
 
                             <div className="d-flex flex-row h-100 col-6  mr-auto">
-                                <i className="material-icons align-self-center">search</i>
+                                <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
                                 <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
                             </div>
 
