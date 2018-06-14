@@ -3,6 +3,14 @@ import numeral from 'numeral';
 
 class F extends React.Component {
 
+    style = {
+        color: 'red',
+        border: '1px solid red',
+        height: '100%',
+        display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+    }
 
     // You can pass your function references to your child components as props (here passing down to the Buttons component)
     render() {
@@ -12,7 +20,7 @@ class F extends React.Component {
             format,
             a,
             ammount
-        } = this.props;
+        } = this.props; 
 
         if (f===undefined && format!==undefined) {
             f = format;
@@ -31,7 +39,7 @@ class F extends React.Component {
             }
         }  
 
-        return (<spam>{s}</spam>
+        return (<div class="F">{s}</div>
       );
     }
 }

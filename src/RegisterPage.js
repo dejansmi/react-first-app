@@ -8,6 +8,7 @@ import HeaderPage from './HeaderPage';
 import TextField from '@material-ui/core/TextField';
 import Button from './Button';
 import './App.css';
+import ButtonOKCancel from './ButtonOKCancel';
 
 
 
@@ -94,6 +95,9 @@ class RegisterPage extends React.Component {
         this.setState({ showROL: false });
     }
 
+    handleExit(e) {
+        this.setState({ exit: true });
+    }
 
 
 
@@ -149,7 +153,7 @@ class RegisterPage extends React.Component {
                     <div className="col-sm-9"></div>
                     <div className="col-md-9 col-sm-12 d-flex justify-content-between flex-wrap">
                         <Button className="ColorYellow col-sm-auto col-12">Napravite novi username</Button>
-                        <Button className="ColorYellow col-sm-auto col-12">Nastavite kao neregistrovani koirsnik</Button>
+                        <Button className="ColorYellow col-sm-auto col-12" onClick={() => this.handleExit()}>Nastavite kao neregistrovani koirsnik</Button>
                     </div>
                 </div>
                 <div className={ROL} >
@@ -171,9 +175,9 @@ class RegisterPage extends React.Component {
                     </div>
                     <div>
                         <div className="d-flex flex-row">
-                            <Button className="ColorYellow col-4 col-sm-1" onClick={() => this.handleROLConnect()}>Može</Button>
+                            <ButtonOKCancel OK onClick={() => this.handleROLConnect()}/>
                             <div className="W-SS"></div>
-                            <Button className="ColorYellow col-4 col-sm-1" onClick={() => this.handleROLCancel()}>Odustani</Button>
+                            <ButtonOKCancel  onClick={() => this.handleROLCancel()}/>
                         </div>
                     </div>
                     <div className="H-SS" />

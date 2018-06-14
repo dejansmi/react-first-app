@@ -1,0 +1,32 @@
+:root {
+    --basketWidth: 300px;
+    --tpWidth: 300px;
+    --toHeight: 450px;
+  
+  }
+  
+  #Basket  {
+    width: var(--basketWidth);
+    max-width: var(--basketWidth);
+    min-width: var(--basketWidth);
+    height: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    box-sizing: 'border-box';
+  }
+  
+  #LeftBuy {
+    width: calc(100% - var(--basketWidth));
+    max-width: calc(100% - var(--basketWidth));
+    min-width: calc(100% - var(--basketWidth));
+    height: none;
+    box-sizing: border-box;
+  }
+
+#Pictures {
+  --width: 100%;
+  width: var(--width);
+  height: calc(var(--width) * 9 / 16);
+  max-height: calc(var(--width) * 9 / 16);;
+  overflow: hidden;
+}  

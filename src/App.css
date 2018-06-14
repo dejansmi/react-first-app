@@ -7,7 +7,7 @@ html {
 }
 @media only screen and (max-width: 576px) {
   html {
-    font-size: 0.5em;
+    font-size: 0.7em;
   }
 }
 
@@ -274,3 +274,174 @@ html {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.AppTest {
+  box-sizing: border-box;
+  width: calc(100% - 550px);
+}
+
+#Right {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+}
+#Left {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;    
+}
+
+:root {
+  --rWidth: 300px;
+  --lWidth: calc(100% - var(--rWidth));
+  --tpWidth: 300px;
+  --toHeight: 450px;
+
+}
+
+#Right  {
+  width: var(--rWidth);
+  max-width: var(--rWidth);
+  min-width: var(--rWidth);
+  height: none;
+  box-sizing: 'border-box';
+}
+
+#Left {
+  width: calc(100% - var(--rWidth));
+  max-width: calc(100% - var(--rWidth));
+  min-width: calc(100% - var(--rWidth));
+  height: none;
+  box-sizing: border-box;
+}
+
+#UpLeft {
+  width: 100%;
+  height: var(--toHeight);
+  min-height: var(--toHeight);
+  max-height: var(--toHeight);
+  box-sizing: border-box;  
+}
+
+#TopOffersChild {
+  width: var(--tpWidth);
+  max-width: var(--tpWidth);
+  min-width: var(--tpWidth);
+  height: var(--toHeight);
+  min-height: var(--toHeight);
+  max-height: var(--toHeight);
+  box-sizing: border-box;
+}
+
+#TOLoyalti  {
+  width: calc(100% - var(--tpWidth));
+  max-width: calc(100% - var(--tpWidth));
+  min-width: calc(100% - var(--tpWidth));
+  box-sizing: border-box;
+}
+
+#BasketSaldo {
+  height: 55px;
+  min-height: 55px;
+  max-height: 55px;
+  border: 1px solid red;
+  box-sizing: border-box;  
+  
+}
+
+.F {
+  display: inline;
+  height: 100%;
+  align-items: center;
+  text-align: right;
+}
+
+#TopOffer {
+  display: flex;
+  flex-direction: row;
+  height: var(--toHeight);
+  min-height: var(--toHeight);
+  max-height: var(--toHeight);
+  box-sizing: border-box;
+}
+
+#BasketImage {
+  width: 50px;
+  max-width: 50px;
+  min-width: 50px;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  box-sizing: border-box;  
+}
+
+.otherGroupProduct {
+  height: calc(var(--toHeight) / 2);
+  min-height: calc(var(--toHeight) / 2);
+  max-height: calc(var(--toHeight) / 2);
+  
+}
+
+
+
+@media only screen and (max-width: 646px) {
+  #Right {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+  #Left {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;    
+    box-sizing: border-box;
+    }
+  #TopOffersChild {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: var(--toHeight);
+    min-height: var(--toHeight);
+    max-height: var(--toHeight);
+    box-sizing: border-box;
+  }
+  #TOLoyalti  {
+    display: flex;
+    flex-direction: column;    
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: var(--toHeight);
+    min-height: var(--toHeight);
+    max-height: var(--toHeight);
+    box-sizing: border-box;
+    border: 1px solid yellow;
+  }
+  #TopOffer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: none;
+    box-sizing: border-box;
+  }
+  #UpLeft {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: none;
+    box-sizing: border-box;  
+  }
+      
+}
+

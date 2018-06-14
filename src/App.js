@@ -12,6 +12,8 @@ import './App.css';
 import { moreGoodOffers, loyaltyData, nakitList } from './Data.js';
 import Basket from './Pictures/basket.jpg';
 import SearchPage from './SearchPage';
+import BayerCommentShow from './BayerCommentShow';
+import Img from './Img';
 
 
 
@@ -26,7 +28,7 @@ class App extends Component {
       value: "",
       listArray: ["A", "B", "C"],
       imageName: "",
-      numMoreGoodOffers: 0,
+      numMoreGoodOffers: 3,
       numLoyaltyBox: 0,
       redirect: false,
       redirectTo: ""
@@ -177,9 +179,10 @@ class App extends Component {
       }
     } else if (lId === "loyaltyBox") {
       this.l = Math.trunc((this.w / this.lb));
+      this.l = 1;
       if (this.l !== this.state.numLoyaltyBox) {
         this.setState({
-          numLoyaltyBox: this.l
+          numLoyaltyBox: 1
         });
       }
 
@@ -197,7 +200,10 @@ class App extends Component {
   }
 
 
+
   render() {
+
+
 
     if (this.state.redirect === true) {
       return <Redirect to={this.state.redirectTo} />
@@ -205,27 +211,17 @@ class App extends Component {
 
     console.log("APP RENDER")
 
-    const styleBasket = {
-      maxWidth: '50px',
-      maxHeight: '50px'
-    }
-
-    const styleBasketAmmount = {
-      fontSize: '2em'
-    }
-
     const rowBasket = this.props.global.basketList.map(one =>
       <div className="d-flex flex-row justify-content-between">
         <div className="width-exact-50 ">{one.product.productName}</div>
-        <div className="width-exact-10 text-right">{one.numberOfProduct}</div>
-        <div className="width-exact-40 text-right"> <F f="$" a={one.ammount} /></div>
+        <div className="width-exact-10 text-right ">{one.numberOfProduct}</div>
+        <div className="d-flex border border-primary width-exact-40 justify-content-end"> <F f="$" a={one.ammount} /></div>
       </div>);
-
 
 
     return (
 
-    
+
       <div className="App container-fluid">
 
 
@@ -233,16 +229,16 @@ class App extends Component {
         <div className="Header-Size w-100"></div>
         <div className="Header-Size w-100"></div>
 
-        <div className="d-flex flex-row  Container-Empty  h-rest O-X m-3">
-          {(this.props.global.search==="") ?
-            (<div className="Container-Empty d-flex flex-column O-X justify-content-start">
-              <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
-                <div style={this.styleFunc("topOffers")} className="d-flex flex-row O-Y O-X  Container-Empty">
-                  <div style={this.styleFunc("topOffersChild")} className=" h-100  O-Y O-X Container-Empty">
+        <div className=" d-flex flex-row flex-wrap h-auto Container-Empty O-X m-3">
+          {(this.props.global.search === "") ?
+            (<div id="Left" className="  Container-Empty d-flex flex-column flex-wrap O-X justify-content-start " >
+              <div id="UpLeft" className="d-flex flex-column pl-0  Container-Empty flex-wrap">
+                <div id="TopOffer" className="O-Y  Container-Empty  flex-wrap">
+                  <div id="TopOffersChild" className="Container-Empty O-Y O-X">
                     <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
                     <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
                   </div>
-                  <div style={this.styleFunc("middleWindow")} className="h-100 d-flex flex-column  O-Y O-X Container-Empty">
+                  <div id="TOLoyalti" className="O-Y O-X Container-Empty">
                     <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
                       <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
                       <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
@@ -258,53 +254,66 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <div style={this.styleFunc("nakit")} className="w-100 flex-column  O-Y O-X Container-Empty">
-                <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
-                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                  <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
-                </div>
-              </div>
-              <div style={this.styleFunc("sport")} className="w-100  flex-column  O-Y O-X Container-Empty">
-                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                  <ListProduct list={this.props.global.sport.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
-                </div>
-              </div>
-              <div style={this.styleFunc("sportM")} className="w-100  flex-column  O-Y O-X Container-Empty">
-                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                  <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
-                </div>
-              </div>
-              <div style={this.styleFunc("sportW")} className="w-100  flex-column  O-Y O-X Container-Empty">
-                <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
-                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                  <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
-                </div>
-              </div>
-              <div style={this.styleFunc("nakitM")} className="w-100 flex-column  O-Y O-X Container-Empty">
-                <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
-                <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                  <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
-                </div>
-              </div>
+              {(this.props.global.user === ""  || this.props.global.user.sex === "W") ?
+                (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty ">
+                  <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
+                  <div className=" h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                  </div>
+                </div>) : (null)}
+              {(this.props.global.user === "") ?
+                (<div className="otherGroupProduct col-12  flex-column  O-Y O-X Container-Empty">
+                  <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                  <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={this.props.global.sport.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                  </div>
+                </div>) : (null)}
+              {(this.props.global.user !== "" && this.props.global.user.sex === "M") ?
+                (<div className="otherGroupProduct col-12  flex-column  O-Y O-X Container-Empty">
+                  <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                  <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                  </div>
+                </div>) : (null)}
+              {(this.props.global.user !== "" && this.props.global.user.sex === "W") ?
+                (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty">
+                  <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
+                  <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                  </div>
+                </div>) : (null)}
+              {(this.props.global.user !== "" && this.props.global.user.sex === "M") ?
+                (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty">
+                  <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
+                  <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                  </div>
+                </div>) : (null)}
             </div>) :
             (<div>
-              <div style={this.styleFunc("leftWindow")} className=" d-flex flex-column pl-0  h-100 Container-Empty">
-                <SearchPage global={this.props.global}/>
-            </div>
+              <div className="col-12 col-sm-6 col-md-1 d-flex flex-column pl-0  h-100 Container-Empty">
+                <SearchPage global={this.props.global} />
+              </div>
             </div>)}
-          <div style={this.styleFunc("rightWindow")} className="container-fluid  Container-Empty d-flex flex-column O-Y O-X">
-            <Video />
-            <div className="d-flex flex-column">
-              <div className="d-flex flex-row justify-content-between"><img style={styleBasket} className="img-fluid" src={Basket} alt="User" />
-                <div style={styleBasketAmmount}><F f="$" a={this.props.global.basket} /></div>
+          <div id="Right" className="container-fluid  Container-Empty d-flex flex-column O-Y O-X">
+            <div className="w-100">
+              <Video />
+            </div>
+            <div className="border border-primary d-flex flex-column col-12 Container-Empty">
+              <div id="BasketSaldo" className="Container-Empty d-flex flex-row col-12 justify-content-between align-items-center">
+                <div id="BasketImage" className="Container-Empty  O-X O-Y "><Img className="img-fluid" src={Basket} alt="User" /></div>
+                <h2 className="h-100 align-items-center "><F f="$" a={this.props.global.basket} /></h2>
               </div>
               <div className="d-flex flex-row justify-content-between ColorYellow">
                 <div>Naziv proizvoda</div><div>Komada</div><div>Iznos</div>
               </div>
               {rowBasket}
               <Button className="ColorYellow " onClick={(e) => this.endOfBuying(e)}>Kraj kupovine</Button>
+            </div>
+            <div className="d-flex flex-column mt-5">
+              <spam className="ColorYellow text-left w-100">Kupci kažu...</spam>
+              <spam className="ColorYellow w-100 text-right"><i>...a kupci su uvek u pravu</i></spam>
+              <BayerCommentShow global={this.props.global} />
             </div>
           </div>
         </div>

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman, company } from './Data.js';
 import Main from './Main';
+import BuyersSay from './BuyersSey';
 
 
 class State extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth,
       inputValue: 1000,
       value: "",
       listArray: ["A", "B", "C"],
@@ -19,8 +22,8 @@ class State extends Component {
       numMoreGoodOffers: 0,
       numLoyaltyBox: 0,
       user: "",
-      setUser: this.setUser,
       users: users,
+      setUser: this.setUser,
       usersROL: userROL,
       productsList: ProductsData,
       company: company,
@@ -39,7 +42,9 @@ class State extends Component {
       searchResult: [ProductsData[2], ProductsData[12], ProductsData[22]],
       startSearch: this.startSearch,
       searchButton: 'search',
-      setSearchButton: this.setSearchButton
+      setSearchButton: this.setSearchButton,
+      bayersSay: BuyersSay,
+      addComment: this.addComment
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
@@ -47,6 +52,7 @@ class State extends Component {
     this.changeCurrentAccountBalance = this.changeCurrentAccountBalance.bind(this);
     this.startSearch = this.startSearch.bind(this);
     this.setSearchButton = this.setSearchButton.bind(this);
+    this.addComment = this.addComment.bind(this);
   }
 
   /*
@@ -62,6 +68,20 @@ class State extends Component {
     clearInterval(this.timerID);
   }
   */
+
+ handleResize = () => this.setState({
+  windowHeight: window.innerHeight,
+  windowWidth: window.innerWidth
+});
+
+componentDidMount() {
+  this.handleResize();
+  window.addEventListener('resize', this.handleResize)
+}
+
+componentWillUnmount() {
+  window.removeEventListener('resize', this.handleResize)
+}
 
 
   moveImgList = (event) => {
@@ -140,6 +160,20 @@ class State extends Component {
     }));
   }
 
+
+  addComment = (user, city, comment) => {
+    var one;
+    one = {
+      user: user,
+      city: city,
+      comment: comment
+    }
+
+    this.setState(prevState => ({
+      bayersSay: [...prevState.bayersSay, one ]
+    }));
+  }
+
   addInBasketList = (product, numberOfProduct, ammount) => {
     var one;
     one = {
@@ -176,7 +210,7 @@ class State extends Component {
       }
       if (userL !== undefined) {
         if (userL.sex === "W") {
-          tO = ProductsData[28];
+          tO = ProductsData[24];
         } else {
           tO = ProductsData[29];
         }
@@ -197,7 +231,7 @@ class State extends Component {
       }
       if (userL !== undefined) {
         if (userL.sex === "W") {
-          tO = ProductsData[28];
+          tO = ProductsData[24];
         } else {
           tO = ProductsData[29];
         }

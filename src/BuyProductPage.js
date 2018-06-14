@@ -12,6 +12,9 @@ import ImgBigest from './ImgBigest';
 import Img from './Img';
 import Rate from './Rate';
 import F from './F';
+import Vouchers from './Vouchers';
+import './BuyProductPage.css';
+import ButtonOKCancel from './ButtonOKCancel';
 
 
 class BuyProductPage extends Component {
@@ -26,7 +29,9 @@ class BuyProductPage extends Component {
             checkedBuyPayLess: false,
             exit: false,
             showImgBigest: false,
-            srcBigest: ""
+            srcBigest: "",
+            voucherSum: 0,
+            changeVoucer: this.changeVoucer
         }
         if (this.props.global.product !== "" && !this.props.global.product.otherImages === undefined) {
             this.state = {
@@ -40,6 +45,7 @@ class BuyProductPage extends Component {
         this.numProductOnClick = this.numProductOnClick.bind(this);
         this.onCheckedMoreThan = this.onCheckedMoreThan.bind(this);
         this.hideOnClick = this.hideOnClick.bind(this);
+        this.changeVoucer = this.changeVoucer.bind(this);
     }
 
 
@@ -95,6 +101,7 @@ class BuyProductPage extends Component {
         } else {
             gPP = eTV * this.props.global.product.price;
         }
+        gPP = gPP - this.state.voucherSum;
         gPP = gPP.toFixed(2);
         this.setState({
             numProduct: eTV,
@@ -114,6 +121,14 @@ class BuyProductPage extends Component {
 
     }
 
+    changeVoucer = (ammount) => {
+        console.log("Voucer")
+        console.log(ammount)
+        console.log(this.state.voucherSum)
+        this.setState({
+            voucherSum: this.state.voucherSum + ammount
+        });
+    }
 
     handleCancel(e) {
         this.setState({ exit: true });
@@ -130,12 +145,12 @@ class BuyProductPage extends Component {
         this.y = window.innerHeight;
 
         if (lId === "Pictures" || lId === "Details") {
-            if (this.x <= 600) {
-                this.yA = (this.x * 9 / 16);
-                this.xA = this.x;
+            if ((this.x-300) <= 1000) {
+                this.yA = ((this.x-300) * 9 / 16);
+                this.xA = (this.x-300);
             } else {
-                this.xA = 600;
-                this.yA = (600 * 9 / 16);
+                this.xA = 1000;
+                this.yA = (1000 * 9 / 16);
             }
             return {
                 height: this.yA,
@@ -324,12 +339,12 @@ class BuyProductPage extends Component {
         const companyData = (companyRef !== undefined) ?
             (<div className="Container-Empty d-inline ">
                 <div style={this.styleSize("Logo")} className="Container-Empty O-X O-Y">
-                    <Img  src={global.company[companyRef].logo} />
+                    <Img src={global.company[companyRef].logo} />
                 </div>
                 <div>Kompanija:{global.company[companyRef].name}</div>
                 <div>Adresa:{global.company[companyRef].adress}</div>
                 <div>Grad:{global.company[companyRef].city}</div>
-                <Rate rate={global.company[companyRef].rate}/>
+                <Rate rate={global.company[companyRef].rate} />
             </div>)
             : ("");
 
@@ -338,8 +353,8 @@ class BuyProductPage extends Component {
                 <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
-                <div className="Container-Empty h-100 w-100 d-flex flex-row flex-wrap m-2">
-                    <div className="d-flex flex-column">
+                <div className="Container-Empty h-100 w-100 d-flex flex-row flex-wrap O-X m-2">
+                    <div id="LeftBuy" className="d-flex flex-column">
                         <div style={this.styleSize("Pictures")} className="Container-Empty  " >
                             <div style={this.styleSize("PictureMain")} className="Container-Empty  O-X O-Y " >
                                 <img src={this.state.image} className="img-fluid mx-auto d-block" alt="Book" onClick={(e) => this.imgBig(e, this.state.image)} />
@@ -360,49 +375,63 @@ class BuyProductPage extends Component {
                         <div>Opcije:</div>
                         {listOptionsAll}
                     </div>
-                    <div style={this.styleSize("Basket")} className="Container-Empty d-inline-block " >
-                        <div className="Container-Empty w-100 d-flex flex-row">
-                            <h2 className="d-flex flex-row">
-                                Cena:&ensp;
-                            <div>
-                                    {(global.product.priceOld === undefined ? ("") : (<del><F f="$" a={global.product.priceOld} /></del>))}
-                                </div>&ensp;
-                            <div>
-                                    {(global.product.price === undefined ? ("") : (<F f="$0" a={global.product.price} />))}&ensp;
-                                {(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}
-                                </div>
-                            </h2> 
+                    <div id="Basket" className="Container-Empty d-inline-block " >
+                        <div className="Container-Empty w-100 d-flex flex-column O-X">
+                            <div className="Container-Empty w-100 d-flex flex-row O-X m-0">
+                                <h4 className="d-flex flex-row col-12 justify-content-between">
+                                    Cena:&ensp;&ensp;
+                                    <div className="d-flex h-100">
+                                        {(global.product.price === undefined ? ("") : (<F f="$0" a={global.product.price} />))}&ensp;
+                                        {(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}
+                                    </div>
+                                </h4>
+                            </div>
+                            <div className="Container-Empty     d-flex flex-row h-100 col-12">
+                                <h5 className="d-flex flex-row col-12 m-0 ">
+                                    {(global.product.priceOld === undefined) ? ("") : (<span className="d-flex flex-row ml-auto"><del><F f="$" a={global.product.priceOld} /></del> &ensp;{(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}</span>)}
+                                </h5>
+                            </div>
                         </div>
                         <div className="Container-Empty w-100 d-flex flex-column">
-                            <div className="d-flex flex-row  h-100 align-items-center">Ubaci u korpu
-                                    <Input className="col-3  align-self-end" type="number" id="numProduct" placeholder="" value={this.state.numProduct} onChange={this.numProductOnChange} />&ensp;
-komada
-Ukupan iznos &ensp;
-                                <b><F f="$0" a={this.state.totalPrice} /></b>&ensp;
-                                {global.product.priceCurrency}
+                            <div className="d-flex flex-row Container-Empty align-items-center">
+                                <div className="Container-Empty d-flex">Ubaci u korpu</div>
+                                <Input className="col-3 d-flex align-self-end" type="number" id="numProduct" placeholder="" value={this.state.numProduct} onChange={this.numProductOnChange} />
+                                <div className="d-flex Container-Empty">komada</div>
                             </div>
-                            <div>Popusti:</div>
-                            <div>
-                                {discountMoreThen}{discountBuyPayLess}
+                            <div className="d-flex flex-row Container-Empty align-items-center">
+                                <div className="d-flex"> Ukupna cena &ensp;</div>
+                                <b className="d-flex"><F f="$0" a={this.state.totalPrice} /></b>&ensp;
+                                <div className="d-flex">{global.product.priceCurrency}</div>
                             </div>
-                            <div className="d-inline  h-100 align-items-center">U korpi je <F f="$0" a={global.basket} /> {global.basketCurrency}&ensp;
-                                    Ako dodate {this.state.numProduct} komada ovog proizvoda u korpu, u korpi ce biti <F f="$0" a={inBasket} /> {global.basketCurrency}
+                            <div className="d-flex">Popusti:</div>
+                            <div className="d-flex flex-column">
+                                {discountMoreThen}{discountBuyPayLess}{<Vouchers changeVoucer={this.changeVoucer} numProduct={this.state.numProduct} global={global} />}
                             </div>
-                                {(global.product!== undefined && global.product.rate !== undefined)?
-                                (<Rate rate={global.product.rate} />):(null)}
+                            <div className="d-flex Container-Empty align-items-center">
+                                Trenutno je &ensp; <F f="$0" a={global.basket} /> &ensp; {global.basketCurrency}&ensp;u korpi
+                            </div>
+                            <div className="d-inline align-items-center">
+                                <div className="d-inline">Ako dodate {this.state.numProduct} komada ovog proizvoda u korpu, u korpi ce biti</div> <div className="d-inline"><F f="$0" a={inBasket} /> {global.basketCurrency}</div>
+                            </div>
+                            {
+                                (global.product !== undefined && global.product.rate !== undefined) ?
+                                    (<Rate rate={global.product.rate} />) : (null)
+                            }
+
                             <div className="d-flex flex-row">
-                                <Button className="ColorYellow col-4 col-sm-2" onClick={() => this.handleInBasket()}>Može</Button>
+                                <ButtonOKCancel OK onClick={() => this.handleInBasket()} />
                                 <div className="W-SS"></div>
-                                <Button className="ColorYellow col-4 col-sm-2" onClick={() => this.handleCancel()}>Odustani</Button>
+                                <ButtonOKCancel onClick={() => this.handleCancel()} />
                             </div>
                             {companyData}
+
+
                         </div>
 
-
                     </div>
-                </div>
-                <Link className="Container-Empty" small to="/">Home</Link>
-                <ImgBigest className={imgBigest} hideOnClick={this.hideOnClick} show={this.state.showImgBigest} src={this.state.srcBigest} />
+                    <Link className="Container-Empty" small to="/">Home</Link>
+                    <ImgBigest className={imgBigest} hideOnClick={this.hideOnClick} show={this.state.showImgBigest} src={this.state.srcBigest} />
+                </div >
             </div>
         );
     }

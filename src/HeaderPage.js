@@ -113,7 +113,7 @@ class HeaderPage extends Component {
                         pathname: '/'
                     }} push />
                 )
-            } 
+            }
         }
 
 
@@ -168,18 +168,21 @@ class HeaderPage extends Component {
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">
-                            <div className="col-0 col-sm-1 col-md-2"> </div>
-                            <div className="col-3 col-sm-1 h-100 pt-0 pb-0 d-flex flex-column">
-                                <CheckBox label="Proizvodi" small checked />
-                                <CheckBox label="Kompanije" small />
+                            <div className="d-flex flex-row col-12 justify-content-start">
+                                <div className="col-3 col-sm-3 h-100 pt-0 pb-0 d-flex flex-column">
+                                    <div className="ml-auto">
+                                        <CheckBox label="Proizvodi" small checked />
+                                        <CheckBox label="Kompanije" small />
+                                    </div>
+                                </div>
+
+
+                                <div className="d-flex flex-row h-100 col-9 col-sm-6">
+                                    <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
+                                    <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
+                                </div>
+                                <div className="h-100 ml-auto">{this.props.global.windowWidth}x{this.props.global.windowHeight}</div>
                             </div>
-
-
-                            <div className="d-flex flex-row h-100 col-6  mr-auto">
-                                <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
-                                <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
-                            </div>
-
 
                         </div>
                     </div>

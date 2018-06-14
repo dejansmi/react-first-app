@@ -14,6 +14,7 @@ class CheckBox extends Component {
             checked,
             onClick,
             disabled,
+            defaultChecked,
             ...attributes
         } = this.props;
 
@@ -25,7 +26,7 @@ class CheckBox extends Component {
 
 
         return (
-            <div {...attributes} disabled className={classes} ><input type="checkbox" autoComplete="off" checked={checked} onClick={this.props.onClick}/> {label}</div>
+            <div {...attributes}  className={classes} ><input type="checkbox" autoComplete="off" defaultChecked={defaultChecked} checked={checked} disabled={disabled} onClick={this.props.onClick}/> {label}</div>
         );
     }
 }

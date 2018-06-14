@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import HeaderPage from './HeaderPage';
 import ping from './logo.png';
 import TextField from '@material-ui/core/TextField';
-import Button from './Button';
+import ButtonOKCancel from './ButtonOKCancel';
 
 
 
@@ -72,9 +72,9 @@ class LoginPage extends React.Component {
                 </div>
                 <div>
                     <div className="d-flex flex-row">
-                        <Button className="ColorYellow col-4 col-sm-1" onClick={() => this.handleConnect()}>Može</Button>
+                        <ButtonOKCancel OK onClick={() => this.handleConnect()}/>
                         <div className="W-SS"></div>
-                        <Button className="ColorYellow col-4 col-sm-1" onClick={() => this.handleCancel()}>Odustani</Button>
+                        <ButtonOKCancel  onClick={() => this.handleCancel()}/>
                     </div>
                 </div>
                 <div className="H-SS" />

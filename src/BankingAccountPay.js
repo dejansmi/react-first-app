@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button from './Button';
 import TextField from '@material-ui/core/TextField';
 import F from './F';
+import ButtonOKCancel from './ButtonOKCancel';
 
 
 class BankingAccountPay extends Component {
@@ -94,11 +94,11 @@ class BankingAccountPay extends Component {
             (<div className="d-flex flex-column">
                 Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit
                 <TextField type="password" defaultValue="" label="Lozinka" />
-                <Button className="ColorYellow w-100" onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}>Može</Button>
+                <ButtonOKCancel OK center onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}/>
             </div>) : (null);
 
         const accountBalance = (this.state.showAB)?
-            (<div>Stanje tekućeg računa broj {global.user.currentAccount.id} je <F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
+            (<div>Stanje tekućeg računa broj {global.user.currentAccount.id} je {global.user.currentAccount.currency}<F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
 
         return (
             <div className="Container-Empty">
@@ -107,7 +107,7 @@ class BankingAccountPay extends Component {
                     Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa <spam className="d-inline btn-link" onClick={this.accountBalance}>ovde</spam>
                     {accountBalance}
                     {finallyAcceptOCC}
-                    <Button className="ColorYellow w-100" onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}>Može</Button>        
+                    <ButtonOKCancel center OK onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}/>    
                 </div>
                 <div className={classes2Phase} >
                     Nemate dovoljno sredstava da bi ste platili sa tekučeg računa. Morate izabrati dugi način za plaćanje.

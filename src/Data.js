@@ -67,7 +67,7 @@ import patika1 from './Pictures/WomenPaints/patika-01.jpeg';
 import patika2 from './Pictures/WomenPaints/patika-02.jpeg';
 import patika3 from './Pictures/WomenPaints/patika-03.jpeg';
 import patika4 from './Pictures/WomenPaints/patika-04.jpeg';
-import patika5 from  './Pictures/WomenPaints/patika-05.jpeg';
+import patika5 from './Pictures/WomenPaints/patika-05.jpeg';
 import vidraLogo from './Pictures/Logo/vidra-logo.png';
 import pandoraLogo from './Pictures/Logo/pandora-logo.jpg';
 import solutionServiceLogo from './Pictures/Logo/solution-service-logo.png';
@@ -95,7 +95,7 @@ export const ProductsData = [
         imageAlt: "Cvet",
         description: 'Crvene ruže za prelepe bukete',
         price: 231.34,
-        priceOld: 264.23, 
+        priceOld: 264.23,
         priceCurrency: "RSD",
         company: "TNTBroj1",
         rate: 3
@@ -188,7 +188,7 @@ export const ProductsData = [
         description: 'Značke koje prikazuju mačke u raznim bojama i situacijama',
         price: 35.99,
         priceCurrency: "RSD",
-        company: "Algebra"    
+        company: "Algebra"
     }
     ,
     {
@@ -476,6 +476,7 @@ export const ProductsData = [
         imageAlt: "Rukavice za vožnju bisiklom. Šarene.",
         description: 'Rukavice za vožnju bisiklom. Šarene.Akcija kupuš 3 platiš 2',
         price: 8341.99,
+        priceOld: 8999.00,
         priceCurrency: "RSD",
         discount: {
             get: 3,
@@ -720,6 +721,14 @@ export const userROL = [
 ];
 
 
+let vouchersLok = [];
+vouchersLok['M9Iek'] = { type: "ammount", for: "ALL", ammount: 100, currency: "RSD", use: false };
+vouchersLok['M9Iek'] = { type: "ammount", for: "ALL", ammount: 100, currency: "RSD", use: false };
+vouchersLok['nJkMe'] = { type: "ammount", for: "Vidra", ammount: 1000, currency: "RSD", use: false };
+vouchersLok['LkMnd'] = { type: "ammount", for: "Vidra", ammount: 1500, currency: "RSD", use: false };
+vouchersLok['rKlse'] = { type: "ammount", for: "Pandora", ammount: 5000, currency: "RSD", use: false };
+
+
 export const users = [
     {
         username: "boza",
@@ -728,7 +737,8 @@ export const users = [
         image: BozidarIgnjatovic,
         adress: 'Narodnih heroja 8',
         city: 'Niš',
-        ROLUser: false
+        ROLUser: false,
+        vouchers: vouchersLok
     }
     ,
     {
@@ -789,7 +799,7 @@ const loyalty = [{
     description: "Ukoliko kupite 3 ili više proizvoda dobjate 7.5% popusta na sve proizvode",
     company: "FMP Fabrika metalnih proizvoda"
 }
-,
+    ,
 {
     loyaltyId: "5WdrTgj83abWMDka",
     imageShow: true,
@@ -826,10 +836,10 @@ ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsD
 ]
 
 export const nakitList = [
-ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27],
-ProductsData[28]]
+    ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27],
+    ProductsData[28]]
 
 
-export const loyaltyData = [loyalty[0],loyalty[1]];
+export const loyaltyData = [loyalty[0], loyalty[1]];
 
 export default { listOfImg, moreGoodOffers };

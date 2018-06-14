@@ -11,6 +11,8 @@ import OneClickCredit from './OneClickCredit';
 import F from './F';
 import BankingAccountPay from './BankingAccountPay';
 import PayByCard from './PayByCard';
+import TextField from '@material-ui/core/TextField';
+
 
 
 class EndOfBuying extends React.Component {
@@ -23,9 +25,15 @@ class EndOfBuying extends React.Component {
             PayByCard: false,
             exit: false,
             payed: 0,
-            showBA: false
+            showBA: false,
+            note: true,
+            noteContent: "",
+            comment: true,
+            commentContent: ""
         }
         this.oneClickFinallyAccept = this.oneClickFinallyAccept.bind(this);
+        this.handleNoteContent = this.handleNoteContent.bind(this);
+        this.handleCommentContent = this.handleCommentContent.bind(this);
     }
 
     exit(e) {
@@ -85,10 +93,36 @@ class EndOfBuying extends React.Component {
         console.log("EoB");
     }
 
+    endOfBuyingNote(e) {
+        this.setState({
+            hote: !this.state.note
+        });
+    }
+
+    endOfBuyingComment(e) {
+        this.setState({
+            comment: !this.state.comment
+        });
+    }
+
+    handleNoteContent(e) {
+        this.setState({
+            noteContent: e.target.value
+        });
+    }
+    handleCommentContent(e) {
+        if (e.target.value.length < 140) {
+            this.setState({
+                commentContent: e.target.value
+            });
+        }
+    }
+
 
     oneClickFinallyAccept2 = (payedAmmount, modeType) => {
         if (modeType === "ACCOUNT") {
             this.props.global.changeCurrentAccountBalance(-payedAmmount);
+            this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
         }
     }
@@ -201,6 +235,7 @@ class EndOfBuying extends React.Component {
                 da ga otvorite klikom na Novi korisnik.
         </div>) : ("");
 
+
         return (
             <div className="Container-Empty h-100 w-100 ">
                 <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
@@ -226,6 +261,18 @@ class EndOfBuying extends React.Component {
                         </div>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za račun</i></b></Button>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
+                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>
+                        {(this.state.note) ?
+                            (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} defaultValue="" label="" />
+                            ) : (null)}
+                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
+                        {(this.state.comment) ?
+                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} defaultValue="" label="" />
+                            ) : (<div>
+                                Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
+                                na sistem jer tako mozete ostvariti dodatne beneficije.
+                                </div>
+                                )) : (null)}
                     </div>
                     <div style={this.styleSize("Paying")} classNames={PayingClass}>
                         <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
@@ -248,8 +295,8 @@ class EndOfBuying extends React.Component {
                             </div>) :
                             (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
-                        {(this.state.PayByCard) ? 
-                            (<div> <PayByCard /> </div>) :
+                        {(this.state.PayByCard) ?
+                            (<div className="d-flex p-2"> <PayByCard /> </div>) :
                             (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
