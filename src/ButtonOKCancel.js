@@ -26,8 +26,13 @@ class ButtonOKCancel extends React.Component {
             both,
             cancel,
             OK,
+            continues,
             className,
             center,
+            onClickOK,
+            onClickCancel,
+            onClickContinues,
+            onClick,
             ...attributes
         } = this.props;
 
@@ -36,13 +41,21 @@ class ButtonOKCancel extends React.Component {
             'btn-OKCancel'
         );
 
+        const typeMessage = (OK) ? ("Može") : ((continues)?("Nastavi"):("Odustani"));
+
+        const onClickOKFunc = (onClickOK !== undefined)?(onClickOK):(onClick);
+        const onClickCancelFunc = (onClickCancel !== undefined)?(onClickCancel):(onClick);
+        const onClickContinuesFunc = (onClickContinues !== undefined)?(onClickContinues):(onClick);
+        const onClickFunc = (OK) ? (onClickOKFunc) : ((continues)?(onClickContinuesFunc):(onClickCancelFunc));
+
+
         if (center) {
             return (
                 <div className="center-OKCancel">
                     {(both) ? (<span>
-                        <Button className={classes} {...attributes}>Može</Button>
-                        <Button className={classes} {...attributes}>Odustani</Button></span>) :
-                        (<Button className={classes} {...attributes}>{(OK) ? ("Može") : ("Odustani")}</Button>)}
+                        <Button className={classes} {...attributes} onClick={onClickOKFunc}>Može</Button>
+                        <Button className={classes} {...attributes} onClick={onClickCancelFunc}>Odustani</Button></span>) :
+                        (<Button className={classes} {...attributes} onClick={onClickFunc}>{typeMessage}</Button>)}
                 </div>
             )
 
@@ -51,10 +64,10 @@ class ButtonOKCancel extends React.Component {
                 <span>
                     {(both) ?
                         (<span>
-                            <Button className={classes} {...attributes}>Može</Button>
-                            <Button className={classes} {...attributes}>Odustani</Button>
+                            <Button className={classes} {...attributes} onClick={onClickOKFunc}>Može</Button>
+                            <Button className={classes} {...attributes} onClick={onClickCancelFunc}>Odustani</Button>
                          </span>) :
-                        (<Button className={classes} {...attributes}>{(OK) ? ("Može") : ("Odustani")}</Button>)}
+                        (<Button className={classes} {...attributes} onClick={onClickFunc}>{typeMessage}</Button>)}
                 </span>
             )
         }

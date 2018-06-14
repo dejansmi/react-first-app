@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import TextField from '@material-ui/core/TextField';
-import Button from './Button';
+import ButtonOKCancel from './ButtonOKCancel';
 
 const defaultProps = {
     tag: 'button',
@@ -64,6 +64,10 @@ class PayByCard extends React.Component {
 
 
 
+        const {
+            payingFunc,
+            ammountPay
+        } = this.props;
 
 
 
@@ -87,9 +91,7 @@ class PayByCard extends React.Component {
                 </div>
                 <TextField value={this.state.cardSecCode} onChange={this.handleCardSecCode} defaultValue="" label="Security code" />
                 <div className="d-flex flex-row">
-                    <Button className="ColorYellow w-50" onClick={() => this.handlePayByCard()}>Može</Button>
-                    <div className="W-SS"></div>
-                    <Button className="ColorYellow w-50" onClick={() => this.handleCancel()}>Odustani</Button>
+                    <ButtonOKCancel center both  onClick={(e) => payingFunc(ammountPay, "CARD")} onClickCancel={() => this.handleCancel()}/>
                 </div>
             </div>
         );

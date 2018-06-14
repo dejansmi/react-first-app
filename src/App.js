@@ -204,7 +204,6 @@ class App extends Component {
   render() {
 
 
-
     if (this.state.redirect === true) {
       return <Redirect to={this.state.redirectTo} />
     }
@@ -290,16 +289,16 @@ class App extends Component {
                   </div>
                 </div>) : (null)}
             </div>) :
-            (<div>
-              <div className="col-12 col-sm-6 col-md-1 d-flex flex-column pl-0  h-100 Container-Empty">
+            (
+              <div id="SearchPage" className="d-flex flex-column  h-100 Container-Empty">
                 <SearchPage global={this.props.global} />
               </div>
-            </div>)}
+            )}
           <div id="Right" className="container-fluid  Container-Empty d-flex flex-column O-Y O-X">
             <div className="w-100">
               <Video />
             </div>
-            <div className="border border-primary d-flex flex-column col-12 Container-Empty">
+            <div className="d-flex flex-column col-12 Container-Empty">
               <div id="BasketSaldo" className="Container-Empty d-flex flex-row col-12 justify-content-between align-items-center">
                 <div id="BasketImage" className="Container-Empty  O-X O-Y "><Img className="img-fluid" src={Basket} alt="User" /></div>
                 <h2 className="h-100 align-items-center "><F f="$" a={this.props.global.basket} /></h2>
@@ -317,6 +316,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+
 
       </div>
     );

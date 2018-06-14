@@ -384,7 +384,14 @@ html {
   
 }
 
+#SearchPage {
+  width: calc(100% - var(--rWidth));
+  max-width: calc(100% - var(--rWidth));
+  min-width: calc(100% - var(--rWidth));
+  height: none;
+  box-sizing: border-box;
 
+}
 
 @media only screen and (max-width: 646px) {
   #Right {

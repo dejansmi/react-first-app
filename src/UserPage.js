@@ -6,16 +6,15 @@ import HeaderPage from './HeaderPage';
 import Link from './Link';
 import ping from './logo.png';
 import Button from './Button';
-import Basket from './Pictures/basket.jpg';
 import OneClickCredit from './OneClickCredit';
 import F from './F';
 import BankingAccountPay from './BankingAccountPay';
 import PayByCard from './PayByCard';
 import TextField from '@material-ui/core/TextField';
+import ButtonToggleDiv from './ButtonToggleDiv';
 
 
-
-class EndOfBuying extends React.Component {
+class UserPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -124,11 +123,11 @@ class EndOfBuying extends React.Component {
             this.props.global.changeCurrentAccountBalance(-payedAmmount);
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.",'success');
+            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
         } else if (modeType === "CARD") {
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.",'success');
+            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
         }
     }
 
@@ -246,65 +245,64 @@ class EndOfBuying extends React.Component {
                 <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
-                <div className="Container-Empty d-flex flex-row flex-wrap m-3 justify-content-between">
-                    <div style={this.styleSize("Basket")} className="d-flex flex-column">
-                        <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                            <spam>Narudžbenica:</spam><spam>{this.props.global.basketOrder}</spam>
+                <div className="d-flex flex-column m-2">
+                    <div className="d-flex flex-row">
+                        <div style={{ minWidth: "256px", maxWidth: "256px", maxHeight: "256px" }} className="O-X O-Y ">
+                            <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData} />
                         </div>
-                        <div className="d-flex flex-row justify-content-between"><img style={styleBasket} className="img-fluid" src={Basket} alt="User" />
-                            <div style={styleBasketBigFont}><F f='$' a={this.props.global.basket} /></div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between ColorYellow">
-                            <div>Naziv proizvoda</div><div>Komada</div><div>Iznos</div>
-                        </div>
-                        {rowBasket}
-                        <Button className="ColorYellow " onClick={(e) => this.exit(e)}>Vrati se na kupovinu</Button>
                     </div>
-                    <div style={this.styleSize("Adress")} classNames={PayingClass}>
-                        <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                            <spam>Adrese</spam><spam></spam>
-                        </div>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za račun</i></b></Button>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>
-                        {(this.state.note) ?
-                            (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} defaultValue="" label="" />
-                            ) : (null)}
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
-                        {(this.state.comment) ?
-                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} defaultValue="" label="" />
-                            ) : (<div>
-                                Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
-                                na sistem jer tako mozete ostvariti dodatne beneficije.
+                    <div>
+                        <div className="Container-Empty d-flex flex-row flex-wrap m-3 justify-content-between">
+
+                            <div style={this.styleSize("Adress")} classNames={PayingClass}>
+                                <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
+                                    <spam>Adrese</spam><spam></spam>
                                 </div>
-                                )) : (null)}
-                    </div>
-                    <div style={this.styleSize("Paying")} classNames={PayingClass}>
-                        <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                            <spam>Za plaćanje:</spam><spam><F f="$0" a={forPaying} /></spam>
+                                <ButtonToggleDiv name="Narudžbine">
+                                    <div>Posao</div>
+                                </ButtonToggleDiv>
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>
+                                {(this.state.note) ?
+                                    (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} defaultValue="" label="" />
+                                    ) : (null)}
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
+                                {(this.state.comment) ?
+                                    ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} defaultValue="" label="" />
+                                    ) : (<div>
+                                        Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
+                                        na sistem jer tako mozete ostvariti dodatne beneficije.
+                                </div>
+                                        )) : (null)}
+                            </div>
+                            <div style={this.styleSize("Paying")} classNames={PayingClass}>
+                                <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
+                                    <spam>Za plaćanje:</spam><spam><F f="$0" a={forPaying} /></spam>
+                                </div>
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>OneClickCredit</i></b></Button>
+                                <div className={this.state.OneClickCreditClass}>
+                                    {notLogged()}
+                                    <OneClickCredit ammount={this.props.global.basket} global={this.props.global} payingFunc={this.oneClickFinallyAccept} />
+                                </div>
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOLC(e)}><b><i>On-line kredit</i></b></Button>
+                                {(this.state.OnLineCredit) ?
+                                    (<div>{notLogged()}</div>) :
+                                    (null)}
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingBA(e)}><b><i>Sa tekućeg računa u Raiffeisen banci</i></b></Button>
+                                {(this.state.showBA) ?
+                                    (<div className={BankingAccountClass}>
+                                        {notLogged()}
+                                        <BankingAccountPay global={this.props.global} payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} />
+                                    </div>) :
+                                    (null)}
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
+                                {(this.state.PayByCard) ?
+                                    (<div className="d-flex p-2"> <PayByCard payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} /> </div>) :
+                                    (null)}
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
+                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
+                            </div>
                         </div>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>OneClickCredit</i></b></Button>
-                        <div className={this.state.OneClickCreditClass}>
-                            {notLogged()}
-                            <OneClickCredit ammount={this.props.global.basket} global={this.props.global} payingFunc={this.oneClickFinallyAccept} />
-                        </div>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOLC(e)}><b><i>On-line kredit</i></b></Button>
-                        {(this.state.OnLineCredit) ?
-                            (<div>{notLogged()}</div>) :
-                            (null)}
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingBA(e)}><b><i>Sa tekućeg računa u Raiffeisen banci</i></b></Button>
-                        {(this.state.showBA) ?
-                            (<div className={BankingAccountClass}>
-                                {notLogged()}
-                                <BankingAccountPay global={this.props.global} payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} />
-                            </div>) :
-                            (null)}
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
-                        {(this.state.PayByCard) ?
-                            (<div className="d-flex p-2"> <PayByCard payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket}/> </div>) :
-                            (null)}
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
                     </div>
                 </div>
 
@@ -314,14 +312,14 @@ class EndOfBuying extends React.Component {
     }
 }
 
-EndOfBuying.propTypes = {
+UserPage.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
-EndOfBuying.defaultProps = {
+UserPage.defaultProps = {
     tag: 'div'
 };
 
-export default EndOfBuying;
+export default UserPage;

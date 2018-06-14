@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import Link from './Link';
 import logoRaif from './Pictures/logoRaif.png';
 import Img from './Img';
+import ScreenMessage from './ScreenMessage';
 
 
 
@@ -21,13 +22,15 @@ class HeaderPage extends Component {
             inputValue: 1000,
             iPostition: 0,
             redirectSearch: false,
-            searchButton: this.props.global.searchButton
+            searchButton: this.props.global.searchButton,
+            redirectUser: false
         }
         this.iCorrect = 1;
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.startSearch = this.startSearch.bind(this);
+        this.handleUserData = this.handleUserData.bind(this);
     }
 
 
@@ -82,6 +85,10 @@ class HeaderPage extends Component {
     }
 
 
+    handleUserData = (event, product) => {
+        this.setState({ redirectUser: true });
+    }
+
 
     handleOnClick = (event, product) => {
         this.setState({ redirect: true });
@@ -93,6 +100,8 @@ class HeaderPage extends Component {
     }
 
     render() {
+
+
 
         if (this.state.redirect === true) {
             return (
@@ -111,6 +120,17 @@ class HeaderPage extends Component {
                 return (
                     <Redirect to={{
                         pathname: '/'
+                    }} push />
+                )
+            }
+        }
+
+
+        if (this.state.redirectUser === true) {
+            if (this.props.URL !== '/user') {
+                return (
+                    <Redirect to={{
+                        pathname: '/user'
                     }} push />
                 )
             }
@@ -136,6 +156,10 @@ class HeaderPage extends Component {
 
         return (
             <div className="col-12 fixed-top container-fluid" >
+
+                {(this.props.global.showScreenMessage) ? (
+                    <ScreenMessage global={this.props.global} />
+                ) : (null)}
                 <div className="col-12 fixed-top container-fluid" >
                     <div onMouseOver={() => this.overMouse(0)} onMouseOut={() => this.overMouse(1)} className="col-12 d-none Color align-items-end Header-Size O-X" >
                         <img src={bankLogo} className=" Opacity " alt="Primer" />
@@ -154,7 +178,7 @@ class HeaderPage extends Component {
                             {(this.props.global.user !== "") ?
                                 (<div className={userData}>
                                     <div style={{ minWidth: "60px", maxWidth: "60px", maxHeight: "50px" }} className="O-X O-Y ">
-                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" />
+                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData}/>
                                     </div>
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">

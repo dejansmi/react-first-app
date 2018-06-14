@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman, company } from './Data.js';
 import Main from './Main';
 import BuyersSay from './BuyersSey';
+import {Today} from './Today';
 
 
 class State extends Component {
@@ -33,6 +34,7 @@ class State extends Component {
       basketOrder: "",
       basketHowPay: "",
       basketList: [],
+      basketNotDeliveried: [],
       basketHistory: [],
       addInBasketList: this.addInBasketList,
       basketCurrency: 'RSD',
@@ -44,7 +46,11 @@ class State extends Component {
       searchButton: 'search',
       setSearchButton: this.setSearchButton,
       bayersSay: BuyersSay,
-      addComment: this.addComment
+      addComment: this.addComment,
+      showScreenMessage: false,
+      ShowScreenMessage: this.ShowScreenMessage,
+      screenMessage: "",
+      screenMessageType: 'info'
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
@@ -53,6 +59,8 @@ class State extends Component {
     this.startSearch = this.startSearch.bind(this);
     this.setSearchButton = this.setSearchButton.bind(this);
     this.addComment = this.addComment.bind(this);
+    this.ShowScreenMessage = this.ShowScreenMessage.bind(this);
+
   }
 
   /*
@@ -94,6 +102,20 @@ componentWillUnmount() {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+  ShowScreenMessage = (message, type) =>{
+    if (type === "info") {}
+    else if (type === 'error') {}
+    else if (type === 'warning') {}
+    else if (type === 'success') {}
+    else type = 'info';
+    this.setState({
+      screenMessage: message,
+      screenMessageType: type,
+      showScreenMessage: !this.state.showScreenMessage
+    });
+  }
+
+
 
   setSearchButton = (searchText) => {
     this.setState({
@@ -131,20 +153,27 @@ componentWillUnmount() {
   }
 
   orderPayed = () => {
-    var one;
+    var one, basketNotDeliveried;
     one = {
       order: this.state.basketOrder,
       ammount: this.state.basket,
       howPay: this.state.basketHowPay,
-      basketList: this.state.basketList
-
+      basketList: this.state.basketList,
+      date: Today()
     }
+
+    basketNotDeliveried = this.state.basketNotDeliveried;
+    if (basketNotDeliveried[this.state.user]===undefined) {
+      basketNotDeliveried[this.state.user] = {};
+    }
+    basketNotDeliveried[this.state.user][this.state.basketOrder] = one;
+
     this.setState(prevState => ({
       basket: 0,
       basketHowPay: "",
       basketList: [],
       basketOrder: "",
-      basketHistory: [...prevState.basketHistory, one]
+      basketNotDeliveried: basketNotDeliveried
     }));
   }
 
