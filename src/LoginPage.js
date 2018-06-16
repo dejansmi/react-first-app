@@ -15,6 +15,7 @@ class LoginPage extends React.Component {
             global: this.props.global,
             username: "",
             password: "",
+            to: "/",
             exit: false
         }
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -28,24 +29,36 @@ class LoginPage extends React.Component {
     }
 
     handleConnect(e) {
-        if (this.props.global.setUser(e, this.state.username,"Login")) {
-            this.setState({ password: "",
-            exit: true});
+        let userTypeTo, userType;
+        userType = this.props.global.setUser(e, this.state.username,"Login");
+        if (userType!=="") {
+            if (userType==="company") {
+                userTypeTo = "/company/admin";
+            } else {
+                userTypeTo = "/"
+            }
+            this.setState({
+                to: userTypeTo, 
+                password: "",
+                exit: true
+            });
         }
 
     }
 
     handleCancel(e) {
         this.setState({ password: "",
+                        to:"/",
                         exit: true});
     }
 
 
     render() {
 
+        console.log ("LOGIN "+this.state.to)
 
         if (this.state.exit === true) {
-            return <Redirect to='/' />
+            return <Redirect to={this.state.to} />
         }
 
 

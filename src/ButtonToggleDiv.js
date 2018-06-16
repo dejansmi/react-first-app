@@ -30,7 +30,9 @@ class ButtonToggleDiv extends React.Component {
 
         const {
             children,
-            name
+            name,
+            className,
+            secondColor,
         } = this.props;
 
 
@@ -39,15 +41,19 @@ class ButtonToggleDiv extends React.Component {
         const classes = classNames(
             'w-100',
             'd-flex',
-            'flex-column'
+            'flex-column',
+            className
         );
 
-        console.log ({children})
+        const classesButton = classNames(
+            (secondColor)?('ColorGray'):('ColorYellow'),
+            'w-100'
+        )
 
 
         return (
             <div className={classes}>
-                <Button className="ColorYellow w-100" onClick={(e) => this.toggle(e)}><b><i>{name}</i></b></Button>
+                <Button className={classesButton} onClick={(e) => this.toggle(e)}><b><i>{name}</i></b></Button>
                 {(this.state.toggle) ?
                     (<span>{children}</span>
                     ) : (null)}

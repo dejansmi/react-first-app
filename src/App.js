@@ -214,7 +214,7 @@ class App extends Component {
       <div className="d-flex flex-row justify-content-between">
         <div className="width-exact-50 ">{one.product.productName}</div>
         <div className="width-exact-10 text-right ">{one.numberOfProduct}</div>
-        <div className="d-flex border border-primary width-exact-40 justify-content-end"> <F f="$" a={one.ammount} /></div>
+        <div className="d-flex  width-exact-40 justify-content-end"> <F f="$" a={one.ammount} /></div>
       </div>);
 
 

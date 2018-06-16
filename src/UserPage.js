@@ -203,6 +203,10 @@ class UserPage extends React.Component {
             return <Redirect to='/' />
         }
 
+        const {
+            global
+        } = this.props;
+
         const styleBasket = {
             maxWidth: '50px',
             maxHeight: '50px'
@@ -229,6 +233,78 @@ class UserPage extends React.Component {
             "m-2"
         );
 
+        const neisporuceneNarudzbineTable =
+            (global.user !== "" && global.ordersNotDelivered !== undefined &&
+                (global.ordersNotDelivered[global.user.username] !== undefined)) ?
+                (<table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Proizvod</th>
+                            <th scope="col">Isporučilac</th>
+                            <th scope="col">Kom</th>
+                            <th scope="col">Faza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.keys(global.ordersNotDelivered[global.user.username]).map((key) =>
+
+                            <tr>
+                                <th scope="row"><F f="date" a={global.ordersNotDelivered[global.user.username][key].date} /></th>
+                                <td>{global.ordersNotDelivered[global.user.username][key].productName}</td>
+                                <td>{global.ordersNotDelivered[global.user.username][key].courier}</td>
+                                <td>{global.ordersNotDelivered[global.user.username][key].quantity}</td>
+                                <td>{global.ordersNotDelivered[global.user.username][key].deliveryPhase}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+                ) : (null);
+
+        const narudzbineTable = (global.user !== "" && global.basketHistory !== undefined &&
+            (global.basketHistory[global.user.username] !== undefined)) ?
+            (
+                <table className="table table-sm col-12 O-X O-Y">
+                    <thead className="col-12">
+                        <tr className="col-12">
+                            <th width="20%" scope="col">Datum</th>
+                            <th width="5%" scope="col"></th>
+                            <th width="30%" scope="col">Broj narudžbe</th>
+                            <th width="10%" scope="col"></th>
+                            <th width="30%" scope="col">Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody className="col-12">
+                        {Object.keys(global.basketHistory[global.user.username]).map((key) =>
+                            [
+                                <tr className="col-12">
+                                    <th scope="row"><F f="date" a={global.basketHistory[global.user.username][key].date} /></th>
+                                    <td></td>
+                                    <td>{key}</td>
+                                <td></td>
+                                    <td><F f="$0" a={global.basketHistory[global.user.username][key].ammount} />&ensp;{global.basketHistory[global.user.username][key].currency}</td>
+                                </tr>,
+
+                                (global.basketHistory[global.user.username][key].basketList !== undefined) ? (
+                                    Object.keys(global.basketHistory[global.user.username][key].basketList).map((index) =>
+                                        <tr>
+                                            <td> {global.basketHistory[global.user.username][key].basketList[index].productName}</td>
+                                            <th scope="row" >#</th>
+                                            <td> {global.basketHistory[global.user.username][key].basketList[index].company}</td>
+                                            <td className="col-6"> {global.basketHistory[global.user.username][key].basketList[index].quantity}</td>
+                                            <td> <F f="$0" a={global.basketHistory[global.user.username][key].basketList[index].totalPrice} /></td>
+                                        </tr>
+
+                                    )) : (null)
+                            ]
+                        )}
+                    </tbody>
+                </table>
+            ) : (null);
+
+
+
+
         const forPaying = Number((this.props.global.basket - this.state.payed).toFixed(2));
 
         const notLogged = () => (this.props.global.user === "") ?
@@ -240,8 +316,10 @@ class UserPage extends React.Component {
         </div>) : ("");
 
 
+
+
         return (
-            <div className="Container-Empty h-100 w-100 ">
+            <div className="Container-Empty h-100 w-100 " >
                 <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
@@ -258,8 +336,11 @@ class UserPage extends React.Component {
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
                                     <spam>Adrese</spam><spam></spam>
                                 </div>
-                                <ButtonToggleDiv name="Narudžbine">
-                                    <div>Posao</div>
+                                <ButtonToggleDiv className="O-X O-Y" name="Neisporučene narudžbine">
+                                    {neisporuceneNarudzbineTable}
+                                </ButtonToggleDiv>
+                                <ButtonToggleDiv className="O-X O-Y" name="Narudžbine">
+                                    {narudzbineTable}
                                 </ButtonToggleDiv>
                                 <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
                                 <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>

@@ -7,6 +7,7 @@ import UserPage from './UserPage';
 import App from './App';
 import './App.css';
 import BuyProductPage from './BuyProductPage';
+import AdminCopmanyPage from './AdminCompanyPage';
 
 class Main extends React.Component {
     render() {
@@ -22,6 +23,7 @@ class Main extends React.Component {
                 <Route path='/product' render={(props) => <BuyProductPage {...attributes} isAuthed={true} />} />
                 <Route path='/endofbuying' render={(props) => <EndOfBuying {...attributes} isAuthed={true} />} />
                 <Route path='/user' render={(props) => <UserPage URL="/user" {...attributes} isAuthed={true} />} />
+                <Route path='/company/admin' render={(props) => <AdminCopmanyPage URL="/company/admin" {...attributes} isAuthed={true} />} />
                 <Route path='/' render={(props) => <App URL="/" {...attributes} isAuthed={true} />}/>
             </Switch>
         )

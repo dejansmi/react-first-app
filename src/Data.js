@@ -662,7 +662,7 @@ company["Algebra"] = {
     rate: 3
 }
 company["Vidra"] = {
-    name: "Robna kuća Vidra",
+    name: "Web Robna kuća Vidra",
     description: "Prodavnica za robu široke potrošnje",
     adress: "Bulevar Oslobođenja 25",
     city: "Novi Sad",
@@ -701,6 +701,7 @@ export const userROL = [
     {
         username: "dejansm",
         name: "Dejan Smiljanić",
+        userType: 'client',
         sex: 'M',
         image: man,
         ROLUser: true,
@@ -733,9 +734,11 @@ export const users = [
     {
         username: "boza",
         name: "Božidar Ignjatović",
+        userType: 'client',
         sex: 'M',
         image: BozidarIgnjatovic,
-        adress: 'Narodnih heroja 8',
+        adress: 'Narodnih heroja',
+        houseNumber: '8/23',
         city: 'Niš',
         ROLUser: false,
         vouchers: vouchersLok
@@ -744,6 +747,7 @@ export const users = [
     {
         username: "milica",
         name: "Milica Mitić",
+        userType: 'client',
         sex: 'W',
         image: MilicaMitic,
         adress: 'Nikole Pašića 17',
@@ -754,6 +758,7 @@ export const users = [
     {
         username: "dusan",
         name: "Dušan Cvetković",
+        userType: 'client',
         sex: 'M',
         image: DusanCvetkovic,
         adress: 'Narodnih heroja 81',
@@ -764,6 +769,7 @@ export const users = [
     {
         username: "milos",
         name: "Miloš Milošević",
+        userType: 'client',
         sex: 'M',
         image: MilosMilosevic,
         adress: 'Proleterskih brigada 1',
@@ -774,8 +780,19 @@ export const users = [
     {
         username: "marko",
         name: "Marko Milekoivić",
+        userType: 'client',
         sex: 'M',
         image: MarkoMilenkovic,
+        ROLUser: false
+    }
+    ,
+    {
+        username: "vidra1",
+        name: "Goran Komlen",
+        userType: 'company',
+        company: "Vidra",
+        sex: 'M',
+        image: man,
         ROLUser: false
     }
 ]
@@ -838,6 +855,112 @@ ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsD
 export const nakitList = [
     ProductsData[23], ProductsData[24], ProductsData[25], ProductsData[26], ProductsData[27],
     ProductsData[28]]
+
+export let basketHistory = [];
+
+basketHistory['boza'] = [];
+basketHistory['boza']["8327-3472"] =
+     {
+        orderId: "8327-3472",
+        ammount: 94423.11,
+        currency: "RSD",
+        howPay: 'Card 4080 XXXX XXXX 7821',
+        basketList: [
+            {
+                productId: "oNmrp4ErulItUxAs",
+                productName: "Patike Max Air",
+                productType: "Sportska oprema",
+                price: 11299.99,
+                priceCurrency: "RSD",
+                quantity: 1,
+                totalPrice: 11299.99,
+                options: "Plava",
+                company: "SportVision",
+            },
+            {
+                productId: "4wqoK3gvbiO20kiH",
+                productName: "Minđuše",
+                productType: "Nakit",
+                price: 83123.12,
+                priceCurrency: "RSD",
+                quantity: 1,
+                company: "Pandora",
+                totalPrice: 83123.12
+            }
+        
+        
+        ],
+        date: new Date("2018-04-17T12:00:00Z")
+      };
+basketHistory['boza']["8931-0213"] =
+      {
+         orderId: "8931-0213",
+         ammount: 84056.12,
+         currency: "RSD",
+         howPay: 'Card 4080 XXXX XXXX 7821',
+         basketList: [
+            {
+                productId: "8uH49NReJkM32BiFc",
+                productName: "Ime ruže 2",
+                productType: "Knjige",
+                price: 311.00,
+                priceCurrency: "RSD",
+                quantity: 3,
+                company: "Vidra",
+                totalPrice: 933
+            },
+            {
+                 productId: "4wqoK3gvbiO20kiH",
+                 productName: "Minđuše",
+                 productType: "Nakit",
+                 price: 83123.12,
+                 priceCurrency: "RSD",
+                 quantity: 1,
+                 company: "Pandora",
+                 totalPrice: 83123.12
+            }
+         
+         
+         ],
+         date: new Date("2018-03-25T12:00:00Z")
+       };
+   
+
+export let OrdersNotDelivered = [];
+OrdersNotDelivered['boza'] = [
+    {
+        orderId: "8931-0213",
+        productId: "4wqoK3gvbiO20kiH",
+        productName: "Minđuše",
+        quantity: 1,
+        company: "Pandora",
+        username: 'boza',
+        address: 'Narodnih heroja',
+        houseNumber: '8/23',
+        city: 'Niš',
+        deliveryPhase: 2,
+        courier: "NonStop Kurir",
+        date: new Date("2018-03-25T12:00:00Z")
+    },
+    {
+        orderId: "8931-0213",
+        productId: "8uH49NReJkM32BiFc",
+        productName: "Ime ruže 2",
+        quantity: 3,
+        company: "Vidra",
+        username: 'boza',
+        address: 'Narodnih heroja',
+        houseNumber: '8/23',
+        city: 'Niš',
+        deliveryPhase: 2,
+        courier: "NonStop Kurir",
+        date: new Date("2018-03-25T12:00:00Z")
+
+    }
+
+
+]
+
 
 
 export const loyaltyData = [loyalty[0], loyalty[1]];

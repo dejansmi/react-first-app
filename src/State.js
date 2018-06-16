@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { listOfImg, users, userROL, ProductsData, topOffer, sport, sportMan, sportWoman, company } from './Data.js';
+import {
+  listOfImg, users, userROL, ProductsData, topOffer,
+  sport, sportMan, sportWoman, company, basketHistory,
+  OrdersNotDelivered
+} from './Data.js';
 import Main from './Main';
 import BuyersSay from './BuyersSey';
-import {Today} from './Today';
+import { Today } from './Today';
 
 
 class State extends Component {
@@ -34,11 +38,11 @@ class State extends Component {
       basketOrder: "",
       basketHowPay: "",
       basketList: [],
-      basketNotDeliveried: [],
-      basketHistory: [],
+      basketHistory: basketHistory,
       addInBasketList: this.addInBasketList,
       basketCurrency: 'RSD',
       orderPayed: this.orderPayed,
+      ordersNotDelivered: OrdersNotDelivered,
       changeCurrentAccountBalance: this.changeCurrentAccountBalance,
       search: "",
       searchResult: [ProductsData[2], ProductsData[12], ProductsData[22]],
@@ -77,19 +81,19 @@ class State extends Component {
   }
   */
 
- handleResize = () => this.setState({
-  windowHeight: window.innerHeight,
-  windowWidth: window.innerWidth
-});
+  handleResize = () => this.setState({
+    windowHeight: window.innerHeight,
+    windowWidth: window.innerWidth
+  });
 
-componentDidMount() {
-  this.handleResize();
-  window.addEventListener('resize', this.handleResize)
-}
+  componentDidMount() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize)
+  }
 
-componentWillUnmount() {
-  window.removeEventListener('resize', this.handleResize)
-}
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  }
 
 
   moveImgList = (event) => {
@@ -102,11 +106,11 @@ componentWillUnmount() {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  ShowScreenMessage = (message, type) =>{
-    if (type === "info") {}
-    else if (type === 'error') {}
-    else if (type === 'warning') {}
-    else if (type === 'success') {}
+  ShowScreenMessage = (message, type) => {
+    if (type === "info") { }
+    else if (type === 'error') { }
+    else if (type === 'warning') { }
+    else if (type === 'success') { }
     else type = 'info';
     this.setState({
       screenMessage: message,
@@ -132,13 +136,12 @@ componentWillUnmount() {
     let xS = [];
 
     searchExp = searchText;
-    this.state.productsList.map((productR, ind) => 
-    {
-      if (productR.productName.search(searchExp)>-1 ||
-           productR.productType.search(searchExp)>-1 ||
-           productR.description.search(searchExp)>-1
-          ) {
-        xS = [...xS,productR];
+    this.state.productsList.map((productR, ind) => {
+      if (productR.productName.search(searchExp) > -1 ||
+        productR.productType.search(searchExp) > -1 ||
+        productR.description.search(searchExp) > -1
+      ) {
+        xS = [...xS, productR];
       }
       return true;
     }
@@ -152,28 +155,95 @@ componentWillUnmount() {
 
   }
 
+  productFind = (productId) => {
+    for (let product of this.state.productsList) {
+      if (product.productId === productId) {
+        return product;
+      }
+    }
+    return null;
+  }
+
   orderPayed = () => {
-    var one, basketNotDeliveried;
-    one = {
-      order: this.state.basketOrder,
-      ammount: this.state.basket,
-      howPay: this.state.basketHowPay,
-      basketList: this.state.basketList,
-      date: Today()
+    var bHistory, ordersNotDelivered, today;
+    let lUser, lAddres;
+    var bList, dList;
+
+    ordersNotDelivered = this.state.ordersNotDelivered;
+    if (this.state.user === "") {
+      lUser = this.state.basketOrder;
+    } else {
+      lUser = this.state.user.username;
+    }
+    lAddres = {
+      city: "Nis",
+      houseNumber: "8/23",
+      address: 'Narodnih heroja'
     }
 
-    basketNotDeliveried = this.state.basketNotDeliveried;
-    if (basketNotDeliveried[this.state.user]===undefined) {
-      basketNotDeliveried[this.state.user] = {};
+
+    today = Today();
+    bList = []; //BasketList for History
+    dList = []; //DeliveryList
+    bHistory = this.state.basketHistory;
+    if (this.state.user !== "") {
+      let kop;
+      kop = -1;
+      let product = this.productFind(this.state.product.productId);
+      this.state.basketList.map(one => {
+        kop++;
+        bList[kop] = {
+          productName: one.product.productName,
+          quantity: one.numberOfProduct,
+          company: product.company,
+          totalPrice: one.ammount
+        }
+        dList[kop] = {
+          orderId: this.state.basketOrder,
+          productId: one.product.productId,
+          productName: one.product.productName,
+          quantity: one.numberOfProduct,
+          company: product.company,
+          username: lUser,
+          address: lAddres.address,
+          houseNumber: lAddres.houseNumber,
+          city: lAddres.city,
+          deliveryPhase: 0,
+          courier: product.company,
+          date: today
+        }
+      });
+
+      bHistory[this.state.user.username][this.state.basketOrder] = {
+        orderId: this.state.basketOrder,
+        ammount: this.state.basket,
+        currency: this.state.basketCurrency,
+        basketList: bList,
+        date: new Date()
+      }
     }
-    basketNotDeliveried[this.state.user][this.state.basketOrder] = one;
+
+    if (ordersNotDelivered[lUser] === undefined) {
+      ordersNotDelivered[lUser] = [];
+    }
+
+    ordersNotDelivered[lUser] = [
+      ...dList,
+      ...ordersNotDelivered[lUser]
+    ];
+
+
+
+
+
 
     this.setState(prevState => ({
       basket: 0,
       basketHowPay: "",
       basketList: [],
       basketOrder: "",
-      basketNotDeliveried: basketNotDeliveried
+      ordersNotDelivered: ordersNotDelivered,
+      basketHistory: bHistory
     }));
   }
 
@@ -199,7 +269,7 @@ componentWillUnmount() {
     }
 
     this.setState(prevState => ({
-      bayersSay: [...prevState.bayersSay, one ]
+      bayersSay: [...prevState.bayersSay, one]
     }));
   }
 
@@ -259,18 +329,22 @@ componentWillUnmount() {
         }
       }
       if (userL !== undefined) {
-        if (userL.sex === "W") {
-          tO = ProductsData[24];
-        } else {
-          tO = ProductsData[29];
+        if (userL.userType === 'client') {
+          if (userL.sex === "W") {
+            tO = ProductsData[24];
+          } else {
+            tO = ProductsData[29];
+          }
+        } else if (userL.userType === 'company') {
+
         }
         this.setState({
           user: userL,
           topOffer: tO
         });
-        return true;
+        return userL.userType;
       } else {
-        return false;
+        return "";
       }
 
     } else if (type === "LogOut") {
