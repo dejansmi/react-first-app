@@ -212,6 +212,7 @@ class State extends Component {
           courier: product.company,
           date: today
         }
+        return true;
       });
 
       bHistory[this.state.user.username][this.state.basketOrder] = {
@@ -336,7 +337,7 @@ class State extends Component {
             tO = ProductsData[29];
           }
         } else if (userL.userType === 'company') {
-
+            tO = ProductsData[29];
         }
         this.setState({
           user: userL,

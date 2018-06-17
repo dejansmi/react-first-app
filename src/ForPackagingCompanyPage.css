@@ -1,0 +1,18 @@
+.Search-Div {
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #4F5054;
+    box-sizing: border-box;
+    margin: 2px 4px 2px 4px;
+
+}
+
+.Search-Input {
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.Products-Table {
+    border-bottom: 1px solid #4F5054;
+    margin: 2px 4px 2px 4px;
+}

@@ -1,17 +1,14 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
-import HeaderCompanyPage from './HeaderCompanyPage';
-import './AdminCompanyPage.css';
-import ButtonToggleDiv from './ButtonToggleDiv';
+import classNames from 'classnames';
+import './BoxCardCompany.css';
 
 
 
-class AdminCopmanyPage extends React.Component {
+class BoxCardCompany extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            global: this.props.global,
             username: "",
             password: "",
             exit: false
@@ -24,46 +21,48 @@ class AdminCopmanyPage extends React.Component {
 
     render() {
 
+        const {
+            children,
+            title,
+            textSize,
+            textBody,
+            onClick
+         } = this.props;
 
-        if (this.state.exit === true) {
-            return <Redirect to='/' />
-        }
 
+         // bi
+         const classForBody = classNames(
+            'centerBox',
+            (textSize==='big')?('font-big'):(null),
+            (textSize==='medium')?('font-medium'):(null),
+            (textSize==='normal')?('font-normal'):(null),
+            (textSize==='small')?('font-small'):(null)
+         )
 
+         const textBodyFinal = (children===undefined)?(textBody):(children);
+
+         
         return (
-            <div className="Container-Empty h-100 w-100 ">
-                <HeaderCompanyPage imgList={this.props.global.imgList} {...this.props} value="" />
-                <div className="Header-Size w-100"></div>
-                <div className="d-flex flex-row Container-Empty h-100 w-100 O-X  ">
-                    <div id="LeftCA" className=" d-flex flex-column Container-Empty O-X">
-                    <ButtonToggleDiv secondColor name="Porudzba">
-                        <div className="ml-3">Za pakovanje</div>
-                        <div className="ml-3">Za isporuku</div>
-                    </ButtonToggleDiv>
-                    <ButtonToggleDiv secondColor name="Podesavanja">
-                        <div className="ml-3">Korisnici</div>
-                        <div className="ml-3">Parametri</div>
-                    </ButtonToggleDiv>
-                    </div>
-                    <div id="RightCA" className="d-flex flex-row flex-wrap Container-Empty">
-                        Primer 2
-                        Primer 3
-                    </div>
-
+            <div className="Box-Card-Company d-flex flex-column" onClick={onClick}>
+                <div className="Box-Card-Company-Title ColorGray">
+                    {title}
+                </div>
+                <div className={classForBody}>
+                    {textBodyFinal}
                 </div>
             </div>
         )
     }
 }
 
-AdminCopmanyPage.propTypes = {
+BoxCardCompany.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
-AdminCopmanyPage.defaultProps = {
+BoxCardCompany.defaultProps = {
     tag: 'div'
 };
 
-export default AdminCopmanyPage;
+export default BoxCardCompany;

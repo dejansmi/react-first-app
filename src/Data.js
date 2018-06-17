@@ -45,6 +45,7 @@ import MarkoMilenkovic from './Pictures/Korisnici/Marko-Milenkovic.jpg';
 import DusanCvetkovic from './Pictures/Korisnici/Dusan-Cvetkovic.jpg';
 import MilosMilosevic from './Pictures/Korisnici/Milos-Milosevic.jpg';
 import man from './Pictures/Korisnici/man.jpg';
+import women from './Pictures/Korisnici/women.jpg';
 import maxAir1 from './Pictures/Max Air/max-air-01.jpeg';
 import maxAir2 from './Pictures/Max Air/max-air-02.jpeg';
 import maxAir3 from './Pictures/Max Air/max-air-03.jpeg';
@@ -795,6 +796,16 @@ export const users = [
         image: man,
         ROLUser: false
     }
+    ,
+    {
+        username: "pandora1",
+        name: "Ivana Simić",
+        userType: 'company',
+        company: "Pandora",
+        sex: 'W',
+        image: women,
+        ROLUser: false
+    }
 ]
 
 const loyalty = [{
@@ -955,6 +966,39 @@ OrdersNotDelivered['boza'] = [
         deliveryPhase: 2,
         courier: "NonStop Kurir",
         date: new Date("2018-03-25T12:00:00Z")
+
+    }
+]
+OrdersNotDelivered['milica'] = [
+    {
+
+        orderId: "3421-8753",
+        productId: "IjBrpM34ugt9Ujew",
+        productName: "Pantalone kratke",
+        quantity: 2,
+        options: "Crvena veličina 44",
+        company: "Pandora",
+        username: 'milica',
+        address: 'Nikole Pašića 17',
+        houseNumber: '17',
+        city: 'Niš',
+        deliveryPhase: 0,
+        courier: "Posta Srbije",
+        date: new Date("2018-02-14T12:31:25Z")
+    },
+    {
+        orderId: "8923-8922",
+        productId: "oU7roKlnOkeW3q",
+        productName: "Ženska patika",
+        quantity: 1,
+        company: "SportVision",
+        username: 'milica',
+        address: 'Nikole Pašića ',
+        houseNumber: '17',
+        city: 'Niš',
+        deliveryPhase: 1,
+        courier: "SportVision",
+        date: new Date("2018-06-01T09:50:23Z")
 
     }
 

@@ -207,10 +207,6 @@ class UserPage extends React.Component {
             global
         } = this.props;
 
-        const styleBasket = {
-            maxWidth: '50px',
-            maxHeight: '50px'
-        }
 
         const styleBasketBigFont = {
             fontSize: '2em'
@@ -220,12 +216,6 @@ class UserPage extends React.Component {
             ("Container-Empty h-auto d-flex") : ("d-none");
 
 
-        const rowBasket = this.props.global.basketList.map(one =>
-            <div className="d-flex flex-row justify-content-between">
-                <div className="width-exact-50 ">{one.product.productName}</div>
-                <div className="width-exact-10 text-right">{one.numberOfProduct}</div>
-                <div className="width-exact-40 text-right"> <F f="$" a={one.ammount} /></div>
-            </div>);
 
         const PayingClass = classNames(
             (this.props.global.user !== "") ? ('d-flex') : ('d-none'),

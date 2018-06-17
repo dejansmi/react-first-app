@@ -69,13 +69,14 @@ class BoxProduct extends Component {
         );
 
 
-        const oldPrice = (product.priceOld!==undefined)?(<del><F f="$" a={product.priceOld} /></del>):("");
+        const oldPrice = (product!== undefined && product.priceOld!==undefined)?(<del><F f="$" a={product.priceOld} /></del>):("");
 
         return (
 
 
 
             <div {...attributes} className={classes} onClick={this.handleOnClick}>
+               {(product!==undefined)?(
                 <div  id="pMarg" className="h-100 ColorWhite d-flex flex-column  p-marg">
                     <div className="d-flex h-50 w-100 O-X O-Y">
                         <Img className={imgClasses} src={product.image} />
@@ -87,7 +88,7 @@ class BoxProduct extends Component {
                         <span className="float-left">{oldPrice} {product.priceCurrency}</span> <span className="float-right"><b><F f="$" a={product.price}/></b></span>
                     </div>
                 </div>
-
+               ):(null)}
             </div>
         );
     }

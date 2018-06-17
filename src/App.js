@@ -271,14 +271,14 @@ class App extends Component {
                 (<div className="otherGroupProduct col-12  flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                    <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
                   </div>
                 </div>) : (null)}
               {(this.props.global.user !== "" && this.props.global.user.sex === "W") ?
                 (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" />
+                    <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
                   </div>
                 </div>) : (null)}
               {(this.props.global.user !== "" && this.props.global.user.sex === "M") ?

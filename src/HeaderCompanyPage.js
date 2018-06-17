@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import ListImg from './ListImg';
-import CheckBox from './CheckBox';
 import Login from './Login';
 import { Redirect } from "react-router-dom";
 import classNames from 'classnames';
 import Link from './Link';
-import logoRaif from './Pictures/logoRaif.png';
 import Img from './Img';
 import ScreenMessage from './ScreenMessage';
 
@@ -32,7 +29,6 @@ class HeaderCompanyPage extends Component {
         this.startSearch = this.startSearch.bind(this);
         this.handleUserData = this.handleUserData.bind(this);
         this.iconCompany = this.iconCompany.bind(this);
-        this.nameCompany = this.nameCompany.bind(this);
     }
 
 
@@ -99,13 +95,6 @@ class HeaderCompanyPage extends Component {
             return this.props.global.company[company].logo;
         }
     }
-    nameCompany = () => {
-        let company;
-        if (this.props.global.user !== "" && this.props.global.user.company !== undefined) {
-            company = this.props.global.user.company;
-            return this.props.global.company[company].name;
-        }
-    }
 
 
     render() {
@@ -124,7 +113,7 @@ class HeaderCompanyPage extends Component {
         }
 
 
-        if (this.state.redirectSearch === true) {
+        if (this.state.redirectSearch === true || this.props.global.user==="") {
             if (this.props.URL !== '/') {
                 return (
                     <Redirect to={{
@@ -147,8 +136,7 @@ class HeaderCompanyPage extends Component {
 
 
         const {
-            global,
-            imgList
+            global
         } = this.props;
 
         const userData = classNames(
@@ -164,8 +152,8 @@ class HeaderCompanyPage extends Component {
         return (
             <div className="col-12 fixed-top container-fluid " >
 
-                {(this.props.global.showScreenMessage) ? (
-                    <ScreenMessage global={this.props.global} />
+                {(global.showScreenMessage) ? (
+                    <ScreenMessage global={global} />
                 ) : (null)}
                 <div className="col-12 fixed-top container-fluid" >
 
@@ -174,17 +162,17 @@ class HeaderCompanyPage extends Component {
                             <Img src={this.iconCompany()} />
                         </div>
                         <div className="mr-auto whiteColor" >
-                            <h2><b><i>{this.nameCompany()}</i></b></h2>
+                            <h2><b><i>{this.props.title}</i></b></h2>
                         </div>
                         <div className="d-flex flex-column">
-                            {(this.props.global.user !== "") ?
+                            {(global.user !== "") ?
                                 (<div className={userData}>
                                     <div style={{ minWidth: "60px", maxWidth: "60px", maxHeight: "50px" }} className="O-X O-Y ">
-                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData}/>
+                                        <img className="img-fluid" src={global.user.image} alt="User" onClick={this.handleUserData}/>
                                     </div>
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">
-                                        {this.props.global.user.name}
+                                        {global.user.name}
                                         <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}>Odjava</Link>
                                     </div>
                                 </div>) : (
