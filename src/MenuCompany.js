@@ -18,7 +18,6 @@ class MenuCompany extends React.Component {
 
     handleOnClickMenu = (e, url) => {
         this.to = url;
-        console.log ("PROC "+ this.to)
         this.setState({
             to: url,
             exit: true
@@ -28,25 +27,42 @@ class MenuCompany extends React.Component {
 
     render() {
 
-        
+        const {
+            global
+        } = this.props;
 
-        if (this.state.exit === true) {
-            console.log ("MENU "+this.to)
+        if (global.user === "") {
+            this.to = "/"
+        }
+
+        if (global.user === "" || this.state.exit === true) {
             return <Redirect to={this.to} />
         }
 
 
+
+        const company = global.user.company;
+
+
         return (
             <React.Fragment>
-                <ButtonToggleDiv secondColor name="Porudzba">
-                    <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}>Za pakovanje</div>
-                    <div className="ml-3">Za isporuku</div>
-                </ButtonToggleDiv>
+                {(global.company[company].delivery) ? (
+                    <ButtonToggleDiv secondColor name="Porudžba">
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}>Za pakovanje</div>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordelivery')}>Za isporuku</div>
+                    </ButtonToggleDiv>
+                ) : (null)}
+                {(global.company[company].courier) ? (
+                    <ButtonToggleDiv secondColor name="Distribucija">
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}>Za isporuku</div>
+                    </ButtonToggleDiv>
+                ) : (null)}
+
                 <ButtonToggleDiv secondColor name="Podesavanja">
                     <div className="ml-3">Korisnici</div>
                     <div className="ml-3">Parametri</div>
                 </ButtonToggleDiv>
-                <Button secondColor  onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}>Izlaz</Button>
+                <Button secondColor onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}>Izlaz</Button>
             </React.Fragment>
         )
     }

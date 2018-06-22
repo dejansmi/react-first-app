@@ -54,7 +54,9 @@ class State extends Component {
       showScreenMessage: false,
       ShowScreenMessage: this.ShowScreenMessage,
       screenMessage: "",
-      screenMessageType: 'info'
+      screenMessageType: 'info',
+      getRandomInt: this.getRandomInt,
+      changeDeliveryPhase: this.changeDeliveryPhase
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
@@ -64,6 +66,8 @@ class State extends Component {
     this.setSearchButton = this.setSearchButton.bind(this);
     this.addComment = this.addComment.bind(this);
     this.ShowScreenMessage = this.ShowScreenMessage.bind(this);
+    this.getRandomInt = this.getRandomInt.bind(this);
+    this.changeDeliveryPhase = this.changeDeliveryPhase.bind(this);
 
   }
 
@@ -163,6 +167,26 @@ class State extends Component {
     }
     return null;
   }
+
+  changeDeliveryPhase = (user, key, stateBefore, stateAfter, packageId, courier) => {
+    if (this.state.ordersNotDelivered === undefined) {
+      return;
+    }
+    if (this.state.ordersNotDelivered[user][key].deliveryPhase === stateBefore) {
+      let deliveryPhase = this.state.ordersNotDelivered;
+      deliveryPhase[user][key].deliveryPhase = stateAfter;
+      if (packageId !== undefined) {
+        deliveryPhase[user][key].packageId = packageId;
+      }
+      if (courier !== undefined) {
+        deliveryPhase[user][key].courier = courier;
+      }
+      this.setState({
+        ordersNotDelivered: deliveryPhase
+      });
+    }
+  }
+
 
   orderPayed = () => {
     var bHistory, ordersNotDelivered, today;
@@ -337,7 +361,7 @@ class State extends Component {
             tO = ProductsData[29];
           }
         } else if (userL.userType === 'company') {
-            tO = ProductsData[29];
+          tO = ProductsData[29];
         }
         this.setState({
           user: userL,

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ping from './logo.png';
 import HeaderPage from './HeaderPage';
-import Link from './Link';
 import Button from './Button';
 import Input from './Input';
 import CheckBox from './CheckBox';
@@ -429,7 +428,6 @@ class BuyProductPage extends Component {
                         </div>
 
                     </div>
-                    <Link className="Container-Empty" small to="/">Home</Link>
                     <ImgBigest className={imgBigest} hideOnClick={this.hideOnClick} show={this.state.showImgBigest} src={this.state.srcBigest} />
                 </div >
             </div>

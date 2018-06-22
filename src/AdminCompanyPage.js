@@ -47,6 +47,10 @@ class AdminCompanyPage extends React.Component {
             return <Redirect to={this.to} />
         }
 
+        const {
+            global
+        } = this.props;
+
 
         return (
             <div className="Container-Empty h-100 w-100 ">
@@ -54,7 +58,7 @@ class AdminCompanyPage extends React.Component {
                 <div className="Header-Size w-100"></div>
                 <div className="d-flex flex-row Container-Empty h-100 w-100 O-X border border-primary ">
                     <div id="LeftCA" className=" d-flex flex-column Container-Empty O-X">
-                        <MenuCompany exitForm="/"/>
+                        <MenuCompany global={global} exitForm="/"/>
                     </div>
                     <div id="RightCA" className="d-flex flex-row flex-wrap Container-Empty">
                         <BoxCardCompany textSize="big" title="Za pakovanje" 

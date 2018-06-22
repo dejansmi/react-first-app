@@ -9,7 +9,7 @@ import Button from './Button';
 import Select from './Select';
 import ButtonOKCancel from './ButtonOKCancel';
 
-class ForPackagingCompanyPage extends React.Component {
+class ForDeliveryCompanyPage extends React.Component {
     constructor(props) {
         super(props);
         this.to = "/";
@@ -18,7 +18,7 @@ class ForPackagingCompanyPage extends React.Component {
             checkBoxRow: [],
             packageId: "",
             checkAll: false,
-            phase: 'A',
+            phase: '0',
             to: "/",
             exit: false
         }
@@ -88,6 +88,14 @@ class ForPackagingCompanyPage extends React.Component {
     }
 
 
+    handlePhase0toA(e) {
+        if (this.courier === "") return;
+        this.setState({
+            phase: 'A'
+        });
+
+    }
+
 
     handlePhaseAtoB(e) {
         let packageId;
@@ -107,7 +115,7 @@ class ForPackagingCompanyPage extends React.Component {
         if (this.courier === "") return true;
         Object.keys(this.state.checkBoxRow).map((key) =>
             (this.state.checkBoxRow[key].checked) ?
-                (this.props.global.changeDeliveryPhase(this.state.checkBoxRow[key].keyUser, key, 0, 1, this.state.packageId, this.courier)) : (null));
+                (this.props.global.changeDeliveryPhase(this.state.checkBoxRow[key].keyUser, key, 1, 2, undefined, undefined)) : (null));
         this.setState({
             phase: 'C'
         });
@@ -148,6 +156,15 @@ class ForPackagingCompanyPage extends React.Component {
 
         return (
             <ProtoFormCompany title={title} className="d-flex flex-column" global={this.props.global}>
+                {(this.state.phase === '0') ?
+                    (
+                        <div className="w-100 d-inline" >
+                            Izaberite za kog distributera želite da pravite nalog za isporuku<br />
+                            Kurir/Distributer <Select className="col-6" label="Izaberite distributera/kurira" options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
+                            <ButtonOKCancel both secondColor center onClickCancel={(e) => this.handleOnClickMenu(e, '/company/admin')} onClickOK={(e) => this.handlePhase0toA(e)} />
+                        </div>
+                    ) : (null)
+                }
                 {(this.state.phase === 'A') ?
                     (<div className="d-flex flex-row Search-Div O-Y">
                         <CheckBox checked={this.state.checkAll} onChange={(e) => this.handleCheckBoxAll(e)} />&ensp;&ensp;&ensp;
@@ -160,10 +177,11 @@ class ForPackagingCompanyPage extends React.Component {
                         {Object.keys(global.ordersNotDelivered).map((keyUser) =>
                             <div className="d-flex flex-column ">
                                 {Object.keys(global.ordersNotDelivered[keyUser]).map((key) =>
-                                    (global.user.company === global.ordersNotDelivered[keyUser][key].company && global.ordersNotDelivered[keyUser][key].deliveryPhase === 0) ? (
-                                        <div className="d-flex flex-row flex-wrap Products-Table align-items-center">
-                                            {this.setCheckBox(global.ordersNotDelivered[keyUser][key].deliveryId, keyUser)}
-                                            <CheckBox checked={checked(global.ordersNotDelivered[keyUser][key].deliveryId)} onChange={(e) => this.handleCheckBox(e, global.ordersNotDelivered[keyUser][key].deliveryId)} />&ensp;&ensp;&ensp;
+                                    (global.user.company === global.ordersNotDelivered[keyUser][key].company && global.ordersNotDelivered[keyUser][key].deliveryPhase === 1
+                                        && global.ordersNotDelivered[keyUser][key].courier === this.courier) ? (
+                                            <div className="d-flex flex-row flex-wrap Products-Table align-items-center">
+                                                {this.setCheckBox(global.ordersNotDelivered[keyUser][key].deliveryId, keyUser)}
+                                                <CheckBox checked={checked(global.ordersNotDelivered[keyUser][key].deliveryId)} onChange={(e) => this.handleCheckBox(e, global.ordersNotDelivered[keyUser][key].deliveryId)} />&ensp;&ensp;&ensp;
                                             <span> Naziv proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productName}</b></span>&ensp;&ensp;&ensp;
                                             <span> Šifra proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productId}</b></span>&ensp;&ensp;&ensp;
                                             <span> Količina: <b>{global.ordersNotDelivered[keyUser][key].quantity}</b></span>&ensp;&ensp;&ensp;
@@ -173,8 +191,7 @@ class ForPackagingCompanyPage extends React.Component {
                                             <span> Adresa: {global.ordersNotDelivered[keyUser][key].address}</span>&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].houseNumber}</span>&ensp;&ensp;&ensp;
                                             <span> Grad: {global.ordersNotDelivered[keyUser][key].city}</span>&ensp;&ensp;&ensp;
-                                            <span> Broj poružbine: {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
-                                            <span> Broj paketa: {global.ordersNotDelivered[keyUser][key].packageId}</span>&ensp;&ensp;&ensp;
+                                            <span> Broj poružbe: {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].company}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].username}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].deliveryPhase}</span>&ensp;&ensp;&ensp;
@@ -187,14 +204,8 @@ class ForPackagingCompanyPage extends React.Component {
                 }
                 {(this.state.phase === 'B') ?
                     (<div className="d-flex flex-column m-3">
-                        <div className="d-flex">
-                            <h3>
-                                Broj pakovanja: {this.state.packageId}
-                            </h3>
-                        </div>
                         <div className="w-100 d-inline" >
-                            Proverite podatke na izveštaju dole, izaberite distributera/kurira koji će distribuirate proizvode i potvrdite na Može.<br />
-                            Kurir/Distributer <Select className="col-6" label="Izaberite distributera/kurira" options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
+                            Proverite podatke na izveštaju dole i potvrdom na Može ćete označiti da je roba sa spiska predata distributeru za isporuku.<br />
                             <ButtonOKCancel both secondColor center onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
                         </div>
                         <table className="table table-sm col-12 O-X O-Y m-3">
@@ -222,15 +233,10 @@ class ForPackagingCompanyPage extends React.Component {
                 {(this.state.phase === 'C') ?
                     (
                         <div className="d-flex flex-column m-3">
-                            <div className="d-flex">
-                                <h3>
-                                    Broj pakovanja: {this.state.packageId}
-                                </h3>
-                            </div>
                             <div className="w-100 d-inline" >
-                                Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Po pakovanju i isporuci distributeru
-                                {this.courier} potrebno je to evidentirati
-                            <ButtonOKCancel continues secondColor center onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
+                                Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Ovim ste označili da je roba predata
+                                distributeru za isporuku kojentu koji je naručio
+                                <ButtonOKCancel continues secondColor center onClickCancel={(e) => this.backtophaseA(e)} onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
                             </div>
 
                         </div>
@@ -241,14 +247,14 @@ class ForPackagingCompanyPage extends React.Component {
     }
 }
 
-ForPackagingCompanyPage.propTypes = {
+ForDeliveryCompanyPage.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
-ForPackagingCompanyPage.defaultProps = {
+ForDeliveryCompanyPage.defaultProps = {
     tag: 'div'
 };
 
-export default ForPackagingCompanyPage;
+export default ForDeliveryCompanyPage;

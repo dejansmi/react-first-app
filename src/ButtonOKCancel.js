@@ -26,6 +26,7 @@ class ButtonOKCancel extends React.Component {
             both,
             cancel,
             OK,
+            secondColor,
             continues,
             className,
             center,
@@ -38,7 +39,8 @@ class ButtonOKCancel extends React.Component {
 
         const classes = classNames(
             className,
-            'btn-OKCancel'
+            'btn-OKCancel',
+            (secondColor)?('secondColor-OKCancel'):(null)
         );
 
         const typeMessage = (OK) ? ("Može") : ((continues)?("Nastavi"):("Odustani"));

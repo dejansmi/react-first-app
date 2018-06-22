@@ -14,3 +14,8 @@
     max-width: 100%;
     min-width: 100%;
 }
+
+.secondColor-OKCancel {
+    background-color: #4F5054;
+    color: white;
+}

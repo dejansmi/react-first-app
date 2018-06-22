@@ -31,7 +31,9 @@ class ProtoFormCompany extends React.Component {
 
         const {
             children,
-            className
+            className,
+            title,
+            global
         } = this.props;
 
         if (this.state.exit === true) {
@@ -41,11 +43,11 @@ class ProtoFormCompany extends React.Component {
 
         return (
             <div className="Container-Empty h-100 w-100 ">
-                <HeaderCompanyPage title="Nalog za pakovanje" imgList={this.props.global.imgList} {...this.props} value="" />
+                <HeaderCompanyPage title={title} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="d-flex flex-row Container-Empty h-100 w-100 O-X  ">
                     <div id="LeftCA" className=" d-flex flex-column Container-Empty O-X">
-                        <MenuCompany exitForm="/company/admin" />
+                        <MenuCompany global={global} exitForm="/company/admin" />
                     </div>
                     <div id="RightCA" className={className}>
                         {children}

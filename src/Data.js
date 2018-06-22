@@ -3,6 +3,8 @@ import garbagePicture from './Pictures/garbage.png';
 import bookPicture from './Pictures/book.png';
 import animalsSignPicture from './Pictures/animals-sign.jpg';
 import carYellowPicture from './Pictures/car-yellow.jpg';
+import posta from './Pictures/posta.jpg';
+import courier from './Pictures/courier.jpg';
 import nakit1 from './Pictures/nakit1.jpg';
 import nakit2 from './Pictures/nakit2.png';
 import nakit3 from './Pictures/nakit3.jpg';
@@ -85,6 +87,8 @@ import rose02 from './Pictures/Rose/rose-02.jpg';
 import rose03 from './Pictures/Rose/rose-03.jpeg';
 import rose04 from './Pictures/Rose/rose-04.jpeg';
 import rose05 from './Pictures/Rose/rose-05.jpeg';
+
+export const courierLogo = courier;
 
 export const ProductsData = [
     {
@@ -546,7 +550,7 @@ export const ProductsData = [
     }
     ,
     {
-        productId: "IjBrpM34ugt9Ujew",
+        productId: "OlprPoj2wQtnBsew",
         productName: "Punjač za mobilni u automobilu",
         productType: "Kola",
         image: carCharger01,
@@ -652,7 +656,11 @@ company["SolutionService"] = {
     adress: "M. Milankovica 19",
     city: "Beograd",
     logo: solutionServiceLogo,
-    rate: 4
+    rate: 4,
+    delivery: true,
+    courier: true,
+    merchant: false,
+    producer: false
 }
 company["Algebra"] = {
     name: "Algebra d.o.o",
@@ -660,7 +668,11 @@ company["Algebra"] = {
     adress: "Svetog Save 19",
     city: "Beograd",
     logo: algebraLogo,
-    rate: 3
+    rate: 3,
+    delivery: false,
+    courier: false,
+    merchant: false,
+    producer: true
 }
 company["Vidra"] = {
     name: "Web Robna kuća Vidra",
@@ -668,7 +680,15 @@ company["Vidra"] = {
     adress: "Bulevar Oslobođenja 25",
     city: "Novi Sad",
     logo: vidraLogo,
-    rate: 4
+    rate: 4,
+    delivery: true,
+    courier: false,
+    merchant: true,
+    producer: false,
+    couriers: [
+        "NonStop Kurir",
+        "Pošta Srbije"
+    ]
 }
 company["Pandora"] = {
     name: "Pandora d.o.o",
@@ -676,7 +696,14 @@ company["Pandora"] = {
     adress: "Bulevar Oslobođenja 11",
     city: "Beograd",
     logo: pandoraLogo,
-    rate: 2
+    rate: 2,
+    delivery: false,
+    courier: false,
+    merchant: true,
+    producer: true,
+    couriers: [
+        "Pošta Srbije"
+    ]
 }
 company["SportVision"] = {
     name: "SportVision",
@@ -684,7 +711,11 @@ company["SportVision"] = {
     adress: "Bulevar Oslobođenja 25",
     city: "Novi Sad",
     logo: sportVisionLogo,
-    rate: 4
+    rate: 4,
+    delivery: true,
+    courier: false,
+    merchant: true,
+    producer: false
 }
 company["TNTBroj1"] = {
     name: "Cvećara TNT Broj 1",
@@ -692,7 +723,38 @@ company["TNTBroj1"] = {
     adress: "Kod Grunfa",
     city: "Lipolist",
     logo: tntLogo,
-    rate: 5
+    rate: 5,
+    delivery: true,
+    courier: false,
+    merchant: true,
+    producer: false,
+    couriers: [
+        "NonStop Kurir"
+    ]
+}
+company["NonStop Kurir"] = {
+    name: "NonStop Kurir",
+    description: "Kurirska služba",
+    adress: "Kralja Petra 8",
+    city: "Novi Beograd",
+    logo: tntLogo,
+    rate: 5,
+    delivery: false,
+    courier: true,
+    merchant: false,
+    producer: false
+}
+company["Pošta Srbije"] = {
+    name: "Pošta Srbije",
+    description: "Javno preduzeće Pošta Srbije",
+    adress: "Takoveska 2",
+    city: "Beograd",
+    logo: posta,
+    rate: 5,
+    delivery: false,
+    courier: true,
+    merchant: false,
+    producer: false
 }
 
 
@@ -806,7 +868,20 @@ export const users = [
         image: women,
         ROLUser: false
     }
+    ,
+    {
+        username: "kurir1",
+        name: "Zoran Poter",
+        userType: 'company',
+        company: "NonStop Kurir",
+        sex: 'M',
+        image: man,
+        ROLUser: false
+    }
 ]
+
+
+
 
 const loyalty = [{
     loyaltyId: "du4KnE5Xkqe8nD2M",
@@ -871,7 +946,7 @@ export let basketHistory = [];
 
 basketHistory['boza'] = [];
 basketHistory['boza']["8327-3472"] =
-     {
+    {
         orderId: "8327-3472",
         ammount: 94423.11,
         currency: "RSD",
@@ -898,18 +973,18 @@ basketHistory['boza']["8327-3472"] =
                 company: "Pandora",
                 totalPrice: 83123.12
             }
-        
-        
+
+
         ],
         date: new Date("2018-04-17T12:00:00Z")
-      };
+    };
 basketHistory['boza']["8931-0213"] =
-      {
-         orderId: "8931-0213",
-         ammount: 84056.12,
-         currency: "RSD",
-         howPay: 'Card 4080 XXXX XXXX 7821',
-         basketList: [
+    {
+        orderId: "8931-0213",
+        ammount: 84056.12,
+        currency: "RSD",
+        howPay: 'Card 4080 XXXX XXXX 7821',
+        basketList: [
             {
                 productId: "8uH49NReJkM32BiFc",
                 productName: "Ime ruže 2",
@@ -921,89 +996,129 @@ basketHistory['boza']["8931-0213"] =
                 totalPrice: 933
             },
             {
-                 productId: "4wqoK3gvbiO20kiH",
-                 productName: "Minđuše",
-                 productType: "Nakit",
-                 price: 83123.12,
-                 priceCurrency: "RSD",
-                 quantity: 1,
-                 company: "Pandora",
-                 totalPrice: 83123.12
+                productId: "4wqoK3gvbiO20kiH",
+                productName: "Minđuše",
+                productType: "Nakit",
+                price: 83123.12,
+                priceCurrency: "RSD",
+                quantity: 1,
+                company: "Pandora",
+                totalPrice: 83123.12
             }
-         
-         
-         ],
-         date: new Date("2018-03-25T12:00:00Z")
-       };
-   
+
+
+        ],
+        date: new Date("2018-03-25T12:00:00Z")
+    };
+
 
 export let OrdersNotDelivered = [];
-OrdersNotDelivered['boza'] = [
-    {
-        orderId: "8931-0213",
-        productId: "4wqoK3gvbiO20kiH",
-        productName: "Minđuše",
-        quantity: 1,
-        company: "Pandora",
-        username: 'boza',
-        address: 'Narodnih heroja',
-        houseNumber: '8/23',
-        city: 'Niš',
-        deliveryPhase: 2,
-        courier: "NonStop Kurir",
-        date: new Date("2018-03-25T12:00:00Z")
-    },
-    {
-        orderId: "8931-0213",
-        productId: "8uH49NReJkM32BiFc",
-        productName: "Ime ruže 2",
-        quantity: 3,
-        company: "Vidra",
-        username: 'boza',
-        address: 'Narodnih heroja',
-        houseNumber: '8/23',
-        city: 'Niš',
-        deliveryPhase: 2,
-        courier: "NonStop Kurir",
-        date: new Date("2018-03-25T12:00:00Z")
+OrdersNotDelivered['boza'] = [];
+OrdersNotDelivered['boza']['HjbC-KmL3'] = {
+    deliveryId: 'HjbC-KmL3',
+    orderId: "8931-0213",
+    productId: "4wqoK3gvbiO20kiH",
+    productName: "Minđuše",
+    quantity: 1,
+    company: "Pandora",
+    username: 'boza',
+    name: 'Božidar Ignjatović',
+    address: 'Narodnih heroja',
+    houseNumber: '8/23',
+    city: 'Niš',
+    deliveryPhase: 2,
+    packageId: "",
+    courier: "NonStop Kurir",
+    date: new Date("2018-03-25T12:00:00Z")
+};
+OrdersNotDelivered['boza']['9iOr-JfF4'] = {
+    deliveryId: '9iOr-JfF4',
+    orderId: "8931-0213",
+    productId: "8uH49NReJkM32BiFc",
+    productName: "Ime ruže 2",
+    quantity: 3,
+    company: "Vidra",
+    username: 'boza',
+    name: 'Božidar Ignjatović',
+    address: 'Narodnih heroja',
+    houseNumber: '8/23',
+    city: 'Niš',
+    deliveryPhase: 1,
+    courier: "NonStop Kurir",
+    packageId: "",
+    date: new Date("2018-03-25T12:00:00Z")
 
-    }
-]
-OrdersNotDelivered['milica'] = [
-    {
-
-        orderId: "3421-8753",
-        productId: "IjBrpM34ugt9Ujew",
-        productName: "Pantalone kratke",
-        quantity: 2,
-        options: "Crvena veličina 44",
-        company: "Pandora",
-        username: 'milica',
-        address: 'Nikole Pašića 17',
-        houseNumber: '17',
-        city: 'Niš',
-        deliveryPhase: 0,
-        courier: "Posta Srbije",
-        date: new Date("2018-02-14T12:31:25Z")
-    },
-    {
-        orderId: "8923-8922",
-        productId: "oU7roKlnOkeW3q",
-        productName: "Ženska patika",
-        quantity: 1,
-        company: "SportVision",
-        username: 'milica',
-        address: 'Nikole Pašića ',
-        houseNumber: '17',
-        city: 'Niš',
-        deliveryPhase: 1,
-        courier: "SportVision",
-        date: new Date("2018-06-01T09:50:23Z")
-
-    }
-
-
-]
+};
+OrdersNotDelivered['milica'] = [];
+OrdersNotDelivered['milica']['OpgF-43Rj'] = {
+    deliveryId: 'OpgF-43Rj',
+    orderId: "3421-8753",
+    productId: "IjBrpM34ugt9Ujew",
+    productName: "Pantalone kratke",
+    quantity: 2,
+    options: "Crvena veličina 44",
+    company: "Vidra",
+    username: 'milica',
+    name: 'Božidar Ignjatović',
+    address: 'Nikole Pašića 17',
+    houseNumber: '17',
+    city: 'Niš',
+    deliveryPhase: 1,
+    packageId: "",
+    courier: "NonStop Kurir",
+    date: new Date("2018-02-14T12:31:25Z")
+};
+OrdersNotDelivered['milica']['Ijes-45Kv'] = {
+    deliveryId: 'Ijes-45Kv',
+    orderId: "8923-8922",
+    productId: "oU7roKlnOkeW3q",
+    productName: "Ženska patika",
+    quantity: 1,
+    company: "SportVision",
+    username: 'milica',
+    name: 'Božidar Ignjatović',
+    address: 'Nikole Pašića ',
+    houseNumber: '17',
+    city: 'Niš',
+    deliveryPhase: 1,
+    packageId: "",
+    courier: "SportVision",
+    date: new Date("2018-06-01T09:50:23Z")
+}
+OrdersNotDelivered['milica']['8gse-kJnM'] = {
+    deliveryId: '8gse-kJnM',
+    orderId: "8923-8922",
+    productId: "r4SrhBckugtW0mNu",
+    productName: "Rukavice biciklističke",
+    company: "Vidra",
+    quantity: 2,
+    username: 'milica',
+    name: 'Božidar Ignjatović',
+    address: 'Nikole Pašića ',
+    houseNumber: '17',
+    city: 'Niš',
+    deliveryPhase: 0,
+    packageId: "",
+    courier: "",
+    date: new Date("2018-06-01T09:50:23Z")
+}
+OrdersNotDelivered['milica']['OkLE-Km8Y'] = {
+    deliveryId: 'OkLE-Km8Y',
+    orderId: "8923-8922",
+    productId: "4wqoK3gvbiO20kiH",
+    productName: "Minđuše",
+    company: "Pandora",
+    quantity: 1,
+    username: 'milica',
+    name: 'Božidar Ignjatović',
+    address: 'Nikole Pašića ',
+    houseNumber: '17',
+    city: 'Niš',
+    deliveryPhase: 0,
+    packageId: "",
+    courier: "",
+    date: new Date("2018-06-01T09:50:23Z")
+}
 
 
 
