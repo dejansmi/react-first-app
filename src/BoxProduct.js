@@ -53,6 +53,7 @@ class BoxProduct extends Component {
         const classes = classNames(
             'O-X',
             'O-Y',
+            'w-100',
             'Container-Empty',
             (size === "big") ? 'font-normal' : '',
             (size === "small") ? 'font-small' : '',

@@ -132,6 +132,25 @@ class State extends Component {
 
   }
 
+  changeAddress = (userName, address, houseNumber, city) => {
+    if (this.state.user!=="") {
+      let lUser = this.state.user;
+      lUser.address = address;
+      lUser.houseNumber = houseNumber;
+      lUser.city = city;
+      this.setState ({
+        user: lUser
+      });
+    }
+    let lUsers = this.state.users;
+    if (lUsers[userName]!==undefined) {
+      lUsers[userName].address = address;
+      lUsers[userName].houseNumber = houseNumber;
+      lUsers[userName].city = city;
+    }
+
+  }
+
 
   startSearch = (searchText) => {
 

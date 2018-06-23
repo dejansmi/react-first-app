@@ -957,7 +957,7 @@ ProductsData[22], ProductsData[4], ProductsData[5]
 ]
 
 export const moreGoodOffers = [ProductsData[2],
-ProductsData[32], ProductsData[29], ProductsData[30], ProductsData[31], ProductsData[4],
+ProductsData[32], ProductsData[31], ProductsData[30], ProductsData[29], ProductsData[4],
 ProductsData[6], ProductsData[1], ProductsData[19], ProductsData[9], ProductsData[10],
 ProductsData[11], ProductsData[12], ProductsData[5], ProductsData[14], ProductsData[15]
 ]

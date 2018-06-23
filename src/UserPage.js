@@ -230,8 +230,6 @@ class UserPage extends React.Component {
             fontSize: '2em'
         }
 
-        let BankingAccountClass = (this.state.showBA) ?
-            ("Container-Empty h-auto d-flex") : ("d-none");
 
 
 
@@ -309,19 +307,6 @@ class UserPage extends React.Component {
                     </tbody>
                 </table>
             ) : (null);
-
-
-
-
-        const forPaying = Number((this.props.global.basket - this.state.payed).toFixed(2));
-
-        const notLogged = () => (this.props.global.user === "") ?
-            (<div className="Container-Empty d-flex m-2 w-100 h-auto">Niste ulogovani na sistem. U tom slučaju možete platiti samo karticom ili virmanom. Takođe
-                na taj način gubite dodatne mogućnosti kao što je Program lojalnosti, ponavljanje kupovine, nagradne
-                igre.
-                Preporučujemo da se ulogujete ukoliko imate nalog na klik Prijava ili ukoliko nemate nalog Preporučujemo
-                da ga otvorite klikom na Novi korisnik.
-        </div>) : ("");
 
 
 

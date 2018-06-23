@@ -11,13 +11,12 @@ class ListLoyalty extends Component {
 
         const {
             list,
-            style,
             size
         } = this.props;
 
 
         const ListLoyalty = list.map((loyaltyN, ind) =>
-            <div style={style} className="h-100 d-flex flex-row O-Y O-X  Container-Empty">
+            <div  className="h-100 d-flex flex-row boxLoyalty O-Y O-X  Container-Empty">
                 <BoxLoyalty loyalty={loyaltyN} size={size} ind={ind}/>
             </div>
 

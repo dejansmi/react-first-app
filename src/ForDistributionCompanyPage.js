@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import './ForDeliveryCompanyPage.css';
 import ProtoFormCompany from './ProtoFormCompany';
 import F from './F';
-import { Button } from '@material-ui/core';
 import ButtonOKCancel from './ButtonOKCancel';
 
 class ForDistributionCompanyPage extends React.Component {
@@ -70,24 +69,6 @@ class ForDistributionCompanyPage extends React.Component {
             title
         } = this.props;
 
-        const company = global.user.company;
-
-        const selectCourier = () => {
-            let lCouriers = [];
-            if (global.company[company].delivery) {
-                lCouriers.push({ value: company, label: global.company[company].name })
-            }
-            Object.keys(global.company[company].couriers).map((key) => {
-                let courierId;
-                courierId = global.company[company].couriers[key];
-                lCouriers.push({ value: courierId, label: global.company[courierId].name })
-            });
-            return lCouriers;
-        };
-
-
-        const checked = (key) => (this.state.checkBoxRow[key] !== undefined) ?
-            (this.state.checkBoxRow[key].checked) : (false);
 
         const productData = (keyUser, key) =>
             <React.Fragment>

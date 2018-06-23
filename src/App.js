@@ -23,12 +23,14 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.mgo = 150;
     this.state = {
       inputValue: 1000,
       value: "",
       listArray: ["A", "B", "C"],
       imageName: "",
       numMoreGoodOffers: 3,
+      numOtherOffers: 3,
       numLoyaltyBox: 0,
       redirect: false,
       redirectTo: ""
@@ -44,6 +46,25 @@ class App extends Component {
     this.updateInputValue = this.updateInputValue.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
+  resize = () => {
+    this.numLoyaltyBox();
+    this.numMoreGoodOffers();
+    this.otherOffers();
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.numLoyaltyBox();
+    this.numMoreGoodOffers();
+    this.otherOffers();
+    window.addEventListener('resize', this.resize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize)
+  }
+
 
   endOfBuying = (e) => {
     if (this.props.global.basket > 0) {
@@ -71,144 +92,57 @@ class App extends Component {
     this.setState({ value: event.target.value });
   }
 
-  styleFunc(lId) {
-    this.x = window.innerWidth;
-    this.y = window.innerHeight;
-
-    this.rw = 320;
-    this.to = 280;
-    this.mgo = 150;
-    this.lb = 300;
-
-
-    if (lId === "topOffers") {
-      return {
-        height: 450
-      }
-    } else if (lId === "nakit" || lId === 'nakitM' || lId === 'sport' || lId === 'sportM' || lId === 'sportW') {
-      var disp;
-      if (this.props.global.user === "") {
-        if (lId === "nakitM") {
-          disp = 'none';
-        } else if (lId === "nakit") {
-          disp = 'd-flex';
-        } else if (lId === "sport") {
-          disp = 'd-flex';
-        } else if (lId === "sportM") {
-          disp = 'none';
-        } else if (lId === "sportW") {
-          disp = 'none';
-        }
-      } else if (this.props.global.user.sex === "W") {
-        if (lId === "nakitM") {
-          disp = 'none';
-        } else if (lId === "nakit") {
-          disp = 'd-flex';
-        } else if (lId === "sport") {
-          disp = 'none';
-        } else if (lId === "sportM") {
-          disp = 'none';
-        } else if (lId === "sportW") {
-          disp = 'd-flex';
-        }
-      } else if (this.props.global.user.sex === "M") {
-        if (lId === "nakitM") {
-          disp = 'd-flex';
-        } else if (lId === "nakit") {
-          disp = 'none';
-        } else if (lId === "sport") {
-          disp = 'none';
-        } else if (lId === "sportM") {
-          disp = 'd-flex';
-        } else if (lId === "sportW") {
-          disp = 'none';
-        }
-      } else {
-        if (lId === "nakitM") {
-          disp = 'none';
-        } else if (lId === "nakit") {
-          disp = 'd-flex';
-        } else if (lId === "sport") {
-          disp = 'd-flex';
-        } else if (lId === "sportM") {
-          disp = 'none';
-        } else if (lId === "sportW") {
-          disp = 'none';
-        }
-      }
-      return {
-        height: 225,
-        minHeight: 225,
-        display: disp
-      }
-    } else if (lId === "topOffersChild") {
-      return {
-        width: this.to,
-        minWidth: this.to
-      }
-    } else if (lId === "rightWindow") {
-      return {
-        width: this.rw,
-        minWidth: this.rw
-      }
-    } else if (lId === "leftWindow") {
-      return {
-        width: this.x - this.rw,
-        minWidth: this.x - this.rw,
-        minHeight: 450
-      }
-    } else if (lId === "middleWindow") {
-      this.w = Math.trunc(0.94 * this.x) - this.rw - this.to;
-      this.m = Math.trunc((this.w / this.mgo));
-      if (this.m !== this.state.numMoreGoodOffers) {
-        this.setState({
-          numMoreGoodOffers: this.m
-        });
-      }
-      //this.state.numMoreGoodOffers = this.m;
-
-      return {
-        width: this.w,
-        minWidth: this.w
-      }
-    } else if (lId === "moreGoodOffers") {
-      return {
-        height: 225,
-        width: this.mgo,
-        minWidth: this.mgo
-      }
-    } else if (lId === "loyaltyBox") {
-      this.l = Math.trunc((this.w / this.lb));
-      this.l = 1;
-      if (this.l !== this.state.numLoyaltyBox) {
-        this.setState({
-          numLoyaltyBox: 1
-        });
-      }
-
-      return {
-        height: "225px",
-        width: this.lb,
-        minWidth: this.lb
-      }
-
+  numMoreGoodOffers() {
+    var element = document.getElementById('App-nMGO');
+    var positionInfo = element.getBoundingClientRect();
+    var width = positionInfo.width;
+    let nMGO = Math.trunc((width / this.mgo));
+    if (this.state.numMoreGoodOffers !== nMGO) {
+      this.setState({
+        numMoreGoodOffers: nMGO
+      });
     }
+  }
 
-    return {
-      height: '100px'
+  otherOffers() {
+    var element = document.getElementById('Left');
+    var positionInfo = element.getBoundingClientRect();
+    var width = positionInfo.width;
+    let oO = Math.trunc((width / this.mgo));
+    if (this.state.numOtherOffers !== oO) {
+      this.setState({
+        numOtherOffers: oO
+      });
+    }
+  }
+
+
+  numLoyaltyBox() {
+    var element = document.getElementById('App-loyalty');
+    var positionInfo = element.getBoundingClientRect();
+    var width = positionInfo.width;
+    let nLB = Math.trunc((width / (2 * this.mgo)));
+    if (this.state.numLoyaltyBox !== nLB) {
+      this.setState({
+        numLoyaltyBox: nLB
+      });
     }
   }
 
 
 
+
   render() {
+
+    const {
+      global
+    } = this.props;
 
 
     if (this.state.redirect === true) {
       return <Redirect to={this.state.redirectTo} />
     }
 
-    console.log("APP RENDER")
 
     const rowBasket = this.props.global.basketList.map(one =>
       <div className="d-flex flex-row justify-content-between">
@@ -238,56 +172,64 @@ class App extends Component {
                     <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
                   </div>
                   <div id="TOLoyalti" className="O-Y O-X Container-Empty">
-                    <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
+                    <div id="App-nMGO" className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
                       <div className="h-10 Container-Empty "><h5><b>Još dobrih ponuda</b></h5></div>
                       <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
-                        <ListProduct list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                        <ListProduct id="App-moreGoodOffers" list={moreGoodOffers.slice(0, this.state.numMoreGoodOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                       </div>
                     </div>
-                    <div className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
+                    <div id='App-loyalty' className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">
                       <div className="h-10 Container-Empty "><h5><b>Lojalnost se isplati</b></h5></div>
                       <div className="h-90 d-flex flex-row justify-content-center O-Y O-X w-100  Container-Empty">
-                        <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} style={this.styleFunc("loyaltyBox")} size="small" global={this.props.global} />
+                        <ListLoyalty list={loyaltyData.slice(0, this.state.numLoyaltyBox)} n={this.state.numLoyaltyBox} size="small" global={this.props.global} />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {(this.props.global.user === ""  || this.props.global.user.sex === "W") ?
+              {(this.props.global.user === "" || this.props.global.user.sex === "W") ?
                 (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty ">
                   <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
                   <div className=" h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                    <ListProduct list={nakitList.slice(0, this.state.numOtherOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                   </div>
                 </div>) : (null)}
               {(this.props.global.user === "") ?
                 (<div className="otherGroupProduct col-12  flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={this.props.global.sport.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                    <ListProduct list={this.props.global.sport.slice(0, this.state.numOtherOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                   </div>
                 </div>) : (null)}
               {(this.props.global.user !== "" && this.props.global.user.sex === "M") ?
                 (<div className="otherGroupProduct col-12  flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={this.props.global.sportMan.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
+                    <ListProduct list={this.props.global.sportMan.slice(0, this.state.numOtherOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                   </div>
                 </div>) : (null)}
               {(this.props.global.user !== "" && this.props.global.user.sex === "W") ?
                 (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Vreme je za sport</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global}/>
+                    <ListProduct list={this.props.global.sportWoman.slice(0, this.state.numOtherOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                   </div>
-                </div>) : (null)}
+                </div>) : (null)
+              }
               {(this.props.global.user !== "" && this.props.global.user.sex === "M") ?
                 (<div className="otherGroupProduct col-12 flex-column  O-Y O-X Container-Empty">
                   <div className="h-10 Container-Empty "><h5><b>Obradujte najmilije i sebe</b></h5></div>
                   <div className="h-90 d-flex flex-row justify-content-center  O-Y O-X w-100  Container-Empty">
-                    <ListProduct list={nakitList.slice(0, this.state.numMoreGoodOffers)} style={this.styleFunc("moreGoodOffers")} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                    <ListProduct list={nakitList.slice(0, this.state.numOtherOffers)} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
                   </div>
-                </div>) : (null)}
+                </div>) : (null)
+              }
+              <div className="d-flex flex-column w-100 O-Y O-X Container-Empty">
+                <h5><b><i>I na kraju sve, od igle do lokomotive</i></b></h5>
+                <div className="h-90 d-flex flex-row flex-wrap justify-content-center  O-Y O-X w-100  Container-Empty">
+                    <ListProduct list={global.productsList} className="h-100 d-flex flex-row O-Y O-X Container-Empty" size="small" global={this.props.global} />
+                  </div>
+              </div>
             </div>) :
             (
               <div id="SearchPage" className="d-flex flex-column  h-100 Container-Empty">
@@ -298,7 +240,7 @@ class App extends Component {
             <div className="w-100">
               <Video />
             </div>
-            <div className="d-flex flex-column col-12 Container-Empty">
+            <div className="d-flex flex-column w-100 Container-Empty ">
               <div id="BasketSaldo" className="Container-Empty d-flex flex-row col-12 justify-content-between align-items-center">
                 <div id="BasketImage" className="Container-Empty  O-X O-Y "><Img className="img-fluid" src={Basket} alt="User" /></div>
                 <h2 className="h-100 align-items-center "><F f="$" a={this.props.global.basket} /></h2>
@@ -307,7 +249,7 @@ class App extends Component {
                 <div>Naziv proizvoda</div><div>Komada</div><div>Iznos</div>
               </div>
               {rowBasket}
-              <Button className="ColorYellow " onClick={(e) => this.endOfBuying(e)}>Kraj kupovine</Button>
+              <Button className="ColorYellow" onClick={(e) => this.endOfBuying(e)}>Kraj kupovine</Button>
             </div>
             <div className="d-flex flex-column mt-5">
               <spam className="ColorYellow text-left w-100">Kupci kažu...</spam>
