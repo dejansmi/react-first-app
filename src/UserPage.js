@@ -3,13 +3,8 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HeaderPage from './HeaderPage';
-import Link from './Link';
 import ping from './logo.png';
-import Button from './Button';
-import OneClickCredit from './OneClickCredit';
 import F from './F';
-import BankingAccountPay from './BankingAccountPay';
-import PayByCard from './PayByCard';
 import TextField from '@material-ui/core/TextField';
 import ButtonToggleDiv from './ButtonToggleDiv';
 
@@ -28,11 +23,17 @@ class UserPage extends React.Component {
             note: true,
             noteContent: "",
             comment: true,
-            commentContent: ""
+            commentContent: "",
+            address: this.props.global.user.address,
+            houseNumber:  this.props.global.user.houseNumber,
+            city:  this.props.global.user.city
         }
         this.oneClickFinallyAccept = this.oneClickFinallyAccept.bind(this);
         this.handleNoteContent = this.handleNoteContent.bind(this);
         this.handleCommentContent = this.handleCommentContent.bind(this);
+        this.handleAddress = this.handleAddress.bind(this);
+        this.handleHouseNumber = this.handleHouseNumber.bind(this);
+        this.handleCity = this.handleCity.bind(this);
     }
 
     exit(e) {
@@ -91,6 +92,23 @@ class UserPage extends React.Component {
     endOfBuying(e) {
         console.log("EoB");
     }
+
+    handleAddress(e) {
+        this.setState ({
+            address: e.target.value
+        });
+    }
+    handleHouseNumber(e) {
+        this.setState ({
+            houseNumber: e.target.value
+        });
+    }
+    handleCity(e) {
+        this.setState ({
+            city: e.target.value
+        });
+    }
+
 
     endOfBuyingNote(e) {
         this.setState({
@@ -179,7 +197,7 @@ class UserPage extends React.Component {
                 minWidth: wP,
                 height: 'auto'
             }
-        } else if (lId === "Adress") {
+        } else if (lId === "Address") {
             if (this.x < 576) {
                 wP = this.x
             } else {
@@ -271,7 +289,7 @@ class UserPage extends React.Component {
                                     <th scope="row"><F f="date" a={global.basketHistory[global.user.username][key].date} /></th>
                                     <td></td>
                                     <td>{key}</td>
-                                <td></td>
+                                    <td></td>
                                     <td><F f="$0" a={global.basketHistory[global.user.username][key].ammount} />&ensp;{global.basketHistory[global.user.username][key].currency}</td>
                                 </tr>,
 
@@ -318,13 +336,18 @@ class UserPage extends React.Component {
                         <div style={{ minWidth: "256px", maxWidth: "256px", maxHeight: "256px" }} className="O-X O-Y ">
                             <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData} />
                         </div>
+                        <div className="m-3 d-flex flex-column">
+                            <h3><b>{global.user.name}</b></h3>
+                            <h6>{global.user.address}&ensp;{global.user.houseNumber}</h6>
+                            <h6>{global.user.city}</h6>
+                        </div>
                     </div>
                     <div>
                         <div className="Container-Empty d-flex flex-row flex-wrap m-3 justify-content-between">
 
-                            <div style={this.styleSize("Adress")} classNames={PayingClass}>
+                            <div style={this.styleSize("Address")} classNames={PayingClass}>
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                                    <spam>Adrese</spam><spam></spam>
+                                    <spam>Kupovine</spam><spam></spam>
                                 </div>
                                 <ButtonToggleDiv className="O-X O-Y" name="Neisporučene narudžbine">
                                     {neisporuceneNarudzbineTable}
@@ -332,52 +355,20 @@ class UserPage extends React.Component {
                                 <ButtonToggleDiv className="O-X O-Y" name="Narudžbine">
                                     {narudzbineTable}
                                 </ButtonToggleDiv>
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>
-                                {(this.state.note) ?
-                                    (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} defaultValue="" label="" />
-                                    ) : (null)}
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
-                                {(this.state.comment) ?
-                                    ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} defaultValue="" label="" />
-                                    ) : (<div>
-                                        Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
-                                        na sistem jer tako mozete ostvariti dodatne beneficije.
-                                </div>
-                                        )) : (null)}
                             </div>
                             <div style={this.styleSize("Paying")} classNames={PayingClass}>
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                                    <spam>Za plaćanje:</spam><spam><F f="$0" a={forPaying} /></spam>
+                                    <spam>Podešavanja</spam>
                                 </div>
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>OneClickCredit</i></b></Button>
-                                <div className={this.state.OneClickCreditClass}>
-                                    {notLogged()}
-                                    <OneClickCredit ammount={this.props.global.basket} global={this.props.global} payingFunc={this.oneClickFinallyAccept} />
-                                </div>
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOLC(e)}><b><i>On-line kredit</i></b></Button>
-                                {(this.state.OnLineCredit) ?
-                                    (<div>{notLogged()}</div>) :
-                                    (null)}
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingBA(e)}><b><i>Sa tekućeg računa u Raiffeisen banci</i></b></Button>
-                                {(this.state.showBA) ?
-                                    (<div className={BankingAccountClass}>
-                                        {notLogged()}
-                                        <BankingAccountPay global={this.props.global} payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} />
-                                    </div>) :
-                                    (null)}
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
-                                {(this.state.PayByCard) ?
-                                    (<div className="d-flex p-2"> <PayByCard payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} /> </div>) :
-                                    (null)}
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
-                                <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
+                                <ButtonToggleDiv className="O-X O-Y" name="Adresa">
+                                    <TextField className="w-100" value={this.state.address} onChange={this.handleAddress} label="Adresa" />
+                                    <TextField className="w-100" value={this.state.houseNumber} onChange={this.handleHouseNumber} label="Kućni broj" />
+                                    <TextField className="w-100" value={this.state.city} onChange={this.handleCity} label="Mesto" />
+                                </ButtonToggleDiv>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <Link className="Container-Empty" small to="/">Home</Link>
             </div>
         )
     }

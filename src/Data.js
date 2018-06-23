@@ -653,7 +653,8 @@ export let company = [];
 company["SolutionService"] = {
     name: "Solution Serice",
     description: "Prodavnica malih električnih uređaja",
-    adress: "M. Milankovica 19",
+    address: "M. Milankovica",
+    houseNumber: "19",
     city: "Beograd",
     logo: solutionServiceLogo,
     rate: 4,
@@ -665,7 +666,8 @@ company["SolutionService"] = {
 company["Algebra"] = {
     name: "Algebra d.o.o",
     description: "Proizvođač nastavnih sredstava i školske opreme",
-    adress: "Svetog Save 19",
+    address: "Svetog Save",
+    houseNumber: "19",
     city: "Beograd",
     logo: algebraLogo,
     rate: 3,
@@ -677,7 +679,8 @@ company["Algebra"] = {
 company["Vidra"] = {
     name: "Web Robna kuća Vidra",
     description: "Prodavnica za robu široke potrošnje",
-    adress: "Bulevar Oslobođenja 25",
+    address: "Bulevar Oslobođenja",
+    houseNumber: "25",
     city: "Novi Sad",
     logo: vidraLogo,
     rate: 4,
@@ -693,7 +696,8 @@ company["Vidra"] = {
 company["Pandora"] = {
     name: "Pandora d.o.o",
     description: "Izrada i prodaja nakita",
-    adress: "Bulevar Oslobođenja 11",
+    address: "Bulevar Oslobođenja",
+    houseNumber: "11",
     city: "Beograd",
     logo: pandoraLogo,
     rate: 2,
@@ -708,7 +712,8 @@ company["Pandora"] = {
 company["SportVision"] = {
     name: "SportVision",
     description: "Prodavnica sportske opreme",
-    adress: "Bulevar Oslobođenja 25",
+    address: "Bulevar Oslobođenja",
+    houseNumber: "25",
     city: "Novi Sad",
     logo: sportVisionLogo,
     rate: 4,
@@ -720,7 +725,8 @@ company["SportVision"] = {
 company["TNTBroj1"] = {
     name: "Cvećara TNT Broj 1",
     description: "Cvećara i menadžment",
-    adress: "Kod Grunfa",
+    address: "Kod Grunfa",
+    houseNumber: "bb",
     city: "Lipolist",
     logo: tntLogo,
     rate: 5,
@@ -735,7 +741,8 @@ company["TNTBroj1"] = {
 company["NonStop Kurir"] = {
     name: "NonStop Kurir",
     description: "Kurirska služba",
-    adress: "Kralja Petra 8",
+    address: "Kralja Petra",
+    houseNumber: "8",
     city: "Novi Beograd",
     logo: tntLogo,
     rate: 5,
@@ -747,7 +754,8 @@ company["NonStop Kurir"] = {
 company["Pošta Srbije"] = {
     name: "Pošta Srbije",
     description: "Javno preduzeće Pošta Srbije",
-    adress: "Takoveska 2",
+    address: "Takoveska",
+    houseNumber: "2",
     city: "Beograd",
     logo: posta,
     rate: 5,
@@ -768,7 +776,8 @@ export const userROL = [
         sex: 'M',
         image: man,
         ROLUser: true,
-        adress: 'Milutina Milankovića 19',
+        address: 'Milutina Milankovića',
+        houseNumber: '19',
         city: 'Beograd',
         overdraft: {
             active: true,
@@ -800,7 +809,7 @@ export const users = [
         userType: 'client',
         sex: 'M',
         image: BozidarIgnjatovic,
-        adress: 'Narodnih heroja',
+        address: 'Narodnih heroja',
         houseNumber: '8/23',
         city: 'Niš',
         ROLUser: false,
@@ -813,7 +822,8 @@ export const users = [
         userType: 'client',
         sex: 'W',
         image: MilicaMitic,
-        adress: 'Nikole Pašića 17',
+        address: 'Nikole Pašića',
+        houseNumber: '17',
         city: 'Niš',
         ROLUser: false
     }
@@ -824,7 +834,8 @@ export const users = [
         userType: 'client',
         sex: 'M',
         image: DusanCvetkovic,
-        adress: 'Narodnih heroja 81',
+        address: 'Narodnih heroja',
+        houseNumber: '81',
         city: 'Niš',
         ROLUser: false
     }
@@ -835,7 +846,8 @@ export const users = [
         userType: 'client',
         sex: 'M',
         image: MilosMilosevic,
-        adress: 'Proleterskih brigada 1',
+        address: 'Proleterskih brigada',
+        houseNumber: '1',
         city: 'Niš',
         ROLUser: false
     }
@@ -845,6 +857,9 @@ export const users = [
         name: "Marko Milekoivić",
         userType: 'client',
         sex: 'M',
+        address: "Ivana Velikog",
+        houseNumber: '9',
+        city: "Niš",
         image: MarkoMilenkovic,
         ROLUser: false
     }
@@ -855,6 +870,9 @@ export const users = [
         userType: 'company',
         company: "Vidra",
         sex: 'M',
+        address: "Bulevar Oslobođenja",
+        houseNumber: "25",
+        city: "Novi Sad",
         image: man,
         ROLUser: false
     }
@@ -865,7 +883,10 @@ export const users = [
         userType: 'company',
         company: "Pandora",
         sex: 'W',
-        image: women,
+        address: "Bulevar Oslobođenja",
+        houseNumber: "11",
+        city: "Beograd",
+            image: women,
         ROLUser: false
     }
     ,
@@ -875,7 +896,10 @@ export const users = [
         userType: 'company',
         company: "NonStop Kurir",
         sex: 'M',
-        image: man,
+        address: "Kralja Petra",
+        houseNumber: "8",
+        city: "Novi Beograd",
+            image: man,
         ROLUser: false
     }
 ]

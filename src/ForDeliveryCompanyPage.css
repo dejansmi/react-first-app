@@ -1,0 +1,19 @@
+#fdcp-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid green;
+    margin: auto;
+}
+
+#fdcp-center {
+    position: absolute;
+    top: 75px;
+    left: 20vw;
+    width: 60vw;
+    margin: auto;
+    border: 5px solid #4F5054;
+    padding: 3px 3px 3px 3px;
+}

@@ -144,7 +144,7 @@ class OneClickCredit extends Component {
                             <h3 className="w-100 text-center">Ugovor o pozajmici</h3>
                             <p>Između:
                                 1. Raiffeisen banke, Beograd, koju zastupa Miloš Milutinović, regionalni menadžer, u daljem tekstu Bankai<br />
-                                2. {global.user.name},{global.user.adress},{global.user.city}, u daljem tekstu Korisnik
+                                2. {global.user.name},{global.user.address},{global.user.city}, u daljem tekstu Korisnik
                             </p>
                             <p><div className="w-100 text-center">Član 1</div><br />
                                 Ugovorne strane su se dogovorile da Banka da pozajmicu Korisniku u iznosu <F f="$0" a={this.state.overdraftAmmount} /> {this.state.basketCurrency} na

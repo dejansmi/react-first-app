@@ -4,10 +4,6 @@ import React from 'react';
 class Select extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            age: '',
-            name: 'hai',
-        }
         this.handleChange = this.handleChange.bind(this);
 
     }

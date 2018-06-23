@@ -341,7 +341,7 @@ class BuyProductPage extends Component {
                     <Img src={global.company[companyRef].logo} />
                 </div>
                 <div>Kompanija:{global.company[companyRef].name}</div>
-                <div>Adresa:{global.company[companyRef].adress}</div>
+                <div>Adresa:{global.company[companyRef].address}</div>
                 <div>Grad:{global.company[companyRef].city}</div>
                 <Rate rate={global.company[companyRef].rate} />
             </div>)

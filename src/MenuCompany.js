@@ -54,7 +54,7 @@ class MenuCompany extends React.Component {
                 ) : (null)}
                 {(global.company[company].courier) ? (
                     <ButtonToggleDiv secondColor name="Distribucija">
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}>Za isporuku</div>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordistribution')}>Za distribuciju</div>
                     </ButtonToggleDiv>
                 ) : (null)}
 

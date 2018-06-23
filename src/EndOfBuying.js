@@ -180,7 +180,7 @@ class EndOfBuying extends React.Component {
                 minWidth: wP,
                 height: 'auto'
             }
-        } else if (lId === "Adress") {
+        } else if (lId === "Address") {
             if (this.x < 576) {
                 wP = this.x
             } else {
@@ -272,7 +272,7 @@ class EndOfBuying extends React.Component {
                             ) : (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
                         {(this.state.comment) ?
-                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} defaultValue="" label="" />
+                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent}  label="" />
                             ) : (<div>
                                 Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
                                 na sistem jer tako mozete ostvariti dodatne beneficije.

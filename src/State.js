@@ -191,18 +191,25 @@ class State extends Component {
   orderPayed = () => {
     var bHistory, ordersNotDelivered, today;
     let lUser, lAddres;
-    var bList, dList;
+    var bList, dList, dId;
 
     ordersNotDelivered = this.state.ordersNotDelivered;
     if (this.state.user === "") {
       lUser = this.state.basketOrder;
+      lAddres = {
+        name: lUser,
+        city: "Nis",
+        houseNumber: "8/23",
+        address: 'Narodnih heroja'
+      }
     } else {
       lUser = this.state.user.username;
-    }
-    lAddres = {
-      city: "Nis",
-      houseNumber: "8/23",
-      address: 'Narodnih heroja'
+      lAddres = {
+        name: this.state.user.name,
+        city: this.state.user.city,
+        houseNumber: this.state.user.houseNumber,
+        address: this.state.user.address
+      }
     }
 
 
@@ -222,7 +229,9 @@ class State extends Component {
           company: product.company,
           totalPrice: one.ammount
         }
-        dList[kop] = {
+        dId = this.getRandomInt(1000) +"-"+ this.getRandomInt(1000);
+        dList = {
+          deliveryId: dId,
           orderId: this.state.basketOrder,
           productId: one.product.productId,
           productName: one.product.productName,
@@ -233,9 +242,17 @@ class State extends Component {
           houseNumber: lAddres.houseNumber,
           city: lAddres.city,
           deliveryPhase: 0,
+          packageId: "",
           courier: product.company,
           date: today
         }
+
+        if (ordersNotDelivered[lUser] === undefined) {
+          ordersNotDelivered[lUser] = [];
+        }    
+        ordersNotDelivered[lUser][dId] = dList;
+    
+
         return true;
       });
 
@@ -247,15 +264,6 @@ class State extends Component {
         date: new Date()
       }
     }
-
-    if (ordersNotDelivered[lUser] === undefined) {
-      ordersNotDelivered[lUser] = [];
-    }
-
-    ordersNotDelivered[lUser] = [
-      ...dList,
-      ...ordersNotDelivered[lUser]
-    ];
 
 
 
