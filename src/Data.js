@@ -1,5 +1,3 @@
-import schoolPicture from './Pictures/school.png';
-import garbagePicture from './Pictures/garbage.png';
 import bookPicture from './Pictures/book.png';
 import animalsSignPicture from './Pictures/animals-sign.jpg';
 import carYellowPicture from './Pictures/car-yellow.jpg';
@@ -87,6 +85,41 @@ import rose02 from './Pictures/Rose/rose-02.jpg';
 import rose03 from './Pictures/Rose/rose-03.jpeg';
 import rose04 from './Pictures/Rose/rose-04.jpeg';
 import rose05 from './Pictures/Rose/rose-05.jpeg';
+import sonyTv1 from './Pictures/Tv/sonyTv1.jpg';
+import sonyTv2 from './Pictures/Tv/sonyTv2.jpg';
+import sonyTv3 from './Pictures/Tv/sonyTv3.jpg';
+import sonyTv4 from './Pictures/Tv/sonyTv4.jpg';
+import sonyTv5 from './Pictures/Tv/sonyTv5.jpg';
+import sonyTv6 from './Pictures/Tv/sonyTv6.jpeg';
+import sonyTv7 from './Pictures/Tv/sonyTv7.jpg';
+import book1 from './Pictures/book1.jpeg';
+import OrloviRanoLete1 from './Pictures/OrloviRanoLete/orloviranolete1.jpeg';
+import OrloviRanoLete2 from './Pictures/OrloviRanoLete/orloviranolete2.jpg';
+import OrloviRanoLete3 from './Pictures/OrloviRanoLete/orloviranolete3.jpg';
+import pens from './Pictures/pens.jpeg'
+import blok51 from './Pictures/Blok5/blok51.jpg';
+import blok52 from './Pictures/Blok5/blok52.jpg';
+import blok53 from './Pictures/Blok5/blok53.jpg';
+import blok41 from './Pictures/Blok5/blok41.jpg';
+import blok42 from './Pictures/Blok5/blok42.jpg';
+import blok43 from './Pictures/Blok5/blok43.jpg';
+import sestar1 from './Pictures/Sestar/sestar1.jpg';
+import sestar2 from './Pictures/Sestar/sestar2.jpg';
+import sestar3 from './Pictures/Sestar/sestar3.jpg';
+import sestar4 from './Pictures/Sestar/sestar4.jpg';
+import imeruze from './Pictures/imeruze.jpeg';
+import imeruze2 from './Pictures/imeruze2.jpeg';
+import imeruze3 from './Pictures/imeruze3.jpeg';
+import bookholder from './Pictures/bookholder.jpg'
+import sevenhorses from './Pictures/sevenhorses.jpg';
+import trashbag from './Pictures/trashbag.jpg';
+import trashbagD from './Pictures/trashbagD.jpg';
+import canbig from './Pictures/canbig.jpg';
+import cansmall from './Pictures/cansmall.jpg';
+import znacke1 from './Pictures/znacke1.jpeg';
+import znacke2 from './Pictures/znacke2.jpg';
+import znacke3 from './Pictures/znacke3.jpeg';
+import keypendant from './Pictures/keypendant.jpg';
 
 export const courierLogo = courier;
 
@@ -110,7 +143,7 @@ export const ProductsData = [
         productId: "1Xo4puReJR532BIkY",
         productName: "Ime ruže",
         productType: "Knjige",
-        image: bookPicture,
+        image: imeruze,
         imageAlt: "Ime ruže",
         description: 'Knjiga sa izuzetnom pričom',
         price: 150.00,
@@ -142,7 +175,7 @@ export const ProductsData = [
         productId: "P3o4wuRmR562B9kL",
         productName: "Kanta za đubre",
         productType: "Kanta ",
-        image: garbagePicture,
+        image: canbig,
         otherImages: [bookPicture, bookPicture, animalsSignPicture, animalsSignPicture, bookPicture, bookPicture],
         imageAlt: "Kanta za đubre a papučicom",
         description: 'Lepa zelena kanta za đubre sa papučicom',
@@ -161,8 +194,7 @@ export const ProductsData = [
         productId: "FkL4pUeeJR53neIkY",
         productName: "Let sokola",
         productType: "Knjige",
-        image: bookPicture,
-        otherImages: [bookPicture, animalsSignPicture, animalsSignPicture, bookPicture, bookPicture, bookPicture],
+        image: book1,
         imageAlt: "Let sokola",
         description: 'Knjiga koja će vas ostaviti bez daha i koju ćete pročitati u komadu.  ',
         price: 150.00,
@@ -174,8 +206,7 @@ export const ProductsData = [
         productId: "qQo2puCHmRXrG64i",
         productName: "Olovke raznobojne",
         productType: "Pribor za pisanje",
-        image: schoolPicture,
-        otherImages: [bookPicture, animalsSignPicture, nakit2, bookPicture, nakit4],
+        image: pens,
         imageAlt: "Olovke",
         description: 'Lepe grafitne olovke sa tankm tragom. Ima ih u 6 boja',
         price: 127.23,
@@ -186,11 +217,11 @@ export const ProductsData = [
     ,
     {
         productId: "wSo9puBeJR5U2B0kV",
-        productName: "Značke kolekcija mačke",
+        productName: "Značke kolekcija Crnogorski gradovi",
         productType: "Značke",
-        image: animalsSignPicture,
+        image: znacke1,
         imageAlt: "Značke",
-        description: 'Značke koje prikazuju mačke u raznim bojama i situacijama',
+        description: 'Stare značke gradova iz Crne gore sa starim nazivima',
         price: 35.99,
         priceCurrency: "RSD",
         company: "Algebra"
@@ -200,7 +231,8 @@ export const ProductsData = [
         productId: "sFo4IuRe9R5Q2BMkB",
         productName: "Orlovi rano lete",
         productType: "Knjige",
-        image: bookPicture,
+        image: OrloviRanoLete1,
+        otherImages: [OrloviRanoLete2, OrloviRanoLete3],
         imageAlt: "Orlovi rano lete",
         description: 'Knjiga za lektiru za 8 razred. Knjiga izaziva veliki smeh kod svih čitalalca',
         price: 211.59,
@@ -213,7 +245,7 @@ export const ProductsData = [
         productId: "gHo487ReBc5/UBoPN",
         productName: "Kese za đubre tip D",
         productType: "Kese za đubre",
-        image: garbagePicture,
+        image: trashbagD,
         imageAlt: "Kese za đubre",
         description: 'Kese za đubre tipa D koje odllično popunjavaju duboke kante',
         price: 281.00,
@@ -225,7 +257,8 @@ export const ProductsData = [
         productId: "UX(BpuRe8433MkIZP",
         productName: "Blok broj 5",
         productType: "Blok za crtanje",
-        image: schoolPicture,
+        image: blok51,
+        otherImages: [blok52, blok53],
         imageAlt: "Blok 5",
         description: 'Blok za crtanje broj 5 sa 8 listova',
         price: 199.00,
@@ -248,10 +281,10 @@ export const ProductsData = [
     ,
     {
         productId: "iVo4pu7EJRcU2BMla",
-        productName: "Sedmi konjanik",
+        productName: "Sedai konjanika",
         productType: "Knjige",
-        image: bookPicture,
-        imageAlt: "7 konjanik",
+        image: sevenhorses,
+        imageAlt: "7 konjanika",
         description: 'Knjiga za one koji vole avanture',
         price: 289.34,
         priceCurrency: "RSD",
@@ -262,7 +295,7 @@ export const ProductsData = [
         productId: "YV34p98eJRMd2uJk9",
         productName: "Mala kanta za kuhinju",
         productType: "Kanta za đubre",
-        image: garbagePicture,
+        image: cansmall,
         imageAlt: "Kuhinjska kanta",
         description: 'Mala kanta za mali kuhinjski otpad. Treba da je ima svaka kuhinja',
         price: 3723.00,
@@ -275,7 +308,7 @@ export const ProductsData = [
         productId: "UbgNMuReJYdf2B98B",
         productName: "Držač stranica magnet",
         productType: "Držač stranica",
-        image: bookPicture,
+        image: bookholder,
         imageAlt: "Držač stranica",
         description: 'Držač stranica u obliku Miki mausa',
         price: 35.98,
@@ -287,7 +320,8 @@ export const ProductsData = [
         productId: "uKobV8ReJ7Y3w34kO",
         productName: "Blok broj 4",
         productType: "Blok za crtanje",
-        image: schoolPicture,
+        image: blok41,
+        otherImages: [blok42, blok43],
         imageAlt: "Blok 4",
         description: 'Blok za crtanje broj 4',
         price: 189.90,
@@ -297,11 +331,11 @@ export const ProductsData = [
     ,
     {
         productId: "4Wo472RebV53uNItt",
-        productName: "Značke u obliku psa",
+        productName: "Olimpijske značke",
         productType: "Značke",
-        image: animalsSignPicture,
-        imageAlt: "Značke psa",
-        description: 'Simpatične značke u obliku psa',
+        image: znacke2,
+        imageAlt: "Olimpijske značke",
+        description: 'Simpatične značke koji simbolizuju olimpijske krugove',
         price: 85.10,
         priceCurrency: "RSD",
         company: "Vidra",
@@ -325,7 +359,7 @@ export const ProductsData = [
         productId: "8uH49NReJkM32BiFc",
         productName: "Ime ruže 2",
         productType: "Knjige",
-        image: bookPicture,
+        image: imeruze2,
         imageAlt: "Ime ruže 2",
         description: 'Nastavak izuzetne priče sa novim zapletima',
         price: 311.00,
@@ -338,7 +372,7 @@ export const ProductsData = [
         productId: "KXuBpuMnJR5UBB84M",
         productName: "Kese za đubre tipa C",
         productType: "Kese za đubre",
-        image: garbagePicture,
+        image: trashbag,
         imageAlt: "Kese tip C",
         description: 'Kese za đubre koje odgovaraju manjim kantama',
         price: 21.09,
@@ -350,7 +384,7 @@ export const ProductsData = [
         productId: "b8cDpuReJ9U3bNI21",
         productName: "Ime ruže 3",
         productType: "Knjige",
-        image: bookPicture,
+        image: imeruze3,
         imageAlt: "Ime ruže 3",
         description: 'Najnoviji nastavak bestcelera koji stavlja bez daha',
         price: 1021.00,
@@ -362,7 +396,8 @@ export const ProductsData = [
         productId: "8UhGpuReJRoKLB328",
         productName: "Šestar",
         productType: "Školski pribor",
-        image: schoolPicture,
+        image: sestar1,
+        otherImages: [sestar2, sestar3, sestar4],
         imageAlt: "Šestar",
         description: 'Klasičan šestar za učenike osnovnih škola',
         price: 112.00,
@@ -375,7 +410,7 @@ export const ProductsData = [
         productId: "8UhGpuReJRoKLB328",
         productName: "Buba mara značke",
         productType: "Značke",
-        image: animalsSignPicture,
+        image: znacke3,
         imageAlt: "Buba mara",
         description: 'Značke sa prelepim bubamarama',
         price: 42.23,
@@ -387,7 +422,7 @@ export const ProductsData = [
         productId: "8UhGpuReJRoKLB328",
         productName: "Privezak za ključeve",
         productType: "Oprema za kola",
-        image: carYellowPicture,
+        image: keypendant,
         imageAlt: "Privezak za ključeve",
         description: 'Privezak za ključeve za prelepom macom kao osnovnim modelom',
         price: 189.23,
@@ -632,7 +667,7 @@ export const ProductsData = [
     }
     ,
     {
-        productId: "oU7roKlnOkeW3q",
+        productId: "oU7roKlnOkeWq",
         productName: "Ženska patika",
         productType: "Sportska oprema",
         image: patika1,
@@ -642,6 +677,21 @@ export const ProductsData = [
         price: 1009.25,
         priceCurrency: "RSD",
         company: "SportVision",
+        rate: 5
+    }
+    ,
+    {
+        productId: "o8NY9OkmpOms",
+        productName: "Sony TV 32",
+        productType: "TV",
+        image: sonyTv1,
+        otherImages: [sonyTv2, sonyTv3, sonyTv4, sonyTv5, sonyTv6, sonyTv7],
+        imageAlt: "Sony TV 32",
+        description: 'Odlični TV za gledanje fudbala',
+        price: 32509.87,
+        priceCurrency: "RSD",
+        priceOld: 38299.50,
+        company: "Vidra",
         rate: 5
     }
 
@@ -765,7 +815,9 @@ company["Pošta Srbije"] = {
     producer: false
 }
 
-
+export const virman = {
+    currentAccount: "265-0000000001021-48"
+}
 
 
 export const userROL = [
@@ -779,6 +831,8 @@ export const userROL = [
         address: 'Milutina Milankovića',
         houseNumber: '19',
         city: 'Beograd',
+        email: "dejan.smiljanic@asseco-see.rs",
+        mobile: "+381(64)8287679",
         overdraft: {
             active: true,
             ammount: 250000,
@@ -813,7 +867,10 @@ export const users = [
         houseNumber: '8/23',
         city: 'Niš',
         ROLUser: false,
-        vouchers: vouchersLok
+        vouchers: vouchersLok,
+        paymentCard: "4211********4632",
+        email: "bozidar.ignjatovic@badin.rs",
+        mobile: "+38164234932"
     }
     ,
     {
@@ -825,7 +882,9 @@ export const users = [
         address: 'Nikole Pašića',
         houseNumber: '17',
         city: 'Niš',
-        ROLUser: false
+        ROLUser: false,
+        email: "milica.mitic@badin.rs",
+        mobile: "+381(64)234933"
     }
     ,
     {
@@ -837,7 +896,9 @@ export const users = [
         address: 'Narodnih heroja',
         houseNumber: '81',
         city: 'Niš',
-        ROLUser: false
+        ROLUser: false,
+        email: "dusan.cvetkovic.rs",
+        mobile: "+381(64)234934"
     }
     ,
     {
@@ -849,19 +910,23 @@ export const users = [
         address: 'Proleterskih brigada',
         houseNumber: '1',
         city: 'Niš',
-        ROLUser: false
+        ROLUser: false,
+        email: "milos.milosevic.rs",
+        mobile: "+381(64)234935"
     }
     ,
     {
         username: "marko",
-        name: "Marko Milekoivić",
+        name: "Marko Milenković",
         userType: 'client',
         sex: 'M',
         address: "Ivana Velikog",
         houseNumber: '9',
         city: "Niš",
         image: MarkoMilenkovic,
-        ROLUser: false
+        ROLUser: false,
+        email: "marko.milenkovic.rs",
+        mobile: "+381(64)234935"
     }
     ,
     {
@@ -899,7 +964,7 @@ export const users = [
         address: "Kralja Petra",
         houseNumber: "8",
         city: "Novi Beograd",
-            image: man,
+        image: man,
         ROLUser: false
     }
 ]
@@ -938,7 +1003,7 @@ const loyalty = [{
 }
 ]
 
-export const topOffer = ProductsData[29];
+export const topOffer = ProductsData[38];
 
 export const sportMan = [ProductsData[33], ProductsData[34], ProductsData[35]];
 
@@ -1073,6 +1138,24 @@ OrdersNotDelivered['boza']['9iOr-JfF4'] = {
     date: new Date("2018-03-25T12:00:00Z")
 
 };
+OrdersNotDelivered['dusan'] = [];
+OrdersNotDelivered['dusan']['uJk3-9842'] = {
+    deliveryId: 'uJk3-9842',
+    orderId: "4836-9730",
+    productId: "8UjhmNReJRW34BI98",
+    productName: "Cvetni aranžmani",
+    company: "TNTBroj1",
+    quantity: 5,
+    username: 'dusan',
+    name: "Dušan Cvetković",
+    address: 'Narodnih heroja',
+    houseNumber: '81',
+    city: 'Niš',
+    deliveryPhase: 3,
+    courier: "NonStop Kurir",
+    packageId: "9838-7528",
+    date: new Date("2018-06-19T18:31:22Z")
+};
 OrdersNotDelivered['milica'] = [];
 OrdersNotDelivered['milica']['OpgF-43Rj'] = {
     deliveryId: 'OpgF-43Rj',
@@ -1108,7 +1191,7 @@ OrdersNotDelivered['milica']['Ijes-45Kv'] = {
     packageId: "",
     courier: "SportVision",
     date: new Date("2018-06-01T09:50:23Z")
-}
+};
 OrdersNotDelivered['milica']['8gse-kJnM'] = {
     deliveryId: '8gse-kJnM',
     orderId: "8923-8922",
@@ -1125,7 +1208,7 @@ OrdersNotDelivered['milica']['8gse-kJnM'] = {
     packageId: "",
     courier: "",
     date: new Date("2018-06-01T09:50:23Z")
-}
+};
 OrdersNotDelivered['milica']['OkLE-Km8Y'] = {
     deliveryId: 'OkLE-Km8Y',
     orderId: "8923-8922",
@@ -1142,7 +1225,7 @@ OrdersNotDelivered['milica']['OkLE-Km8Y'] = {
     packageId: "",
     courier: "",
     date: new Date("2018-06-01T09:50:23Z")
-}
+};
 
 
 

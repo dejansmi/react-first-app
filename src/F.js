@@ -52,7 +52,7 @@ class F extends React.Component {
             s = day + '.' + month + '.' + date.getFullYear();
         }
 
-        return (<div class="F">{s}</div>
+        return (<div className="F">{s}</div>
         );
     }
 }

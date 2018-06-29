@@ -5,16 +5,16 @@ import Button from './Button';
 const defaultProps = {
     tag: 'button',
     color: 'whiteLink',
+    toggle: false,
     to: ""
 };
-
 
 
 class ButtonToggleDiv extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toggle: false
+            toggle: this.props.toggle
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -32,7 +32,7 @@ class ButtonToggleDiv extends React.Component {
             children,
             name,
             className,
-            secondColor,
+            secondColor
         } = this.props;
 
 

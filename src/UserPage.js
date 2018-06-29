@@ -7,6 +7,8 @@ import ping from './logo.png';
 import F from './F';
 import TextField from '@material-ui/core/TextField';
 import ButtonToggleDiv from './ButtonToggleDiv';
+import './UserPage.css';
+import NotOrderedItems from './NotOrderedItems';
 
 
 class UserPage extends React.Component {
@@ -19,14 +21,20 @@ class UserPage extends React.Component {
             PayByCard: false,
             exit: false,
             payed: 0,
+            orderderToMe: false,
+            changePhase3: false,
+            ordersNotDelivered: "",
+            infoPhases: false,
             showBA: false,
             note: true,
             noteContent: "",
             comment: true,
             commentContent: "",
             address: this.props.global.user.address,
-            houseNumber:  this.props.global.user.houseNumber,
-            city:  this.props.global.user.city
+            houseNumber: this.props.global.user.houseNumber,
+            city: this.props.global.user.city,
+            email: this.props.global.user.email,
+            mobile: this.props.global.user.mobile
         }
         this.oneClickFinallyAccept = this.oneClickFinallyAccept.bind(this);
         this.handleNoteContent = this.handleNoteContent.bind(this);
@@ -34,6 +42,8 @@ class UserPage extends React.Component {
         this.handleAddress = this.handleAddress.bind(this);
         this.handleHouseNumber = this.handleHouseNumber.bind(this);
         this.handleCity = this.handleCity.bind(this);
+        this.handleEmail = this.handleEmail.bind(this);
+        this.handleMobile = this.handleMobile.bind(this);
     }
 
     exit(e) {
@@ -94,18 +104,28 @@ class UserPage extends React.Component {
     }
 
     handleAddress(e) {
-        this.setState ({
+        this.setState({
             address: e.target.value
         });
     }
     handleHouseNumber(e) {
-        this.setState ({
+        this.setState({
             houseNumber: e.target.value
         });
     }
     handleCity(e) {
-        this.setState ({
+        this.setState({
             city: e.target.value
+        });
+    }
+    handleEmail(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
+    handleMobile(e) {
+        this.setState({
+            mobile: e.target.value
         });
     }
 
@@ -166,7 +186,6 @@ class UserPage extends React.Component {
         }
     }
 
-
     styleSize(lId) {
         this.x = window.innerWidth;
         this.y = window.innerHeight;
@@ -188,8 +207,10 @@ class UserPage extends React.Component {
             var wP;
             if (this.x < 576) {
                 wP = this.x
+            } else if (this.x < 801) {
+                wP = 400;
             } else {
-                wP = 500;
+                wP = Math.trunc(this.x / 2 - 50);
             }
             return {
                 width: wP,
@@ -200,8 +221,10 @@ class UserPage extends React.Component {
         } else if (lId === "Address") {
             if (this.x < 576) {
                 wP = this.x
+            } else if (this.x < 801) {
+                wP = 400;
             } else {
-                wP = 500;
+                wP = Math.trunc(this.x / 2 - 50);
             }
             return {
                 width: wP,
@@ -209,6 +232,7 @@ class UserPage extends React.Component {
                 minWidth: wP,
                 height: 'auto'
             }
+
 
         }
 
@@ -239,33 +263,8 @@ class UserPage extends React.Component {
             "m-2"
         );
 
-        const neisporuceneNarudzbineTable =
-            (global.user !== "" && global.ordersNotDelivered !== undefined &&
-                (global.ordersNotDelivered[global.user.username] !== undefined)) ?
-                (<table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Datum</th>
-                            <th scope="col">Proizvod</th>
-                            <th scope="col">Isporučilac</th>
-                            <th scope="col">Kom</th>
-                            <th scope="col">Faza</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {Object.keys(global.ordersNotDelivered[global.user.username]).map((key) =>
 
-                            <tr>
-                                <th scope="row"><F f="date" a={global.ordersNotDelivered[global.user.username][key].date} /></th>
-                                <td>{global.ordersNotDelivered[global.user.username][key].productName}</td>
-                                <td>{global.ordersNotDelivered[global.user.username][key].courier}</td>
-                                <td>{global.ordersNotDelivered[global.user.username][key].quantity}</td>
-                                <td>{global.ordersNotDelivered[global.user.username][key].deliveryPhase}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                ) : (null);
+
 
         const narudzbineTable = (global.user !== "" && global.basketHistory !== undefined &&
             (global.basketHistory[global.user.username] !== undefined)) ?
@@ -326,6 +325,11 @@ class UserPage extends React.Component {
                             <h6>{global.user.address}&ensp;{global.user.houseNumber}</h6>
                             <h6>{global.user.city}</h6>
                         </div>
+                        <div className="m-3 d-flex flex-column">
+                            <h3><b>Kontakti</b></h3>
+                            <h6>{global.user.email}</h6>
+                            <h6>{global.user.mobile}</h6>
+                        </div>
                     </div>
                     <div>
                         <div className="Container-Empty d-flex flex-row flex-wrap m-3 justify-content-between">
@@ -334,9 +338,7 @@ class UserPage extends React.Component {
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
                                     <spam>Kupovine</spam><spam></spam>
                                 </div>
-                                <ButtonToggleDiv className="O-X O-Y" name="Neisporučene narudžbine">
-                                    {neisporuceneNarudzbineTable}
-                                </ButtonToggleDiv>
+                                <NotOrderedItems global={global} />
                                 <ButtonToggleDiv className="O-X O-Y" name="Narudžbine">
                                     {narudzbineTable}
                                 </ButtonToggleDiv>
@@ -345,6 +347,10 @@ class UserPage extends React.Component {
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
                                     <spam>Podešavanja</spam>
                                 </div>
+                                <ButtonToggleDiv className="O-X O-Y" name="Kontakti">
+                                    <TextField className="w-100" value={this.state.email} onChange={this.handleEmail} label="Email" />
+                                    <TextField className="w-100" value={this.state.mobile} onChange={this.handleMobile} label="Broj mobilnog telfona" />
+                                </ButtonToggleDiv>
                                 <ButtonToggleDiv className="O-X O-Y" name="Adresa">
                                     <TextField className="w-100" value={this.state.address} onChange={this.handleAddress} label="Adresa" />
                                     <TextField className="w-100" value={this.state.houseNumber} onChange={this.handleHouseNumber} label="Kućni broj" />

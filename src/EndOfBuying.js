@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HeaderPage from './HeaderPage';
-import Link from './Link';
 import ping from './logo.png';
 import Button from './Button';
 import Basket from './Pictures/basket.jpg';
@@ -12,12 +11,30 @@ import F from './F';
 import BankingAccountPay from './BankingAccountPay';
 import PayByCard from './PayByCard';
 import TextField from '@material-ui/core/TextField';
+import ButtonToggleDiv from './ButtonToggleDiv';
 
 
 
 class EndOfBuying extends React.Component {
     constructor(props) {
         super(props);
+        let billAddress, billHouseNumber, billCity;
+        let delAddress, dellHouseNumber, delCity;
+        if (this.props.global.user === "") {
+            billAddress = "";
+            billHouseNumber = "";
+            billCity = "";
+            delAddress = "";
+            dellHouseNumber = "";
+            delCity = "";
+        } else {
+            billAddress = this.props.global.user.address;
+            billHouseNumber = this.props.global.user.houseNumber;
+            billCity = this.props.global.user.city;
+            delAddress = this.props.global.user.address;
+            dellHouseNumber = this.props.global.user.houseNumber;
+            delCity = this.props.global.user.city;
+        }
         this.state = {
             global: this.props.global,
             OneClickCreditClass: 'd-flex Container-Empty',
@@ -29,11 +46,23 @@ class EndOfBuying extends React.Component {
             note: true,
             noteContent: "",
             comment: true,
-            commentContent: ""
+            commentContent: "",
+            billAddress: billAddress,
+            billHouseNumber: billHouseNumber,
+            billCity: billCity,
+            deliveryAddress: delAddress,
+            deliveryHouseNumber: dellHouseNumber,
+            deliveryCity: delCity
         }
         this.oneClickFinallyAccept = this.oneClickFinallyAccept.bind(this);
         this.handleNoteContent = this.handleNoteContent.bind(this);
         this.handleCommentContent = this.handleCommentContent.bind(this);
+        this.handleBillAddress = this.handleBillAddress.bind(this);
+        this.handleBillHouseNumber = this.handleBillHouseNumber.bind(this);
+        this.handleBillCity = this.handleBillCity.bind(this);
+        this.handleDeliveryAddress = this.handleDeliveryAddress.bind(this);
+        this.handleDeliveryHouseNumber = this.handleDeliveryHouseNumber.bind(this);
+        this.handleDeliveryCity = this.handleDeliveryCity.bind(this);
     }
 
     exit(e) {
@@ -124,12 +153,17 @@ class EndOfBuying extends React.Component {
             this.props.global.changeCurrentAccountBalance(-payedAmmount);
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.",'success');
+            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
         } else if (modeType === "CARD") {
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.",'success');
+            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
+        } else if (modeType === "ONECLICKCREDIT") {
+            this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
+            this.oneClickFinallyAccept(payedAmmount);
+            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
         }
+
     }
 
 
@@ -147,6 +181,39 @@ class EndOfBuying extends React.Component {
             });
 
         }
+    }
+
+
+
+    handleBillAddress(e) {
+        this.setState({
+            billAddress: e.target.value
+        });
+    }
+    handleBillHouseNumber(e) {
+        this.setState({
+            billHouseNumber: e.target.value
+        });
+    }
+    handleBillCity(e) {
+        this.setState({
+            billCity: e.target.value
+        });
+    }
+    handleDeliveryAddress(e) {
+        this.setState({
+            deliveryAddress: e.target.value
+        });
+    }
+    handleDeliveryHouseNumber(e) {
+        this.setState({
+            deliveryHouseNumber: e.target.value
+        });
+    }
+    handleDeliveryCity(e) {
+        this.setState({
+            deliveryCity: e.target.value
+        });
     }
 
 
@@ -230,6 +297,9 @@ class EndOfBuying extends React.Component {
             "m-2"
         );
 
+        const reference = () => <spam>{this.props.global.getRandomInt(100)}-{this.props.global.basketOrder}</spam>;
+
+
         const forPaying = Number((this.props.global.basket - this.state.payed).toFixed(2));
 
         const notLogged = () => (this.props.global.user === "") ?
@@ -260,19 +330,27 @@ class EndOfBuying extends React.Component {
                         {rowBasket}
                         <Button className="ColorYellow " onClick={(e) => this.exit(e)}>Vrati se na kupovinu</Button>
                     </div>
-                    <div style={this.styleSize("Adress")} classNames={PayingClass}>
+                    <div style={this.styleSize("Address")} classNames={PayingClass}>
                         <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
                             <spam>Adrese</spam><spam></spam>
                         </div>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za račun</i></b></Button>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>Adresa za isporuku</i></b></Button>
+                        <ButtonToggleDiv name="Adresa za račun" >
+                            <TextField className="w-100" value={this.state.billAddress} onChange={this.handleBillAddress} label="Adresa" />
+                            <TextField className="w-100" value={this.state.billHouseNumber} onChange={this.handleBillHouseNumber} label="Kućni broj" />
+                            <TextField className="w-100" value={this.state.billCity} onChange={this.handleBillCity} label="Grad" />
+                        </ButtonToggleDiv>
+                        <ButtonToggleDiv name="Adresa za isporuku" >
+                            <TextField className="w-100" value={this.state.deliveryAddress} onChange={this.handleDeliveryAddress} label="Adresa" />
+                            <TextField className="w-100" value={this.state.deliveryHouseNumber} onChange={this.handleDeliveryAddress} label="Kućni broj" />
+                            <TextField className="w-100" value={this.state.deliveryCity} onChange={this.handleDeliveryCity} label="Grad" />
+                        </ButtonToggleDiv>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingNote(e)}><b><i>Napomena</i></b></Button>
                         {(this.state.note) ?
-                            (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} defaultValue="" label="" />
+                            (<TextField multiline className="w-100" value={this.state.noteContent} onChange={this.handleNoteContent} label="" />
                             ) : (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingComment(e)}><b><i>Komentar</i></b></Button>
                         {(this.state.comment) ?
-                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent}  label="" />
+                            ((this.props.global.user !== "") ? (<TextField multiline className="w-100" value={this.state.commentContent} onChange={this.handleCommentContent} label="" />
                             ) : (<div>
                                 Komentare mogu da ostavljaju samo korisnici koji su prijavljeni na sistem. Preporučujemo prijavu
                                 na sistem jer tako mozete ostvariti dodatne beneficije.
@@ -286,7 +364,7 @@ class EndOfBuying extends React.Component {
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOCC(e)}><b><i>OneClickCredit</i></b></Button>
                         <div className={this.state.OneClickCreditClass}>
                             {notLogged()}
-                            <OneClickCredit ammount={this.props.global.basket} global={this.props.global} payingFunc={this.oneClickFinallyAccept} />
+                            <OneClickCredit ammount={this.props.global.basket} global={this.props.global} payingFunc={this.oneClickFinallyAccept2} />
                         </div>
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingOLC(e)}><b><i>On-line kredit</i></b></Button>
                         {(this.state.OnLineCredit) ?
@@ -301,14 +379,22 @@ class EndOfBuying extends React.Component {
                             (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuyingPBC(e)}><b><i>Platne kartice</i></b></Button>
                         {(this.state.PayByCard) ?
-                            (<div className="d-flex p-2"> <PayByCard payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket}/> </div>) :
+                            (<div className="d-flex p-2"> <PayByCard payingFunc={this.oneClickFinallyAccept2} ammountPay={this.props.global.basket} global={this.props.global} /> </div>) :
                             (null)}
                         <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>ePay Wallet</i></b></Button>
-                        <Button className="ColorYellow w-100" onClick={(e) => this.endOfBuying(e)}><b><i>Virmanom</i></b></Button>
+                        <ButtonToggleDiv name="Virman" >
+                            <div className="d-flex flex-column w-100">
+                                <div>
+                                    Broj računa: <b>{this.props.global.virman.currentAccount}</b><br />
+                                    Poziv na broj: 97-<b>{reference()}</b><br />
+                                    Šifra plaćanja: 289<br />
+                                    Svrha: Plaćanje po narudžbenici broj {this.props.global.basketOrder}<br />
+                                    Iznos: <b><F f='$' a={this.props.global.basket} /></b><br />
+                                </div>
+                            </div>
+                        </ButtonToggleDiv>
                     </div>
                 </div>
-
-                <Link className="Container-Empty" small to="/">Home</Link>
             </div>
         )
     }

@@ -14,8 +14,16 @@ const defaultProps = {
 class PayByCard extends React.Component {
     constructor(props) {
         super(props);
+        let cardNumber = "";
+        let defCard = false;
+        if (this.props.global.user !== "" &&
+            this.props.global.user.paymentCard !== undefined) {
+            cardNumber = this.props.global.user.paymentCard;
+            defCard = true;
+        }
         this.state = {
-            cardNumber: "",
+            defualtCard: defCard,
+            cardNumber: cardNumber,
             cardName: "",
             cardMonth: '',
             cardYear: '',
@@ -43,7 +51,7 @@ class PayByCard extends React.Component {
     handleCardMonth(e) {
         if (e.target.value.length <= 2) {
             this.setState({ cardMonth: e.target.value });
-        } 
+        }
     }
     handleCardYear(e) {
         if (e.target.value.length <= 2) {
@@ -56,7 +64,16 @@ class PayByCard extends React.Component {
         }
     }
     handleCancel(e) {
-        this.setState({ showCard: false });        
+        this.setState({ showCard: false });
+    }
+    handlePaying(e, ammountPay, payingFunc) {
+        if (!this.state.defualtCard) {
+            if (this.state.cardNumber.length !== 16) return;
+            if (this.state.cardMonth < 1 || this.state.cardMonth > 12) return;
+            if (this.state.cardYear < 18) return;
+        }
+        if (this.state.cardSecCode < 100 || this.state.cardSecCode > 999) return;
+        payingFunc(ammountPay, "CARD")
     }
 
     render() {
@@ -74,24 +91,30 @@ class PayByCard extends React.Component {
 
         const classes = classNames(
             'w-100',
-            (this.state.showCard)?('d-flex'):('d-none'),
+            (this.state.showCard) ? ('d-flex') : ('d-none'),
             'flex-column'
         );
 
 
 
-
         return (
             <div className={classes}>
-                <TextField value={this.state.cardNumber} onChange={this.handleCardNumber} defaultValue="" label="Broj kartice" />
-                <TextField value={this.state.cardName} onChange={this.handleCardName} defaultValue="" label="Ima ne kartici" />
-                <div className="Container-Empty d-flex flex-row">
-                    <TextField value={this.state.cardMonth} onChange={this.handleCardMonth} defaultValue="" label="Mesec" />
-                    <TextField value={this.state.cardYear} onChange={this.handleCardYear} defaultValue="" label="Godina" />
-                </div>
-                <TextField value={this.state.cardSecCode} onChange={this.handleCardSecCode} defaultValue="" label="Security code" />
+                <TextField value={this.state.cardNumber} onChange={this.handleCardNumber} label="Broj kartice" />
+                {(!this.state.defualtCard) ?
+                    (
+                        <React.Fragment>
+                            <TextField value={this.state.cardName} onChange={this.handleCardName} label="Ima ne kartici" />
+                            <div className="Container-Empty d-flex flex-row">
+                                <TextField value={this.state.cardMonth} onChange={this.handleCardMonth} label="Mesec" />
+                                <TextField value={this.state.cardYear} onChange={this.handleCardYear} label="Godina" />
+                            </div>
+                        </React.Fragment>
+
+                    ) : (null)
+                }
+                <TextField value={this.state.cardSecCode} onChange={this.handleCardSecCode} label="Security code" />
                 <div className="d-flex flex-row">
-                    <ButtonOKCancel center both  onClick={(e) => payingFunc(ammountPay, "CARD")} onClickCancel={() => this.handleCancel()}/>
+                    <ButtonOKCancel center both onClick={(e) => this.handlePaying(e, ammountPay, payingFunc)} onClickCancel={() => this.handleCancel()} />
                 </div>
             </div>
         );

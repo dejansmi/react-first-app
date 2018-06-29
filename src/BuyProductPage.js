@@ -63,12 +63,16 @@ class BuyProductPage extends Component {
 
 
     handleOnClickLeft = (event) => {
+        if (this.state.otherImages === undefined ||
+            this.state.otherImages.length <= 0) return;
         this.setState(prevState => ({
             image: prevState.otherImages.slice(prevState.otherImages.length - 1),
             otherImages: [prevState.image, ...prevState.otherImages.slice(0, prevState.otherImages.length - 1)]
         }));
     }
     handleOnClickRight = (event) => {
+        if (this.state.otherImages === undefined ||
+            this.state.otherImages.length <= 0) return;
         this.setState(prevState => ({
             image: prevState.otherImages.slice(0, 1),
             otherImages: [...prevState.otherImages.slice(1), prevState.image]
@@ -144,9 +148,9 @@ class BuyProductPage extends Component {
         this.y = window.innerHeight;
 
         if (lId === "Pictures" || lId === "Details") {
-            if ((this.x-300) <= 1000) {
-                this.yA = ((this.x-300) * 9 / 16);
-                this.xA = (this.x-300);
+            if ((this.x - 300) <= 1000) {
+                this.yA = ((this.x - 300) * 9 / 16);
+                this.xA = (this.x - 300);
             } else {
                 this.xA = 1000;
                 this.yA = (1000 * 9 / 16);
@@ -342,6 +346,7 @@ class BuyProductPage extends Component {
                 </div>
                 <div>Kompanija:{global.company[companyRef].name}</div>
                 <div>Adresa:{global.company[companyRef].address}</div>
+                <div>Kućni broj:{global.company[companyRef].houseNumber}</div>
                 <div>Grad:{global.company[companyRef].city}</div>
                 <Rate rate={global.company[companyRef].rate} />
             </div>)

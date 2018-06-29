@@ -31,6 +31,7 @@ class HeaderPage extends Component {
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.startSearch = this.startSearch.bind(this);
         this.handleUserData = this.handleUserData.bind(this);
+        this.goHome = this.goHome.bind(this);
     }
 
 
@@ -66,6 +67,9 @@ class HeaderPage extends Component {
 
     handleLoginClick(e) {
         this.props.global.setUser(e, "", "LogOut");
+        this.setState ({
+            redirectSearch: true
+        });
     }
 
     startSearch(e) {
@@ -82,6 +86,13 @@ class HeaderPage extends Component {
                 redirectSearch: true
             });
         }
+    }
+
+    goHome(e) {
+        // exit and go to /
+        this.setState({
+            redirectSearch: true
+        });
     }
 
 
@@ -178,7 +189,7 @@ class HeaderPage extends Component {
                             {(this.props.global.user !== "") ?
                                 (<div className={userData}>
                                     <div style={{ minWidth: "60px", maxWidth: "60px", maxHeight: "50px" }} className="O-X O-Y ">
-                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData}/>
+                                        <img className="img-fluid" src={this.props.global.user.image} alt="User" onClick={this.handleUserData} />
                                     </div>
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">
@@ -193,8 +204,9 @@ class HeaderPage extends Component {
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="row col-12 H80 mt-0 pt-0 d-flex  align-self-center">
                             <div className="d-flex flex-row col-12 justify-content-start">
-                                <div className="col-3 col-sm-3 h-100 pt-0 pb-0 d-flex flex-column">
-                                    <div className="ml-auto">
+                                <i className="material-icons align-self-center" onClick={this.goHome}>home</i>
+                                <div className="ml-auto">
+                                    <div className="col-3 col-sm-3 h-100 pt-0 pb-0 d-flex flex-column">
                                         <CheckBox label="Proizvodi" small checked />
                                         <CheckBox label="Kompanije" small />
                                     </div>

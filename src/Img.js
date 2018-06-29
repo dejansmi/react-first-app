@@ -6,8 +6,9 @@ function Img(props) {
   } = props;
 
 
+
     return (
-      <img  src={src} className="img-fluid" alt="Book" />
+      <img className="m-0 p-0 img-fluid" src={src}  alt="Book" />
      );
   }
 

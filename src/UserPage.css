@@ -1,0 +1,59 @@
+#UserP-cp3 {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 115px);
+}
+
+#UserP-cp3Center {
+    width: 50%;
+    min-width: 300px;
+    height: 85%;
+    padding: 5px 5px 5px 5px;
+    border: 6px solid #4F5054;
+    background-color: white;
+    outline-color: white;
+    outline-style: solid;
+    outline-width: medium;
+    overflow: auto;
+    
+}
+
+.UserP-maxh30 {
+    display: block;
+    max-height: 40px;
+    max-width: 40px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overflow: hidden;
+}
+
+.UserP-table {
+    margin: 4px 4px;
+}
+
+.UserP-infoFull {
+    position: fixed;
+    display: flex;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 115px);
+}
+
+.UserP-info {
+    position: absolute;
+    display: flex;
+    top: calc(100px + 10%);
+    left: 10%;
+    width: 80%;
+    height: auto;
+    padding: 5px 5px 5px 5px;
+    background-color: white;
+    border: 6px solid #4F5054;
+
+}

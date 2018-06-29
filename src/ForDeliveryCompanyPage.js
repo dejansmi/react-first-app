@@ -73,6 +73,7 @@ class ForDeliveryCompanyPage extends React.Component {
         checkBoxRow = this.state.checkBoxRow;
         Object.keys(checkBoxRow).map((key) => {
             checkBoxRow[key].checked = !this.state.checkAll;
+            return true;
         })
         this.setState({
             checkAll: !this.state.checkAll,
@@ -146,6 +147,7 @@ class ForDeliveryCompanyPage extends React.Component {
                 let courierId;
                 courierId = global.company[company].couriers[key];
                 lCouriers.push({ value: courierId, label: global.company[courierId].name })
+                return true;
             });
             return lCouriers;
         };

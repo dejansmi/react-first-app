@@ -79,7 +79,7 @@ class BoxProduct extends Component {
             <div {...attributes} className={classes} onClick={this.handleOnClick}>
                {(product!==undefined)?(
                 <div  id="pMarg" className="h-100 ColorWhite d-flex flex-column  p-marg">
-                    <div className="d-flex h-50 w-100 O-X O-Y">
+                    <div className="d-flex h-50 w-100 O-X O-Y justify-content-center">
                         <Img className={imgClasses} src={product.image} />
                     </div >
                     <div className="h-40 w-100 O-X O-Y">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   listOfImg, users, userROL, ProductsData, topOffer,
   sport, sportMan, sportWoman, company, basketHistory,
-  OrdersNotDelivered
+  OrdersNotDelivered, virman
 } from './Data.js';
 import Main from './Main';
 import BuyersSay from './BuyersSey';
@@ -26,7 +26,7 @@ class State extends Component {
       sportWoman: sportWoman,
       numMoreGoodOffers: 0,
       numLoyaltyBox: 0,
-      user: "",
+      user: "", 
       users: users,
       setUser: this.setUser,
       usersROL: userROL,
@@ -56,7 +56,9 @@ class State extends Component {
       screenMessage: "",
       screenMessageType: 'info',
       getRandomInt: this.getRandomInt,
-      changeDeliveryPhase: this.changeDeliveryPhase
+      changeDeliveryPhase: this.changeDeliveryPhase,
+      checkExistsPhase3: this.checkExistsPhase3,
+      virman: virman
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);
@@ -68,6 +70,7 @@ class State extends Component {
     this.ShowScreenMessage = this.ShowScreenMessage.bind(this);
     this.getRandomInt = this.getRandomInt.bind(this);
     this.changeDeliveryPhase = this.changeDeliveryPhase.bind(this);
+    this.checkExistsPhase3 = this.checkExistsPhase3.bind(this);
 
   }
 
@@ -80,7 +83,7 @@ class State extends Component {
 
   }
 
-  componentWillUnmount() {
+  componentWillUnmount() {4
     clearInterval(this.timerID);
   }
   */
@@ -132,6 +135,21 @@ class State extends Component {
 
   }
 
+  checkExistsPhase3 = (userName) => {
+    let ret = false;
+    console.log (userName)
+    if (this.state.ordersNotDelivered[userName] !== undefined ) {
+      console.log ("U IF")
+      for (let order in this.state.ordersNotDelivered[userName]) {
+        if (this.state.ordersNotDelivered[userName][order].deliveryPhase===3) {
+          ret = true;
+        }
+      }
+    }
+    return ret;
+  }
+
+
   changeAddress = (userName, address, houseNumber, city) => {
     if (this.state.user!=="") {
       let lUser = this.state.user;
@@ -160,9 +178,11 @@ class State extends Component {
 
     searchExp = searchText;
     this.state.productsList.map((productR, ind) => {
-      if (productR.productName.search(searchExp) > -1 ||
-        productR.productType.search(searchExp) > -1 ||
-        productR.description.search(searchExp) > -1
+      if (productR.productName.toUpperCase().search(searchExp.toUpperCase()) > -1 ||
+        productR.productType.toUpperCase().search(searchExp.toUpperCase()) > -1 ||
+        productR.description.toUpperCase().search(searchExp.toUpperCase()) > -1 ||
+        productR.imageAlt.toUpperCase().search(searchExp.toUpperCase()) > -1 ||
+        productR.company.toUpperCase().search(searchExp.toUpperCase()) > -1
       ) {
         xS = [...xS, productR];
       }
@@ -199,6 +219,9 @@ class State extends Component {
       }
       if (courier !== undefined) {
         deliveryPhase[user][key].courier = courier;
+      }
+      if (stateAfter===4) {
+        delete deliveryPhase[user][key];
       }
       this.setState({
         ordersNotDelivered: deliveryPhase
@@ -255,14 +278,15 @@ class State extends Component {
           productId: one.product.productId,
           productName: one.product.productName,
           quantity: one.numberOfProduct,
-          company: product.company,
+          company: one.product.company,
           username: lUser,
+          name: lAddres.name,
           address: lAddres.address,
           houseNumber: lAddres.houseNumber,
           city: lAddres.city,
           deliveryPhase: 0,
           packageId: "",
-          courier: product.company,
+          courier: one.product.company,
           date: today
         }
 
@@ -275,6 +299,9 @@ class State extends Component {
         return true;
       });
 
+      if (bHistory[this.state.user.username]===undefined) {
+        bHistory[this.state.user.username] = [];
+      }
       bHistory[this.state.user.username][this.state.basketOrder] = {
         orderId: this.state.basketOrder,
         ammount: this.state.basket,
@@ -313,6 +340,7 @@ class State extends Component {
 
 
   addComment = (user, city, comment) => {
+    if (comment === undefined || comment ==="") return;
     var one;
     one = {
       user: user,
@@ -351,6 +379,7 @@ class State extends Component {
 
 
   setUser = (event, username, type) => {
+    // seting users
     var userL, tO;
     if (type === "NewUserROL") {
       for (var userOne of this.state.usersROL) {
@@ -363,7 +392,7 @@ class State extends Component {
         if (userL.sex === "W") {
           tO = ProductsData[24];
         } else {
-          tO = ProductsData[29];
+          tO = ProductsData[37];
         }
         this.setState(prevState => ({
           user: userL,
@@ -385,7 +414,7 @@ class State extends Component {
           if (userL.sex === "W") {
             tO = ProductsData[24];
           } else {
-            tO = ProductsData[29];
+            tO = ProductsData[37];
           }
         } else if (userL.userType === 'company') {
           tO = ProductsData[29];

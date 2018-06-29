@@ -117,7 +117,7 @@ class OneClickCredit extends Component {
             (<div className="d-flex flex-column">
                 Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit
                 <TextField type="password" defaultValue="" label="Lozinka" />
-                <Button className="ColorYellow w-100" onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}>Može</Button>
+                <Button className="ColorYellow w-100" onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount, "ONECLICKCREDIT")}>Može</Button>
             </div>) : (null);
 
         return (

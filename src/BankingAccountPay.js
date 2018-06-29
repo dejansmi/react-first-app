@@ -80,7 +80,7 @@ class BankingAccountPay extends Component {
             'Container-Empty',
             (!this.state.haveMoney &&
                 this.state.haveROL)  ? ('d-flex') : ('d-none'),
-            'flex-row',
+            'flex-column',
             small ? 'Small-text' : ''
         );
         const classes3Phase = classNames(
@@ -98,7 +98,7 @@ class BankingAccountPay extends Component {
             </div>) : (null);
 
         const accountBalance = (this.state.showAB)?
-            (<div>Stanje tekućeg računa broj {global.user.currentAccount.id} je {global.user.currentAccount.currency}<F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
+            (<div>Stanje tekućeg računa broj {global.user.currentAccount.id} je {global.user.currentAccount.currency} <F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
 
         return (
             <div className="Container-Empty">
@@ -111,6 +111,8 @@ class BankingAccountPay extends Component {
                 </div>
                 <div className={classes2Phase} >
                     Nemate dovoljno sredstava da bi ste platili sa tekučeg računa. Morate izabrati dugi način za plaćanje.
+                    Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa <spam className="d-inline btn-link" onClick={this.accountBalance}>ovde</spam>
+                    {accountBalance}
                 </div>
                 <div className={classes3Phase} >
                     Nemate ROL racun

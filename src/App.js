@@ -94,6 +94,7 @@ class App extends Component {
 
   numMoreGoodOffers() {
     var element = document.getElementById('App-nMGO');
+    if (element===null) return;
     var positionInfo = element.getBoundingClientRect();
     var width = positionInfo.width;
     let nMGO = Math.trunc((width / this.mgo));
@@ -106,6 +107,7 @@ class App extends Component {
 
   otherOffers() {
     var element = document.getElementById('Left');
+    if (element===null) return;
     var positionInfo = element.getBoundingClientRect();
     var width = positionInfo.width;
     let oO = Math.trunc((width / this.mgo));
@@ -119,6 +121,7 @@ class App extends Component {
 
   numLoyaltyBox() {
     var element = document.getElementById('App-loyalty');
+    if (element===null) return;
     var positionInfo = element.getBoundingClientRect();
     var width = positionInfo.width;
     let nLB = Math.trunc((width / (2 * this.mgo)));
@@ -167,7 +170,7 @@ class App extends Component {
             (<div id="Left" className="  Container-Empty d-flex flex-column flex-wrap O-X justify-content-start " >
               <div id="UpLeft" className="d-flex flex-column pl-0  Container-Empty flex-wrap">
                 <div id="TopOffer" className="O-Y  Container-Empty  flex-wrap">
-                  <div id="TopOffersChild" className="Container-Empty O-Y O-X">
+                  <div id="TopOffersChild" className="Container-Empty O-Y O-X border border-warning">
                     <div className="h-10 Container-Empty "><h3><b>Top ponuda</b></h3></div>
                     <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
                   </div>
