@@ -8,9 +8,11 @@ import App from './App';
 import './App.css';
 import BuyProductPage from './BuyProductPage';
 import AdminCompanyPage from './AdminCompanyPage';
+import AdminSystemPage from './AdminSystemPage';
 import ForPackagingCompanyPage from './ForPackagingCompanyPage';
 import ForDeliveryCompanyPage from './ForDeliveryCompanyPage';
 import ForDistributionCompanyPage from './ForDistributionCompanyPage';
+import BanksListPage from './BanksListPage';
 
 class Main extends React.Component {
     render() {
@@ -30,6 +32,8 @@ class Main extends React.Component {
                 <Route path='/company/forpackaging' render={(props) => <ForPackagingCompanyPage title="Nalog za pakovanje" URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
                 <Route path='/company/fordelivery' render={(props) => <ForDeliveryCompanyPage title="Nalog za isporuku" URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
                 <Route path='/company/fordistribution' render={(props) => <ForDistributionCompanyPage title="Isporuka klijentima" URL="/company/fordistribution" {...attributes} isAuthed={true} />} />
+                <Route path='/system/admin' render={(props) => <AdminSystemPage URL="/system/admin" {...attributes} isAuthed={true} />} />
+                <Route path='/system/bankslist' render={(props) => <BanksListPage URL="/system/banklist" {...attributes} isAuthed={true} />} />
                 <Route path='/' render={(props) => <App URL="/" {...attributes} isAuthed={true} />}/>
             </Switch>
         )

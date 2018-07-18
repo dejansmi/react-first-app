@@ -967,6 +967,18 @@ export const users = [
         image: man,
         ROLUser: false
     }
+    ,
+    {
+        username: "system1",
+        name: "Ivan Zuber",
+        userType: 'system',
+        sex: 'M',
+        address: "Kralja Petra",
+        houseNumber: "2",
+        city: "Niš",
+        image: man,
+        ROLUser: false
+    }
 ]
 
 

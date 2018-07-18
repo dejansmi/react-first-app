@@ -42,6 +42,8 @@ class LoginPage extends React.Component {
         if (userType !== "") {
             if (userType === "company") {
                 userTypeTo = "/company/admin";
+            } else if (userType === "system") {
+                userTypeTo = "/system/admin";
             } else {
                 userTypeTo = "/"
             }
