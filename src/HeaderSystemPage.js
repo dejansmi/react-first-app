@@ -3,9 +3,8 @@ import Login from './Login';
 import { Redirect } from "react-router-dom";
 import classNames from 'classnames';
 import Link from './Link';
-import Img from './Img';
 import ScreenMessage from './ScreenMessage';
-
+import Img from './Img';
 
 
 class HeaderSystemPage extends Component {
@@ -105,7 +104,7 @@ class HeaderSystemPage extends Component {
         }
 
 
-        if (this.state.redirectSearch === true || this.props.global.user==="") {
+        if (this.state.redirectSearch === true || this.props.global.user === "") {
             if (this.props.URL !== '/') {
                 return (
                     <Redirect to={{
@@ -151,6 +150,7 @@ class HeaderSystemPage extends Component {
 
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="h-100 O-X O-Y p-1 mr-auto">
+                            <Img src={global.bankOrganizer.logo} />
                         </div>
                         <div className="mr-auto whiteColor" >
                             <h2><b><i>{this.props.title}</i></b></h2>
@@ -159,7 +159,7 @@ class HeaderSystemPage extends Component {
                             {(global.user !== "") ?
                                 (<div className={userData}>
                                     <div style={{ minWidth: "60px", maxWidth: "60px", maxHeight: "50px" }} className="O-X O-Y ">
-                                        <img className="img-fluid" src={global.user.image} alt="User" onClick={this.handleUserData}/>
+                                        <img className="img-fluid" src={global.user.image} alt="User" onClick={this.handleUserData} />
                                     </div>
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">

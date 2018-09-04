@@ -41,7 +41,6 @@ class MenuSystem extends React.Component {
 
 
 
-        const company = global.user.company;
 
 
         return (

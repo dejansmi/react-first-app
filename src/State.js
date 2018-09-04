@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   listOfImg, users, userROL, ProductsData, topOffer,
   sport, sportMan, sportWoman, company, basketHistory,
-  OrdersNotDelivered, virman
+  OrdersNotDelivered, virman, banks, bankOrganizer, environment
 } from './Data.js';
 import Main from './Main';
 import BuyersSay from './BuyersSey';
@@ -13,6 +13,7 @@ class State extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      env: environment['badin'],
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       inputValue: 1000,
@@ -58,7 +59,9 @@ class State extends Component {
       getRandomInt: this.getRandomInt,
       changeDeliveryPhase: this.changeDeliveryPhase,
       checkExistsPhase3: this.checkExistsPhase3,
-      virman: virman
+      virman: virman,
+      banks: banks,
+      bankOrganizer: bankOrganizer
     };
     this.setUser = this.setUser.bind(this);
     this.addInBasketList = this.addInBasketList.bind(this);

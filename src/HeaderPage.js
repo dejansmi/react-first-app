@@ -5,7 +5,6 @@ import Login from './Login';
 import { Redirect } from "react-router-dom";
 import classNames from 'classnames';
 import Link from './Link';
-import logoRaif from './Pictures/logoRaif.png';
 import Img from './Img';
 import ScreenMessage from './ScreenMessage';
 
@@ -180,7 +179,7 @@ class HeaderPage extends Component {
 
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="h-100 O-X O-Y p-1 mr-auto">
-                            <Img src={logoRaif} />
+                            <Img src={bankLogo} />
                         </div>
                         <div className="mr-auto whiteColor" >
                             <h2><b><i>eDigiComm</i></b></h2>

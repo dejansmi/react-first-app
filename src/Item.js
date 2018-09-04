@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import Button from './Button';
 
 const defaultProps = {
     tag: 'div'
@@ -24,9 +23,7 @@ class Item extends React.Component {
         const {
             children,
             className,
-            tag: Tag,
-            name,
-            ...attributes
+            tag: Tag
         } = this.props;
 
 

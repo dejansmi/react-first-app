@@ -1,3 +1,5 @@
+import logoraiff from './Pictures/Logo/logoraiff.png';
+import badinbanklogo from './Pictures/Logo/badinbanklogo.png';
 import bookPicture from './Pictures/book.png';
 import animalsSignPicture from './Pictures/animals-sign.jpg';
 import carYellowPicture from './Pictures/car-yellow.jpg';
@@ -120,6 +122,8 @@ import znacke1 from './Pictures/znacke1.jpeg';
 import znacke2 from './Pictures/znacke2.jpg';
 import znacke3 from './Pictures/znacke3.jpeg';
 import keypendant from './Pictures/keypendant.jpg';
+import logoRaif from './Pictures/Banks/logoRaif.png';
+import logoBadin from './Pictures/Banks/logoBadin.jpg';
 
 export const courierLogo = courier;
 
@@ -1112,6 +1116,19 @@ basketHistory['boza']["8931-0213"] =
         date: new Date("2018-03-25T12:00:00Z")
     };
 
+export let banks = [];
+
+banks['RBB'] = {
+    name: 'Raiffeisen banka Beograd',
+    logo: logoRaif
+}
+
+banks['Badin'] = {
+    name: 'Badin Test bank',
+    logo: logoBadin
+}
+
+export const bankOrganizer = banks['RBB'];
 
 export let OrdersNotDelivered = [];
 OrdersNotDelivered['boza'] = [];
@@ -1242,5 +1259,15 @@ OrdersNotDelivered['milica']['OkLE-Km8Y'] = {
 
 
 export const loyaltyData = [loyalty[0], loyalty[1]];
+
+export let environment = [];
+environment['raiff'] = {
+    name: "Raiffeisen bank",
+    logo: logoraiff
+}
+environment['badin'] = {
+    name: "Badin bank",
+    logo: badinbanklogo
+}
 
 export default { listOfImg, moreGoodOffers };

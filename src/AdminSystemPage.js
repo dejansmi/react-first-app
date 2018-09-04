@@ -1,11 +1,10 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
-import HeaderCompanyPage from './HeaderCompanyPage';
+import HeaderSystemPage from './HeaderSystemPage';
 import './AdminCompanyPage.css';
 import BoxCardCompany from './BoxCardCompany';
 import MenuSystem from './MenuSystem';
-import badinsoftlogo from './Pictures/badinsoftlogo.png';
 
 
 
@@ -47,7 +46,7 @@ class AdminSystemPage extends React.Component {
 
         return (
             <div className="Container-Empty h-100 w-100 ">
-                <HeaderCompanyPage title={badinsoftlogo} imgList={this.props.global.imgList} {...this.props} value="" />
+                <HeaderSystemPage title="System setup" global={global} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="d-flex flex-row Container-Empty h-100 w-100 O-X border border-primary ">
                     <div id="LeftCA" className=" d-flex flex-column Container-Empty O-X">

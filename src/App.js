@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import ping from './logo.png';
 import Video from './Video.js';
 import BoxProduct from './BoxProduct';
 import ListProduct from './ListProduct';
@@ -161,7 +160,7 @@ class App extends Component {
       <div className="App container-fluid">
 
 
-        <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value={this.state.value} />
+        <HeaderPage bankLogo={global.env.logo} imgList={this.props.global.imgList} {...this.props} value={this.state.value} />
         <div className="Header-Size w-100"></div>
         <div className="Header-Size w-100"></div>
 

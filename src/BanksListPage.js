@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import './ForPackagingCompanyPage.css';
 import ProtoFormSystem from './ProtoFormSystem';
+import Item from './Item';
+import Img from './Img';
 
 class BanksListPage extends React.Component {
     constructor(props) {
@@ -127,34 +129,23 @@ class BanksListPage extends React.Component {
 
 
         const {
-            global,
-            title
+            title,
+            global
         } = this.props;
 
-        const company = global.user.company;
-
-        const selectCourier = () => {
-            let lCouriers = [];
-            if (global.company[company].delivery) {
-                lCouriers.push({ value: company, label: global.company[company].name })
-            }
-            Object.keys(global.company[company].couriers).map((key) => {
-                let courierId;
-                courierId = global.company[company].couriers[key];
-                lCouriers.push({ value: courierId, label: global.company[courierId].name })
-                return true;
-            });
-            return lCouriers;
-        };
 
 
-        const checked = (key) => (this.state.checkBoxRow[key] !== undefined) ?
-            (this.state.checkBoxRow[key].checked) : (false);
+
 
         return (
             <ProtoFormSystem title={title} className="d-flex flex-column" global={this.props.global}>
                 <div className="d-flex flex-column ">
-                Samo tekst za sada
+                {Object.keys(global.banks).map((keyBank) =>
+                    <Item className="Products-Table d-flex flex-row">
+                        <Img src={global.banks[keyBank].logo}></Img>
+                        {global.banks[keyBank].name}
+                    </Item>
+                )}
                 </div>
             </ProtoFormSystem>
         )
