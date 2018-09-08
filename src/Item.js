@@ -23,7 +23,7 @@ class Item extends React.Component {
         const {
             children,
             className,
-            tag: Tag
+            tag: Tag,
         } = this.props;
 
 
@@ -38,7 +38,7 @@ class Item extends React.Component {
 
 
         return (
-            <Tag className={classes}>
+            <Tag className={classes} >
                 {children}
             </Tag>
         );

@@ -79,6 +79,10 @@ class BanksListPage extends React.Component {
 
     }
 
+    setEnv (e, newEnv) {
+        console.log ("A " + newEnv)
+    }
+
     backtophaseA(e) {
         this.setState({
             phase: 'A'
@@ -136,14 +140,17 @@ class BanksListPage extends React.Component {
 
 
 
-
         return (
             <ProtoFormSystem title={title} className="d-flex flex-column" global={this.props.global}>
-                <div className="d-flex flex-column ">
-                {Object.keys(global.banks).map((keyBank) =>
-                    <Item className="Products-Table d-flex flex-row">
-                        <Img src={global.banks[keyBank].logo}></Img>
-                        {global.banks[keyBank].name}
+                <div> Okruženje na sistemu je <Img src={global.env.logo} style={{backgroundColor: global.env.backgroundlogo}}></Img></div>
+                <p> Možete ga promeniti klikom na moguća okruženja na ovoj instalaciji:
+                </p>
+                <div className="d-flex flex-column "> 
+                {Object.keys(global.environmentList).map((keyBank) =>
+                    <Item className="Products-Table d-flex flex-row" >
+                        <Img src={global.environmentList[keyBank].logo} style={{backgroundColor: global.environmentList[keyBank].backgroundlogo}}
+                            onClick={(e) => global.setEnv(e, global.environmentList[keyBank].id)}></Img>
+                        {global.environmentList[keyBank].name}
                     </Item>
                 )}
                 </div>

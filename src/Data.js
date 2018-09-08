@@ -1262,12 +1262,16 @@ export const loyaltyData = [loyalty[0], loyalty[1]];
 
 export let environment = [];
 environment['raiff'] = {
+    id: 'raiff',
     name: "Raiffeisen bank",
-    logo: logoraiff
+    logo: logoraiff,
+    backgroundlogo: 'white'
 }
 environment['badin'] = {
+    id: 'badin',
     name: "Badin bank",
-    logo: badinbanklogo
+    logo: badinbanklogo,
+    backgroundlogo: 'gray'
 }
 
 export default { listOfImg, moreGoodOffers };

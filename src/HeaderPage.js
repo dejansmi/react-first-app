@@ -197,7 +197,8 @@ class HeaderPage extends Component {
                                     </div>
                                 </div>) : (
                                     <Login user={this.state.global.user} {...this.props} />
-                                )}
+                                )
+                            }
                         </div>
                     </div>
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >

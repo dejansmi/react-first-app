@@ -47,7 +47,7 @@ class ProtoFormSystem extends React.Component {
                 <div className="Header-Size w-100"></div>
                 <div className="d-flex flex-row Container-Empty h-100 w-100 O-X  ">
                     <div id="LeftCA" className=" d-flex flex-column Container-Empty O-X">
-                        <MenuSystem global={global} exitForm="/company/admin" />
+                        <MenuSystem global={global} exitForm="/system/admin" />
                     </div>
                     <div id="RightCA" className={className}>
                         {children}

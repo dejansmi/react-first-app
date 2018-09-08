@@ -18,6 +18,10 @@ class MenuCompany extends React.Component {
 
     handleOnClickMenu = (e, url) => {
         this.to = url;
+        if (url==="/") {
+            this.props.global.setUser("", "", "LogOut");
+        }
+
         this.setState({
             to: url,
             exit: true

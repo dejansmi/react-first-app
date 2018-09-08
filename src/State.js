@@ -14,6 +14,7 @@ class State extends Component {
     super(props);
     this.state = {
       env: environment['badin'],
+      environmentList: environment,
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       inputValue: 1000,
@@ -59,6 +60,7 @@ class State extends Component {
       getRandomInt: this.getRandomInt,
       changeDeliveryPhase: this.changeDeliveryPhase,
       checkExistsPhase3: this.checkExistsPhase3,
+      setEnv: this.setEnv,
       virman: virman,
       banks: banks,
       bankOrganizer: bankOrganizer
@@ -208,6 +210,14 @@ class State extends Component {
       }
     }
     return null;
+  }
+
+  setEnv = (e, newEnv) => {
+    console.log ("AAAAAA")
+    this.setState({
+      env: environment[newEnv]
+    });
+
   }
 
   changeDeliveryPhase = (user, key, stateBefore, stateAfter, packageId, courier) => {
@@ -421,6 +431,8 @@ class State extends Component {
           }
         } else if (userL.userType === 'company') {
           tO = ProductsData[29];
+        } else if (userL.userType === 'system') {
+          tO = ProductsData[31];
         }
         this.setState({
           user: userL,

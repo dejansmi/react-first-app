@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import HeaderPage from './HeaderPage';
-import ping from './logo.png';
 import TextField from '@material-ui/core/TextField';
 import ButtonOKCancel from './ButtonOKCancel';
 import NotOrderedItems from './NotOrderedItems';
@@ -91,7 +90,7 @@ class LoginPage extends React.Component {
 
         return (
             <div className="Container-Empty h-100 w-100 ">
-                <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
+                <HeaderPage bankLogo={global.env.logo} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
                 {(global.user === "") ?

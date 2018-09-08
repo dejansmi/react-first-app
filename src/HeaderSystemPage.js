@@ -150,7 +150,7 @@ class HeaderSystemPage extends Component {
 
                     <div className="col-12 d-flex ColorGray align-items-end Header-Size" >
                         <div className="h-100 O-X O-Y p-1 mr-auto">
-                            <Img src={global.bankOrganizer.logo} />
+                            <Img src={global.env.logo} />
                         </div>
                         <div className="mr-auto whiteColor" >
                             <h2><b><i>{this.props.title}</i></b></h2>
