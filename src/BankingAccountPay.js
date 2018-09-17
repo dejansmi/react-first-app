@@ -94,7 +94,7 @@ class BankingAccountPay extends Component {
             (<div className="d-flex flex-column">
                 Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit
                 <TextField type="password" defaultValue="" label="Lozinka" />
-                <ButtonOKCancel OK center onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}/>
+                <ButtonOKCancel OK center global={global} onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}/>
             </div>) : (null);
 
         const accountBalance = (this.state.showAB)?
@@ -107,7 +107,7 @@ class BankingAccountPay extends Component {
                     Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa <spam className="d-inline btn-link" onClick={this.accountBalance}>ovde</spam>
                     {accountBalance}
                     {finallyAcceptOCC}
-                    <ButtonOKCancel center OK onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}/>    
+                    <ButtonOKCancel center OK global={global} onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}/>    
                 </div>
                 <div className={classes2Phase} >
                     Nemate dovoljno sredstava da bi ste platili sa tekučeg računa. Morate izabrati dugi način za plaćanje.

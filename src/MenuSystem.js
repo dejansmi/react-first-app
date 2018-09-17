@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import ButtonToggleDiv from './ButtonToggleDiv';
 import Button from './Button';
+import T from './T';
 
 
 class MenuSystem extends React.Component {
@@ -48,18 +49,15 @@ class MenuSystem extends React.Component {
 
         return (
             <React.Fragment>
-                    <ButtonToggleDiv secondColor name="Host banke">
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/system/bankslist')}>Default banka</div>
-                    </ButtonToggleDiv>
-                    <ButtonToggleDiv secondColor name="Distribucija">
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordistribution')}>Za distribuciju</div>
+                    <ButtonToggleDiv secondColor name={global.t("MenuSystem.hostBank")}>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/system/bankslist')}><T id="MenuSystem.defaultBank" global={global}/></div>
                     </ButtonToggleDiv>
  
-                <ButtonToggleDiv secondColor name="Podesavanja">
-                    <div className="ml-3">Korisnici</div>
-                    <div className="ml-3">Parametri</div>
+                <ButtonToggleDiv secondColor name={global.t("MenuSystem.setup")}>
+                    <div className="ml-3"><T id="MenuSystem.users" global={global}/></div>
+                    <div className="ml-3"><T id="MenuSystem.parameters" global={global}/></div>
                 </ButtonToggleDiv>
-                <Button secondColor onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}>Izlaz</Button>
+                <Button secondColor onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}>{global.t("MenuSystem.exit")}</Button>
             </React.Fragment>
         )
     }

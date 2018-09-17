@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import  Link  from './Link';
+import T from './T';
 
 
 
@@ -20,8 +21,8 @@ class Login extends React.Component {
 
 
     render() {
-        const prijava = (this.props.global.user === "") ? "Prijava" : "Odjava";
-        const noviKorisnik = (this.props.global.user === "") ? <Link className="Container-Empty" small to="/registracija">Novi korisnik</Link> : <Link className="Container-Empty" small to="/userPage">{this.props.user.name}</Link>;
+        const prijava = (this.props.global.user === "") ? <T id="Login.login" global={this.props.global}/> : <T id="Login.logout" global={this.props.global}/>;
+        const noviKorisnik = (this.props.global.user === "") ? <Link className="Container-Empty" small to="/registracija"><T id="Login.newUser" global={this.props.global}/></Link> : <Link className="Container-Empty" small to="/userPage">{this.props.user.name}</Link>;
         const toWhere = (this.props.global.user === "") ? "/login" : "/";
         var loginInOut = (this.props.global.user === "") ?
         <Link className="Container-Empty" small to={toWhere} >{prijava}</Link>:

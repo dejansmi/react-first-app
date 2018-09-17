@@ -14,6 +14,7 @@ import F from './F';
 import Vouchers from './Vouchers';
 import './BuyProductPage.css';
 import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 
 class BuyProductPage extends Component {
@@ -319,7 +320,7 @@ class BuyProductPage extends Component {
         const listOptions = (global.product.options !== undefined) ? (global.product.options.map((option) =>
             <li>{option}</li>
         )) : (null);
-        const listOptionsAll = (global.product.options !== undefined) ? (<ul>{listOptions}</ul>) : ("Nema");
+        const listOptionsAll = (global.product.options !== undefined) ? (<ul>{listOptions}</ul>) : (global.t("BuyProductPage.dontHave"));
 
         const pictureLittle = (styleIn, numImage) => (this.state.otherImages === undefined) ? ("") : (
             (this.state.otherImages[numImage] === undefined) ? ("") :
@@ -344,11 +345,11 @@ class BuyProductPage extends Component {
                 <div style={this.styleSize("Logo")} className="Container-Empty O-X O-Y">
                     <Img src={global.company[companyRef].logo} />
                 </div>
-                <div>Kompanija:{global.company[companyRef].name}</div>
-                <div>Adresa:{global.company[companyRef].address}</div>
-                <div>Kućni broj:{global.company[companyRef].houseNumber}</div>
-                <div>Grad:{global.company[companyRef].city}</div>
-                <Rate rate={global.company[companyRef].rate} />
+                <div><T id="BuyProductPage.companyName" global={global}/>{global.company[companyRef].name}</div>
+                <div><T id="BuyProductPage.companyAddress" global={global}/>{global.company[companyRef].address}</div>
+                <div><T id="BuyProductPage.companyHouseNumber" global={global}/>{global.company[companyRef].houseNumber}</div>
+                <div><T id="BuyProductPage.companyNameCity" global={global}/>{global.company[companyRef].city}</div>
+                <Rate rate={global.company[companyRef].rate} global={global} />
             </div>)
             : ("");
 
@@ -374,16 +375,16 @@ class BuyProductPage extends Component {
                             {pictureLittle(this.styleSize("PictureLittle4"), 4)}
                             {pictureLittle(this.styleSize("PictureLittle5"), 5)}
                         </div>
-                        <p>Naziv proizvoda: <b>{global.product.productName}</b></p>
-                        <p>Opis: {global.product.description}</p>
-                        <div>Opcije:</div>
+                        <p><T id="BuyProductPage.nameProduct" global={global}/> <b>{global.product.productName}</b></p>
+                        <p><T id="BuyProductPage.description" global={global}/> {global.product.description}</p>
+                        <div><T id="BuyProductPage.options" global={global}/></div>
                         {listOptionsAll}
                     </div>
                     <div id="Basket" className="Container-Empty d-inline-block " >
                         <div className="Container-Empty w-100 d-flex flex-column O-X">
                             <div className="Container-Empty w-100 d-flex flex-row O-X m-0">
                                 <h4 className="d-flex flex-row col-12 justify-content-between">
-                                    Cena:&ensp;&ensp;
+                                    <T id="BuyProductPage.price" global={global}/>:&ensp;&ensp;
                                     <div className="d-flex h-100">
                                         {(global.product.price === undefined ? ("") : (<F f="$0" a={global.product.price} />))}&ensp;
                                         {(global.product.priceCurrency === undefined ? ("") : (global.product.priceCurrency))}
@@ -398,34 +399,34 @@ class BuyProductPage extends Component {
                         </div>
                         <div className="Container-Empty w-100 d-flex flex-column">
                             <div className="d-flex flex-row Container-Empty align-items-center">
-                                <div className="Container-Empty d-flex">Ubaci u korpu</div>
+                                <div className="Container-Empty d-flex"><T id="BuyProductPage.enterInBasket" global={global}/></div>
                                 <Input className="col-3 d-flex align-self-end" type="number" id="numProduct" placeholder="" value={this.state.numProduct} onChange={this.numProductOnChange} />
                                 <div className="d-flex Container-Empty">komada</div>
                             </div>
                             <div className="d-flex flex-row Container-Empty align-items-center">
-                                <div className="d-flex"> Ukupna cena &ensp;</div>
+                                <div className="d-flex"> <T id="BuyProductPage.totalPrice" global={global}/> &ensp;</div>
                                 <b className="d-flex"><F f="$0" a={this.state.totalPrice} /></b>&ensp;
                                 <div className="d-flex">{global.product.priceCurrency}</div>
                             </div>
-                            <div className="d-flex">Popusti:</div>
+                            <div className="d-flex"><T id="BuyProductPage.discounts" global={global}/></div>
                             <div className="d-flex flex-column">
                                 {discountMoreThen}{discountBuyPayLess}{<Vouchers changeVoucer={this.changeVoucer} numProduct={this.state.numProduct} global={global} />}
                             </div>
                             <div className="d-flex Container-Empty align-items-center">
-                                Trenutno je &ensp; <F f="$0" a={global.basket} /> &ensp; {global.basketCurrency}&ensp;u korpi
+                                <T id="BuyProductPage.currentIs" global={global}/> &ensp; <F f="$0" a={global.basket} /> &ensp; {global.basketCurrency}&ensp;<T id="BuyProductPage.inBasket" global={global}/>
                             </div>
                             <div className="d-inline align-items-center">
-                                <div className="d-inline">Ako dodate {this.state.numProduct} komada ovog proizvoda u korpu, u korpi ce biti</div> <div className="d-inline"><F f="$0" a={inBasket} /> {global.basketCurrency}</div>
+                                <div className="d-inline"><T id="BuyProductPage.ifYouAdd" global={global}/> {this.state.numProduct} <T id="BuyProductPage.piecesInBasket" global={global}/></div> <div className="d-inline"><F f="$0" a={inBasket} /> {global.basketCurrency}</div>
                             </div>
                             {
                                 (global.product !== undefined && global.product.rate !== undefined) ?
-                                    (<Rate rate={global.product.rate} />) : (null)
+                                    (<Rate rate={global.product.rate} global={global}/>) : (null)
                             }
 
                             <div className="d-flex flex-row">
-                                <ButtonOKCancel OK onClick={() => this.handleInBasket()} />
+                                <ButtonOKCancel OK global={global} onClick={() => this.handleInBasket()} />
                                 <div className="W-SS"></div>
-                                <ButtonOKCancel onClick={() => this.handleCancel()} />
+                                <ButtonOKCancel global={global} onClick={() => this.handleCancel()} />
                             </div>
                             {companyData}
 
@@ -433,7 +434,7 @@ class BuyProductPage extends Component {
                         </div>
 
                     </div>
-                    <ImgBigest className={imgBigest} hideOnClick={this.hideOnClick} show={this.state.showImgBigest} src={this.state.srcBigest} />
+                    <ImgBigest className={imgBigest} hideOnClick={this.hideOnClick} show={this.state.showImgBigest} src={this.state.srcBigest} global={global}/>
                 </div >
             </div>
         );

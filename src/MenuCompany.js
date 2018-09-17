@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import ButtonToggleDiv from './ButtonToggleDiv';
 import Button from './Button';
+import T from './T';
 
 
 class MenuCompany extends React.Component {
@@ -51,22 +52,22 @@ class MenuCompany extends React.Component {
         return (
             <React.Fragment>
                 {(global.company[company].delivery) ? (
-                    <ButtonToggleDiv secondColor name="Porudžba">
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}>Za pakovanje</div>
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordelivery')}>Za isporuku</div>
+                    <ButtonToggleDiv secondColor name={global.t("MenuCompany.order")}>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/forpackaging')}><T id="MenuCompany.forPacking" global={global}/></div>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordelivery')}><T id="MenuCompany.forDelivery" global={global}/></div>
                     </ButtonToggleDiv>
                 ) : (null)}
                 {(global.company[company].courier) ? (
-                    <ButtonToggleDiv secondColor name="Distribucija">
-                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordistribution')}>Za distribuciju</div>
+                    <ButtonToggleDiv secondColor name={global.t("MenuCompany.order")}>
+                        <div className="ml-3" onClick={(e) => this.handleOnClickMenu(e, '/company/fordistribution')}><T id="MenuCompany.forDistribution" global={global}/></div>
                     </ButtonToggleDiv>
                 ) : (null)}
 
-                <ButtonToggleDiv secondColor name="Podesavanja">
-                    <div className="ml-3">Korisnici</div>
-                    <div className="ml-3">Parametri</div>
+                <ButtonToggleDiv secondColor name={global.t("MenuCompany.setup")}>
+                    <div className="ml-3"><T id="MenuCompany.users" global={global}/></div>
+                    <div className="ml-3"><T id="MenuCompany.parameters" global={global}/></div>
                 </ButtonToggleDiv>
-                <Button secondColor onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}>Izlaz</Button>
+                <Button secondColor onClick={(e) => this.handleOnClickMenu(e, this.props.exitForm)}><T id="MenuCompany.exit" global={global}/></Button>
             </React.Fragment>
         )
     }

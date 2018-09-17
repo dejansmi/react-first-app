@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import T from './T';
 
 function ImgBigest(props) {
     const {
         src,
         show,
-        hideOnClick
+        hideOnClick,
+        global
     } = props;
 
     const x = window.innerWidth;
@@ -36,7 +38,7 @@ function ImgBigest(props) {
     return (
         <div style={style}>
             <img style={styleImg} src={src} className="img-fluid ColorWhite" alt="Book" />
-            <Button  style={styleButton} onClick={hideOnClick}>Nazad</Button>
+            <Button  style={styleButton} onClick={hideOnClick}><T id="ImgBigest.back" global={global}/></Button>
         </div>
     );
 }

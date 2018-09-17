@@ -4,6 +4,7 @@ import ButtonToggleDiv from './ButtonToggleDiv';
 import ButtonOKCancel from './ButtonOKCancel';
 import PhaseIcons from './PhaseIcons';
 import Link from './Link';
+import T from './T';
 
 
 class NotOrderedItems extends React.Component {
@@ -77,15 +78,15 @@ class NotOrderedItems extends React.Component {
             <div className="UserP-infoFull" onClick={(e) => this.onClickInfoPhases(e)}>
                 <div className="UserP-info d-flex flex-row">
                     <PhaseIcons phase={0} />
-                    <div>Status 0: Klijent je naručio proizvode on-line </div>
+                    <div><T id="NotOrderedItems.phase0" global={global}/></div>
                     <PhaseIcons phase={1} />
-                    <div>Status 1: Kompanija je spakvala proizvode </div>
+                    <div><T id="NotOrderedItems.phase1" global={global}/></div>
                     <PhaseIcons phase={2} />
-                    <div>Status 2: Proizvodi su kod kurira </div>
+                    <div><T id="NotOrderedItems.phase2" global={global}/></div>
                     <PhaseIcons phase={3} />
-                    <div>Status 3: Kurir je isporučio klijentu </div>
+                    <div><T id="NotOrderedItems.phase3" global={global}/></div>
                     <PhaseIcons phase={4} />
-                    <div>Status 4: Klijent potvrdio prijem proizvoda </div>
+                    <div><T id="NotOrderedItems.phase4" global={global}/></div>
                 </div>
             </div>
         ) : (null);
@@ -96,23 +97,23 @@ class NotOrderedItems extends React.Component {
                 <div id="UserP-cp3Center" className="d-flex flex-column">
                     <h4 className="text-center">Ovim potvrđujete da ste primili sledeće proizvode</h4>
                     <p />
-                    <div>Naziv proizvoda: <b>{this.state.ordersNotDelivered.productName}</b></div>
-                    <div>Količina: <b>{this.state.ordersNotDelivered.quantity}</b></div>
-                    <div>Datum naručivanja: <b><F f="date" a={this.state.ordersNotDelivered.date} /></b></div>
-                    <div>Kompanija: {this.state.ordersNotDelivered.company}</div>
-                    <div>Isporučilac: <b>{this.state.ordersNotDelivered.courier}</b></div>
-                    <div>Poslato na adresu:</div>
-                    <div>Ulica i broj: {this.state.ordersNotDelivered.address}&ensp;{this.state.ordersNotDelivered.houseNumber}</div>
-                    <div>Grad: {this.state.ordersNotDelivered.city}</div>
-                    <div>Šifre:</div>
-                    <div>proizvoda: {this.state.ordersNotDelivered.productId}</div>
-                    <div>isporuke: {this.state.ordersNotDelivered.orderId}</div>
-                    <div>pakovanja: {this.state.ordersNotDelivered.packageId}</div>
+                    <div><T id="NotOrderedItems.nameProduct" global={global}/> <b>{this.state.ordersNotDelivered.productName}</b></div>
+                    <div><T id="NotOrderedItems.quantity" global={global}/> <b>{this.state.ordersNotDelivered.quantity}</b></div>
+                    <div><T id="NotOrderedItems.dateOrder" global={global}/> <b><F f="date" a={this.state.ordersNotDelivered.date} /></b></div>
+                    <div><T id="NotOrderedItems.company" global={global}/> {this.state.ordersNotDelivered.company}</div>
+                    <div><T id="NotOrderedItems.supplier" global={global}/> <b>{this.state.ordersNotDelivered.courier}</b></div>
+                    <div><T id="NotOrderedItems.deliveredToAddress" global={global}/> </div>
+                    <div><T id="NotOrderedItems.street" global={global}/> {this.state.ordersNotDelivered.address}&ensp;{this.state.ordersNotDelivered.houseNumber}</div>
+                    <div><T id="NotOrderedItems.city" global={global}/> {this.state.ordersNotDelivered.city}</div>
+                    <div><T id="NotOrderedItems.code" global={global}/> </div>
+                    <div><T id="NotOrderedItems.codeProduct" global={global}/> {this.state.ordersNotDelivered.productId}</div>
+                    <div><T id="NotOrderedItems.codeDelivery" global={global}/> {this.state.ordersNotDelivered.orderId}</div>
+                    <div><T id="NotOrderedItems.codePackage" global={global}/> {this.state.ordersNotDelivered.packageId}</div>
                     <p>
                         Ukoliko isporuka nije obaveljana, odnosno niste dobili proizvod kao što je 
                         naznačeno u podacima gore, možete podneti <Link className="Container-Empty" color="primary" >reklamaciju</Link>
                     </p>
-                    <ButtonOKCancel both center onClickOK={(e) => this.handleOKChangePhase3(e)} onClickCancel={(e) => this.handleCancelChangePhase3(e)} />
+                    <ButtonOKCancel both center global={global} onClickOK={(e) => this.handleOKChangePhase3(e)} onClickCancel={(e) => this.handleCancelChangePhase3(e)} />
                 </div>
             </div>) : (null);
 
@@ -133,11 +134,11 @@ class NotOrderedItems extends React.Component {
                     <table className="UserP-table">
                         <thead>
                             <tr>
-                                <th scope="col">Datum</th>
-                                <th scope="col">Proizvod</th>
-                                <th scope="col">Isporučilac</th>
-                                <th scope="col">Kom</th>
-                                <th className="d-flex flex-row" scope="col">Faza<i className="material-icons font-normal" onClick={(e) => this.infoPhases(e)}>help</i></th>
+                                <th scope="col"><T id="NotOrderedItems.tableDate" global={global}/></th>
+                                <th scope="col"><T id="NotOrderedItems.tableProduct" global={global}/></th>
+                                <th scope="col"><T id="NotOrderedItems.tableSupplier" global={global}/></th>
+                                <th scope="col"><T id="NotOrderedItems.tableQuantity" global={global}/></th>
+                                <th className="d-flex flex-row" scope="col"><T id="NotOrderedItems.tablePhase" global={global}/><i className="material-icons font-normal" onClick={(e) => this.infoPhases(e)}>help</i></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -162,7 +163,7 @@ class NotOrderedItems extends React.Component {
 
 
         return (
-            <ButtonToggleDiv toggle={toggle} className="O-X O-Y" name="Neisporučene narudžbine">
+            <ButtonToggleDiv toggle={toggle} className="O-X O-Y" name={global.t("NotOrderedItems.undeliveredOrders")}>
                 {NotOrderedTable}
             </ButtonToggleDiv>
 

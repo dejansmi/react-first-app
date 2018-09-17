@@ -13,7 +13,7 @@ function ScreenMessage(props) {
             <div className="d-flex screen-window">
                 <div className="screen-border d-flex flex-column justify-content-between">
                     <div>{global.screenMessage}</div>
-                    <ButtonOKCancel continues center onClick={(e)=> global.ShowScreenMessage("")}/>
+                    <ButtonOKCancel continues center global={global} onClick={(e)=> global.ShowScreenMessage("")}/>
                 </div>
             </div>
         </div>

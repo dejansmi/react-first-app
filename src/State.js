@@ -7,6 +7,9 @@ import {
 import Main from './Main';
 import BuyersSay from './BuyersSey';
 import { Today } from './Today';
+import tr from "./TranslateData";
+
+
 
 
 class State extends Component {
@@ -53,6 +56,8 @@ class State extends Component {
       setSearchButton: this.setSearchButton,
       bayersSay: BuyersSay,
       addComment: this.addComment,
+      t: this.t,
+      tt: this.tt,
       showScreenMessage: false,
       ShowScreenMessage: this.ShowScreenMessage,
       screenMessage: "",
@@ -173,6 +178,32 @@ class State extends Component {
     }
 
   }
+
+  t = (inSent) => {
+    var lang = this.state.env.lang;
+    var forTrans = inSent + "." + lang;
+    var ret = tr[forTrans];
+    if (ret===undefined) {
+        ret = "@!@"
+    }
+    return ret;
+}
+
+tt = (inSent,  tenant) => {
+  var lang = this.state.env.lang;
+  var forTrans = inSent + "." + lang;
+  if (tenant) {
+      if (tr[forTrans+'.'+this.state.env.id]!==undefined) {
+          forTrans = forTrans+'.'+this.state.env.id;
+      }
+  }
+  var ret = tr[forTrans];
+  if (ret===undefined) {
+      ret = "@!@"
+  }
+  return ret;
+}
+
 
 
   startSearch = (searchText) => {

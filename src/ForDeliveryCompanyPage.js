@@ -163,7 +163,7 @@ class ForDeliveryCompanyPage extends React.Component {
                         <div className="w-100 d-inline" >
                             Izaberite za kog distributera želite da pravite nalog za isporuku<br />
                             Kurir/Distributer <Select className="col-6" label="Izaberite distributera/kurira" options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
-                            <ButtonOKCancel both secondColor center onClickCancel={(e) => this.handleOnClickMenu(e, '/company/admin')} onClickOK={(e) => this.handlePhase0toA(e)} />
+                            <ButtonOKCancel both secondColor center global={global} onClickCancel={(e) => this.handleOnClickMenu(e, '/company/admin')} onClickOK={(e) => this.handlePhase0toA(e)} />
                         </div>
                     ) : (null)
                 }
@@ -208,7 +208,7 @@ class ForDeliveryCompanyPage extends React.Component {
                     (<div className="d-flex flex-column m-3">
                         <div className="w-100 d-inline" >
                             Proverite podatke na izveštaju dole i potvrdom na Može ćete označiti da je roba sa spiska predata distributeru za isporuku.<br />
-                            <ButtonOKCancel both secondColor center onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
+                            <ButtonOKCancel both secondColor center global={global} onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
                         </div>
                         <table className="table table-sm col-12 O-X O-Y m-3">
                             <thead className="col-12">
@@ -238,7 +238,7 @@ class ForDeliveryCompanyPage extends React.Component {
                             <div className="w-100 d-inline" >
                                 Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Ovim ste označili da je roba predata
                                 distributeru za isporuku kojentu koji je naručio
-                                <ButtonOKCancel continues secondColor center onClickCancel={(e) => this.backtophaseA(e)} onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
+                                <ButtonOKCancel continues secondColor center global={global} onClickCancel={(e) => this.backtophaseA(e)} onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
                             </div>
 
                         </div>

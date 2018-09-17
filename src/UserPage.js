@@ -3,12 +3,12 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HeaderPage from './HeaderPage';
-import ping from './logo.png';
 import F from './F';
 import TextField from '@material-ui/core/TextField';
 import ButtonToggleDiv from './ButtonToggleDiv';
 import './UserPage.css';
 import NotOrderedItems from './NotOrderedItems';
+import T from './T';
 
 
 class UserPage extends React.Component {
@@ -161,11 +161,11 @@ class UserPage extends React.Component {
             this.props.global.changeCurrentAccountBalance(-payedAmmount);
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
+            this.props.global.ShowScreenMessage(global.t(UserPage.payingMessage), 'success');
         } else if (modeType === "CARD") {
             this.props.global.addComment(this.props.global.user.name, this.props.global.user.city, this.state.commentContent);
             this.oneClickFinallyAccept(payedAmmount);
-            this.props.global.ShowScreenMessage("Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.", 'success');
+            this.props.global.ShowScreenMessage(global.t(UserPage.payingMessage), 'success');
         }
     }
 
@@ -272,11 +272,11 @@ class UserPage extends React.Component {
                 <table className="table table-sm col-12 O-X O-Y">
                     <thead className="col-12">
                         <tr className="col-12">
-                            <th width="20%" scope="col">Datum</th>
+                            <th width="20%" scope="col"><T id="UserPage.tableDate" global={global}/></th>
                             <th width="5%" scope="col"></th>
-                            <th width="30%" scope="col">Broj narudžbe</th>
+                            <th width="30%" scope="col"><T id="UserPage.tableOrderNumber" global={global}/></th>
                             <th width="10%" scope="col"></th>
-                            <th width="30%" scope="col">Cena</th>
+                            <th width="30%" scope="col"><T id="UserPage.tablePrice" global={global}/></th>
                         </tr>
                     </thead>
                     <tbody className="col-12">
@@ -312,7 +312,7 @@ class UserPage extends React.Component {
 
         return (
             <div className="Container-Empty h-100 w-100 " >
-                <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
+                <HeaderPage bankLogo={global.env.logo} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
                 <div className="d-flex flex-column m-2">
@@ -326,7 +326,7 @@ class UserPage extends React.Component {
                             <h6>{global.user.city}</h6>
                         </div>
                         <div className="m-3 d-flex flex-column">
-                            <h3><b>Kontakti</b></h3>
+                            <h3><b><T id="UserPage.contacts" global={global}/></b></h3>
                             <h6>{global.user.email}</h6>
                             <h6>{global.user.mobile}</h6>
                         </div>
@@ -336,25 +336,25 @@ class UserPage extends React.Component {
 
                             <div style={this.styleSize("Address")} classNames={PayingClass}>
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                                    <spam>Kupovine</spam><spam></spam>
+                                    <spam><T id="UserPage.shopping" global={global}/> </spam><spam></spam>
                                 </div>
                                 <NotOrderedItems global={global} />
-                                <ButtonToggleDiv className="O-X O-Y" name="Narudžbine">
+                                <ButtonToggleDiv className="O-X O-Y" name={global.t("UserPage.orders")}>
                                     {narudzbineTable}
                                 </ButtonToggleDiv>
                             </div>
                             <div style={this.styleSize("Paying")} classNames={PayingClass}>
                                 <div style={styleBasketBigFont} className="d-flex flex-row justify-content-between">
-                                    <spam>Podešavanja</spam>
+                                    <spam>{global.t("UserPage.settings")}</spam>
                                 </div>
-                                <ButtonToggleDiv className="O-X O-Y" name="Kontakti">
-                                    <TextField className="w-100" value={this.state.email} onChange={this.handleEmail} label="Email" />
-                                    <TextField className="w-100" value={this.state.mobile} onChange={this.handleMobile} label="Broj mobilnog telfona" />
+                                <ButtonToggleDiv className="O-X O-Y" name={global.t("UserPage.contacts")}>
+                                    <TextField className="w-100" value={this.state.email} onChange={this.handleEmail} label={global.t("UserPage.email")} />
+                                    <TextField className="w-100" value={this.state.mobile} onChange={this.handleMobile} label={global.t("UserPage.mobileNumber")} />
                                 </ButtonToggleDiv>
-                                <ButtonToggleDiv className="O-X O-Y" name="Adresa">
-                                    <TextField className="w-100" value={this.state.address} onChange={this.handleAddress} label="Adresa" />
-                                    <TextField className="w-100" value={this.state.houseNumber} onChange={this.handleHouseNumber} label="Kućni broj" />
-                                    <TextField className="w-100" value={this.state.city} onChange={this.handleCity} label="Mesto" />
+                                <ButtonToggleDiv className="O-X O-Y" name={global.t("UserPage.address")}>
+                                    <TextField className="w-100" value={this.state.address} onChange={this.handleAddress} label={global.t("UserPage.address")} />
+                                    <TextField className="w-100" value={this.state.houseNumber} onChange={this.handleHouseNumber} label={global.t("UserPage.houseNumber")} />
+                                    <TextField className="w-100" value={this.state.city} onChange={this.handleCity} label={global.t("UserPage.city")} />
                                 </ButtonToggleDiv>
                             </div>
                         </div>

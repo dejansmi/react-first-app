@@ -79,6 +79,9 @@ class PayByCard extends React.Component {
     render() {
 
 
+        const {
+            global
+        } = this.props;
 
 
         const {
@@ -99,22 +102,22 @@ class PayByCard extends React.Component {
 
         return (
             <div className={classes}>
-                <TextField value={this.state.cardNumber} onChange={this.handleCardNumber} label="Broj kartice" />
+                <TextField value={this.state.cardNumber} onChange={this.handleCardNumber} label={global.t("PayByCard.cardNumber")} />
                 {(!this.state.defualtCard) ?
                     (
                         <React.Fragment>
-                            <TextField value={this.state.cardName} onChange={this.handleCardName} label="Ima ne kartici" />
+                            <TextField value={this.state.cardName} onChange={this.handleCardName} label={global.t("PayByCard.cardHolder")} />
                             <div className="Container-Empty d-flex flex-row">
-                                <TextField value={this.state.cardMonth} onChange={this.handleCardMonth} label="Mesec" />
-                                <TextField value={this.state.cardYear} onChange={this.handleCardYear} label="Godina" />
+                                <TextField value={this.state.cardMonth} onChange={this.handleCardMonth} label={global.t("PayByCard.cardMonth")} />
+                                <TextField value={this.state.cardYear} onChange={this.handleCardYear} label={global.t("PayByCard.cardYear")} />
                             </div>
                         </React.Fragment>
 
                     ) : (null)
                 }
-                <TextField value={this.state.cardSecCode} onChange={this.handleCardSecCode} label="Security code" />
+                <TextField value={this.state.cardSecCode} onChange={this.handleCardSecCode} label={global.t("PayByCard.securityCode")} />
                 <div className="d-flex flex-row">
-                    <ButtonOKCancel center both onClick={(e) => this.handlePaying(e, ammountPay, payingFunc)} onClickCancel={() => this.handleCancel()} />
+                    <ButtonOKCancel center both global={global} onClick={(e) => this.handlePaying(e, ammountPay, payingFunc)} onClickCancel={() => this.handleCancel()} />
                 </div>
             </div>
         );

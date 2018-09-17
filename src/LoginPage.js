@@ -5,6 +5,7 @@ import HeaderPage from './HeaderPage';
 import TextField from '@material-ui/core/TextField';
 import ButtonOKCancel from './ButtonOKCancel';
 import NotOrderedItems from './NotOrderedItems';
+import T from "./T";
 
 
 
@@ -96,14 +97,14 @@ class LoginPage extends React.Component {
                 {(global.user === "") ?
                     (<React.Fragment>
                         <div className="H-SS" />
-                        <div className="w-100 ColorYellow display-4 m-3 text-center"><i><b>Prijava</b></i></div>
+                        <div className="w-100 ColorYellow display-4 m-3 text-center"><i><b><T id="Login.login" global={global}/></b></i></div>
                         <div className="H-SS" />
                         <div className="m-3">
                             <div className="H-SS" />
                             <div className="d-flex flex-row justify-content-center">
-                                <TextField value={this.state.username} onChange={(e) => this.handleChangeUsername(e)} label="Korisničko ime" />
+                    <TextField value={this.state.username} onChange={(e) => this.handleChangeUsername(e)} label={<T id="LoginPage.userName" global={global}/>} />
                                 <div className="W-SS" />
-                                <TextField type="password" value={this.state.password} onChange={(e) => this.handleChangePassword(e)} label="Lozinka" />
+                                <TextField type="password" value={this.state.password} onChange={(e) => this.handleChangePassword(e)} label={<T id="LoginPage.password" global={global}/>} />
                             </div>
                             <div className="d-flex flex-row">
                                 {this.state.textApprove}
@@ -113,9 +114,9 @@ class LoginPage extends React.Component {
                         </div>
                         <div className="m-3">
                             <div className="d-flex flex-row justify-content-center">
-                                <ButtonOKCancel OK onClick={() => this.handleConnect()} />
+                                <ButtonOKCancel OK global={global} onClick={() => this.handleConnect()}/>
                                 <div className="W-SS"></div>
-                                <ButtonOKCancel onClick={() => this.handleCancel()} />
+                                <ButtonOKCancel global={global} onClick={() => this.handleCancel()}/>
                             </div>
                         </div>
                         <div className="H-SS" />
@@ -130,7 +131,7 @@ class LoginPage extends React.Component {
 
                                 <React.Fragment>
                                     <NotOrderedItems toggle global={global} />
-                                    <ButtonOKCancel center continues onClick={(e) => this.handleContinues(e)} />
+                                    <ButtonOKCancel center continues global={global} onClick={(e) => this.handleContinues(e)}/>
                                 </React.Fragment>
                             </div>) : (null)
 

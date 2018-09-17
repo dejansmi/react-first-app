@@ -1265,13 +1265,15 @@ environment['raiff'] = {
     id: 'raiff',
     name: "Raiffeisen bank",
     logo: logoraiff,
-    backgroundlogo: 'white'
+    backgroundlogo: 'white',
+    lang: "sr"
 }
 environment['badin'] = {
     id: 'badin',
     name: "Badin bank",
     logo: badinbanklogo,
-    backgroundlogo: 'gray'
+    backgroundlogo: 'gray',
+    lang: "en"
 }
 
 export default { listOfImg, moreGoodOffers };

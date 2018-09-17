@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Link from './Link';
 import Img from './Img';
 import ScreenMessage from './ScreenMessage';
+import T from "./T";
 
 
 
@@ -173,7 +174,7 @@ class HeaderCompanyPage extends Component {
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">
                                         {global.user.name}
-                                        <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}>Odjava</Link>
+                                        <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}><T id="Login.logout" global={global}/></Link>
                                     </div>
                                 </div>) : (
                                     <Login user={this.state.global.user} {...this.props} />

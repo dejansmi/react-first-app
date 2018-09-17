@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './ButtonOKCancel.css';
 import Button from './Button';
+import T from './T';
 
 class ButtonOKCancel extends React.Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class ButtonOKCancel extends React.Component {
             onClickCancel,
             onClickContinues,
             onClick,
+            global,
             ...attributes
         } = this.props;
 
@@ -43,7 +45,7 @@ class ButtonOKCancel extends React.Component {
             (secondColor)?('secondColor-OKCancel'):(null)
         );
 
-        const typeMessage = (OK) ? ("Može") : ((continues)?("Nastavi"):("Odustani"));
+        const typeMessage = (OK) ? (<T id="Button.OK" tenant global={global}/>) : ((continues)?(<T id="Button.continue" global={global}/>):(<T id="Button.cancel" global={global}/>));
 
         const onClickOKFunc = (onClickOK !== undefined)?(onClickOK):(onClick);
         const onClickCancelFunc = (onClickCancel !== undefined)?(onClickCancel):(onClick);
@@ -55,8 +57,8 @@ class ButtonOKCancel extends React.Component {
             return (
                 <div className="center-OKCancel">
                     {(both) ? (<span>
-                        <Button className={classes} {...attributes} onClick={onClickOKFunc}>Može</Button>
-                        <Button className={classes} {...attributes} onClick={onClickCancelFunc}>Odustani</Button></span>) :
+                        <Button className={classes} {...attributes} onClick={onClickOKFunc}><T id="Button.OK" tenant global={global}/></Button>
+                        <Button className={classes} {...attributes} onClick={onClickCancelFunc}><T id="Button.cancel" global={global}/></Button></span>) :
                         (<Button className={classes} {...attributes} onClick={onClickFunc}>{typeMessage}</Button>)}
                 </div>
             )

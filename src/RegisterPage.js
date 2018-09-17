@@ -3,11 +3,11 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from './Link';
-import ping from './logo.png';
 import HeaderPage from './HeaderPage';
 import TextField from '@material-ui/core/TextField';
 import Button from './Button';
 import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 
 
@@ -108,6 +108,13 @@ class RegisterPage extends React.Component {
 
 
     render() {
+
+
+        const {
+            global
+        } = this.props;
+
+        
         const ROL = classNames(
             this.state.showROL ? 'd-flex' : '',
             'flex-column',
@@ -136,44 +143,39 @@ class RegisterPage extends React.Component {
         return (
 
             <div className="Container-Empty h-100 w-100 ">
-                <HeaderPage bankLogo={ping} imgList={this.props.global.imgList} {...this.props} value="" />
+                <HeaderPage bankLogo={global.env.logo} imgList={this.props.global.imgList} {...this.props} value="" />
                 <div className="Header-Size w-100"></div>
                 <div className="Header-Size w-100"></div>
                 <div className="Container-Empty m-2">
-                    <p className="d-flex w-100 justify-content-center "><h1><b>Novi korisnik</b></h1></p>
-                    <p>Da biste postali novi korisnik, to možete uraditi na 3 načina:</p>
-                    <p>1. Ukoliko imate Raiffeisen ON-LINE, možete se ulogovati kroz on-line sistem, i
-                       i tada ćeto dobiti username isti kao u ROL ukoliko nije zauzet. Ukoliko nije moguće možete birati username.
-                   Ukoliko izabere ovaj način stičete pravo razne pogodnosti, kao što je plaćanje direktno sa tekućeg računa po vrlo povoljnim uslovima</p>
-                    <p>2. Vaš email je username. U ovom slučaju potrebno je da posedujete liči email (email koji samo vi koristite)</p>
-                    <p>3. Ukoliko ne posedujete email, a posedujete mobilni telefon možete otvoriti nalog u kome birate slobodan (da neko
-                        nije već iskoristio) username
-                </p>
-                    <p> Takođe možete nastaviti da koristite sistem i bez registracije ali u tom slučaju gubite veliku
-                        pogodnost sistema vernosti (loyalty system) koji Vam donosi velike uštede i pododnosti
-                </p>
+                    <h1 className="d-flex w-100 justify-content-center "><b><T id="RegisterPage.newUser" global={global}/></b></h1>
+                    <p><T id="RegisterPage.newUser3Way" global={global}/></p>
+                    <p><T id="RegisterPage.newUserIfYouHaveOnLine" tenant global={global}/></p>
+                    <p><T id="RegisterPage.newUserYourEmail" global={global}/></p>
+                    <p><T id="RegisterPage.newUserWithoutEmail" global={global}/>
+                    </p>
+                    <p><T id="RegisterPage.newUserContinue" global={global}/>
+                    </p>
                 </div>
                 <div className="Container-Empty h-100  d-flex flex-row flex-wrap O-X O-Y m-3">
                     <div className="col-sm-12 d-flex justify-content-between flex-wrap">
-                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4" onClick={() => this.handleROLClick()}>Koristite Raiffeisen ON-LINE</Button>
-                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4">Koristite email kao username</Button>
+                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4" onClick={() => this.handleROLClick()}><T id="RegisterPage.useOnLine" global={global}/></Button>
+                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4"><T id="RegisterPage.useEmail" global={global}/></Button>
                     </div>
                     <div className="col-sm-9"></div>
                     <div className="col-sm-12 d-flex justify-content-between flex-wrap">
-                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4">Napravite novi username</Button>
-                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4" onClick={() => this.handleExit()}>Nastavite kao neregistrovani koirsnik</Button>
+                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4"><T id="RegisterPage.newUsername" global={global}/></Button>
+                        <Button className="ColorYellow col-sm-auto col-12 col-sm-6 col-md-5 col-lg-4" onClick={() => this.handleExit()}><T id="RegisterPage.unregistredUser" global={global}/></Button>
                     </div>
                 </div>
                 <div className={ROL} >
                     <div className="H-SS" />
-                    <div className="w-100 ColorYellow display-4 text-center"><i><b>Raiffeisen On-Line</b></i></div>
-                    <div className="H-SS" />
-                    <div>
+                    <div className="w-100 ColorYellow display-4 text-center"><i><b><T id="RegisterPage.onLineSystem" global={global}/></b></i></div>
+                    <div className="H-SS" /><div>
                         <div className="H-SS" />
                         <div className={UserPass}>
-                            <TextField value={this.state.username} onChange={this.handleChangeUsername} label="Korisničko ime" />
+                            <TextField value={this.state.username} onChange={this.handleChangeUsername} label={global.t("LoginPage.userName")} />
                             <div className="W-SS" />
-                            <TextField type="password" value={this.state.password} onChange={this.handleChangePassword} label="Lozinka" />
+                            <TextField type="password" value={this.state.password} onChange={this.handleChangePassword} label={global.t("LoginPage.password")} />
                         </div>
                         <div className={ApproveMadeUser}>
                             {this.state.textApprove}
@@ -183,7 +185,7 @@ class RegisterPage extends React.Component {
                     </div>
                     <div>
                         <div className="d-flex flex-row">
-                            <ButtonOKCancel center both onClickOK={() => this.handleROLConnect()} onClickCancel={() => this.handleROLCancel()}/>
+                            <ButtonOKCancel center both global={this.props.global} onClickOK={() => this.handleROLConnect()} onClickCancel={() => this.handleROLCancel()}/>
                         </div>
                     </div>
                     <div className="H-SS" />

@@ -123,7 +123,7 @@ class ForDistributionCompanyPage extends React.Component {
                                     {productData(this.state.keyUserInBphase, this.state.keyInBphase)}
                                 </div>
                                 <div className="d-flex flex-row h-100">
-                                    <ButtonOKCancel secondColor both center onClickCancel={(e) => this.backtophaseA(e)}
+                                    <ButtonOKCancel secondColor both center global={global} onClickCancel={(e) => this.backtophaseA(e)}
                                         onClickOK={(e) => this.handlePhaseBtoA(e)} />
                                 </div>
                             </div>

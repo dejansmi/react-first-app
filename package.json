@@ -10,7 +10,10 @@
     "react-dom": "^16.3.2",
     "react-intersection-visible": "^1.1.0",
     "react-scripts": "1.1.4",
-    "react-table": "^6.8.6"
+    "react-table": "^6.8.6",
+    "react-to-string": "^0.1.0",
+    "yaml-loader": "^0.5.0",
+    "yaml-with-import": "^1.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

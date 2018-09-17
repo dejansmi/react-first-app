@@ -197,7 +197,7 @@ class ForPackagingCompanyPage extends React.Component {
                         <div className="w-100 d-inline" >
                             Proverite podatke na izveštaju dole, izaberite distributera/kurira koji će distribuirate proizvode i potvrdite na Može.<br />
                             Kurir/Distributer <Select className="col-6" label="Izaberite distributera/kurira" options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
-                            <ButtonOKCancel both secondColor center onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
+                            <ButtonOKCancel both secondColor center global={global} onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
                         </div>
                         <table className="table table-sm col-12 O-X O-Y m-3">
                             <thead className="col-12">
@@ -232,7 +232,7 @@ class ForPackagingCompanyPage extends React.Component {
                             <div className="w-100 d-inline" >
                                 Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Po pakovanju i isporuci distributeru
                                 {this.courier} potrebno je to evidentirati
-                            <ButtonOKCancel continues secondColor center onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
+                            <ButtonOKCancel continues secondColor center global={global} onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
                             </div>
 
                         </div>

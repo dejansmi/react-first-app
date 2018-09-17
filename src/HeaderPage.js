@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import Link from './Link';
 import Img from './Img';
 import ScreenMessage from './ScreenMessage';
-
+import T from "./T";
 
 
 class HeaderPage extends Component {
@@ -162,8 +162,8 @@ class HeaderPage extends Component {
         )
 
 
-
-
+        const placeholderText = global.t("HeaderPage.searchText");
+        
         return (
             <div className="col-12 fixed-top container-fluid" >
 
@@ -193,7 +193,7 @@ class HeaderPage extends Component {
                                     <div className="W-SS" />
                                     <div className="Container-Empty h-100 d-flex flex-column whiteColor">
                                         {this.props.global.user.name}
-                                        <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}>Odjava</Link>
+                                        <Link className="Container-Empty" small to={'/'} onClick={this.handleLoginClick}><T id="Login.logout" global={global}/></Link>
                                     </div>
                                 </div>) : (
                                     <Login user={this.state.global.user} {...this.props} />
@@ -207,15 +207,15 @@ class HeaderPage extends Component {
                                 <i className="material-icons align-self-center" onClick={this.goHome}>home</i>
                                 <div className="ml-auto">
                                     <div className="col-3 col-sm-3 h-100 pt-0 pb-0 d-flex flex-column">
-                                        <CheckBox label="Proizvodi" small checked />
-                                        <CheckBox label="Kompanije" small />
+                                        <CheckBox label={global.t("HeaderPage.products")} small checked />
+                                        <CheckBox label={global.t("HeaderPage.companies")} small />
                                     </div>
                                 </div>
 
 
                                 <div className="d-flex flex-row h-100 col-9 col-sm-6">
                                     <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
-                                    <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite želju da je ispunimo" />
+                                    <input className="form-control" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder={placeholderText} />
                                 </div>
                                 <div className="h-100 ml-auto">{this.props.global.windowWidth}x{this.props.global.windowHeight}</div>
                             </div>
