@@ -24,10 +24,35 @@ tr["App.basketBuyersSay.sr"] = 'Kupci kažu...';
 tr["App.basketBuyersAreRight.en"] = '...and buyers are always right';
 tr["App.basketBuyersAreRight.sr"] = '...a kupci su uvek u pravu';
 
+tr["AdminCompanyPage.forPacking.en"] = "for Packing";
+tr["AdminCompanyPage.forPacking.sr"] = "Za pakovanje";
+tr["AdminCompanyPage.forDelivery.en"] = 'for Delivery';
+tr["AdminCompanyPage.forDelivery.sr"] = 'Za isporuku';
+tr["AdminCompanyPage.atDistributor.en"] = "at Distributor";
+tr["AdminCompanyPage.atDistributor.sr"] = "Kod distributera";
+tr["AdminCompanyPage.todaySold.en"] = "Today sold";
+tr["AdminCompanyPage.todaySold.sr"] = "Danas prodato";
+tr["AdminCompanyPage.todayComplaints.en"] = "today Complaints";
+tr["AdminCompanyPage.todayComplaints.sr"] = "Danas reklamacije";
 
 tr["AdminSystemPage.systemSetup.en"] = 'System setup';
 tr["AdminSystemPage.systemSetup.sr"] = 'System setup';
 
+// <T id="BankingAccountPay.amountHaveEnough" global={global}/>
+tr["BankingAccountPay.inputPass.en"] = 'Input password, so click OK to pay by OneClickCredit';
+tr["BankingAccountPay.inputPass.sr"] = 'Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit';
+tr["BankingAccountPay.password.en"] = 'Password';
+tr["BankingAccountPay.password.sr"] = 'Lozinka';
+tr["BankingAccountPay.amountCurrenAccount1.en"] = 'Amount of current account number';
+tr["BankingAccountPay.amountCurrenAccount1.sr"] = 'Stanje tekućeg računa broj';
+tr["BankingAccountPay.amountCurrenAccount2.en"] = 'is';
+tr["BankingAccountPay.amountCurrenAccount2.sr"] = 'je';
+tr["BankingAccountPay.amountHaveEnough.en"] = `You have enough amount at current account in bank. You only should click on OK.
+For security reasons, we do not show your account balance, but if you'd like to see your account balance`;
+tr["BankingAccountPay.amountHaveEnough.sr"] = `Imate dovoljno sredstava za plaćanje sa tekućeg računa u Raiffeisen banci. Dovoljno je da klinkete Može.
+                    Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa`;
+tr["BankingAccountPay.amountHaveEnoughHere.en"] = "here";
+tr["BankingAccountPay.amountHaveEnoughHere.sr"] = "ovde";
 
 tr["Button.OK.en"] = "OK";
 tr["Button.OK.sr"] = "OK";
@@ -208,7 +233,6 @@ tr["NotOrderedItems.undeliveredOrders.en"] = 'Undelivered orders';
 tr["NotOrderedItems.undeliveredOrders.sr"] = 'Neisporučene narudžbine';
 
 
-// <T id="MenuCompany.exit" global={global}/>
 tr["MenuCompany.order.en"] = "Order";
 tr["MenuCompany.order.sr"] = "Porudžba";
 tr["MenuCompany.forPacking.en"] = "for Packing";

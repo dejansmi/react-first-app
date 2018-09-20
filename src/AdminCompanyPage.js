@@ -61,12 +61,12 @@ class AdminCompanyPage extends React.Component {
                         <MenuCompany global={global} exitForm="/"/>
                     </div>
                     <div id="RightCA" className="d-flex flex-row flex-wrap Container-Empty">
-                        <BoxCardCompany textSize="big" title="Za pakovanje" 
+                        <BoxCardCompany textSize="big" title={global.t("AdminCompanyPage.forPacking")} 
                              onClick={(e) => this.handleOnClickMenu(e, "/company/forpackaging")}>2</BoxCardCompany>
-                        <BoxCardCompany textSize="big" title="Za isporuku" textBody="25"/>
-                        <BoxCardCompany textSize="big" title="Kod distributera" textBody="45"/>
-                        <BoxCardCompany textSize="medium" title="Danas prodato" textBody="123.322,23">143.532,23</BoxCardCompany>
-                        <BoxCardCompany textSize="big" title="Danas reklamacija" textBody="0"/>
+                        <BoxCardCompany textSize="big" title={global.t("AdminCompanyPage.forDelivery")} textBody="25"/>
+                        <BoxCardCompany textSize="big" title={global.t("AdminCompanyPage.atDistributor")} textBody="45"/>
+                        <BoxCardCompany textSize="medium" title={global.t("AdminCompanyPage.todaySold")} textBody="123.322,23">143.532,23</BoxCardCompany>
+                        <BoxCardCompany textSize="big" title={global.t("AdminCompanyPage.todayComplaints")} textBody="0"/>
                     </div>
 
                 </div>

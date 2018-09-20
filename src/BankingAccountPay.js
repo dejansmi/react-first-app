@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import TextField from '@material-ui/core/TextField';
 import F from './F';
 import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 
 class BankingAccountPay extends Component {
@@ -92,19 +93,18 @@ class BankingAccountPay extends Component {
 
         const finallyAcceptOCC = (this.state.finallyAcceptOCC) ?
             (<div className="d-flex flex-column">
-                Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit
-                <TextField type="password" defaultValue="" label="Lozinka" />
+                <T id="BankingAccountPay.inputPass" global={global}/>
+                <TextField type="password" defaultValue="" label={global.t("BankingAccountPay.password")} />
                 <ButtonOKCancel OK center global={global} onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount)}/>
             </div>) : (null);
 
         const accountBalance = (this.state.showAB)?
-            (<div>Stanje tekućeg računa broj {global.user.currentAccount.id} je {global.user.currentAccount.currency} <F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
+            (<div><T id="BankingAccountPay.amountCurrenAccount1" global={global}/> {global.user.currentAccount.id} <T id="BankingAccountPay.amountCurrenAccount2" global={global}/> {global.user.currentAccount.currency} <F f="$0" a={global.user.currentAccount.ammount}/></div>):(null);
 
         return (
             <div className="Container-Empty">
                 <div className={classes} >
-                    Imate dovoljno sredstava za plaćanje sa tekućeg računa u Raiffeisen banci. Dovoljno je da klinkete Može.
-                    Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa <spam className="d-inline btn-link" onClick={this.accountBalance}>ovde</spam>
+                <T id="BankingAccountPay.amountHaveEnough" global={global}/> <spam className="d-inline btn-link" onClick={this.accountBalance}><T id="BankingAccountPay.amountHaveEnoughHere" global={global}/></spam>
                     {accountBalance}
                     {finallyAcceptOCC}
                     <ButtonOKCancel center OK global={global} onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}/>    
