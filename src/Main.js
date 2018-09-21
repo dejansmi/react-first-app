@@ -29,11 +29,11 @@ class Main extends React.Component {
                 <Route path='/endofbuying' render={(props) => <EndOfBuying URL="/endofbuying" {...attributes} isAuthed={true} />} />
                 <Route path='/user' render={(props) => <UserPage URL="/user" {...attributes} isAuthed={true} />} />
                 <Route path='/company/admin' render={(props) => <AdminCompanyPage URL="/company/admin" {...attributes} isAuthed={true} />} />
-                <Route path='/company/forpackaging' render={(props) => <ForPackagingCompanyPage title="Nalog za pakovanje" URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
-                <Route path='/company/fordelivery' render={(props) => <ForDeliveryCompanyPage title="Nalog za isporuku" URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
-                <Route path='/company/fordistribution' render={(props) => <ForDistributionCompanyPage title="Isporuka klijentima" URL="/company/fordistribution" {...attributes} isAuthed={true} />} />
+                <Route path='/company/forpackaging' render={(props) => <ForPackagingCompanyPage title={this.props.global.t("Main.forPackagingCompanyPage")} URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
+                <Route path='/company/fordelivery' render={(props) => <ForDeliveryCompanyPage title={this.props.global.t("Main.forDeliveryCompanyPage")} URL="/company/forpackaging" {...attributes} isAuthed={true} />} />
+                <Route path='/company/fordistribution' render={(props) => <ForDistributionCompanyPage title={this.props.global.t("Main.forDistributionCompanyPage")} URL="/company/fordistribution" {...attributes} isAuthed={true} />} />
                 <Route path='/system/admin' render={(props) => <AdminSystemPage URL="/system/admin" {...attributes} isAuthed={true} />} />
-                <Route path='/system/bankslist' render={(props) => <BanksListPage title="Okruženja na instalaciji" URL="/system/banklist" {...attributes} isAuthed={true} />} />
+                <Route path='/system/bankslist' render={(props) => <BanksListPage title={this.props.global.t("Main.banksListPage")} URL="/system/banklist" {...attributes} isAuthed={true} />} />
                 <Route path='/' render={(props) => <App URL="/" {...attributes} isAuthed={true} />}/>
             </Switch>
         )

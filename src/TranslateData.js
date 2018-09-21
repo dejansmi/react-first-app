@@ -38,7 +38,6 @@ tr["AdminCompanyPage.todayComplaints.sr"] = "Danas reklamacije";
 tr["AdminSystemPage.systemSetup.en"] = 'System setup';
 tr["AdminSystemPage.systemSetup.sr"] = 'System setup';
 
-// <T id="BankingAccountPay.amountHaveEnough" global={global}/>
 tr["BankingAccountPay.inputPass.en"] = 'Input password, so click OK to pay by OneClickCredit';
 tr["BankingAccountPay.inputPass.sr"] = 'Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit';
 tr["BankingAccountPay.password.en"] = 'Password';
@@ -53,6 +52,18 @@ tr["BankingAccountPay.amountHaveEnough.sr"] = `Imate dovoljno sredstava za plać
                     Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa`;
 tr["BankingAccountPay.amountHaveEnoughHere.en"] = "here";
 tr["BankingAccountPay.amountHaveEnoughHere.sr"] = "ovde";
+tr["BankingAccountPay.dontHaveAmount.en"] = `You don't have enough amount on current acccount, so you can't pay. You have to chose different way to paying.
+For security reasons, we do not show your account balance, but if you'd like to see your account balance`;
+tr["BankingAccountPay.dontHaveAmount.sr"] = `Nemate dovoljno sredstava da bi ste platili sa tekučeg računa. Morate izabrati dugi način za plaćanje.
+                    Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa`;
+tr["BankingAccountPay.dontHaveAccount.en"] = 'You don\'t have account';
+tr["BankingAccountPay.dontHaveAccount.sr"] = 'Nemate ROL racun';
+
+tr["BanksListPage.environment.en"] = 'Environment is';
+tr["BanksListPage.environment.sr"] = 'Okruženje na sistemu je';
+tr["BanksListPage.allEnvironment.en"] = 'You can change environment if you click on some environment:';
+tr["BanksListPage.allEnvironment.sr"] = 'Možete ga promeniti klikom na moguća okruženja na ovoj instalaciji:';
+
 
 tr["Button.OK.en"] = "OK";
 tr["Button.OK.sr"] = "OK";
@@ -162,6 +173,42 @@ tr["EndOfBuying.purposeTransfer.sr"] = 'Plaćanje po narudžbenici broj';
 tr["EndOfBuying.transferAmount.en"] = 'Amount:';
 tr["EndOfBuying.transferAmount.sr"] = 'Iznos:';
 
+// <T id="ForDeliveryCompanyPage.distributorCourierChose" global={global}/>
+tr["ForDeliveryCompanyPage.distributorChose.en"] = 'Choose distributor for delivery:';
+tr["ForDeliveryCompanyPage.distributorChose.sr"] = 'Izaberite za kog distributera želite da pravite nalog za isporuku:';
+tr["ForDeliveryCompanyPage.distributorCourierChose.en"] = 'Choose distributor/courier';
+tr["ForDeliveryCompanyPage.distributorCourierChose.sr"] = 'Izaberite distributera/kurira';
+tr["ForDeliveryCompanyPage.courierDistributor.en"] = 'Courier/Distributor';
+tr["ForDeliveryCompanyPage.courierDistributor.sr"] = 'Kurir/Distributer';
+tr["ForDeliveryCompanyPage.searchParameters.en"] = 'Enter the search parameters';
+tr["ForDeliveryCompanyPage.searchParameters.sr"] = 'Unesite parametre za pretragu';
+tr["ForDeliveryCompanyPage.makeOrder.en"] = 'Make order';
+tr["ForDeliveryCompanyPage.makeOrder.sr"] = 'Napravi nalog';
+tr["ForDeliveryCompanyPage.productName.en"] = 'Product name:';
+tr["ForDeliveryCompanyPage.productName.sr"] = 'Naziv proizvoda:';
+tr["ForDeliveryCompanyPage.productCode.en"] = 'Product code:';
+tr["ForDeliveryCompanyPage.productCode.sr"] = 'Šifra proizvoda:';
+tr["ForDeliveryCompanyPage.quantity.en"] = 'Quantity:';
+tr["ForDeliveryCompanyPage.quantity.sr"] = 'Količina:';
+tr["ForDeliveryCompanyPage.orderNumber.en"] = 'Order number:';
+tr["ForDeliveryCompanyPage.orderNumber.sr"] = 'Broj porudžbe:';
+tr["ForDeliveryCompanyPage.name.en"] = 'Name:';
+tr["ForDeliveryCompanyPage.name.sr"] = 'Ime i prezime:';
+tr["ForDeliveryCompanyPage.date.en"] = 'Date:';
+tr["ForDeliveryCompanyPage.date.sr"] = 'Datum:';
+tr["ForDeliveryCompanyPage.address.en"] = 'Address:';
+tr["ForDeliveryCompanyPage.address.sr"] = 'Adresa:';
+tr["ForDeliveryCompanyPage.city.en"] = 'City:';
+tr["ForDeliveryCompanyPage.city.sr"] = 'Grad:';
+tr["ForDeliveryCompanyPage.deliveryNumber.en"] = 'Delivery number:';
+tr["ForDeliveryCompanyPage.deliveryNumber.sr"] = 'Broj isporuke:';
+tr["ForDeliveryCompanyPage.checkData.en"] = 'Check data on report, so click OK to mark that products are sent to distributor for delivery.';
+tr["ForDeliveryCompanyPage.checkData.sr"] = 'Proverite podatke na izveštaju dole i potvrdom na Može ćete označiti da je roba sa spiska predata distributeru za isporuku.';
+tr["ForDeliveryCompanyPage.sendInfoToDistributor.en"] = `Packing order will be sent by email to configurated adress. You mark that product are sent
+                                to distributor to delivery`;
+tr["ForDeliveryCompanyPage.sendInfoToDistributor.sr"] = `Nalozi za pakovanje biće poslati mailom na adrese kako je podešeno. Ovim ste označili da je roba predata
+                                distributeru za isporuku kojentu koji je naručio`;
+
 tr["HeaderPage.companies.en"] = "Companies";
 tr["HeaderPage.companies.sr"] = "Kompanije";
 tr["HeaderPage.products.en"] = "Products";
@@ -264,6 +311,16 @@ tr["MenuSystem.parameters.en"] = "Parameters";
 tr["MenuSystem.parameters.sr"] = "Parametri";
 tr["MenuSystem.exit.en"] = "Exit";
 tr["MenuSystem.exit.sr"] = "Izlaz";
+
+tr["Main.forPackagingCompanyPage.en"] = "Order for packing";
+tr["Main.forPackagingCompanyPage.sr"] = "Nalog za pakovanje";
+tr["Main.forDeliveryCompanyPage.en"] = "Order for delivery";
+tr["Main.forDeliveryCompanyPage.sr"] = "Nalog za isporuku";
+tr["Main.forDistributionCompanyPage.en"] = "Delivery to clients";
+tr["Main.forDistributionCompanyPage.sr"] = "Isporuka klijentima";
+tr["Main.banksListPage.en"] = "Environments";
+tr["Main.banksListPage.sr"] = "Okruženja na instalaciji";
+
 
 tr["PayByCard.cardNumber.en"] = "Card number";
 tr["PayByCard.cardNumber.sr"] = "Broj kartice";

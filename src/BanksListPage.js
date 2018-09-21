@@ -5,6 +5,7 @@ import './ForPackagingCompanyPage.css';
 import ProtoFormSystem from './ProtoFormSystem';
 import Item from './Item';
 import Img from './Img';
+import T from './T';
 
 class BanksListPage extends React.Component {
     constructor(props) {
@@ -142,8 +143,8 @@ class BanksListPage extends React.Component {
 
         return (
             <ProtoFormSystem title={title} className="d-flex flex-column" global={this.props.global}>
-                <div> Okruženje na sistemu je <Img src={global.env.logo} style={{backgroundColor: global.env.backgroundlogo}}></Img></div>
-                <p> Možete ga promeniti klikom na moguća okruženja na ovoj instalaciji:
+                <div> <T id="BanksListPage.environment" global={global}/> <Img src={global.env.logo} style={{backgroundColor: global.env.backgroundlogo}}></Img></div>
+                <p> <T id="BanksListPage.allEnvironment" global={global}/>
                 </p>
                 <div className="d-flex flex-column "> 
                 {Object.keys(global.environmentList).map((keyBank) =>

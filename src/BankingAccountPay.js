@@ -110,12 +110,11 @@ class BankingAccountPay extends Component {
                     <ButtonOKCancel center OK global={global} onClick={(e) => payingFunc(ammountPay, "ACCOUNT")}/>    
                 </div>
                 <div className={classes2Phase} >
-                    Nemate dovoljno sredstava da bi ste platili sa tekučeg računa. Morate izabrati dugi način za plaćanje.
-                    Zbog bezbednosnih razloga ne prikazujemo stanje računa, ali ako želite možete videti stanje računa <spam className="d-inline btn-link" onClick={this.accountBalance}>ovde</spam>
+                <T id="BankingAccountPay.dontHaveAmount" global={global}/> <spam className="d-inline btn-link" onClick={this.accountBalance}><T id="BankingAccountPay.amountHaveEnoughHere" global={global}/></spam>
                     {accountBalance}
                 </div>
                 <div className={classes3Phase} >
-                    Nemate ROL racun
+                    <T id="BankingAccountPay.dontHaveAccount" global={global}/>
                 </div>
             </div>
         );

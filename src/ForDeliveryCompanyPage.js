@@ -8,6 +8,7 @@ import CheckBox from "./CheckBox";
 import Button from './Button';
 import Select from './Select';
 import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 class ForDeliveryCompanyPage extends React.Component {
     constructor(props) {
@@ -161,8 +162,8 @@ class ForDeliveryCompanyPage extends React.Component {
                 {(this.state.phase === '0') ?
                     (
                         <div className="w-100 d-inline" >
-                            Izaberite za kog distributera želite da pravite nalog za isporuku<br />
-                            Kurir/Distributer <Select className="col-6" label="Izaberite distributera/kurira" options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
+                            <T id="ForDeliveryCompanyPage.distributorChose" global={global}/><br />
+                            <T id="ForDeliveryCompanyPage.courierDistributor" global={global}/> <Select className="col-6" label={global.t("ForDeliveryCompanyPage.distributorCourierChose")} options={selectCourier()} onChange={(e) => this.handleCourier(e)} />
                             <ButtonOKCancel both secondColor center global={global} onClickCancel={(e) => this.handleOnClickMenu(e, '/company/admin')} onClickOK={(e) => this.handlePhase0toA(e)} />
                         </div>
                     ) : (null)
@@ -171,8 +172,8 @@ class ForDeliveryCompanyPage extends React.Component {
                     (<div className="d-flex flex-row Search-Div O-Y">
                         <CheckBox checked={this.state.checkAll} onChange={(e) => this.handleCheckBoxAll(e)} />&ensp;&ensp;&ensp;
                     <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
-                        <input className="Search-Input" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite parametre za pretragu" />
-                        <Button className="h-100 align-middle" size="sm" onClick={(e) => this.handlePhaseAtoB(e)}>Napravi nalog</Button>
+                        <input className="Search-Input" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder={global.t("ForDeliveryCompanyPage.searchParameters")} />
+                        <Button className="h-100 align-middle" size="sm" onClick={(e) => this.handlePhaseAtoB(e)}><T id="ForDeliveryCompanyPage.makeOrder" global={global}/></Button>
                     </div>) : (null)}
                 {(this.state.phase === 'A') ?
                     (<div className="d-flex flex-column ">
@@ -184,16 +185,16 @@ class ForDeliveryCompanyPage extends React.Component {
                                             <div className="d-flex flex-row flex-wrap Products-Table align-items-center">
                                                 {this.setCheckBox(global.ordersNotDelivered[keyUser][key].deliveryId, keyUser)}
                                                 <CheckBox checked={checked(global.ordersNotDelivered[keyUser][key].deliveryId)} onChange={(e) => this.handleCheckBox(e, global.ordersNotDelivered[keyUser][key].deliveryId)} />&ensp;&ensp;&ensp;
-                                            <span> Naziv proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productName}</b></span>&ensp;&ensp;&ensp;
-                                            <span> Šifra proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productId}</b></span>&ensp;&ensp;&ensp;
-                                            <span> Količina: <b>{global.ordersNotDelivered[keyUser][key].quantity}</b></span>&ensp;&ensp;&ensp;
-                                            <span> Broj porudžbe: {global.ordersNotDelivered[keyUser][key].orderId}</span>&ensp;&ensp;&ensp;
-                                            <span> Ime i prezime: {global.ordersNotDelivered[keyUser][key].name}</span>&ensp;&ensp;&ensp;
-                                            <span> Datum: <F f="date" a={global.ordersNotDelivered[keyUser][key].date} /></span>&ensp;&ensp;&ensp;
-                                            <span> Adresa: {global.ordersNotDelivered[keyUser][key].address}</span>&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.productName" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].productName}</b></span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.productCode" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].productId}</b></span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.quantity" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].quantity}</b></span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.orderNumber" global={global}/> {global.ordersNotDelivered[keyUser][key].orderId}</span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.name" global={global}/> {global.ordersNotDelivered[keyUser][key].name}</span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.date" global={global}/> <F f="date" a={global.ordersNotDelivered[keyUser][key].date} /></span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.address" global={global}/> {global.ordersNotDelivered[keyUser][key].address}</span>&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].houseNumber}</span>&ensp;&ensp;&ensp;
-                                            <span> Grad: {global.ordersNotDelivered[keyUser][key].city}</span>&ensp;&ensp;&ensp;
-                                            <span> Broj poružbe: {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
+                                            <span> <T id="ForDeliveryCompanyPage.city" global={global}/> {global.ordersNotDelivered[keyUser][key].city}</span>&ensp;&ensp;&ensp;
+                                            <span>  <T id="ForDeliveryCompanyPage.deliveryNumber" global={global}/> {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].company}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].username}</span>&ensp;&ensp;&ensp;
                                             <span>{global.ordersNotDelivered[keyUser][key].deliveryPhase}</span>&ensp;&ensp;&ensp;
@@ -207,15 +208,15 @@ class ForDeliveryCompanyPage extends React.Component {
                 {(this.state.phase === 'B') ?
                     (<div className="d-flex flex-column m-3">
                         <div className="w-100 d-inline" >
-                            Proverite podatke na izveštaju dole i potvrdom na Može ćete označiti da je roba sa spiska predata distributeru za isporuku.<br />
+                        <T id="ForDeliveryCompanyPage.checkData" global={global}/><br />
                             <ButtonOKCancel both secondColor center global={global} onClickCancel={(e) => this.backtophaseA(e)} onClickOK={(e) => this.handlePhaseBtoC(e)} />
                         </div>
                         <table className="table table-sm col-12 O-X O-Y m-3">
                             <thead className="col-12">
                                 <tr className="col-12">
-                                    <th width="40%" scope="col">Naziv proizvoda</th>
-                                    <th width="40%" scope="col">Šifra proizvoda</th>
-                                    <th width="20%" scope="col">Količina</th>
+                                    <th width="40%" scope="col"><T id="ForDeliveryCompanyPage.productName" global={global}/></th>
+                                    <th width="40%" scope="col"><T id="ForDeliveryCompanyPage.productCode" global={global}/></th>
+                                    <th width="20%" scope="col"><T id="ForDeliveryCompanyPage.quantity" global={global}/></th>
                                 </tr>
                             </thead>
                             <tbody className="col-12">
@@ -236,8 +237,7 @@ class ForDeliveryCompanyPage extends React.Component {
                     (
                         <div className="d-flex flex-column m-3">
                             <div className="w-100 d-inline" >
-                                Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Ovim ste označili da je roba predata
-                                distributeru za isporuku kojentu koji je naručio
+                            <T id="ForDeliveryCompanyPage.sendInfoToDistributor" global={global}/>
                                 <ButtonOKCancel continues secondColor center global={global} onClickCancel={(e) => this.backtophaseA(e)} onClick={(e) => this.handleOnClickMenu(e, '/company/admin')} />
                             </div>
 
