@@ -5,6 +5,7 @@ import './ForDeliveryCompanyPage.css';
 import ProtoFormCompany from './ProtoFormCompany';
 import F from './F';
 import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 class ForDistributionCompanyPage extends React.Component {
     constructor(props) {
@@ -72,17 +73,17 @@ class ForDistributionCompanyPage extends React.Component {
 
         const productData = (keyUser, key) =>
             <React.Fragment>
-                <span> Naziv proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productName}</b></span>&ensp;&ensp;&ensp;
-                <span> Šifra proizvoda: <b>{global.ordersNotDelivered[keyUser][key].productId}</b></span>&ensp;&ensp;&ensp;
-                <span> Količina: <b>{global.ordersNotDelivered[keyUser][key].quantity}</b></span>&ensp;&ensp;&ensp;
-                <span> Broj porudžbe: {global.ordersNotDelivered[keyUser][key].orderId}</span>&ensp;&ensp;&ensp;
-                <span> Ime i prezime: {global.ordersNotDelivered[keyUser][key].name}</span>&ensp;&ensp;&ensp;
-                <span> Datum: <F f="date" a={global.ordersNotDelivered[keyUser][key].date} /></span>&ensp;&ensp;&ensp;
-                <span> Adresa: {global.ordersNotDelivered[keyUser][key].address}</span>&ensp;
+                <span> <T id="ForDistributionCompanyPage.productName" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].productName}</b></span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.productCode" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].productId}</b></span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.quantity" global={global}/> <b>{global.ordersNotDelivered[keyUser][key].quantity}</b></span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.orderId" global={global}/> {global.ordersNotDelivered[keyUser][key].orderId}</span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.name" global={global}/> {global.ordersNotDelivered[keyUser][key].name}</span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.date" global={global}/> <F f="date" a={global.ordersNotDelivered[keyUser][key].date} /></span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.address" global={global}/> {global.ordersNotDelivered[keyUser][key].address}</span>&ensp;
                 <span>{global.ordersNotDelivered[keyUser][key].houseNumber}</span>&ensp;&ensp;&ensp;
-                <span> Grad: {global.ordersNotDelivered[keyUser][key].city}</span>&ensp;&ensp;&ensp;
-                <span> Broj poružbine: {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
-                <span> Broj paketa: {global.ordersNotDelivered[keyUser][key].packageId}</span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.city" global={global}/> {global.ordersNotDelivered[keyUser][key].city}</span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.deliveryId" global={global}/> {global.ordersNotDelivered[keyUser][key].deliveryId}</span>&ensp;&ensp;&ensp;
+                <span> <T id="ForDistributionCompanyPage.packageId" global={global}/> {global.ordersNotDelivered[keyUser][key].packageId}</span>&ensp;&ensp;&ensp;
                 <span>{global.ordersNotDelivered[keyUser][key].company}</span>&ensp;&ensp;&ensp;
                 <span>{global.ordersNotDelivered[keyUser][key].username}</span>&ensp;&ensp;&ensp;
                 <span>{global.ordersNotDelivered[keyUser][key].deliveryPhase}</span>&ensp;&ensp;&ensp;
@@ -97,7 +98,7 @@ class ForDistributionCompanyPage extends React.Component {
                     {(this.state.phase === 'A') ?
                         (<div className="d-flex flex-row Search-Div O-Y">
                             <i className="material-icons align-self-center" onClick={this.startSearch}>{global.searchButton}</i>
-                            <input className="Search-Input" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Unesite parametre za pretragu" />
+                            <input className="Search-Input" type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder={global.t("ForDistributionCompanyPage.searchParameters")} />
                         </div>) : (null)}
                     {(this.state.phase === 'A') ?
                         (<div className="d-flex flex-column m-4 ">

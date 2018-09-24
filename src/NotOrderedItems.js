@@ -110,8 +110,7 @@ class NotOrderedItems extends React.Component {
                     <div><T id="NotOrderedItems.codeDelivery" global={global}/> {this.state.ordersNotDelivered.orderId}</div>
                     <div><T id="NotOrderedItems.codePackage" global={global}/> {this.state.ordersNotDelivered.packageId}</div>
                     <p>
-                        Ukoliko isporuka nije obaveljana, odnosno niste dobili proizvod kao što je 
-                        naznačeno u podacima gore, možete podneti <Link className="Container-Empty" color="primary" >reklamaciju</Link>
+                    <T id="ForPackagingCompanyPage.complain" global={global}/> <Link className="Container-Empty" color="primary" ><T id="ForPackagingCompanyPage.complaint" global={global}/></Link>
                     </p>
                     <ButtonOKCancel both center global={global} onClickOK={(e) => this.handleOKChangePhase3(e)} onClickCancel={(e) => this.handleCancelChangePhase3(e)} />
                 </div>
@@ -127,9 +126,7 @@ class NotOrderedItems extends React.Component {
                     {infoPhases}
                     {(this.state.orderderToMe) ?
                         (<div>
-                            Postoje proizvodi koji su Vam isporučeni prema evidenciji. Označeni su
-                            sivom pozadinom. Molimo da potvrdite da li ste ih primili klikom na taj red.
-                            Potvrdom povećavate efikasnost i tačnost sistema, omogućavate praćenje tačnosti isporuke
+                            <T id="NotOrderedItems.acceptProducts" global={global}/>
                     </div>) : (null)}
                     <table className="UserP-table">
                         <thead>

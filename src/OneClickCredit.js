@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button from './Button';
 import TextField from '@material-ui/core/TextField';
 import ReadHtmlDocument from './ReadHtmlDocument';
 import F from './F';
+import ButtonOKCancel from './ButtonOKCancel';
+import T from './T';
 
 
 class OneClickCredit extends Component {
@@ -115,47 +116,46 @@ class OneClickCredit extends Component {
 
         const finallyAcceptOCC = (this.state.finallyAcceptOCC) ?
             (<div className="d-flex flex-column">
-                Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit
-                <TextField type="password" defaultValue="" label="Lozinka" />
-                <Button className="ColorYellow w-100" onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount, "ONECLICKCREDIT")}>Može</Button>
+                <T id="OneClickCredit.inputPassword" global={global}/>
+                <TextField type="password" defaultValue="" label={global.t("OneClickCredit.password")} />
+                <ButtonOKCancel OK className="ColorYellow w-100" global={global} onClick={(e) => this.props.payingFunc(this.state.overdraftAmmount, "ONECLICKCREDIT")}></ButtonOKCancel>
             </div>) : (null);
+
 
         return (
             <div className="Container-Empty">
                 <div className={classes} >
                     <div className="d-flex flex-column width-exact-50 p-1">
-                        {textLeftNumRight("Iznos kredita:", <F f="$0" a={this.state.overdraftAmmount} />, "", "")}
-                        {textLeftNumRight("Period: " + this.state.mounth + " meseci.", "", "")}
-                        {textLeftNumRight("Kamata:", this.state.interest, "", "%")}
-                        {textLeftNumRight("EKS:", this.state.interest, "", "%")}
-                        {textLeftNumRight("Anuitet:", <F f="$0" a={this.state.annuity} />, "bold", "")}
-                        <Button className="ColorYellow w-100" onClick={() => this.oneClickMoze()}>Može</Button>
+                        {textLeftNumRight(global.t("OneClickCredit.loanAmount"), <F f="$0" a={this.state.overdraftAmmount} />, "", "")}
+                        {textLeftNumRight(global.t("OneClickCredit.periodOfTime") + this.state.mounth + " meseci.", "", "")}
+                        {textLeftNumRight(global.t("OneClickCredit.interest"), this.state.interest, "", "%")}
+                        {textLeftNumRight(global.t("OneClickCredit.eir"), this.state.interest, "", "%")}
+                        {textLeftNumRight(global.t("OneClickCredit.annuity:"), <F f="$0" a={this.state.annuity} />, "bold", "")}
+                        <ButtonOKCancel OK className="ColorYellow w-100" global={global} onClick={() => this.oneClickMoze()}></ButtonOKCancel>
                     </div>
                     <div className="p-2">
-                        Dva <span className="ColorYellow">Može</span> vas deli od dobijanja kredita bez dolaska u banku. Kredit se dobija iz dozvoljenog minusa, ali kamatna stopa je specijalna.
-                        Ukoliko dostavite sledecu dokumentaciju: potvrdu o primanjima,... mozete vratiti nivo dozvoljenog minusa na sadasnji nivo, pri cemu
-                        nema promene kamatne stope.
+                        <T id="OneClickCredit.twoOK" global={global}/>
                 </div>
                 </div>
                 <div className={classes2Phase} >
                     <div className="w-100 border border-yellow">
-                        Molimo pročitajte ovaj ugovor pažljlivo, prolaskom kroz sve članove:><br />
+                    <T id="OneClickCredit.readAgreement" global={global}/>:><br />
                         <ReadHtmlDocument readAll={this.readAllOneClickCredit} >
-                            <h3 className="w-100 text-center">Ugovor o pozajmici</h3>
-                            <p>Između:
-                                1. Raiffeisen banke, Beograd, koju zastupa Miloš Milutinović, regionalni menadžer, u daljem tekstu Bankai<br />
-                                2. {global.user.name},{global.user.address},{global.user.city}, u daljem tekstu Korisnik
+                            <h3 className="w-100 text-center"><T id="OneClickCredit.loanAgreement" global={global}/></h3>
+                            <p><T id="OneClickCredit.between1" global={global}/>
+                                1. {global.env.name}, {global.env.headOffice}, <T id="OneClickCredit.between2" global={global}/> {global.env.represent}, {global.env.representPosition}, <T id="OneClickCredit.hereinafter" global={global}/> <T id="OneClickCredit.between3" global={global}/><br />
+                                2. {global.user.name},{global.user.address},{global.user.city}, <T id="OneClickCredit.hereinafter" global={global}/> <T id="OneClickCredit.between4" global={global}/>
                             </p>
-                            <p><div className="w-100 text-center">Član 1</div><br />
-                                Ugovorne strane su se dogovorile da Banka da pozajmicu Korisniku u iznosu <F f="$0" a={this.state.overdraftAmmount} /> {this.state.basketCurrency} na
-                            period od {this.state.mounth} meseci.
+                            <p><div className="w-100 text-center"><T id="OneClickCredit.article" global={global}/> 1</div><br />
+                            <T id="OneClickCredit.article1.1" global={global}/> <F f="$0" a={this.state.overdraftAmmount} /> {this.state.basketCurrency} 
+                            <T id="OneClickCredit.article1.2" global={global}/> {this.state.mounth} <T id="OneClickCredit.article1.3" global={global}/>
                             </p>
-                            <p><div className="w-100 text-center">Član 2</div><br />
-                                Korisnik će svakog meseca, do poslednjeg radnog dana u mesecu, vraćati Anuitet
-                            u iznosu od <F f="$0" a={this.state.annuity} /> {this.state.basketCurrency}.
+                            <p><div className="w-100 text-center"><T id="OneClickCredit.article" global={global}/> 2</div><br />
+                            <T id="OneClickCredit.article2.1" global={global}/>
+                            <T id="OneClickCredit.article2.2" global={global}/> <F f="$0" a={this.state.annuity} /> {this.state.basketCurrency}.
                             </p>
-                            <p><div className="w-100 text-center">Član 3</div><br />
-                                Nominalna kamatna stopa iznosi {this.state.interest}, a Efektivna kamatna stopa je
+                            <p><div className="w-100 text-center"><T id="OneClickCredit.article" global={global}/> 3</div><br />
+                            <T id="OneClickCredit.article3.1" global={global}/> {this.state.interest}, <T id="OneClickCredit.article3.2" global={global}/>
                             {this.state.interest}.
                             </p>
                             <p>
@@ -163,9 +163,8 @@ class OneClickCredit extends Component {
                                 ...<br />
                                 ...
                             </p>
-                            <p><div className="w-100 text-center">Član 35</div><br />
-                                Korisnik prihvata ovaj ugovor elektronski unosom lozinke za ROL. Korisnik će dobiti ugovor u elektronskom
-                                formatu na mail a biće sačuvan i evidenciji banke a Korisnik će moći da mu pristupi kroz ROL nalog.
+                            <p><div className="w-100 text-center"><T id="OneClickCredit.article" global={global}/> 35</div><br />
+                            <T id="OneClickCredit.article35.1" global={global}/>
                             </p>
                         </ReadHtmlDocument>
                     </div>

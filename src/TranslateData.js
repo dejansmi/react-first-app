@@ -190,8 +190,8 @@ tr["ForDeliveryCompanyPage.productCode.en"] = 'Product code:';
 tr["ForDeliveryCompanyPage.productCode.sr"] = 'Šifra proizvoda:';
 tr["ForDeliveryCompanyPage.quantity.en"] = 'Quantity:';
 tr["ForDeliveryCompanyPage.quantity.sr"] = 'Količina:';
-tr["ForDeliveryCompanyPage.orderNumber.en"] = 'Order number:';
-tr["ForDeliveryCompanyPage.orderNumber.sr"] = 'Broj porudžbe:';
+tr["ForDeliveryCompanyPage.orderId.en"] = 'Order id:';
+tr["ForDeliveryCompanyPage.orderId.sr"] = 'Broj porudžbe:';
 tr["ForDeliveryCompanyPage.name.en"] = 'Name:';
 tr["ForDeliveryCompanyPage.name.sr"] = 'Ime i prezime:';
 tr["ForDeliveryCompanyPage.date.en"] = 'Date:';
@@ -200,14 +200,75 @@ tr["ForDeliveryCompanyPage.address.en"] = 'Address:';
 tr["ForDeliveryCompanyPage.address.sr"] = 'Adresa:';
 tr["ForDeliveryCompanyPage.city.en"] = 'City:';
 tr["ForDeliveryCompanyPage.city.sr"] = 'Grad:';
-tr["ForDeliveryCompanyPage.deliveryNumber.en"] = 'Delivery number:';
-tr["ForDeliveryCompanyPage.deliveryNumber.sr"] = 'Broj isporuke:';
+tr["ForDeliveryCompanyPage.deliveryId.en"] = 'Delivery id:';
+tr["ForDeliveryCompanyPage.deliveryId.sr"] = 'Broj isporuke:';
 tr["ForDeliveryCompanyPage.checkData.en"] = 'Check data on report, so click OK to mark that products are sent to distributor for delivery.';
 tr["ForDeliveryCompanyPage.checkData.sr"] = 'Proverite podatke na izveštaju dole i potvrdom na Može ćete označiti da je roba sa spiska predata distributeru za isporuku.';
 tr["ForDeliveryCompanyPage.sendInfoToDistributor.en"] = `Packing order will be sent by email to configurated adress. You mark that product are sent
                                 to distributor to delivery`;
 tr["ForDeliveryCompanyPage.sendInfoToDistributor.sr"] = `Nalozi za pakovanje biće poslati mailom na adrese kako je podešeno. Ovim ste označili da je roba predata
                                 distributeru za isporuku kojentu koji je naručio`;
+
+// <T id="ForDistributionCompanyPage.packageId" global={global}/>
+tr["ForDistributionCompanyPage.productName.en"] = 'Product name:';
+tr["ForDistributionCompanyPage.productName.sr"] = 'Naziv proizvoda:';
+tr["ForDistributionCompanyPage.productCode.en"] = 'Product code:';
+tr["ForDistributionCompanyPage.productCode.sr"] = 'Šifra proizvoda:';
+tr["ForDistributionCompanyPage.quantity.en"] = 'Quantity:';
+tr["ForDistributionCompanyPage.quantity.sr"] = 'Količina:';
+tr["ForDistributionCompanyPage.orderId.en"] = 'Order id:';
+tr["ForDistributionCompanyPage.orderId.sr"] = 'Broj porudžbe:';
+tr["ForDistributionCompanyPage.name.en"] = 'Name:';
+tr["ForDistributionCompanyPage.name.sr"] = 'Ime i prezime:';
+tr["ForDistributionCompanyPage.date.en"] = 'Date:';
+tr["ForDistributionCompanyPage.date.sr"] = 'Datum:';
+tr["ForDistributionCompanyPage.address.en"] = 'Address:';
+tr["ForDistributionCompanyPage.address.sr"] = 'Adresa:';
+tr["ForDistributionCompanyPage.city.en"] = 'City:';
+tr["ForDistributionCompanyPage.city.sr"] = 'Grad:';
+tr["ForDistributionCompanyPage.deliveryId.en"] = 'Delivery id:';
+tr["ForDistributionCompanyPage.deliveryId.sr"] = 'Broj isporuke:';
+tr["ForDistributionCompanyPage.packageId.en"] = 'Package id:';
+tr["ForDistributionCompanyPage.packageId.sr"] = 'Broj paketa:';
+tr["ForDistributionCompanyPage.searchParameters.en"] = 'Enter the search parameters';
+tr["ForDistributionCompanyPage.searchParameters.sr"] = "Unesite parametre za pretragu";
+
+
+
+tr["ForPackagingCompanyPage.productName.en"] = 'Product name:';
+tr["ForPackagingCompanyPage.productName.sr"] = 'Naziv proizvoda:';
+tr["ForPackagingCompanyPage.productCode.en"] = 'Product code:';
+tr["ForPackagingCompanyPage.productCode.sr"] = 'Šifra proizvoda:';
+tr["ForPackagingCompanyPage.quantity.en"] = 'Quantity:';
+tr["ForPackagingCompanyPage.quantity.sr"] = 'Količina:';
+tr["ForPackagingCompanyPage.orderId.en"] = 'Order id:';
+tr["ForPackagingCompanyPage.orderId.sr"] = 'Broj porudžbe:';
+tr["ForPackagingCompanyPage.name.en"] = 'Name:';
+tr["ForPackagingCompanyPage.name.sr"] = 'Ime i prezime:';
+tr["ForPackagingCompanyPage.date.en"] = 'Date:';
+tr["ForPackagingCompanyPage.date.sr"] = 'Datum:';
+tr["ForPackagingCompanyPage.address.en"] = 'Address:';
+tr["ForPackagingCompanyPage.address.sr"] = 'Adresa:';
+tr["ForPackagingCompanyPage.city.en"] = 'City:';
+tr["ForPackagingCompanyPage.city.sr"] = 'Grad:';
+tr["ForPackagingCompanyPage.deliveryId.en"] = 'Delivery id:';
+tr["ForPackagingCompanyPage.deliveryId.sr"] = 'Broj isporuke:';
+tr["ForPackagingCompanyPage.packageId.en"] = 'Package id:';
+tr["ForPackagingCompanyPage.packageId.sr"] = 'Broj paketa:';
+tr["ForPackagingCompanyPage.searchParameters.en"] = 'Enter the search parameters';
+tr["ForPackagingCompanyPage.searchParameters.sr"] = "Unesite parametre za pretragu";
+tr["ForPackagingCompanyPage.checkData.en"] = 'Check data on report, so choose courier/distributor for delivery and confirm by OK.';
+tr["ForPackagingCompanyPage.checkData.sr"] = 'Proverite podatke na izveštaju dole, izaberite distributera/kurira koji će distribuirate proizvode i potvrdite na OK.';
+tr["ForPackagingCompanyPage.sendInfoToDistributor.en"] = 'Packing order will be sent by email to configurated adress. When product will be packing and delivered to distributor';
+tr["ForPackagingCompanyPage.sendInfoToDistributor.sr"] = 'Nalozi za pakovanje biće poslati mail na adrese kako je podešeno. Po pakovanju i isporuci distributeru';
+tr["ForPackagingCompanyPage.courierDistributor.en"] = 'Courier/Distributor';
+tr["ForPackagingCompanyPage.courierDistributor.sr"] = 'Kurir/Distributer';
+tr["ForPackagingCompanyPage.distributorCourierChose.en"] = 'Choose distributor/courier';
+tr["ForPackagingCompanyPage.distributorCourierChose.sr"] = 'Izaberite distributera/kurira';
+tr["ForPackagingCompanyPage.shouldRecord.en"] = 'should to record';
+tr["ForPackagingCompanyPage.shouldRecord.sr"] = 'potrebno je to evidentirati';
+
+
 
 tr["HeaderPage.companies.en"] = "Companies";
 tr["HeaderPage.companies.sr"] = "Kompanije";
@@ -278,8 +339,19 @@ tr["NotOrderedItems.tablePhase.en"] = 'Phase';
 tr["NotOrderedItems.tablePhase.sr"] = 'Faza';
 tr["NotOrderedItems.undeliveredOrders.en"] = 'Undelivered orders';
 tr["NotOrderedItems.undeliveredOrders.sr"] = 'Neisporučene narudžbine';
-
-
+tr["NotOrderedItems.complain.en"] = `If you didn't get products as mark in data 
+                        above, you can submit`;
+tr["NotOrderedItems.complain.sr"] = `Ukoliko isporuka nije obaveljana, odnosno niste dobili proizvod kao što je 
+                        naznačeno u podacima gore, možete podneti`;                    
+tr["NotOrderedItems.complaint.en"] = 'complaint';
+tr["NotOrderedItems.complaint.sr"] = 'reklamaciju'
+tr["NotOrderedItems.acceptProducts.en"] = `There are products supplied to you according to records. They are marked
+                             gray background. Please confirm that you received them by clicking on that order.
+                             By confirming you increase the efficiency and accuracy of the system, you can monitor the accuracy of the delivery`;
+tr["NotOrderedItems.acceptProducts.sr"] = `Postoje proizvodi koji su Vam isporučeni prema evidenciji. Označeni su
+sivom pozadinom. Molimo da potvrdite da li ste ih primili klikom na taj red.
+Potvrdom povećavate efikasnost i tačnost sistema, omogućavate praćenje tačnosti isporuke`;
+                        
 tr["MenuCompany.order.en"] = "Order";
 tr["MenuCompany.order.sr"] = "Porudžba";
 tr["MenuCompany.forPacking.en"] = "for Packing";
@@ -322,6 +394,62 @@ tr["Main.banksListPage.en"] = "Environments";
 tr["Main.banksListPage.sr"] = "Okruženja na instalaciji";
 
 
+tr["OneClickCredit.inputPassword.en"] = "Input password, so click OK and complite paying process for OneClickCredit";
+tr["OneClickCredit.inputPassword.sr"] = "Unesite lozinku i potvrdom na Može izvršite plaćanje OneClickCredit";
+tr["OneClickCredit.password.en"] = "Password";
+tr["OneClickCredit.password.sr"] = "Lozinka";
+tr["OneClickCredit.loanAmount.en"] = 'Loan amount:';
+tr["OneClickCredit.loanAmount.sr"] = 'Iznos kredita:';
+tr["OneClickCredit.periodOfTime.en"] = 'Period of time:';
+tr["OneClickCredit.periodOfTime.sr"] = 'Period: ';
+tr["OneClickCredit.interest.en"] = 'Kamata:';
+tr["OneClickCredit.interest.sr"] = 'Kamata:';
+tr["OneClickCredit.eir.en"] = 'EIR:';
+tr["OneClickCredit.eir.sr"] = 'EKS:';
+tr["OneClickCredit.annuity.en"] = 'Annuity:';
+tr["OneClickCredit.annuity.sr"] = 'Anuitet:';
+tr["OneClickCredit.twoOK.sr"] = `You are two click on OK far from getting a loan without arriving at a bank. The loan is obtained from the allowed minus, but the interest rate is special.
+                         If you submit the following documentation: a receipt for income, ... you can return the level of the allowed minus to the current level, whereby
+                         no interest rate change`;
+tr["OneClickCredit.twoOK.sr"] = `Dva OK vas deli od dobijanja kredita bez dolaska u banku. Kredit se dobija iz dozvoljenog minusa, ali kamatna stopa je specijalna.
+                        Ukoliko dostavite sledecu dokumentaciju: potvrdu o primanjima,... mozete vratiti nivo dozvoljenog minusa na sadasnji nivo, pri cemu
+                        nema promene kamatne stope.`;
+tr["OneClickCredit.twoOK.sr"] = 'Please read this agreement carefully, passing through all members:';
+tr["OneClickCredit.readAgreement.en"] = 'Please read this agreement carefully, passing through all the members:';
+tr["OneClickCredit.readAgreement.sr"] = 'Molimo pročitajte ovaj ugovor pažljlivo, prolaskom kroz sve članove:';
+tr["OneClickCredit.loanAgreement.en"] = 'Loan agreement';
+tr["OneClickCredit.loanAgreement.sr"] = 'Ugovor o pozajmici';
+tr["OneClickCredit.between1.en"] = 'Between:';
+tr["OneClickCredit.between1.sr"] = 'Između:';
+tr["OneClickCredit.between2.en"] = 'represented by';
+tr["OneClickCredit.between2.sr"] = 'koju zastupa';
+tr["OneClickCredit.hereinafter.sr"] = 'hereinafter';
+tr["OneClickCredit.hereinafter.sr"] = 'u daljem tekstu';
+tr["OneClickCredit.between3.en"] = 'Bank and';
+tr["OneClickCredit.between3.sr"] = 'Banka i';
+tr["OneClickCredit.between4.en"] = 'Beneficiary';
+tr["OneClickCredit.between4.sr"] = 'Korisnik';
+tr["OneClickCredit.article.en"] = 'Article';
+tr["OneClickCredit.article.sr"] = 'Član';
+tr["OneClickCredit.article1.1.en"] = 'The parties agreed to lend to the Beneficiary in an amount';
+tr["OneClickCredit.article1.1.sr"] = 'Ugovorne strane su se dogovorile da Banka da pozajmicu Korisniku u iznosu';
+tr["OneClickCredit.article1.2.en"] = 'for a period of';
+tr["OneClickCredit.article1.2.sr"] = 'na period od';
+tr["OneClickCredit.article1.3.en"] = 'months.';
+tr["OneClickCredit.article1.3.sr"] = 'meseci.';
+tr["OneClickCredit.article2.1.en"] = 'The Beneficiary will return annuity every month, until the last working day of the month';
+tr["OneClickCredit.article2.1.sr"] = 'Korisnik će svakog meseca, do poslednjeg radnog dana u mesecu, vraćati Anuitet';
+tr["OneClickCredit.article2.2.en"] = 'in amount of';
+tr["OneClickCredit.article2.2.sr"] = 'u iznosu od';
+tr["OneClickCredit.article3.1.en"] = 'Nominal interest rate is';
+tr["OneClickCredit.article3.1.sr"] = 'Nominalna kamatna stopa iznosi';
+tr["OneClickCredit.article3.2.sr"] = 'and Efective interest rate is';
+tr["OneClickCredit.article3.2.sr"] = 'a Efektivna kamatna stopa je';
+tr["OneClickCredit.article35.1.en"] = `The Beneficiary accepts this agreement electronically by entering the password for on-line system. The Beneficiary will receive an electronic contract
+                                 format on mail and will be saved to the bank's records and the Beneficiary will be able to access it through the OL account.`
+tr["OneClickCredit.article35.1.sr"] = `Korisnik prihvata ovaj ugovor elektronski unosom lozinke za on-line sistem. Korisnik će dobiti ugovor u elektronskom
+                                formatu na mail a biće sačuvan i evidenciji banke a Korisnik će moći da mu pristupi kroz OL nalog.`
+
 tr["PayByCard.cardNumber.en"] = "Card number";
 tr["PayByCard.cardNumber.sr"] = "Broj kartice";
 tr["PayByCard.cardHolder.en"] = "Card holder";
@@ -336,6 +464,13 @@ tr["PayByCard.securityCode.sr"] = "Security code";
 tr["Rate.rate.en"] = 'Rate:';
 tr["Rate.rate.sr"] = 'Ocena:';
 
+tr["ReadHtmlDocument.acceptRead.en"] = 'I read and accept:';
+tr["ReadHtmlDocument.acceptRead.sr"] = 'Potvrdjujem da je pročitano:';
+
+tr["RegisterPage.usernameFaild.en"] = "Username didn't correct. Please, correct click on button OK "
+tr["RegisterPage.usernameFaild.sr"] = "Korisničko ime koje ste uneli nije ispravno. Korigujte unos pritiskom na taster OK "
+tr["RegisterPage.usernameCorrect.en"] =`The username is free. When you confirm the decision by pressing OK button, you confirm the creation of an order in the eDigiComm system with the same user name as the  On-Line system. And in the future it will log on the system eDigiComm is actually logging onto On-Line so the password is actually the same.`
+tr["RegisterPage.usernameCorrect.sr"] =`Korisničko ime je slobodno. Kada potvrdite odluku pritiskom na taster OMožeK, potvrđujete kreiranje naloga u eDigiComm sistemu sa istim korisničkim imenom kao i  On-Line sistemu. I ubuduće će logovanje na sistem eDigiComm u stvari biti logovanje na On-Line pa je lozinka u stvari ista.`
 
 
 tr["RegisterPage.newUser.en"] = "New user";
@@ -375,6 +510,16 @@ tr["RegisterPage.onLineSystem.en.raiff"] = 'Raiffeisen On-Line';
 tr["RegisterPage.onLineSystem.sr"] = 'On-Line sistem';
 tr["RegisterPage.onLineSystem.sr.raiff"] = 'Raiffeisen On-Line';
 
+// <T id="SearchPage.description" global={global}/>
+tr["SearchPage.productName.en"] = 'Product name:';
+tr["SearchPage.productName.sr"] = 'Naziv proizvoda:';
+tr["SearchPage.category.en"] = 'category:';
+tr["SearchPage.category.sr"] = 'Kategorija:';
+tr["SearchPage.description.en"] = 'Description:';
+tr["SearchPage.description.sr"] = 'Opis:';
+
+
+
 tr["UserPage.address.en"] = 'Address';
 tr["UserPage.address.sr"] = 'Adresa';
 tr["UserPage.city.en"] = 'City';
@@ -401,6 +546,12 @@ tr["UserPage.tablePrice.en"] = 'Price';
 tr["UserPage.tablePrice.sr"] = 'Cena';
 tr["UserPage.payingMessage.en"] = "Paying is successfuly finished. You can folow delivery. Thank you.";
 tr["UserPage.payingMessage.sr"] = "Plaćanje je uspešno izvršeno. Možete pratiti tok isporuke. Hvala.";
+tr["UserPage.parameters.en"] = 'Parameters';
+tr["UserPage.parameters.sr"] = 'Parametri';
+tr["UserPage.lang.en"] = 'Language:';
+tr["UserPage.lang.sr"] = 'Jezik:';
+tr["UserPage.langChoose.en"] = 'Choose Language';
+tr["UserPage.langChoose.sr"] = 'Izaberi jezik';
 
 
 

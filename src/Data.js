@@ -868,6 +868,7 @@ export const users = [
         sex: 'M',
         image: BozidarIgnjatovic,
         address: 'Narodnih heroja',
+        lang: 'sr',
         houseNumber: '8/23',
         city: 'Niš',
         ROLUser: false,
@@ -885,6 +886,7 @@ export const users = [
         image: MilicaMitic,
         address: 'Nikole Pašića',
         houseNumber: '17',
+        lang: 'sr',
         city: 'Niš',
         ROLUser: false,
         email: "milica.mitic@badin.rs",
@@ -898,6 +900,7 @@ export const users = [
         sex: 'M',
         image: DusanCvetkovic,
         address: 'Narodnih heroja',
+        lang: 'en',
         houseNumber: '81',
         city: 'Niš',
         ROLUser: false,
@@ -926,6 +929,7 @@ export const users = [
         sex: 'M',
         address: "Ivana Velikog",
         houseNumber: '9',
+        lang: 'en',
         city: "Niš",
         image: MarkoMilenkovic,
         ROLUser: false,
@@ -955,7 +959,7 @@ export const users = [
         address: "Bulevar Oslobođenja",
         houseNumber: "11",
         city: "Beograd",
-            image: women,
+        image: women,
         ROLUser: false
     }
     ,
@@ -1019,7 +1023,7 @@ const loyalty = [{
 }
 ]
 
-export const topOffer = ProductsData[38];
+export const topOffer = ProductsData[2];
 
 export const sportMan = [ProductsData[33], ProductsData[34], ProductsData[35]];
 
@@ -1264,6 +1268,9 @@ export let environment = [];
 environment['raiff'] = {
     id: 'raiff',
     name: "Raiffeisen bank",
+    headOffice: 'Beograd',
+    represent: 'Milovan Samac',
+    representPosition: 'regionalni menadžer',
     logo: logoraiff,
     backgroundlogo: 'white',
     lang: "sr"
@@ -1271,6 +1278,9 @@ environment['raiff'] = {
 environment['badin'] = {
     id: 'badin',
     name: "Badin bank",
+    headOffice: 'Niš',
+    represent: 'Milica Jedinica',
+    representPosition: 'CEO',
     logo: badinbanklogo,
     backgroundlogo: 'gray',
     lang: "en"

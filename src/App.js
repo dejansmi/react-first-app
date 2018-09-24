@@ -172,7 +172,7 @@ class App extends Component {
                 <div id="TopOffer" className="O-Y  Container-Empty  flex-wrap">
                   <div id="TopOffersChild" className="Container-Empty O-Y O-X border border-warning">
                     <div className="h-10 Container-Empty "><h3><b><T id="App.topOffer" global={global}/></b></h3></div>
-                    <BoxProduct className="h-90" product={this.props.global.topOffer} global={this.props.global} />
+                    <BoxProduct className="h-90"  product={this.props.global.topOffer} global={this.props.global} />
                   </div>
                   <div id="TOLoyalti" className="O-Y O-X Container-Empty">
                     <div id="App-nMGO" className="h-50 d-flex flex-column O-Y O-X w-100  Container-Empty">

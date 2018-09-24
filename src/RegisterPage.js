@@ -52,9 +52,7 @@ class RegisterPage extends React.Component {
                     usernamePassword: false,
                     approveMadeUser: true,
                     phase: 1,
-                    textApprove: "Korisničko ime je slobodno. Kada potvrdite odluku pritiskom na taster Može, potvrđujete kreiranje naloga u eDigiComm sistemu"
-                        + "sa istim korisničkim imenom kao i Raiffeisen On-Line sistemu. I ubuduće će logovanje na sistem "
-                        + "eDigiComm u stvari biti logovanje na ROL pa je lozinka u stvari ista."
+                    textApprove: this.props.global.t("RegisterPage.usernameCorrect")
                 });
             } else {
                 this.setState({
@@ -62,7 +60,7 @@ class RegisterPage extends React.Component {
                     usernamePassword: false,
                     approveMadeUser: true,
                     phase: 2,
-                    textApprove: "Korisničko ime koje ste uneli nije ispravno. Korigujte unos pritiskom na taster Može "
+                    textApprove: this.props.global.t("RegisterPage.usernameFaild")
                 });
 
             }

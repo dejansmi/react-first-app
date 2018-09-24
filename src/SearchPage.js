@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import ImgBox from './ImgBox';
 import F from './F';
 import Rate from './Rate';
+import T from './T';
 
 const defaultProps = {
     tag: 'button',
@@ -62,9 +63,9 @@ class SearchPage extends React.Component {
             <div className="w-100 d-flex flex-row O-Y O-X  Container-Empty border border-yellow" onClick={(e)=> (this.handleOnClick(e,productR))}>
                 <ImgBox src={productR.image} width='100px' />
                 <div className="d-flex flex-column m-2 text-left">
-                    <spam>Naziv proizvoda: {productR.productName}</spam>
-                    <spam>Kategorija: {productR.productType}</spam>
-                    <spam>Opis: {productR.description}</spam>
+                    <spam><T id="SearchPage.productName" global={global}/> {productR.productName}</spam>
+                    <spam><T id="SearchPage.category" global={global}/> {productR.productType}</spam>
+                    <spam><T id="SearchPage.description" global={global}/> {productR.description}</spam>
                 </div>
                 <div className="d-flex flex-column m-2 ml-auto ">
                     <div className="d-flex flex-row justify-content-between">
@@ -74,7 +75,7 @@ class SearchPage extends React.Component {
                         <spam className="ml-auto" />{(productR.priceOld!==undefined)?(<spam><del><F f="$" a={productR.priceOld}/></del></spam>):
                         (null)}
                     </div>
-                    {(productR.rate!==undefined)?(<Rate rate={productR.rate} />):
+                    {(productR.rate!==undefined)?(<Rate rate={productR.rate} global={global}/>):
                     (null)}
                 </div>
             </div>

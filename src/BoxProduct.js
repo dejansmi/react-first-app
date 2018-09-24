@@ -47,6 +47,7 @@ class BoxProduct extends Component {
             className,
             size,
             product,
+            global,
             ...attributes
         } = this.props;
 

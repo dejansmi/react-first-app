@@ -10,13 +10,14 @@ import { Today } from './Today';
 import tr from "./TranslateData";
 
 
+var ENV = 'badin';
 
 
 class State extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      env: environment['badin'],
+      env: environment[ENV],
       environmentList: environment,
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
@@ -66,6 +67,7 @@ class State extends Component {
       changeDeliveryPhase: this.changeDeliveryPhase,
       checkExistsPhase3: this.checkExistsPhase3,
       setEnv: this.setEnv,
+      setLang: this.setLang,
       virman: virman,
       banks: banks,
       bankOrganizer: bankOrganizer
@@ -81,6 +83,7 @@ class State extends Component {
     this.getRandomInt = this.getRandomInt.bind(this);
     this.changeDeliveryPhase = this.changeDeliveryPhase.bind(this);
     this.checkExistsPhase3 = this.checkExistsPhase3.bind(this);
+    this.setLang = this.setLang.bind(this);
 
   }
 
@@ -421,6 +424,33 @@ tt = (inSent,  tenant) => {
     }
   }
 
+  setLang = (pUser, pLang) => {
+    let lEnv, lUser;
+    lEnv = this.state.env;
+    lEnv.lang = pLang;
+    lUser = this.state.user;
+    lUser.lang = pLang;
+    this.setState({
+      env: lEnv,
+      user: lUser
+    });
+    if (pUser != undefined) {
+      let userOne, userL;
+      for (userOne of this.state.users) {
+        if (userOne.username === pUser) {
+          userL = userOne
+          break;
+        }
+      }
+      if (userL!=undefined) {
+        userL.lang = pLang;
+        this.setState(prevState => ({
+          users: [...prevState.users, userL]
+        }));
+      }
+
+    }
+  }
 
   setUser = (event, username, type) => {
     // seting users
@@ -454,6 +484,14 @@ tt = (inSent,  tenant) => {
         }
       }
       if (userL !== undefined) {
+        if (userL.lang!==undefined) {
+          let lEnv;
+          lEnv = this.state.env;
+          lEnv.lang = userL.lang;
+          this.setState({
+            env: lEnv
+          })
+        }
         if (userL.userType === 'client') {
           if (userL.sex === "W") {
             tO = ProductsData[24];
@@ -475,8 +513,12 @@ tt = (inSent,  tenant) => {
       }
 
     } else if (type === "LogOut") {
+      let lLang = environment[ENV].lang;
+      let lEnv = this.state.env;
+      lEnv.lang = lLang;
       this.setState({
-        user: ""
+        user: "",
+        env: lEnv
       });
 
     }

@@ -9,6 +9,7 @@ import ButtonToggleDiv from './ButtonToggleDiv';
 import './UserPage.css';
 import NotOrderedItems from './NotOrderedItems';
 import T from './T';
+import Select from './Select';
 
 
 class UserPage extends React.Component {
@@ -238,6 +239,11 @@ class UserPage extends React.Component {
 
     }
 
+    handleLang(e) {
+        this.props.global.setLang(this.props.global.user.username, e.target.value);
+    }
+    
+
     render() {
 
 
@@ -305,9 +311,14 @@ class UserPage extends React.Component {
                         )}
                     </tbody>
                 </table>
-            ) : (null);
+        ) : (null);
 
 
+        const selectLang = () => {
+            let lLang = [{ value: 'en', label: 'English' },
+                         { value: 'sr', label: 'Srpski' }];
+            return lLang;
+        };
 
 
         return (
@@ -355,6 +366,9 @@ class UserPage extends React.Component {
                                     <TextField className="w-100" value={this.state.address} onChange={this.handleAddress} label={global.t("UserPage.address")} />
                                     <TextField className="w-100" value={this.state.houseNumber} onChange={this.handleHouseNumber} label={global.t("UserPage.houseNumber")} />
                                     <TextField className="w-100" value={this.state.city} onChange={this.handleCity} label={global.t("UserPage.city")} />
+                                </ButtonToggleDiv>
+                                <ButtonToggleDiv className="O-X O-Y" name={global.t("UserPage.parameters")}>
+                                    <T id="UserPage.lang" global={global}/> <Select className="col-2" value={global.user.lang} label={global.t("UserPage.langChoose")} options={selectLang()} onChange={(e) => this.handleLang(e)} />
                                 </ButtonToggleDiv>
                             </div>
                         </div>
